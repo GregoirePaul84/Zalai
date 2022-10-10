@@ -1,0 +1,40 @@
+@keyframes opacityLoader {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes loaderDisappears {
+    from {
+        transform: translateX(0px);
+    }
+
+    to {
+        transform: translateX(105vw);
+    }
+}
+
+@keyframes arrowMovement {
+    0% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(15px);
+    }
+}
+
+@keyframes opacityProductCard {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
