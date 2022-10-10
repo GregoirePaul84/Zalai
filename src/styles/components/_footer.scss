@@ -1,16 +1,17 @@
 footer {
-    height: 200px;
+    height: 195px;
     width: 100%;
     background-color: #586E7C;
     display: flex;
     justify-content: space-evenly;
+    border-top: 5px solid $color-light-blue;
 
     h3 {
-        padding: 25px 0;
+        padding-top: 25px;
     }
 
     .footer-about, .footer-delivery, .footer-contact {
-        width: 150px;
+        width: 250px;
         height: 100%;
 
         .title {
@@ -24,8 +25,20 @@ footer {
             display: flex;
             flex-direction: column;
 
-            p {
+            li {
+                color: black;
                 margin-bottom: 5px;
+                list-style-type: none;
+                width: fit-content;
+
+                span {
+                    font-family: 'Noto Sans Tifinagh', sans-serif;
+                    margin-right: 10px;
+                }
+
+                &:hover {
+                    color: $color-secondary;
+                }
             }
         }
     }

@@ -7,31 +7,58 @@ const Footer = () => {
                 <div className="title">
                     <h3>À PROPOS</h3>
                 </div>
-                <div className="links">
-                    <p>Nos valeurs</p>
-                    <p>Nos artisans</p>
-                    <p>F.A.Q</p>
-                    <p>Conditions Générales de Vente</p>
-                </div>
+                <ul className="links">
+                    <li>
+                        <span>ⵖ</span>
+                        Nos valeurs
+                    </li>
+                    <li>
+                        <span>ⴰ</span>
+                        Nos artisans
+                    </li>
+                    <li>
+                        <span>ⴼ</span>
+                        F.A.Q
+                    </li>
+                    <li>
+                        <span>ⵛ</span>
+                        Conditions Générales de Vente
+                    </li>
+                </ul>
             </div>
             <div className='footer-delivery'>
                 <div className="title">
                     <h3>LIVRAISON</h3>
                 </div>
-                <div className="links">
-                    <p>Suivre votre commande</p>
-                    <p>Retours</p>
-                    <p>Temps de livraison</p>
-                </div>
+                <ul className="links">
+                    <li>
+                        <span>ⵙ</span>
+                        Suivre votre commande
+                    </li>
+                    <li>
+                        <span>ⵔ</span>
+                        Retours
+                    </li>
+                    <li>
+                        <span>ⵜ</span>
+                        Temps de livraison
+                    </li>
+                </ul>
             </div>
             <div className='footer-contact'>
             <div className="title">
                     <h3>CONTACT</h3>
                 </div>
-                <div className="links">
-                    <p>Une question ? Besoin d'aide ?</p>
-                    <p>Contactez-nous !</p>
-                </div>
+                <ul className="links">
+                    <li>
+                        <span>ⵇ</span>
+                        Une question ? Besoin d'aide ?
+                    </li>
+                    <li>
+                        <span>ⵛ</span>
+                        Contactez-nous !
+                    </li>
+                </ul>
             </div>
         </footer>
     );
