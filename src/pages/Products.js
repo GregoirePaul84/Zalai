@@ -63,7 +63,7 @@ const products = [
         'productName': 'Tapis berbère 1',
         'productImg': carpet1,
         'productHover': carpet1_2,
-        'productAllImg': [carpet1, carpet1_2, carpet1_3, carpet1_4, carpet1_5, carpet1_6],
+        'productAllImg': [{"id":"1", "img":carpet1}, {"id":"2", "img":carpet1_2}, {"id":"3", "img":carpet1_3}, {"id":"4", "img":carpet1_4}, {"id":"5", "img":carpet1_5}, {"id":"6", "img":carpet1_6}],
         'productAlt': 'Tapis berbère bleu à rayures'
     },
     {
@@ -166,10 +166,6 @@ const Products = () => {
         }   
     } 
 
-    const displayProduct = (product) => {
-        setDisplayDetail(product);
-    }
-
     useEffect(() => {
         if (isLoading === false) {
             const selectLoader = document.getElementById('loader-container');
@@ -247,10 +243,8 @@ const Products = () => {
                             {(category !== undefined) ? 
                                 products[category].map((key) => {
                                 return(
-                                    <ProductContext.Provider value={{ displayDetail, setDisplayDetail }}>
+                                    <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
                                         <Carpets key={key.productName}
-                                        detailedProduct = {displayProduct}
-                                        displayDetail = {displayDetail}
                                         productClass={key.productClass}
                                         productName={key.productName}
                                         productImg={key.productImg}
@@ -270,7 +264,7 @@ const Products = () => {
             </div>
             { (displayDetail) ?
                 <ProductContext.Provider value={{ displayDetail, setDisplayDetail }}>
-                    <DetailedProduct />
+                    <DetailedProduct products={products}/>
                 </ProductContext.Provider> 
             : null }
         </div>

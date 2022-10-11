@@ -23,13 +23,154 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 2px solid $color-primary;
 
             span {
+                cursor: pointer;
                 &:nth-child(1) {
                     margin-left: 10px;
                 }
                 &:nth-child(2) {
                     margin-right: 10px;
+                }
+            }
+        }
+
+        .detailed-content {
+            height: 90%;
+            width: 100%;
+
+            .main-info {
+                height: 80%;
+                width: 100%;
+                display: flex;
+
+                .detailed-img-container {
+                    height: 100%;
+                    width: calc(50% - 1.5px);
+                    display: flex;
+                    justify-content: center;
+                    overflow: hidden;
+                    position: relative;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        max-height: 430px;
+                        max-width: 420px;                    
+                    }
+
+                    .zoomed-img {
+                        position: absolute;
+                        opacity: 0;
+                        transform: scale(1.8);
+                    }
+                }
+
+                .detailed-line-container {
+                    height: 100%;
+                    width: 3px;
+                    display: flex;
+                    align-items: center;
+
+                    .line-container {
+                        height: 60%;
+                        width: 100%;
+                        background-color: $color-light-blue;
+                    }
+                }
+
+                .detailed-text-container {
+                    height: 100%;
+                    width: calc(50% - 1.5px);
+                    padding-top: 10px;
+
+                    .detailed-text {
+                        padding-left: 50px;
+                        margin-bottom: 50px;
+
+                        h2 {
+                            font-size: 1.8em;
+                            margin-bottom: 20px;
+                        }
+
+                        p {
+                            color: #4D4D4D;
+                        }
+
+                        .product-size, .material, .artisan {
+                            font-size: 1.3em;
+                        }
+
+                        .material {
+                            font-weight: 500;
+                        }
+
+                        .artisan {
+                            font-style: italic;
+                            margin-bottom: 20px;
+                        }
+
+                        .prices {
+                            .old-price {
+                                color: #BA0505;
+                                text-decoration-line: line-through;
+                                font-size: 2em;
+                                margin-right: 30px;
+                            }
+
+                            .new-price {
+                                color: #2CB916;
+                                font-size: 2.2em;
+                            }
+                        }
+                        
+                        .economy {
+                            font-size: 1.2em;
+                            font-weight: bold;
+                            color: #2CB916;
+                            margin-bottom: 10px;
+                        }
+
+                        .delivery {
+                            font-size: 1.2em;
+
+                            span {
+                                color: #2CB916;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+
+                    .button-container {
+                        display: flex;
+                        justify-content: center;
+
+                        .add-basket {
+                            font-size: 1.5em;
+                            color: $color-secondary;
+                            background-color: $color-light-blue;
+                            padding: 10px;
+                            border: 2px solid $color-primary;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+            .detailed-carousel {
+                height: 20%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                border-top: 2px solid $color-primary;
+
+                img {
+                    height: 80%;
+                    width: 10%;
+                    margin-right: 15px;
+                    border: 1px solid $color-light-blue;
                 }
             }
         }

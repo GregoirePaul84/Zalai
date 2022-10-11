@@ -8,14 +8,11 @@ const Carpets = ({productClass, productName, productImg, productHover, productAl
     const displayDetail = detail.displayDetail;
     const setDisplayDetail = detail.setDisplayDetail;
 
-
     const [imgHover, setImgHover] = useState(false);
-   
 
     function displayProduct() {
         setDisplayDetail(!displayDetail);
     }
-
 
     return (
         <>
