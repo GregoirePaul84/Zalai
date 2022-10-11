@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import Loader from './Loader';
 import Header from '../components/Header';
-import ProductCard from '../components/CategoryCard';
 import Carpets from '../components/Carpets';
 
 import productsImg from '../media/blue-688874_1920.jpg';
@@ -13,10 +12,17 @@ import carpets from '../media/carpet-2458558_640.jpg';
 import lamps from '../media/lampe.png';
 import decorations from '../media/cloth-2777_640.jpg'
 
-import carpet1 from '../media/products/tapis1.webp';
-import carpet2 from '../media/products/tapis2.webp';
-import carpet3 from '../media/products/tapis3.webp';
-import carpet4 from '../media/products/tapis4.webp';
+import mandala from '../media/mandala.png'
+
+import carpet1 from '../media/products/Tapis/Tapis1/tapis1.webp';
+import carpet1_2 from '../media/products/Tapis/Tapis1/tapis1_2.webp';
+import carpet1_3 from '../media/products/Tapis/Tapis1/tapis1_3.webp';
+import carpet1_4 from '../media/products/Tapis/Tapis1/tapis1_4.jpg';
+import carpet1_5 from '../media/products/Tapis/Tapis1/tapis1_5.webp';
+import carpet1_6 from '../media/products/Tapis/Tapis1/tapis1_6.jpg';
+import carpet2 from '../media/products/Tapis/Tapis2/tapis2.png';
+import carpet3 from '../media/products/Tapis/Tapis3/tapis3.webp';
+import carpet4 from '../media/products/Tapis/Tapis4/tapis4.webp';
 import CategoryCard from '../components/CategoryCard';
 
 import light1 from '../media/products/Luminaires/chams-lustre-marocain-suspendu-264.webp';
@@ -27,6 +33,7 @@ import deco1 from '../media/products/Décoration/coussin-kilim-coussin-marocain-
 import deco2 from '../media/products/Décoration/coussin-orange-en-soie-de-cactus-coussin-marocain-798.webp';
 import deco3 from '../media/products/Décoration/CSHD35SH-1.webp';
 import Footer from '../components/Footer';
+import DetailedProduct from '../components/DetailedProduct';
 
 const productCategories = [
     {
@@ -55,6 +62,8 @@ const products = [
         'productClass': 'tapis-berbère-1',
         'productName': 'Tapis berbère 1',
         'productImg': carpet1,
+        'productHover': carpet1_2,
+        'productAllImg': [carpet1, carpet1_2, carpet1_3, carpet1_4, carpet1_5, carpet1_6],
         'productAlt': 'Tapis berbère bleu à rayures'
     },
     {
@@ -120,44 +129,18 @@ const products = [
     ]
 ];
 
-console.log(products);
+export const ProductContext = React.createContext();
 
 const Products = () => {
 
     const [isLoading, setIsLoading] = useState(true);
     const [scrollY, setScrollY] = useState(0);
     const [category, setCategory] = useState(undefined);
+    const [displayDetail, setDisplayDetail] = useState(false);
 
     function checkLoading() {
-        setIsLoading(false);
-        console.log(isLoading);
+        setIsLoading(false);  
     }
-
-    const callback = (name) => {
-        console.log(name);
-        if (name === 'tapis') {
-            setCategory(0);
-        }   
-        if (name === 'luminaires') {
-            setCategory(1);
-        }   
-        if (name === 'décorations') {
-            setCategory(2);
-        }   
-    } 
-
-
-    useEffect(() => {
-        if (isLoading === false) {
-            const selectLoader = document.getElementById('loader-container');
-            const selectContainer = document.querySelector('.home-loader');
-
-            setTimeout(() => {selectLoader.style.animation = '1s ease-in-out 0s 1 normal forwards running loaderDisappears'}, 2300);
-            setTimeout(() => {selectContainer.classList.add('loader-cancelled')}, 3300);  
-        }
-        console.log(isLoading);
-        
-    }, [isLoading])
 
     const handleScroll = () => {
 
@@ -169,6 +152,47 @@ const Products = () => {
           document.querySelector('.decorations-container').style.animation = '1s ease-in-out 1s 1 normal forwards running opacityProductCard';
         }
     };
+
+    const checkCategory = (name) => {
+        
+        if (name === 'tapis') {
+            setCategory(0);
+        }   
+        if (name === 'luminaires') {
+            setCategory(1);
+        }   
+        if (name === 'décorations') {
+            setCategory(2);
+        }   
+    } 
+
+    const displayProduct = (product) => {
+        setDisplayDetail(product);
+    }
+
+    useEffect(() => {
+        if (isLoading === false) {
+            const selectLoader = document.getElementById('loader-container');
+            const selectContainer = document.querySelector('.home-loader');
+
+            setTimeout(() => {selectLoader.style.animation = '1s ease-in-out 0s 1 normal forwards running loaderDisappears'}, 2300);
+            setTimeout(() => {selectContainer.classList.add('loader-cancelled')}, 3300);  
+        }
+   
+    }, [isLoading])
+
+    useEffect(() => {
+        const selectForeground = document.querySelector('.foreground');
+
+        if(displayDetail) {     
+            selectForeground.classList.add('foreground-blur');
+        }
+        else {
+            selectForeground.classList.remove('foreground-blur');
+        }
+        
+    
+    }, [displayDetail])
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, {
@@ -191,7 +215,7 @@ const Products = () => {
                 <div className="gray-layout"></div>
             </div>
             <div className="foreground">
-                <Header />
+                <Header checkPage={'product'} />
                 <main>
                     <section className="product-title">
                         <h3>Notre boutique en ligne</h3>   
@@ -204,39 +228,51 @@ const Products = () => {
                         {productCategories.map((key) => {
                             return (
                                 <CategoryCard key={key.categoryName}
-                                             categoryChosen={callback}
-                                             categoryClass={key.categoryClass}
-                                             categoryName={key.categoryName}
-                                             categoryImg={key.categoryImg}
-                                             categoryAlt={key.categoryAlt} />
+                                            categoryChosen={checkCategory}
+                                            categoryClass={key.categoryClass}
+                                            categoryName={key.categoryName}
+                                            categoryImg={key.categoryImg}
+                                            categoryAlt={key.categoryAlt} />
                             )
                         })
                         }
                     </section>
                     <section className="products-list-container">
                         <div className="products-list">
-                        <div className="category-title-container">
-                            <h3 className='category-title'></h3>
-                        </div>
-                        {(category !== undefined) ? 
-                            products[category].map((key) => {
-                            return(
-                                <Carpets key={key.productName}
-                                categoryName={key.categoryName}
-                                productClass={key.productClass}
-                                productName={key.productName}
-                                productImg={key.productImg}
-                                productAlt={key.productAlt}/>
-                            )
-                            })
-                        : 
-                        null
-                        }
+                            <div className="category-title-container">
+                                <img src={mandala} alt="decoration florale" />
+                                <h3 className='category-title'></h3>
+                                <img src={mandala} alt="decoration florale" />
+                            </div>
+                            {(category !== undefined) ? 
+                                products[category].map((key) => {
+                                return(
+                                    <ProductContext.Provider value={{ displayDetail, setDisplayDetail }}>
+                                        <Carpets key={key.productName}
+                                        detailedProduct = {displayProduct}
+                                        displayDetail = {displayDetail}
+                                        productClass={key.productClass}
+                                        productName={key.productName}
+                                        productImg={key.productImg}
+                                        productHover={key.productHover}
+                                        productAllImg={key.productAllImg}
+                                        productAlt={key.productAlt}/>
+                                    </ProductContext.Provider>
+                                )
+                                })
+                            : 
+                            null
+                            }
                         </div>
                     </section>
                     <Footer />
                 </main>
             </div>
+            { (displayDetail) ?
+                <ProductContext.Provider value={{ displayDetail, setDisplayDetail }}>
+                    <DetailedProduct />
+                </ProductContext.Provider> 
+            : null }
         </div>
         </>
     );
