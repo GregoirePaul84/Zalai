@@ -1,8 +1,10 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { ProductContext } from '../pages/Products';
 
-import carpet1 from '../media/products/Tapis/Tapis1/tapis1.webp';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 
 const DetailedProduct = (products) => {
 
@@ -12,6 +14,7 @@ const DetailedProduct = (products) => {
 
     const productSelected = products.products[0];
     
+    const [imgIndex, setImgIndex] = useState(0);
 
     function removeDetail() {
         setDisplayDetail(!displayDetail);
@@ -31,27 +34,63 @@ const DetailedProduct = (products) => {
         
         selectZoomedImg.style.opacity = "0";
         selectNormalImg.style.opacity = "1";
-        selectZoomedImg.style.bottom = "0";
-        selectZoomedImg.style.right = "0";
+        // selectZoomedImg.style.bottom = "0";
+        // selectZoomedImg.style.right = "25px";
     }
 
     function moveImg(e) {
-        // console.log(`${e.clientY}px`);
         const selectZoomedImg = document.querySelector('.zoomed-img');
         const x = e.pageX - e.currentTarget.clientWidth; 
-        const y = e.pageY - e.currentTarget.clientHeight;
-        console.log(y - 400); 
-        // console.log("Bottom", y - 800);
+        let y = e.pageY - e.currentTarget.clientHeight;
+
+        if(y - 830 > 0) {
+            selectZoomedImg.style.bottom = `${y - 830}px`;
+            
+            
+            if( y - 830 >= 151) {
+                selectZoomedImg.style.bottom = '151px';   
+            }
+        }
+
+        if(y - 830 < 0) {
+            selectZoomedImg.style.bottom = `${y - 830}px`;
+            
+            
+            if( y - 830 <= -149) {
+                selectZoomedImg.style.bottom = '-149px';   
+            }
+        }
+        
+        
         selectZoomedImg.style.right = `${x + 40}px`;
-        selectZoomedImg.style.bottom = `${y - 600}px`;
         
 
+        console.log(y - 830);
+
+        if(x + 40 >= 126) selectZoomedImg.style.right = '126px';
+        if(x + 40 <= -87) selectZoomedImg.style.right = '-87px';
+
+        // if(y - 522 <= -283) selectZoomedImg.style.bottom = '-149px';
+    }
+
+    function showNextImg() {
+        console.log(productSelected[0].productAllImg[0].img);
+        setImgIndex(imgIndex + 1);
+
+        if(imgIndex === 5) setImgIndex(0);
+    }
+
+    function showPreviousImg() {
+        console.log(productSelected[0].productAllImg[0].img);
+        setImgIndex(imgIndex - 1);
+
+        if(imgIndex === 0) setImgIndex(5);
     }
 
 
-    useEffect(() => {
+    // useEffect(() => {
         
-    }, [])
+    // }, [])
 
     return (
         <section className="detailed-product">
@@ -62,9 +101,15 @@ const DetailedProduct = (products) => {
                 </div>
                 <div className="detailed-content">
                     <div className='main-info'>
+                        <div className="chevron-container">
+                            <FontAwesomeIcon icon={faChevronLeft} className="chevron-left" onClick={showPreviousImg}/>
+                        </div>
                         <div className="detailed-img-container" onMouseOver={zoomOnImg} onMouseLeave={zoomOffImg} onMouseMove={function(e){moveImg(e)}}>
-                            <img src={carpet1} alt="" className='zoomed-img'/>
-                            <img src={carpet1} alt="" className='normal-img'/>
+                            <img src={productSelected[0].productAllImg[imgIndex].img} alt="" className='zoomed-img'/>
+                            <img src={productSelected[0].productAllImg[imgIndex].img} alt="" className='normal-img'/>
+                        </div>
+                        <div className="chevron-container">
+                                <FontAwesomeIcon icon={faChevronRight} className="chevron-right" onClick={showNextImg}/>
                         </div>
                         <div className="detailed-line-container">
                             <div className="line-container"></div>
@@ -90,14 +135,20 @@ const DetailedProduct = (products) => {
                         </div>
                     </div>
                     <div className="detailed-carousel">
-                    {(products !== undefined) ? 
-                        productSelected[0].productAllImg.map((key) => {
-                        return (
-                            <img src={key.img} alt="" key={key.id}/>
-                        )
-                        })
-                    : null }
-                    </div>
+                        <div className="chevron-container">
+                                <FontAwesomeIcon icon={faChevronLeft} className="chevron-left" onClick={showPreviousImg}/>
+                        </div>
+                        {(products !== undefined) ? 
+                            productSelected[0].productAllImg.map((key) => {
+                            return (
+                                <img src={key.img} alt="" key={key.id}/>
+                            )
+                            })
+                        : null }
+                        <div className="chevron-container">
+                            <FontAwesomeIcon icon={faChevronRight} className="chevron-right" onClick={showNextImg}/>
+                        </div>
+                    </div>   
                 </div>
             </div>
         </section>
