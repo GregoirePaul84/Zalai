@@ -63,7 +63,14 @@ const products = [
         'productName': 'Tapis berbère 1',
         'productImg': carpet1,
         'productHover': carpet1_2,
-        'productAllImg': [{"id":"1", "img":carpet1}, {"id":"2", "img":carpet1_2}, {"id":"3", "img":carpet1_3}, {"id":"4", "img":carpet1_4}, {"id":"5", "img":carpet1_5}, {"id":"6", "img":carpet1_6}],
+        'productAllImg': [{"id":"carpet1", "img":carpet1}, 
+                            {"id":"carpet2", "img":carpet1_2}, 
+                            {"id":"carpet3", "img":carpet1_3}, 
+                            {"id":"carpet4", "img":carpet1_4}, 
+                            {"id":"carpet5", "img":carpet1_5}, 
+                            {"id":"carpet6", "img":carpet1_6}
+                        ],
+
         'productAlt': 'Tapis berbère bleu à rayures'
     },
     {

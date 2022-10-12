@@ -43,20 +43,20 @@ const DetailedProduct = (products) => {
         const x = e.pageX - e.currentTarget.clientWidth; 
         let y = e.pageY - e.currentTarget.clientHeight;
 
-        if(y - 830 > 0) {
-            selectZoomedImg.style.bottom = `${y - 830}px`;
+        if(y - 600 > 0) {
+            selectZoomedImg.style.bottom = `${y - 600}px`;
             
             
-            if( y - 830 >= 151) {
+            if( y - 600 >= 151) {
                 selectZoomedImg.style.bottom = '151px';   
             }
         }
 
-        if(y - 830 < 0) {
-            selectZoomedImg.style.bottom = `${y - 830}px`;
+        if(y - 600 < 0) {
+            selectZoomedImg.style.bottom = `${y - 600}px`;
             
             
-            if( y - 830 <= -149) {
+            if( y - 600 <= -149) {
                 selectZoomedImg.style.bottom = '-149px';   
             }
         }
@@ -65,12 +65,11 @@ const DetailedProduct = (products) => {
         selectZoomedImg.style.right = `${x + 40}px`;
         
 
-        console.log(y - 830);
+        console.log(y - 600);
 
         if(x + 40 >= 126) selectZoomedImg.style.right = '126px';
         if(x + 40 <= -87) selectZoomedImg.style.right = '-87px';
 
-        // if(y - 522 <= -283) selectZoomedImg.style.bottom = '-149px';
     }
 
     function showNextImg() {
@@ -87,10 +86,36 @@ const DetailedProduct = (products) => {
         if(imgIndex === 0) setImgIndex(5);
     }
 
+    function changeImg(e) {
+        const imgSelected = e.target;
+        const selectMainImgs = document.querySelectorAll('.detailed-img-container img');
+        console.log(e.target.getAttribute('class'));
+        selectMainImgs.forEach((e) => {e.setAttribute('src', imgSelected.getAttribute('src'))});
 
-    // useEffect(() => {
-        
-    // }, [])
+        switch (e.target.getAttribute('class')) {
+            case 'carpet1': setImgIndex(0);
+                break;
+            case 'carpet2': setImgIndex(1);
+                break;
+            case 'carpet3': setImgIndex(2);
+                break;
+            case 'carpet4': setImgIndex(3);
+                break;
+            case 'carpet5': setImgIndex(4);
+                break;
+            case 'carpet6': setImgIndex(5);
+                break;
+        }
+    }
+
+    useEffect(() => {
+        if (document.querySelector('.normal-img').classList.contains(`${productSelected[0].productAllImg[imgIndex].id}`)) {
+            const selectCarouselImg = document.querySelector(`.detailed-carousel .${productSelected[0].productAllImg[imgIndex].id}`);
+            const selectOtherImgs = document.querySelectorAll(`.detailed-carousel img`);
+            selectOtherImgs.forEach((e) => {e.classList.remove('selected-img')});
+            selectCarouselImg.classList.add('selected-img');
+        }
+    }, [imgIndex])
 
     return (
         <section className="detailed-product">
@@ -106,7 +131,7 @@ const DetailedProduct = (products) => {
                         </div>
                         <div className="detailed-img-container" onMouseOver={zoomOnImg} onMouseLeave={zoomOffImg} onMouseMove={function(e){moveImg(e)}}>
                             <img src={productSelected[0].productAllImg[imgIndex].img} alt="" className='zoomed-img'/>
-                            <img src={productSelected[0].productAllImg[imgIndex].img} alt="" className='normal-img'/>
+                            <img src={productSelected[0].productAllImg[imgIndex].img} alt="" className={`normal-img ${productSelected[0].productAllImg[imgIndex].id}`}/>
                         </div>
                         <div className="chevron-container">
                                 <FontAwesomeIcon icon={faChevronRight} className="chevron-right" onClick={showNextImg}/>
@@ -141,7 +166,7 @@ const DetailedProduct = (products) => {
                         {(products !== undefined) ? 
                             productSelected[0].productAllImg.map((key) => {
                             return (
-                                <img src={key.img} alt="" key={key.id}/>
+                                <img src={key.img} alt="" key={key.id} className={key.id} onClick={function(e){changeImg(e)}}/>
                             )
                             })
                         : null }

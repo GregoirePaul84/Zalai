@@ -10,7 +10,7 @@
 
     .detailed-card {
         width: 70%;
-        height: 80%;
+        height: 85%;
         background-color: $color-secondary;
         outline: 5px solid $color-primary;   
         max-width: none;
@@ -69,7 +69,6 @@
                     justify-content: center;
                     overflow: hidden;
                     position: relative;
-                    outline: 2px solid $color-light-blue;
 
                     img {
                         width: 90%;
@@ -185,6 +184,11 @@
                 justify-content: space-between;
                 overflow: hidden;
                 border-top: 1px solid $transparent-blue;
+                padding: 0 15px;
+
+                .chevron-left, .chevron-right {
+                    cursor: pointer;
+                }
 
                 img {
                     height: 90%;
@@ -195,6 +199,10 @@
                     &:nth-child(1) {
                         margin-left: 15px;
                     }
+                }
+
+                .selected-img {
+                    border: 3px solid $color-primary;
                 }
             }
         }
