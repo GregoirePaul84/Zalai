@@ -38,12 +38,12 @@ const DetailedProduct = (products) => {
     function moveImg(e) {
         // console.log(`${e.clientY}px`);
         const selectZoomedImg = document.querySelector('.zoomed-img');
-        const x = e.pageX - e.currentTarget.offsetLeft; 
-        const y = e.pageY - e.currentTarget.offsetTop;
-        console.log("Axe X =>", x); 
-        console.log("Axe Y =>", y - 1300);
-        selectZoomedImg.style.right = `${x - 300}px`;
-        selectZoomedImg.style.bottom = `${y - 1200}px`;
+        const x = e.pageX - e.currentTarget.clientWidth; 
+        const y = e.pageY - e.currentTarget.clientHeight;
+        console.log(y - 400); 
+        // console.log("Bottom", y - 800);
+        selectZoomedImg.style.right = `${x + 40}px`;
+        selectZoomedImg.style.bottom = `${y - 600}px`;
         
 
     }
