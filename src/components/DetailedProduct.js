@@ -20,6 +20,7 @@ const DetailedProduct = (products) => {
     function zoomOnImg() {
         const selectZoomedImg = document.querySelector('.zoomed-img');
         const selectNormalImg = document.querySelector('.normal-img');
+
         selectZoomedImg.style.opacity = "1";
         selectNormalImg.style.opacity = "0";
     }
@@ -35,11 +36,15 @@ const DetailedProduct = (products) => {
     }
 
     function moveImg(e) {
-        console.log(`${e.clientX / 7}px`);
+        // console.log(`${e.clientY}px`);
         const selectZoomedImg = document.querySelector('.zoomed-img');
-        selectZoomedImg.style.right = `${e.clientX / 3}px`;
-        selectZoomedImg.style.bottom = `${e.clientY / 1.5}px`;
-        console.log("mouse location:", e.clientX, e.clientY)
+        const x = e.pageX - e.currentTarget.offsetLeft; 
+        const y = e.pageY - e.currentTarget.offsetTop;
+        console.log("Axe X =>", x); 
+        console.log("Axe Y =>", y - 1300);
+        selectZoomedImg.style.right = `${x - 300}px`;
+        selectZoomedImg.style.bottom = `${y - 1200}px`;
+        
 
     }
 
