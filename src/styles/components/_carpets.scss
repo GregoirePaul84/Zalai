@@ -1,7 +1,7 @@
 .product-card {
     width: 22%;
-    min-width: 300px;
-    height: 270px;
+    min-width: 330px;
+    height: 300px;
     display: flex;
     align-items: center;
     align-content: space-between;
@@ -88,6 +88,10 @@
                 color: #2CB916;
                 font-size: 1.4em;
             }
+        }
+
+        .economy {
+            color: #2CB916;
         }
 
         .add-basket-container {

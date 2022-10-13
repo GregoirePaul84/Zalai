@@ -26,12 +26,18 @@ import carpet2_2 from '../media/products/Tapis/Tapis2/tapis2_2.webp';
 import carpet2_3 from '../media/products/Tapis/Tapis2/tapis2_3.webp';
 import carpet2_4 from '../media/products/Tapis/Tapis2/tapis2_4.webp';
 import carpet2_5 from '../media/products/Tapis/Tapis2/tapis2_5.webp';
+import carpet2_6 from '../media/products/Tapis/Tapis2/tapis2_6.jpg';
 
 import carpet3 from '../media/products/Tapis/Tapis3/tapis3.webp';
 import carpet4 from '../media/products/Tapis/Tapis4/tapis4.webp';
 import CategoryCard from '../components/CategoryCard';
 
-import light1 from '../media/products/Luminaires/chams-lustre-marocain-suspendu-264.webp';
+import light1 from '../media/products/Luminaires/Luminaire1/light1.webp';
+import light1_2 from '../media/products/Luminaires/Luminaire1/light1_2.webp';
+import light1_3 from '../media/products/Luminaires/Luminaire1/light1_3.webp';
+import light1_4 from '../media/products/Luminaires/Luminaire1/light1_4.webp';
+import light1_5 from '../media/products/Luminaires/Luminaire1/light1_5.webp';
+import light1_6 from '../media/products/Luminaires/Luminaire1/light1_6.webp';
 import light2 from '../media/products/Luminaires/CU07BO-1.webp';
 import light3 from '../media/products/Luminaires/ilham-lustre-marocain-suspendu-952.webp';
 
@@ -68,10 +74,14 @@ const products = [
     // Tapis en stock
 [   {
         'productId': '0',
+        'productCategory': 'tapis',
         'productClass': 'tapis-berbère-1',
         'productName': 'Tapis berbère 1',
         'productOldPrice': 400,
         'productNewPrice': 250,
+        'productTribe': 'Tribu Chefchaouen',
+        'productSize': '250 x 175',
+        'productMaterial': '100% laine de mouton',
         'productImg': carpet1,
         'productHover': carpet1_2,
         'productAllImg': [{"id":"carpet1", "img":carpet1}, 
@@ -86,35 +96,48 @@ const products = [
     },
     {
         'productId': '1',
+        'productCategory': 'tapis',
         'productClass': 'tapis-berbère-2',
         'productName': 'Tapis berbère 2',
-        'productOldPrice': 430,
+        'productOldPrice': 400,
         'productNewPrice': 280,
+        'productTribe': 'Tribu Tanger',
+        'productSize': '175 x 90',
+        'productMaterial': '100% poil de chameau',
         'productImg': carpet2,
         'productHover': carpet2_2,
         'productAllImg': [{"id":"carpet1", "img":carpet2}, 
                             {"id":"carpet2", "img":carpet2_2}, 
                             {"id":"carpet3", "img":carpet2_3}, 
                             {"id":"carpet4", "img":carpet2_4}, 
-                            {"id":"carpet5", "img":carpet2_5}
+                            {"id":"carpet5", "img":carpet2_5},
+                            {"id":"carpet6", "img":carpet2_6}
                         ],
         'productAlt': 'choix de produit: luminaires'
     },
     {
         'productId': '2',
+        'productCategory': 'tapis',
         'productClass': 'tapis-berbère-3',
         'productName': 'Tapis berbère 3',
-        'productOldPrice': 475,
+        'productOldPrice': 485,
         'productNewPrice': 325,
+        'productTribe': 'Tribu Rabat',
+        'productSize': '300 x 150',
+        'productMaterial': '100% poil de chameau',
         'productImg': carpet3,
         'productAlt': 'choix de produit: décorations'
     },
     {
         'productId': '3',
+        'productCategory': 'tapis',
         'productClass': 'tapis-berbère-4',
         'productName': 'Tapis berbère 4',
         'productOldPrice': 345,
         'productNewPrice': 195,
+        'productTribe': 'Tribu Mohammedia',
+        'productSize': '185 x 150',
+        'productMaterial': '100% laine de mouton',
         'productImg': carpet4,
         'productAlt': 'choix de produit: décorations'
     }
@@ -122,20 +145,47 @@ const products = [
 
     // Luminaires en stock
 [   {
+    'productId': '0',
+    'productCategory': 'luminaires',
     'productClass': 'light-1',
     'productName': 'lumière 1',
+    'productOldPrice': 120,
+    'productNewPrice': 70,
+    'productTribe': 'Artisan de Casablanca',
+    'productSize': '60 x 50',
+    'productMaterial': '100% laine de mouton',
     'productImg': light1,
+    'productHover': light1_2,
+    'productAllImg': [{"id":"light1", "img":light1}, 
+                            {"id":"light2", "img":light1_2}, 
+                            {"id":"light3", "img":light1_3}, 
+                            {"id":"light4", "img":light1_4}, 
+                            {"id":"light5", "img":light1_5}, 
+                            {"id":"light6", "img":light1_6}
+                        ],
     'productAlt': 'lumière 1'
     },
     {
+    'productId': '1',
+    'productCategory': 'luminaires',
     'productClass': 'light-2',
     'productName': 'lumière 2',
+    'productOldPrice': 90,
+    'productNewPrice': 50,
+    'productTribe': 'Artisan de Rabat',
+    'productSize': '65 x 55',
     'productImg': light2,
     'productAlt': 'lumière 2'
     },
     {
+    'productId': '2',
+    'productCategory': 'luminaires',
     'productClass': 'light-3',
     'productName': 'lumière 3',
+    'productOldPrice': 115,
+    'productNewPrice': 65,
+    'productTribe': 'Artisan de Chefchaouen',
+    'productSize': '50 x 45',
     'productImg': light3,
     'productAlt': 'lumière 3'
     }
@@ -143,18 +193,21 @@ const products = [
 
     // Décorations en stock
     [   {
+        'productCategory': 'decorations',
         'productClass': 'deco-1',
         'productName': 'décoration 1',
         'productImg': deco1,
         'productAlt': 'deco 1'
         },
         {
+        'productCategory': 'decorations',
         'productClass': 'deco-2',
         'productName': 'décoration 2',
         'productImg': deco2,
         'productAlt': 'deco 2'
         },
         {
+        'productCategory': 'decorations',
         'productClass': 'deco-3',
         'productName': 'décoration 3',
         'productImg': deco3,
@@ -170,6 +223,7 @@ const Products = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [scrollY, setScrollY] = useState(0);
     const [category, setCategory] = useState(undefined);
+    const [categoryIndex, setCategoryIndex] = useState(undefined);
     const [displayDetail, setDisplayDetail] = useState(false);
 
     function checkLoading() {
@@ -223,9 +277,17 @@ const Products = () => {
             selectForeground.classList.remove('foreground-blur');
             selectBackground.classList.remove('foreground-blur');
         }
-        
-    
     }, [displayDetail])
+
+    useEffect(() => {
+
+        if(category === 0) setCategoryIndex(0);
+        if(category === 1) setCategoryIndex(1);
+        if(category === 2) setCategoryIndex(2);
+
+        console.log(category);
+         
+    }, [category])
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, {
@@ -285,11 +347,14 @@ const Products = () => {
                                         saveBasket={saveBasket}
                                         getBasket={getBasket}
                                         addBasket={addBasket}
+                                        productCategory={key.productCategory}
                                         productId={key.productId}
                                         productClass={key.productClass}
                                         productName={key.productName}
                                         productOldPrice={key.productOldPrice}
                                         productNewPrice={key.productNewPrice}
+                                        productTribe={key.productTribe}
+                                        productSize={key.productSize}
                                         productImg={key.productImg}
                                         productHover={key.productHover}
                                         productAllImg={key.productAllImg}
@@ -307,7 +372,7 @@ const Products = () => {
             </div>
             { (displayDetail) ?
                 <ProductContext.Provider value={{ displayDetail, setDisplayDetail }}>
-                    <DetailedProduct products={products}/>
+                    <DetailedProduct products={products} categoryIndex={categoryIndex}/>
                 </ProductContext.Provider> 
             : null }
         </div>

@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBasketShopping } from '@fortawesome/free-solid-svg-icons';
 
 
-const Carpets = ({productClass, productName, productOldPrice, productNewPrice, productImg, productHover, productAlt, saveBasket, getBasket, addBasket, productId}) => {
+const Carpets = ({productCategory, productClass, productName, productOldPrice, productNewPrice, productTribe, productSize, productImg, productHover, productAlt, addBasket, productId}) => {
 
     const navigate = useNavigate();
 
@@ -20,6 +20,7 @@ const Carpets = ({productClass, productName, productOldPrice, productNewPrice, p
     const [imgHover, setImgHover] = useState(false);
 
     function displayProduct() {
+        console.log(productCategory);
         setDisplayDetail(!displayDetail);
         navigate(`/products/${productId}`);
     }
@@ -52,14 +53,13 @@ const Carpets = ({productClass, productName, productOldPrice, productNewPrice, p
             <div className="product-content">
                 <div className="product-text">
                     <h4>{productName}</h4>
-                    <p className='product-size'>
-                        250 x 125 cm
-                        </p>
-                    <p className='artisan'>Tribu Chefchaouen</p>
+                    <p className='product-size'>{productSize}</p>
+                    <p className='artisan'>{productTribe}</p>
                     <p className='prices'>
                         <span className='old-price'>{productOldPrice}€</span>
                         <span className='new-price'>{productNewPrice}€</span>
                     </p>
+                    <p className='economy'>{productOldPrice - productNewPrice}€ d'économies !</p>
                     <div className="add-basket-container">
                         <button className='add-basket-button' onClick={(() => {addToBasket()})}>
                             <FontAwesomeIcon icon={faBasketShopping}/>

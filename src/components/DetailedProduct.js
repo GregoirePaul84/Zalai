@@ -7,23 +7,19 @@ import { faArrowLeftLong, faChevronLeft, faChevronRight, faPercent, faRuler, faT
 
 import { useNavigate, useParams } from 'react-router-dom';
 
-const DetailedProduct = (products) => {
+const DetailedProduct = ({products, categoryIndex}) => {
 
     const navigate = useNavigate();
     let { id } = useParams();
     const index = parseInt(id, 10);
 
-    console.log(index);
-
     const detail = useContext(ProductContext);
     const displayDetail = detail.displayDetail;
     const setDisplayDetail = detail.setDisplayDetail;
 
-    const productSelected = products.products[0];
-    
-    const [imgIndex, setImgIndex] = useState(0);
+    let productSelected = products[categoryIndex];
 
-    console.log(productSelected);
+    const [imgIndex, setImgIndex] = useState(0);
 
     function removeDetail() {
         setDisplayDetail(!displayDetail);
@@ -44,8 +40,6 @@ const DetailedProduct = (products) => {
         
         selectZoomedImg.style.opacity = "0";
         selectNormalImg.style.opacity = "1";
-        // selectZoomedImg.style.bottom = "0";
-        // selectZoomedImg.style.right = "25px";
     }
 
     function moveImg(e) {
@@ -54,8 +48,6 @@ const DetailedProduct = (products) => {
         let rect = e.target.getBoundingClientRect();
         let x = e.clientX - rect.left; 
         let y = e.clientY - rect.top;  
-
-        // console.log(x - 200);
 
         selectZoomedImg.style.right = `${x - 200}px`;
         selectZoomedImg.style.bottom = `${y - 200}px`;
@@ -140,24 +132,24 @@ const DetailedProduct = (products) => {
                         </div>
                         <div className="detailed-text-container">
                             <div className="detailed-text">
-                                <h2>Tapis berbère à rayures</h2>
+                                <h2>{productSelected[index].productName}</h2>
                                 <p className='product-size'>
                                     <FontAwesomeIcon icon={faRuler} />
-                                    250 x 125 cm
+                                    {productSelected[index].productSize}
                                 </p>
                                 <p className='material'>
                                     <FontAwesomeIcon icon={faPercent} />
-                                    Poil de chameau 100 %
+                                    {productSelected[index].productMaterial}
                                 </p>
                                 <p className='artisan'>
                                     <FontAwesomeIcon icon={faTent} />
-                                    Tribu Chefchaouen
+                                    {productSelected[index].productTribe}
                                 </p>
                                 <p className='prices'>
-                                    <span className='old-price'>490€</span>
-                                    <span className='new-price'>250€</span>
+                                    <span className='old-price'>{productSelected[index].productOldPrice}€</span>
+                                    <span className='new-price'>{productSelected[index].productNewPrice}€</span>
                                 </p>
-                                <p className='economy'>économisez 140€ !</p>
+                                <p className='economy'>économisez {productSelected[index].productOldPrice - productSelected[index].productNewPrice}€ !</p>
                                 <p className='delivery'>La livraison est <span>gratuite</span> pour tous nos tapis !</p>
                             </div>
                             <div className="button-container">
