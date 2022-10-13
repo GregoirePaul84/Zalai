@@ -20,7 +20,13 @@ import carpet1_3 from '../media/products/Tapis/Tapis1/tapis1_3.webp';
 import carpet1_4 from '../media/products/Tapis/Tapis1/tapis1_4.jpg';
 import carpet1_5 from '../media/products/Tapis/Tapis1/tapis1_5.webp';
 import carpet1_6 from '../media/products/Tapis/Tapis1/tapis1_6.jpg';
-import carpet2 from '../media/products/Tapis/Tapis2/tapis2.png';
+
+import carpet2 from '../media/products/Tapis/Tapis2/tapis2.webp';
+import carpet2_2 from '../media/products/Tapis/Tapis2/tapis2_2.webp';
+import carpet2_3 from '../media/products/Tapis/Tapis2/tapis2_3.webp';
+import carpet2_4 from '../media/products/Tapis/Tapis2/tapis2_4.webp';
+import carpet2_5 from '../media/products/Tapis/Tapis2/tapis2_5.webp';
+
 import carpet3 from '../media/products/Tapis/Tapis3/tapis3.webp';
 import carpet4 from '../media/products/Tapis/Tapis4/tapis4.webp';
 import CategoryCard from '../components/CategoryCard';
@@ -34,6 +40,8 @@ import deco2 from '../media/products/Décoration/coussin-orange-en-soie-de-cactu
 import deco3 from '../media/products/Décoration/CSHD35SH-1.webp';
 import Footer from '../components/Footer';
 import DetailedProduct from '../components/DetailedProduct';
+
+import { saveBasket, getBasket, addBasket } from '../functions/basket';
 
 const productCategories = [
     {
@@ -59,8 +67,11 @@ const productCategories = [
 const products = [
     // Tapis en stock
 [   {
+        'productId': '0',
         'productClass': 'tapis-berbère-1',
         'productName': 'Tapis berbère 1',
+        'productOldPrice': 400,
+        'productNewPrice': 250,
         'productImg': carpet1,
         'productHover': carpet1_2,
         'productAllImg': [{"id":"carpet1", "img":carpet1}, 
@@ -74,20 +85,36 @@ const products = [
         'productAlt': 'Tapis berbère bleu à rayures'
     },
     {
+        'productId': '1',
         'productClass': 'tapis-berbère-2',
         'productName': 'Tapis berbère 2',
+        'productOldPrice': 430,
+        'productNewPrice': 280,
         'productImg': carpet2,
+        'productHover': carpet2_2,
+        'productAllImg': [{"id":"carpet1", "img":carpet2}, 
+                            {"id":"carpet2", "img":carpet2_2}, 
+                            {"id":"carpet3", "img":carpet2_3}, 
+                            {"id":"carpet4", "img":carpet2_4}, 
+                            {"id":"carpet5", "img":carpet2_5}
+                        ],
         'productAlt': 'choix de produit: luminaires'
     },
     {
+        'productId': '2',
         'productClass': 'tapis-berbère-3',
         'productName': 'Tapis berbère 3',
+        'productOldPrice': 475,
+        'productNewPrice': 325,
         'productImg': carpet3,
         'productAlt': 'choix de produit: décorations'
     },
     {
+        'productId': '3',
         'productClass': 'tapis-berbère-4',
         'productName': 'Tapis berbère 4',
+        'productOldPrice': 345,
+        'productNewPrice': 195,
         'productImg': carpet4,
         'productAlt': 'choix de produit: décorations'
     }
@@ -186,12 +213,15 @@ const Products = () => {
 
     useEffect(() => {
         const selectForeground = document.querySelector('.foreground');
+        const selectBackground = document.querySelector('.background');
 
         if(displayDetail) {     
             selectForeground.classList.add('foreground-blur');
+            selectBackground.classList.add('foreground-blur');
         }
         else {
             selectForeground.classList.remove('foreground-blur');
+            selectBackground.classList.remove('foreground-blur');
         }
         
     
@@ -251,9 +281,15 @@ const Products = () => {
                                 products[category].map((key) => {
                                 return(
                                     <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
-                                        <Carpets key={key.productName}
+                                        <Carpets key={key.productId}
+                                        saveBasket={saveBasket}
+                                        getBasket={getBasket}
+                                        addBasket={addBasket}
+                                        productId={key.productId}
                                         productClass={key.productClass}
                                         productName={key.productName}
+                                        productOldPrice={key.productOldPrice}
+                                        productNewPrice={key.productNewPrice}
                                         productImg={key.productImg}
                                         productHover={key.productHover}
                                         productAllImg={key.productAllImg}

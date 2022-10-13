@@ -10,7 +10,7 @@
 
     .detailed-card {
         width: 70%;
-        height: 85%;
+        height: 640px;
         background-color: $color-secondary;
         outline: 5px solid $color-primary;   
         max-width: none;
@@ -29,6 +29,12 @@
                 cursor: pointer;
                 &:nth-child(1) {
                     margin-left: 10px;
+                    font-size: 1.2em;
+                    display: flex;
+                    align-items: center;
+                    svg {
+                        margin-right: 10px;
+                    }
                 }
                 &:nth-child(2) {
                     margin-right: 10px;
@@ -112,6 +118,16 @@
                             margin-bottom: 20px;
                         }
 
+                        svg {
+                            width: 22px;
+                            height: 23px;
+                            margin-right: 15px;
+
+                            path {
+                                color: $color-primary;
+                            }
+                        }
+
                         p {
                             color: #4D4D4D;
                         }
@@ -120,8 +136,13 @@
                             font-size: 1.3em;
                         }
 
+                        .product-size {
+                            margin-bottom: 5px;
+                        }
+
                         .material {
                             font-weight: 500;
+                            margin-bottom: 5px;
                         }
 
                         .artisan {
@@ -183,7 +204,7 @@
                 align-items: center;
                 justify-content: space-between;
                 overflow: hidden;
-                border-top: 1px solid $transparent-blue;
+                border-top: 2px solid $transparent-blue;
                 padding: 0 15px;
 
                 .chevron-left, .chevron-right {
@@ -195,6 +216,7 @@
                     width: 8%;
                     margin-right: 15px;
                     border: 1px solid $color-light-blue;
+                    cursor: pointer;
 
                     &:nth-child(1) {
                         margin-left: 15px;

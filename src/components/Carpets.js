@@ -1,8 +1,17 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { ProductContext } from '../pages/Products';
 
-const Carpets = ({productClass, productName, productImg, productHover, productAllImg, productAlt}) => {
+import border from '../media/border.png';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBasketShopping } from '@fortawesome/free-solid-svg-icons';
+
+
+const Carpets = ({productClass, productName, productOldPrice, productNewPrice, productImg, productHover, productAlt, saveBasket, getBasket, addBasket, productId}) => {
+
+    const navigate = useNavigate();
 
     const detail = useContext(ProductContext);
     const displayDetail = detail.displayDetail;
@@ -12,14 +21,29 @@ const Carpets = ({productClass, productName, productImg, productHover, productAl
 
     function displayProduct() {
         setDisplayDetail(!displayDetail);
+        navigate(`/products/${productId}`);
+    }
+
+    function addToBasket() {
+        
+        if(window.confirm('Etes vous sûr(e) d\'ajouter ce produit au panier ?') === true) {
+            console.log('confirmé');
+            addBasket([{"name": productName, "id": productId, "price": productNewPrice}])
+        }
+        else {
+            console.log('annulé');
+        }
     }
 
     return (
         <>
         <div className={`product-card ${productClass}`}>
+            <div className="border-decoration">
+                <img src={border} alt="" />
+            </div>
             <div className="product-img" onMouseOver={() => setImgHover(true)} onMouseLeave={() => setImgHover(false)} onClick={displayProduct}>
                 {(imgHover === false) ? 
-                    <img src={productImg} alt={productAlt} />
+                <img src={productImg} alt={productAlt} />     
                 : <img src={productHover} alt={productAlt} /> }
             </div>
             <div className="product-line-container">
@@ -28,10 +52,23 @@ const Carpets = ({productClass, productName, productImg, productHover, productAl
             <div className="product-content">
                 <div className="product-text">
                     <h4>{productName}</h4>
-                    <p>170 x 250 cm</p>
-                    <p>250 €</p>
+                    <p className='product-size'>
+                        250 x 125 cm
+                        </p>
+                    <p className='artisan'>Tribu Chefchaouen</p>
+                    <p className='prices'>
+                        <span className='old-price'>{productOldPrice}€</span>
+                        <span className='new-price'>{productNewPrice}€</span>
+                    </p>
+                    <div className="add-basket-container">
+                        <button className='add-basket-button' onClick={(() => {addToBasket()})}>
+                            <FontAwesomeIcon icon={faBasketShopping}/>
+                            <p>Ajouter au panier</p>
+                        </button>
+                    </div>
                 </div>
             </div>
+            <div className="border-bottom-container"></div>
         </div> 
         </>
     );

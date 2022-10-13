@@ -3,10 +3,17 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ProductContext } from '../pages/Products';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeftLong, faChevronLeft, faChevronRight, faPercent, faRuler, faTent } from '@fortawesome/free-solid-svg-icons';
 
+import { useNavigate, useParams } from 'react-router-dom';
 
 const DetailedProduct = (products) => {
+
+    const navigate = useNavigate();
+    let { id } = useParams();
+    const index = parseInt(id, 10);
+
+    console.log(index);
 
     const detail = useContext(ProductContext);
     const displayDetail = detail.displayDetail;
@@ -16,8 +23,11 @@ const DetailedProduct = (products) => {
     
     const [imgIndex, setImgIndex] = useState(0);
 
+    console.log(productSelected);
+
     function removeDetail() {
         setDisplayDetail(!displayDetail);
+        navigate(`/products`);
     }
 
     function zoomOnImg() {
@@ -40,35 +50,21 @@ const DetailedProduct = (products) => {
 
     function moveImg(e) {
         const selectZoomedImg = document.querySelector('.zoomed-img');
-        const x = e.pageX - e.currentTarget.clientWidth; 
-        let y = e.pageY - e.currentTarget.clientHeight;
 
-        if(y - 600 > 0) {
-            selectZoomedImg.style.bottom = `${y - 600}px`;
-            
-            
-            if( y - 600 >= 151) {
-                selectZoomedImg.style.bottom = '151px';   
-            }
-        }
+        let rect = e.target.getBoundingClientRect();
+        let x = e.clientX - rect.left; 
+        let y = e.clientY - rect.top;  
 
-        if(y - 600 < 0) {
-            selectZoomedImg.style.bottom = `${y - 600}px`;
-            
-            
-            if( y - 600 <= -149) {
-                selectZoomedImg.style.bottom = '-149px';   
-            }
-        }
+        // console.log(x - 200);
+
+        selectZoomedImg.style.right = `${x - 200}px`;
+        selectZoomedImg.style.bottom = `${y - 200}px`;
         
-        
-        selectZoomedImg.style.right = `${x + 40}px`;
-        
+        if (x - 200 <= -84.75) selectZoomedImg.style.right = "-84.75px";
+        if (x - 200 >= 123.82) selectZoomedImg.style.right = "123.82px";
 
-        console.log(y - 600);
-
-        if(x + 40 >= 126) selectZoomedImg.style.right = '126px';
-        if(x + 40 <= -87) selectZoomedImg.style.right = '-87px';
+        if (y - 200 <= -120.40) selectZoomedImg.style.bottom = "-120.40px";
+        if (y - 200 >= 149.59) selectZoomedImg.style.bottom = "149.59px";
 
     }
 
@@ -109,19 +105,22 @@ const DetailedProduct = (products) => {
     }
 
     useEffect(() => {
-        if (document.querySelector('.normal-img').classList.contains(`${productSelected[0].productAllImg[imgIndex].id}`)) {
-            const selectCarouselImg = document.querySelector(`.detailed-carousel .${productSelected[0].productAllImg[imgIndex].id}`);
+        if (document.querySelector('.normal-img').classList.contains(`${productSelected[index].productAllImg[imgIndex].id}`)) {
+            const selectCarouselImg = document.querySelector(`.detailed-carousel .${productSelected[index].productAllImg[imgIndex].id}`);
             const selectOtherImgs = document.querySelectorAll(`.detailed-carousel img`);
             selectOtherImgs.forEach((e) => {e.classList.remove('selected-img')});
             selectCarouselImg.classList.add('selected-img');
         }
-    }, [imgIndex])
+    }, [imgIndex]);
 
     return (
         <section className="detailed-product">
             <div className='detailed-card'>
                 <div className="close-detail-container">
-                    <span onClick={removeDetail}>Retour aux produits</span>
+                    <span onClick={removeDetail}>
+                        <FontAwesomeIcon icon={faArrowLeftLong} />
+                        Retour aux produits
+                    </span>
                     <span onClick={removeDetail}>ⵅ</span>
                 </div>
                 <div className="detailed-content">
@@ -130,8 +129,8 @@ const DetailedProduct = (products) => {
                             <FontAwesomeIcon icon={faChevronLeft} className="chevron-left" onClick={showPreviousImg}/>
                         </div>
                         <div className="detailed-img-container" onMouseOver={zoomOnImg} onMouseLeave={zoomOffImg} onMouseMove={function(e){moveImg(e)}}>
-                            <img src={productSelected[0].productAllImg[imgIndex].img} alt="" className='zoomed-img'/>
-                            <img src={productSelected[0].productAllImg[imgIndex].img} alt="" className={`normal-img ${productSelected[0].productAllImg[imgIndex].id}`}/>
+                            <img src={productSelected[index].productAllImg[imgIndex].img} alt="" className='zoomed-img'/>
+                            <img src={productSelected[index].productAllImg[imgIndex].img} alt="" className={`normal-img ${productSelected[0].productAllImg[imgIndex].id}`}/>
                         </div>
                         <div className="chevron-container">
                                 <FontAwesomeIcon icon={faChevronRight} className="chevron-right" onClick={showNextImg}/>
@@ -142,9 +141,18 @@ const DetailedProduct = (products) => {
                         <div className="detailed-text-container">
                             <div className="detailed-text">
                                 <h2>Tapis berbère à rayures</h2>
-                                <p className='product-size'>250 x 125 cm</p>
-                                <p className='material'>Poil de chameau 100 %</p>
-                                <p className='artisan'>Tribu Chefchaouen</p>
+                                <p className='product-size'>
+                                    <FontAwesomeIcon icon={faRuler} />
+                                    250 x 125 cm
+                                </p>
+                                <p className='material'>
+                                    <FontAwesomeIcon icon={faPercent} />
+                                    Poil de chameau 100 %
+                                </p>
+                                <p className='artisan'>
+                                    <FontAwesomeIcon icon={faTent} />
+                                    Tribu Chefchaouen
+                                </p>
                                 <p className='prices'>
                                     <span className='old-price'>490€</span>
                                     <span className='new-price'>250€</span>
@@ -164,7 +172,7 @@ const DetailedProduct = (products) => {
                                 <FontAwesomeIcon icon={faChevronLeft} className="chevron-left" onClick={showPreviousImg}/>
                         </div>
                         {(products !== undefined) ? 
-                            productSelected[0].productAllImg.map((key) => {
+                            productSelected[index].productAllImg.map((key) => {
                             return (
                                 <img src={key.img} alt="" key={key.id} className={key.id} onClick={function(e){changeImg(e)}}/>
                             )
