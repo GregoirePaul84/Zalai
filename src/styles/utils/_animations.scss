@@ -58,3 +58,90 @@
     }
 }
 
+// Gros loader de page
+@keyframes moveLoaderBar45{
+    0% {
+        transform: rotate(-45deg) translate(0px, 0px);
+        transform-origin: 0 137.86px;
+    }
+
+    100% {
+        transform: rotate(-45deg) translate(200px, 0px);
+        transform-origin: 0 137.86px;
+    }
+}
+
+
+@keyframes moveLoaderBar45-2{
+    0% {
+        transform: rotate(-45deg) translate(0px, 0px);
+        transform-origin: 65px 201.886px;
+    }
+
+    100% {
+        transform: rotate(-45deg) translate(200px, 0px);
+        transform-origin: 65px 201.886px;
+    }
+}
+
+@keyframes moveLoaderBar45-3{
+    0% {
+        transform: rotate(45deg) translate(0px, 0px);
+        transform-origin: 9.89949px 68px;
+    }
+
+    100% {
+        transform: rotate(45deg) translate(200px, 0px);
+        transform-origin: 9.89949px 68px;
+    }
+}
+
+@keyframes moveLoaderBar45-4{
+    0% {
+        transform: rotate(45deg) translate(0px, 0px);
+        transform-origin: 77.8995px 0px;
+    }
+
+    100% {
+        transform: rotate(45deg) translate(200px, 0px);
+        transform-origin: 77.8995px 0px;
+    }
+}
+
+@keyframes thirdOpacity{
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+// Petit loader produit
+@keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }

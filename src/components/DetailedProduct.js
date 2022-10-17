@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong, faChevronLeft, faChevronRight, faPercent, faRuler, faTent } from '@fortawesome/free-solid-svg-icons';
 
 import { useNavigate, useParams } from 'react-router-dom';
+import SmallLoader from './SmallLoader';
+
 
 const DetailedProduct = ({products, categoryIndex}) => {
 
@@ -20,6 +22,14 @@ const DetailedProduct = ({products, categoryIndex}) => {
     let productSelected = products[categoryIndex];
 
     const [imgIndex, setImgIndex] = useState(0);
+    const [isLoading, setIsLoading] = useState(true);
+
+    function checkLoading(e){
+        const selectSmallLoader = document.querySelector('.small-loader-container');
+        setTimeout(() => {
+            selectSmallLoader.style.display = 'none';
+        }, 1000);
+    }
 
     function removeDetail() {
         setDisplayDetail(!displayDetail);
@@ -105,6 +115,10 @@ const DetailedProduct = ({products, categoryIndex}) => {
         }
     }, [imgIndex]);
 
+    // useEffect(() => {
+    //     const select
+    // })
+
     return (
         <section className="detailed-product">
             <div className='detailed-card'>
@@ -115,6 +129,11 @@ const DetailedProduct = ({products, categoryIndex}) => {
                     </span>
                     <span onClick={removeDetail}>ⵅ</span>
                 </div>
+                {(isLoading) ? 
+                <div className='small-loader-container'>
+                    <SmallLoader />
+                </div>
+                : null }
                 <div className="detailed-content">
                     <div className='main-info'>
                         <div className="chevron-container">
@@ -122,7 +141,7 @@ const DetailedProduct = ({products, categoryIndex}) => {
                         </div>
                         <div className="detailed-img-container" onMouseOver={zoomOnImg} onMouseLeave={zoomOffImg} onMouseMove={function(e){moveImg(e)}}>
                             <img src={productSelected[index].productAllImg[imgIndex].img} alt="" className='zoomed-img'/>
-                            <img src={productSelected[index].productAllImg[imgIndex].img} alt="" className={`normal-img ${productSelected[0].productAllImg[imgIndex].id}`}/>
+                            <img src={productSelected[index].productAllImg[imgIndex].img} alt="" className={`normal-img ${productSelected[0].productAllImg[imgIndex].id}`} onLoad={checkLoading}/>
                         </div>
                         <div className="chevron-container">
                                 <FontAwesomeIcon icon={faChevronRight} className="chevron-right" onClick={showNextImg}/>
@@ -166,7 +185,7 @@ const DetailedProduct = ({products, categoryIndex}) => {
                         {(products !== undefined) ? 
                             productSelected[index].productAllImg.map((key) => {
                             return (
-                                <img src={key.img} alt="" key={key.id} className={key.id} onClick={function(e){changeImg(e)}}/>
+                                <img src={key.img} alt="" key={key.id} className={key.id} onClick={function(e){changeImg(e)}} onLoad={function(e){checkLoading(e)}}/>
                             )
                             })
                         : null }

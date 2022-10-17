@@ -93,16 +93,16 @@
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-around;
-                    border: 5px solid $color-light-blue;
                     opacity: 0;
+                    padding: 20px;
 
                     .category-title-container {
                         width: 100%;
                         height: 20%;
                         min-height: 100px;
                         border-bottom: 5px solid transparent;
+                        margin-bottom: 20px;
                         display: flex;
-                        align-items: center;
                         justify-content: center;
 
                         img {
@@ -118,20 +118,71 @@
                             }
                             
                         }
-    
-                        h3 {
-                            color: $color-light-blue;
-                            font-weight: 400;
-                            font-size: 30px;
+
+                        .title-filter-container {
                             width: calc(100% - 110px);
-                            text-align: center;
-                            &::after {
-                                content: "";
-                                background-color: $color-light-blue;
-                                width: 30%;
-                                height: 1px;
-                                display: block;
-                                margin: auto;
+                            height: 100px;
+                            
+                            h3 {
+                                height: 60%;
+                                color: $color-light-blue;
+                                font-weight: 400;
+                                font-size: 30px;
+                                text-align: center;
+                                padding-top: 10px;
+                                &::after {
+                                    content: "";
+                                    background-color: $color-light-blue;
+                                    width: 30%;
+                                    height: 1px;
+                                    display: block;
+                                    margin: auto;
+                                }
+                            }
+
+                            .filter-container {
+                                width: 50%;
+                                max-width: 515px;
+                                height: 40%;
+                                margin: 0 auto;
+                                display: flex;
+                                justify-content: space-around;
+                                align-items: center;
+                                background-color: #4D64B5;
+                                border-radius: 10px;
+                                color: $color-secondary;
+
+                                p {
+                                    width: 40%;
+                                    height: 100%;
+                                    padding-left: 20px;
+                                    display: flex;
+                                    align-items: center;
+                                }
+
+                                ul {
+                                    width: 60%;
+                                    height: 100%;
+                                    padding-right: 20px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-evenly;
+                                    list-style: none;
+
+                                    li {
+                                        height: 100%;
+                                        display: flex;
+                                        align-items: center;
+
+                                        span {
+                                            margin-right: 10px;
+                                        }
+
+                                        svg {
+                                            cursor: pointer;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

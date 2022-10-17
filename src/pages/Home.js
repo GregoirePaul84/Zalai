@@ -19,8 +19,8 @@ const Home = () => {
             const selectLoader = document.getElementById('loader-container');
             const selectContainer = document.querySelector('.home-loader');
 
-            setTimeout(() => {selectLoader.style.animation = '1s ease-in-out 0s 1 normal forwards running loaderDisappears'}, 2300);
-            setTimeout(() => {selectContainer.classList.add('loader-cancelled')}, 3300);  
+            setTimeout(() => {selectLoader.style.animation = '1s ease-in-out 1s 1 normal forwards running loaderDisappears'}, 2300);
+            setTimeout(() => {selectContainer.classList.add('loader-cancelled')}, 4300);  
         }
         console.log(isLoading);
         

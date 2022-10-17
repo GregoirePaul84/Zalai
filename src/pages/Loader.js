@@ -5,46 +5,61 @@ const Loader = () => {
     useEffect(() => {
         const selectContainer = document.querySelector('.home-loader');
 
-        const selectLetter1 = document.querySelector('.blink-text1');
-        const selectLetter2 = document.querySelector('.blink-text2');
-        const selectLetter3 = document.querySelector('.blink-text3');
-        const selectLetter4 = document.querySelector('.blink-text4');
-        const selectLetter5 = document.querySelector('.blink-text5');
+        const selectFirstDraw = document.querySelector('.first-draw');
+        const selectFirstDraw2 = document.querySelector('.first-draw2');
+        const selectSecondDraw = document.querySelector('.second-draw');
+        const selectSecondDraw2 = document.querySelector('.second-draw2');
+        const selectThirdOpacity = document.querySelectorAll('.third-opacity');
 
-        function replayAnimation() {
+        function playAnimation() {
 
             if (selectContainer.classList.contains('loader-cancelled')) {
                 clearInterval(interval);
                 return;
             }
-            
-            selectLetter1.style.animation = 'none';
-            selectLetter2.style.animation = 'none';
-            selectLetter3.style.animation = 'none';
-            selectLetter4.style.animation = 'none';
-            selectLetter5.style.animation = 'none';
-            
-    
-            setTimeout(() => {
-                selectLetter1.style.animation = '1s ease-out 0.2s 1 normal forwards running opacityLoader';
-                selectLetter2.style.animation = '1s ease-out 0.7s 1 normal forwards running opacityLoader';
-                selectLetter3.style.animation = '1s ease-out 1.3s 1 normal forwards running opacityLoader';
-                selectLetter4.style.animation = '1s ease-out 1.8s 1 normal forwards running opacityLoader';
-                selectLetter5.style.animation = '1s ease-out 2.3s 1 normal forwards running opacityLoader';
-            }, 200);
+
+            selectFirstDraw.style.animation = '0.5s linear 1s 1 normal forwards running moveLoaderBar45';
+            selectFirstDraw2.style.animation = '0.5s linear 1.5s 1 normal forwards running moveLoaderBar45-2';
+            selectSecondDraw.style.animation = '0.5s linear 0s 1 normal forwards running moveLoaderBar45-3';
+            selectSecondDraw2.style.animation = '0.5s linear 0.5s 1 normal forwards running moveLoaderBar45-4';
+            selectThirdOpacity.forEach((e) => {e.style.animation = '1s linear 2s 1 normal forwards running thirdOpacity'});
         }
 
-        let interval = setInterval(replayAnimation, 3000)
+        function replayAnimation() {
+           
+            selectFirstDraw.style.animation = 'none';
+            selectFirstDraw2.style.animation = 'none';
+            selectSecondDraw.style.animation = 'none';
+            selectSecondDraw2.style.animation = 'none';
+            selectThirdOpacity.forEach((e) => {e.style.animation = 'none'}); 
+            
+            setTimeout(playAnimation, 100);
+        }
+
+        playAnimation();
+
+        let interval = setInterval(replayAnimation, 4000)
 
     }, [])
 
     return (
         <div id="loader-container">
-            <span className='blink-text1'>Z</span>
-            <span className='blink-text2'>a</span>
-            <span className='blink-text3'>l</span>
-            <span className='blink-text4'>a</span>
-            <span className='blink-text5'>ï</span>
+            <svg width="216" height="216" viewBox="0 0 216 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="216" height="216" fill="#D9A569"/>
+                <rect y="137.886" width="195" height="14" transform="rotate(-45 0 137.886)" fill="white"/>
+                <rect x="-3" y="133.886" width="200" height="19" transform="rotate(-45 0 137.886)" fill="#D9A569" className='first-draw' />
+                <rect x="34" y="171.781" width="42.55" height="14" transform="rotate(-45 34 171.781)" fill="white" className='third-opacity'/>
+                <rect x="141.908" y="64.0842" width="42.5454" height="14" transform="rotate(-45 141.908 64.0842)" fill="white" className='third-opacity'/>
+                <rect x="43.8995" y="34" width="42.5454" height="14" transform="rotate(45 43.8995 34)" fill="white" className='third-opacity'/>
+                <rect x="150.899" y="141" width="43.2146" height="14" transform="rotate(45 150.899 141)" fill="white" className='third-opacity'/>
+                <rect x="68" y="205.886" width="195" height="14" transform="rotate(-45 68 205.886)" fill="white"/>
+                <rect x="66" y="203.886" width="200" height="19" transform="rotate(-45 68 205.886)" fill="#D9A569" className='first-draw2'/>
+                <rect x="9.89949" y="68" width="195" height="14" transform="rotate(45 9.89949 68)" fill="white"/>
+                <rect x="7.89949" y="64" width="200" height="19" transform="rotate(45 9.89949 68)" fill="#D9A569" className='second-draw'/>
+                <rect x="77.8995" width="195" height="14" transform="rotate(45 77.8995 0)" fill="white"/>
+                <rect y="-2" x="75.8995" width="200" height="19" transform="rotate(45 77.8995 0)" fill="#D9A569" className='second-draw2'/>
+                <path d="M82 108.163L108.163 82L134.326 108.163L108.163 134.326L82 108.163Z" fill="white" className='third-opacity'/>
+            </svg>
         </div>
     );
 };

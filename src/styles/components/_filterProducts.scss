@@ -1,0 +1,95 @@
+.filter-choices-container {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    
+
+    .filter-choices {
+        width: 50%;
+        max-width: 550px;
+        display: flex;
+        justify-content: space-between;
+
+        ul {
+            display: flex;
+            gap: 20px;
+
+            li {
+                list-style-type: none;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+.color {
+    li {
+        height: fit-content;
+        width: fit-content;
+        border: 1px solid $color-light-blue;
+
+        &:nth-child(1) {
+            background-color: #FFFFFF;
+        }
+        &:nth-child(2) {
+            background-color: #000000;
+        }
+        &:nth-child(3) {
+            background-color: #808080;
+        }
+        &:nth-child(4) {
+            background-color: #008000;
+        }
+        &:nth-child(5) {
+            background-color: #FF0000;
+        }
+        &:nth-child(6) {
+            background-color: #FF5733;
+        }
+        &:nth-child(7) {
+            background-color: #FFFF00;
+        }
+        &:nth-child(8) {
+            background-color: #0000FF;
+        }
+        &:nth-child(9) {
+            background-color: #800080;
+        }
+        &:nth-child(10) {
+            background-color: #800000;
+        }
+
+        #white {
+            accent-color: #FFFFFF;
+        }
+        #black {
+            accent-color: #000000;
+        }
+        #gray {
+            accent-color: #808080;
+        }
+        #green {
+            accent-color: #008000;
+        }
+        #red {
+            accent-color: #FF0000;
+        }
+        #orange {
+            accent-color: #FF5733;
+        }
+        #yellow {
+            accent-color: #FFFF00;
+        }
+        #blue {
+            accent-color: #0000FF;
+        }
+        #purple {
+            accent-color: #800080;
+        }
+        #maroon {
+            accent-color: #800000;
+        }
+    }
+}

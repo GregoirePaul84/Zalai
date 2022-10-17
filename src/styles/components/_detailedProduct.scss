@@ -11,11 +11,23 @@
     .detailed-card {
         width: 70%;
         height: 640px;
+        padding: 10px;
         background-color: $color-secondary;
-        outline: 5px solid $color-primary;   
         max-width: none;
         flex-direction: column;
         justify-content: flex-start;
+        position: relative;
+
+        .small-loader-container {
+            position: absolute;
+            width: 100%;
+            height: calc(80% - 40px);
+            background-color: white;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
         .close-detail-container {
             height: 10%;
@@ -190,7 +202,10 @@
                             color: $color-secondary;
                             background-color: $color-light-blue;
                             padding: 10px;
-                            border: 2px solid $color-primary;
+                            border: none
+                            
+                            
+                            ;
                             cursor: pointer;
                         }
                     }
