@@ -27,6 +27,8 @@ import FilterProducts from '../components/FilterProducts';
 
 export const ProductContext = React.createContext();
 
+// const filters = [{'type': 'price', 'isShown': false}, {'type': 'size', 'isShown': false}, {'type': 'color', 'isShown': false}]
+
 const Products = () => {
 
     const [isLoading, setIsLoading] = useState(true);
@@ -34,8 +36,8 @@ const Products = () => {
     const [category, setCategory] = useState(undefined);
     const [categoryIndex, setCategoryIndex] = useState(undefined);
     const [displayDetail, setDisplayDetail] = useState(false);
-    const [displayFilter, setDisplayFilter] = useState(false);
     const [typeFilter, setTypeFilter] = useState(undefined);
+    
 
     function checkLoading() {
         setIsLoading(false);  
@@ -65,20 +67,8 @@ const Products = () => {
         }   
     } 
 
-    function displayFilterType(type) {
-        setDisplayFilter(!displayFilter);
-        setTypeFilter(type);
-        console.log(type);
-    }
-
     useEffect(() => {
-
         console.log(typeFilter);
-
-        if (typeFilter === 'price') {
-            console.log('yes');
-        }
-
     }, [typeFilter])
 
     useEffect(() => {
@@ -111,8 +101,6 @@ const Products = () => {
         if(category === 0) setCategoryIndex(0);
         if(category === 1) setCategoryIndex(1);
         if(category === 2) setCategoryIndex(2);
-
-        console.log(category);
          
     }, [category])
 
@@ -168,24 +156,26 @@ const Products = () => {
                                     <div className="filter-container">
                                         <p>Trier les produits</p>
                                         <ul>
-                                            <li>
+                                            <li onMouseOver={() => {setTypeFilter('price')}} >
                                                 <span>Prix</span>
-                                                <FontAwesomeIcon icon={faChevronDown} onClick={() => {displayFilterType('price')}} />
+                                                <FontAwesomeIcon icon={faChevronDown} />
+                                                {(typeFilter === 'price') ? <FilterProducts typeFilter={'price'} setTypeFilter={setTypeFilter} /> : null}
                                             </li>
-                                            <li>
+                                            <li onMouseOver={() => {setTypeFilter('size')}}>
                                                 <span>Taille</span>
-                                                <FontAwesomeIcon icon={faChevronDown} onClick={() => {displayFilterType('size')}}/>
+                                                <FontAwesomeIcon icon={faChevronDown} />
+                                                {(typeFilter=== 'size') ? <FilterProducts typeFilter={'size'} setTypeFilter={setTypeFilter}/> : null}
                                             </li>
-                                            <li>
+                                            <li onMouseOver={() => {setTypeFilter('color')}}>
                                                 <span>Couleur</span>
-                                                <FontAwesomeIcon icon={faChevronDown} onClick={() => {displayFilterType('color')}}/>
+                                                <FontAwesomeIcon icon={faChevronDown} />
+                                                {(typeFilter=== 'color') ? <FilterProducts typeFilter={'color'} setTypeFilter={setTypeFilter}/> : null}
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <img src={mandala} alt="decoration florale" />
                             </div>
-                            {(displayFilter) ? <FilterProducts typeFilter={typeFilter} /> : null}
                             {(category !== undefined) ? 
                                 products[category].map((key) => {
                                 return(

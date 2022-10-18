@@ -8,51 +8,61 @@ const FilterProducts = (props) => {
     const [lengthValue, setLengthValue] = useState(0);
     const [colorChecked, setColorChecked] = useState(colorsArray);
 
-    useEffect(() => {
-        console.log(colorChecked);
+    const setTypeFilter = props.setTypeFilter;
 
-        for (let i in colorChecked) {
+    useEffect(() => {
+        const detectFilterColor = document.querySelector('.filter-choices-container');
+
+        if (detectFilterColor.classList.contains('color')) {
+            for (let i in colorChecked) {
             
-            if(colorChecked[i].isChecked) {
-                document.getElementById(colorChecked[i].id).checked = true;
-                document.getElementById(colorChecked[i].id).style.opacity = '1';
+                if(colorChecked[i].isChecked) {
+                    document.getElementById(colorChecked[i].id).checked = true;
+                    document.getElementById(colorChecked[i].id).style.opacity = '1';
+                }
+                    
+                else {
+                    document.getElementById(colorChecked[i].id).checked = false;
+                    document.getElementById(colorChecked[i].id).style.opacity = '0';
+                }
+                    
             }
-                
-            else {
-                document.getElementById(colorChecked[i].id).checked = false;
-                document.getElementById(colorChecked[i].id).style.opacity = '0';
-            }
-                
         }
-        
+
+        else {
+            return;
+        }
+
     }, [colorChecked])
+
+    function removeFilter() {
+        setTypeFilter(undefined);
+    }
 
     if (props.typeFilter === 'price') {
         return (
-            <div className={`filter-choices-container ${props.typeFilter}`}>
+            <div className={`filter-choices-container ${props.typeFilter}`} onMouseOut={removeFilter}>
                 <div className="filter-choices">
-    
-                    <h4>Filtrer par prix</h4>
                     <ul>
                         <li>
-                            <span>100€ à 150€</span>
-                            <input type="radio" name='price'/>
+                            <label htmlFor='price1'>100€ à 150€</label>
+                            <input type="radio" name='price' id='price1'/>
                         </li>
                         <li>
-                            <span>150€ à 200€</span>
-                            <input type="radio" name='price'/>
+                            <label htmlFor='price2'>150€ à 200€</label>
+                            <input type="radio" name='price' id='price2'/>
                         </li>
                         <li>
-                        <span>200€ à 250€</span>
-                            <input type="radio" name='price'/>
+                            <label htmlFor='price3'>200€ à 250€</label>
+                            <input type="radio" name='price' id='price3'/>
                         </li>
                         <li>
-                            <span>250€ à 350€</span>
-                            <input type="radio" name='price'/>
+                            <label htmlFor='price4'>250€ à 350€</label>
+                            <input type="radio" name='price' id='price4'/>
                         </li>
                         <li>
-                            <span>Plus de 350€</span>
-                            <input type="radio" name='price'/>
+                            <label htmlFor='price5'>Plus de 350€</label>
+                            <input type="radio" name='price' id='price5'/>
                         </li>
                         </ul>   
                 </div>  
@@ -68,30 +78,25 @@ const FilterProducts = (props) => {
         setLengthValue(e.target.value);
     }
 
+
     if (props.typeFilter === 'size') {
         return (
-            <div className={`filter-choices-container ${props.typeFilter}`}>
+            <div className={`filter-choices-container ${props.typeFilter}`} onMouseOut={removeFilter}>
                 <div className="filter-choices">
-    
-                    <h4>Filtrer par tailles</h4>
                     <ul>
                         <li>
-                        <input type="range" name="width"
-                                min="0" max="200" value={widthValue} onChange={(e) => {displayWidthAmount(e)}}/>
-                        <label for="largeur">Largeur (cm)</label>
+                            <input type="range" name="width" min="0" max="200" value={widthValue} onChange={(e) => {displayWidthAmount(e)}}/>
+                            <label htmlFor="largeur">Largeur (cm)</label>
                         </li>
                         <li>
-                            <input type="number" name="width"
-                                    min="0" max="200" value={widthValue} onChange={(e) => {displayWidthAmount(e)}}/>
+                            <input type="number" name="width" min="0" max="200" className='input-number' value={widthValue} onChange={(e) => {displayWidthAmount(e)}}/>
                         </li>
                         <li>
-                        <input type="range" name="length"
-                                min="0" max="500" value={lengthValue} onChange={(e) => {displayLengthAmount(e)}}/>
-                        <label for="longueur">Longueur (cm)</label>
+                            <input type="range" name="length" min="0" max="500" value={lengthValue} onChange={(e) => {displayLengthAmount(e)}}/>
+                            <label htmlFor="longueur">Longueur (cm)</label>
                         </li>
                         <li>
-                            <input type="number" name="length"
-                                    min="0" max="500" value={lengthValue} onChange={(e) => {displayLengthAmount(e)}}/>
+                            <input type="number" name="length" min="0" max="500" className='input-number' value={lengthValue} onChange={(e) => {displayLengthAmount(e)}}/>
                         </li>
                     </ul>   
                 </div>  
@@ -152,40 +157,68 @@ const FilterProducts = (props) => {
 
     if (props.typeFilter === 'color') {
         return (
-            <div className={`filter-choices-container ${props.typeFilter}`}>
+            <div className={`filter-choices-container ${props.typeFilter}`} onMouseOut={removeFilter}>
                 <div className="filter-choices">
-    
-                    <h4>Filtrer par couleurs</h4>
-                    <ul>
+                    <ul id='color-window'>
                         <li onClick={(e) => setColor(e)}>
-                            <input type="checkbox" id='white'/>
+                            <div className="color-container1">
+                                <input type="checkbox" id='white' title='blanc'/>
+                            </div>  
+                            <p>Blanc</p>
                         </li>
                         <li onClick={(e) => setColor(e)}>
-                            <input type="checkbox" id='black'/>
+                            <div className="color-container2">
+                                <input type="checkbox" id='black' title='noir'/>
+                            </div>
+                            <p>Noir</p>
                         </li>
                         <li onClick={(e) => setColor(e)}>
-                            <input type="checkbox" id='gray'/>
+                            <div className="color-container3">  
+                                <input type="checkbox" id='gray' title='gris'/>
+                            </div>
+                            <p>Gris</p>
                         </li>
                         <li onClick={(e) => setColor(e)}>
-                            <input type="checkbox" id='green'/>
+                            <div className="color-container4">  
+                                <input type="checkbox" id='green' title='vert'/>
+                            </div>
+                            <p>Vert</p>
                         </li>
                         <li onClick={(e) => setColor(e)}>
-                            <input type="checkbox" id='red'/>
+                            <div className="color-container5">  
+                                <input type="checkbox" id='red' title='rouge'/>
+                            </div>
+                            <p>Rouge</p>
                         </li>
                         <li onClick={(e) => setColor(e)}>
-                            <input type="checkbox" id='orange'/>
+                            <div className="color-container6">  
+                                <input type="checkbox" id='orange' title='orange'/>
+                            </div>
+                            <p>Orange</p>
                         </li>
                         <li onClick={(e) => setColor(e)}>
-                            <input type="checkbox" id='yellow'/>
+                            <div className="color-container7">  
+                                <input type="checkbox" id='yellow' title='jaune'/>
+                            </div>
+                            <p>Jaune</p>
                         </li>
                         <li onClick={(e) => setColor(e)}>
-                            <input type="checkbox" id='blue'/>
+                            <div className="color-container8">  
+                                <input type="checkbox" id='blue' title='bleu'/>
+                            </div>
+                            <p>Bleu</p>
                         </li>
                         <li onClick={(e) => setColor(e)}>
-                            <input type="checkbox" id='purple'/>
+                            <div className="color-container9">  
+                                <input type="checkbox" id='purple' title='violet'/>
+                            </div>
+                            <p>Violet</p>
                         </li>
                         <li onClick={(e) => setColor(e)}>
-                            <input type="checkbox" id='maroon'/>
+                            <div className="color-container10">  
+                                <input type="checkbox" id='maroon' title='marron'/>
+                            </div>
+                            <p>Marron</p>
                         </li>
                     </ul>   
                 </div>  

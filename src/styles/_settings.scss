@@ -3,6 +3,15 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Alumni Sans', sans-serif;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+        background-color: #D9A569;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(59, 131, 155, 1);
+    }
     
     video, img {
         object-fit: cover;
