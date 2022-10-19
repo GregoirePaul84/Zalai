@@ -43,7 +43,7 @@ const FilterProducts = (props) => {
         return (
             <div className={`filter-choices-container ${props.typeFilter}`} onMouseOut={removeFilter}>
                 <div className="filter-choices">
-                    <ul>
+                    <ul id='ul-price'>
                         <li>
                             <label htmlFor='price1'>100€ à 150€</label>
                             <input type="radio" name='price' id='price1'/>
@@ -83,17 +83,17 @@ const FilterProducts = (props) => {
         return (
             <div className={`filter-choices-container ${props.typeFilter}`} onMouseOut={removeFilter}>
                 <div className="filter-choices">
-                    <ul>
+                    <ul id='ul-size'>
                         <li>
-                            <input type="range" name="width" min="0" max="200" value={widthValue} onChange={(e) => {displayWidthAmount(e)}}/>
-                            <label htmlFor="largeur">Largeur (cm)</label>
+                            <input type="range" name="width" min="0" max="200" className='custom-slider' value={widthValue} onChange={(e) => {displayWidthAmount(e)}}/>
+                            <label htmlFor="largeur">Largeur ({widthValue} cm)</label>
                         </li>
                         <li>
                             <input type="number" name="width" min="0" max="200" className='input-number' value={widthValue} onChange={(e) => {displayWidthAmount(e)}}/>
                         </li>
                         <li>
-                            <input type="range" name="length" min="0" max="500" value={lengthValue} onChange={(e) => {displayLengthAmount(e)}}/>
-                            <label htmlFor="longueur">Longueur (cm)</label>
+                            <input type="range" name="length" min="0" max="500" className='custom-slider' value={lengthValue} onChange={(e) => {displayLengthAmount(e)}}/>
+                            <label htmlFor="longueur">Longueur ({lengthValue} cm)</label>
                         </li>
                         <li>
                             <input type="number" name="length" min="0" max="500" className='input-number' value={lengthValue} onChange={(e) => {displayLengthAmount(e)}}/>

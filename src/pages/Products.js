@@ -27,8 +27,6 @@ import FilterProducts from '../components/FilterProducts';
 
 export const ProductContext = React.createContext();
 
-// const filters = [{'type': 'price', 'isShown': false}, {'type': 'size', 'isShown': false}, {'type': 'color', 'isShown': false}]
-
 const Products = () => {
 
     const [isLoading, setIsLoading] = useState(true);
@@ -68,7 +66,10 @@ const Products = () => {
     } 
 
     useEffect(() => {
-        console.log(typeFilter);
+        if (typeFilter === 'size')
+            document.querySelector('.filter-container').style.borderRadius = '10px 10px 0 0';
+        else 
+            document.querySelector('.filter-container').style.borderRadius = '10px';
     }, [typeFilter])
 
     useEffect(() => {
