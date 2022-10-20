@@ -11,6 +11,28 @@ const FilterProducts = (props) => {
     const setTypeFilter = props.setTypeFilter;
     const setFiltersUsed = props.setFiltersUsed;
 
+    function removeFilter() {
+        setTypeFilter(undefined);
+    }
+
+    function selectPrice({valueMin, valueMax, name}) {
+        setFiltersUsed([{type: "price", valueMin: valueMin, valueMax: valueMax, name: name}, {type: "size", value: undefined}, {type: "color", value: undefined}]);
+    }
+
+    useEffect(() => {
+        const storage = JSON.parse(sessionStorage.getItem('filters'));
+        const selectedList = document.querySelector(`#ul-price .${storage.name}`);
+        const otherLists = document.querySelectorAll(`#ul-price > li:not(.${storage.name})`);
+        
+        if(selectedList === null || otherLists.length === 0) return;
+        
+        selectedList.style.backgroundColor = '#D9A569';
+        console.log(storage.name);
+        
+        otherLists.forEach(li => li.style.backgroundColor = 'inherit');
+        
+    }, [selectPrice]);
+
     useEffect(() => {
         const detectFilterColor = document.querySelector('.filter-choices-container');
 
@@ -35,29 +57,20 @@ const FilterProducts = (props) => {
 
     }, [colorChecked])
 
-    function removeFilter() {
-        setTypeFilter(undefined);
-    }
-
-    function selectPrice({valueMin, valueMax}) {
-        console.log(valueMin, valueMax);
-        setFiltersUsed([{type: "price", valueMin: valueMin, valueMax: valueMax}, {type: "size", value: undefined}, {type: "color", value: undefined}]);
-    }
-
     if (props.typeFilter === 'price') {
         return (
             <div className={`filter-choices-container ${props.typeFilter}`} onMouseOut={removeFilter}>
                 <div className="filter-choices">
                     <ul id='ul-price'>
-                        <li onClick={() => selectPrice({valueMin: 0, valueMax: 200})}>
+                        <li onClick={() => selectPrice({valueMin: 0, valueMax: 200, name: 'price200'})} className='price200' >
                             <label htmlFor='price1'>0€ à 200€</label>
                             <input type="radio" name='price' id='price1'/>
                         </li>
-                        <li onClick={() => selectPrice({valueMin: 200, valueMax: 300})}>
+                        <li onClick={() => selectPrice({valueMin: 200, valueMax: 300, name: 'price300'})} className='price300'>
                             <label htmlFor='price2'>200€ à 300€</label>
                             <input type="radio" name='price' id='price2' />
                         </li>
-                        <li onClick={() => selectPrice({valueMin: 300, valueMax: 400})}>
+                        <li onClick={() => selectPrice({valueMin: 300, valueMax: 400, name: 'price400'})} className='price400'>
                             <label htmlFor='price3'>300€ à 400€</label>
                             <input type="radio" name='price' id='price3' />
                         </li>

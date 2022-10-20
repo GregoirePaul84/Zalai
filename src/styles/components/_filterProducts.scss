@@ -44,11 +44,11 @@
 
         li, label {
             cursor: pointer;
+            display: block;
+            width: 100%;
         }
         
         li {
-            display: block;
-            width: 100%;
             line-height: 50px;
             text-align: center;
 
@@ -57,7 +57,7 @@
             }
 
             &:hover {
-                background-color: $color-primary;
+                background-color: $color-primary !important;
             }
         }
     }
@@ -69,7 +69,7 @@
 
 .size {
     top: 25px;
-    right: -139px;
+    right: -135px;
 
     .filter-choices {
         width: 440px;

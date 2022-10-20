@@ -35,7 +35,7 @@ const Products = () => {
     const [categoryIndex, setCategoryIndex] = useState(undefined);
     const [displayDetail, setDisplayDetail] = useState(false);
     const [typeFilter, setTypeFilter] = useState(undefined);
-    const [filtersUsed, setFiltersUsed] = useState([{type: "price", valueMin: undefined, valueMax: undefined}, {type: "size", value: undefined}, {type: "color", value: undefined}]);
+    const [filtersUsed, setFiltersUsed] = useState([{type: "price", valueMin: undefined, valueMax: undefined, name: undefined}, {type: "size", value: undefined}, {type: "color", value: undefined}]);
     
 
     function checkLoading() {
@@ -66,16 +66,29 @@ const Products = () => {
         }   
     } 
 
+    function removeFilters() {
+        setFiltersUsed([{type: "price", valueMin: undefined, valueMax: undefined, selected: false}, {type: "size", value: undefined}, {type: "color", value: undefined}]);
+    }
+
     useEffect(() => {
-         console.log(filtersUsed);
-         console.log('==== Valeur du filtre prix ====');
-         console.log(filtersUsed[0].value);
+        // console.log(filtersUsed);
+        // console.log('==== Valeur du filtre prix ====');
+        // console.log(filtersUsed[0].value);
 
-         console.log('=== Produits ===');
-         console.log(products[0]);
+        // console.log('=== Produits ===');
+        // console.log(products[0]);
 
-         console.log('=== Produits triés ===');
-         console.log(products[0].filter((product) => product.productNewPrice >= filtersUsed[0].valueMin && product.productNewPrice <= filtersUsed[0].valueMax));
+        // console.log('=== Produits triés ===');
+        // console.log(products[0].filter((product) => product.productNewPrice >= filtersUsed[0].valueMin && product.productNewPrice <= filtersUsed[0].valueMax));
+
+        if(filtersUsed[0].valueMin === undefined) {
+            sessionStorage.setItem('filters', JSON.stringify(filtersUsed[0]));
+        }   
+        else {
+            sessionStorage.setItem('filters', JSON.stringify(filtersUsed[0]));
+            document.querySelector('.checkbox-filters').checked = true;
+        }
+        
     }, [filtersUsed]);
 
     
@@ -85,7 +98,7 @@ const Products = () => {
             document.querySelector('.filter-container').style.borderRadius = '10px 10px 0 0';
         else 
             document.querySelector('.filter-container').style.borderRadius = '10px';
-    }, [typeFilter])
+    }, [typeFilter]);
 
     useEffect(() => {
         if (isLoading === false) {
@@ -171,6 +184,7 @@ const Products = () => {
                                     <h3 className='category-title'></h3>
                                     <div className="filter-container">
                                         <p>Trier les produits</p>
+                                        <input type="checkbox" className='checkbox-filters' onClick={removeFilters}/>
                                         <ul>
                                             <li onMouseOver={() => {setTypeFilter('price')}} >
                                                 <span>Prix</span>
