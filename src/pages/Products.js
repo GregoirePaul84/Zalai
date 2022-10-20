@@ -35,6 +35,7 @@ const Products = () => {
     const [categoryIndex, setCategoryIndex] = useState(undefined);
     const [displayDetail, setDisplayDetail] = useState(false);
     const [typeFilter, setTypeFilter] = useState(undefined);
+    const [filtersUsed, setFiltersUsed] = useState([{type: "price", valueMin: undefined, valueMax: undefined}, {type: "size", value: undefined}, {type: "color", value: undefined}]);
     
 
     function checkLoading() {
@@ -65,6 +66,20 @@ const Products = () => {
         }   
     } 
 
+    useEffect(() => {
+         console.log(filtersUsed);
+         console.log('==== Valeur du filtre prix ====');
+         console.log(filtersUsed[0].value);
+
+         console.log('=== Produits ===');
+         console.log(products[0]);
+
+         console.log('=== Produits triés ===');
+         console.log(products[0].filter((product) => product.productNewPrice >= filtersUsed[0].valueMin && product.productNewPrice <= filtersUsed[0].valueMax));
+    }, [filtersUsed]);
+
+    
+    
     useEffect(() => {
         if (typeFilter === 'size')
             document.querySelector('.filter-container').style.borderRadius = '10px 10px 0 0';
@@ -160,7 +175,7 @@ const Products = () => {
                                             <li onMouseOver={() => {setTypeFilter('price')}} >
                                                 <span>Prix</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter === 'price') ? <FilterProducts typeFilter={'price'} setTypeFilter={setTypeFilter} /> : null}
+                                                {(typeFilter === 'price') ? <FilterProducts typeFilter={'price'} setTypeFilter={setTypeFilter} setFiltersUsed={setFiltersUsed}/> : null}
                                             </li>
                                             <li onMouseOver={() => {setTypeFilter('size')}}>
                                                 <span>Taille</span>
@@ -177,31 +192,52 @@ const Products = () => {
                                 </div>
                                 <img src={mandala} alt="decoration florale" />
                             </div>
-                            {(category !== undefined) ? 
+                            {(category !== undefined && filtersUsed[0].valueMin === undefined) ? 
                                 products[category].map((key) => {
-                                return(
-                                    <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
-                                        <Carpets key={key.productId}
-                                        saveBasket={saveBasket}
-                                        getBasket={getBasket}
-                                        addBasket={addBasket}
-                                        productCategory={key.productCategory}
-                                        productId={key.productId}
-                                        productClass={key.productClass}
-                                        productName={key.productName}
-                                        productOldPrice={key.productOldPrice}
-                                        productNewPrice={key.productNewPrice}
-                                        productTribe={key.productTribe}
-                                        productSize={key.productSize}
-                                        productImg={key.productImg}
-                                        productHover={key.productHover}
-                                        productAllImg={key.productAllImg}
-                                        productAlt={key.productAlt}/>
-                                    </ProductContext.Provider>
-                                )
+                                    return(
+                                        <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
+                                            <Carpets key={key.productId}
+                                            saveBasket={saveBasket}
+                                            getBasket={getBasket}
+                                            addBasket={addBasket}
+                                            productCategory={key.productCategory}
+                                            productId={key.productId}
+                                            productClass={key.productClass}
+                                            productName={key.productName}
+                                            productOldPrice={key.productOldPrice}
+                                            productNewPrice={key.productNewPrice}
+                                            productTribe={key.productTribe}
+                                            productSize={key.productSize}
+                                            productImg={key.productImg}
+                                            productHover={key.productHover}
+                                            productAllImg={key.productAllImg}
+                                            productAlt={key.productAlt}/>
+                                        </ProductContext.Provider>
+                                    )
                                 })
                             : 
-                            null
+                            products[0].filter((product) => product.productNewPrice >= filtersUsed[0].valueMin && product.productNewPrice <= filtersUsed[0].valueMax).map((key) => {
+                                    return(
+                                        <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
+                                            <Carpets key={key.productId}
+                                            saveBasket={saveBasket}
+                                            getBasket={getBasket}
+                                            addBasket={addBasket}
+                                            productCategory={key.productCategory}
+                                            productId={key.productId}
+                                            productClass={key.productClass}
+                                            productName={key.productName}
+                                            productOldPrice={key.productOldPrice}
+                                            productNewPrice={key.productNewPrice}
+                                            productTribe={key.productTribe}
+                                            productSize={key.productSize}
+                                            productImg={key.productImg}
+                                            productHover={key.productHover}
+                                            productAllImg={key.productAllImg}
+                                            productAlt={key.productAlt}/>
+                                        </ProductContext.Provider>
+                                    )
+                                })
                             }
                         </div>
                     </section>

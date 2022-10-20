@@ -47,9 +47,10 @@
         }
         
         li {
-            justify-content: center;
+            display: block;
             width: 100%;
-            padding: 20px 0;
+            line-height: 50px;
+            text-align: center;
 
             input {
                 display: none;

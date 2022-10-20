@@ -9,6 +9,7 @@ const FilterProducts = (props) => {
     const [colorChecked, setColorChecked] = useState(colorsArray);
 
     const setTypeFilter = props.setTypeFilter;
+    const setFiltersUsed = props.setFiltersUsed;
 
     useEffect(() => {
         const detectFilterColor = document.querySelector('.filter-choices-container');
@@ -24,8 +25,7 @@ const FilterProducts = (props) => {
                 else {
                     document.getElementById(colorChecked[i].id).checked = false;
                     document.getElementById(colorChecked[i].id).style.opacity = '0';
-                }
-                    
+                } 
             }
         }
 
@@ -39,29 +39,34 @@ const FilterProducts = (props) => {
         setTypeFilter(undefined);
     }
 
+    function selectPrice({valueMin, valueMax}) {
+        console.log(valueMin, valueMax);
+        setFiltersUsed([{type: "price", valueMin: valueMin, valueMax: valueMax}, {type: "size", value: undefined}, {type: "color", value: undefined}]);
+    }
+
     if (props.typeFilter === 'price') {
         return (
             <div className={`filter-choices-container ${props.typeFilter}`} onMouseOut={removeFilter}>
                 <div className="filter-choices">
                     <ul id='ul-price'>
-                        <li>
-                            <label htmlFor='price1'>100€ à 150€</label>
+                        <li onClick={() => selectPrice({valueMin: 0, valueMax: 200})}>
+                            <label htmlFor='price1'>0€ à 200€</label>
                             <input type="radio" name='price' id='price1'/>
                         </li>
-                        <li>
-                            <label htmlFor='price2'>150€ à 200€</label>
-                            <input type="radio" name='price' id='price2'/>
+                        <li onClick={() => selectPrice({valueMin: 200, valueMax: 300})}>
+                            <label htmlFor='price2'>200€ à 300€</label>
+                            <input type="radio" name='price' id='price2' />
+                        </li>
+                        <li onClick={() => selectPrice({valueMin: 300, valueMax: 400})}>
+                            <label htmlFor='price3'>300€ à 400€</label>
+                            <input type="radio" name='price' id='price3' />
                         </li>
                         <li>
-                            <label htmlFor='price3'>200€ à 250€</label>
-                            <input type="radio" name='price' id='price3'/>
-                        </li>
-                        <li>
-                            <label htmlFor='price4'>250€ à 350€</label>
+                            <label htmlFor='price4'>500€ à 600€</label>
                             <input type="radio" name='price' id='price4'/>
                         </li>
                         <li>
-                            <label htmlFor='price5'>Plus de 350€</label>
+                            <label htmlFor='price5'>Plus de 600€</label>
                             <input type="radio" name='price' id='price5'/>
                         </li>
                         </ul>   
