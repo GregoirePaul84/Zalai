@@ -155,7 +155,6 @@
                                 ul {
                                     width: 100%;
                                     height: 100%;
-                                    padding: 15px 0;
                                     display: flex;
                                     align-items: center;
                                     justify-content: space-evenly;
@@ -166,6 +165,11 @@
                                         display: flex;
                                         align-items: center;
                                         position: relative;
+
+                                        &:hover svg{
+                                            transition: 500ms ease-in-out;
+                                            transform: rotate(359.9deg);
+                                        }
     
                                         span {
                                             margin-right: 10px;
@@ -176,6 +180,7 @@
                                             cursor: pointer;
                                             pointer-events: none;
                                             padding-bottom: 1px;
+                                            transform: rotate(270deg);
                                         }
                                     }
                                 }

@@ -22,6 +22,8 @@
             align-items: center;
             flex-direction: column;
             gap: 20px;
+            padding: 15px 0;
+
 
             li {
                 list-style-type: none;
@@ -36,7 +38,7 @@
 }
 
 .price {
-    top: 25px;
+    top: 39px;
     right: -33px;
 
     #ul-price {
@@ -68,7 +70,7 @@
 }
 
 .size {
-    top: 25px;
+    top: 39px;
     right: -135px;
 
     .filter-choices {
@@ -130,7 +132,7 @@
 }
 
 .color {
-    top: 25px;
+    top: 39px;
     right: -31px;
 
     .filter-choices {
@@ -146,7 +148,7 @@
             background: $color-light-blue;
         }
 
-        #color-window {
+        #ul-color {
             justify-content: flex-start;
         }
     }

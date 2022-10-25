@@ -36,7 +36,7 @@ const Products = () => {
     const [displayDetail, setDisplayDetail] = useState(false);
     const [typeFilter, setTypeFilter] = useState(undefined);
     const [filtersUsed, setFiltersUsed] = useState([{type: "price", valueMin: undefined, valueMax: undefined, name: undefined}, {type: "size", value: undefined}, {type: "color", value: undefined}]);
-    
+    const [colorsArray, setColorsArray] = useState([{'id': 'white', 'isChecked': false}, {'id': 'black', 'isChecked': false}, {'id': 'gray', 'isChecked': false}, {'id': 'green', 'isChecked': false}, {'id': 'red', 'isChecked': false}, {'id': 'orange', 'isChecked': false}, {'id': 'yellow', 'isChecked': false}, {'id': 'blue', 'isChecked': false}, {'id': 'purple', 'isChecked': false}, {'id': 'maroon', 'isChecked': false}]);
 
     function checkLoading() {
         setIsLoading(false);  
@@ -71,21 +71,18 @@ const Products = () => {
     }
 
     useEffect(() => {
-        // console.log(filtersUsed);
-        // console.log('==== Valeur du filtre prix ====');
-        // console.log(filtersUsed[0].value);
-
-        // console.log('=== Produits ===');
-        // console.log(products[0]);
-
-        // console.log('=== Produits triés ===');
-        // console.log(products[0].filter((product) => product.productNewPrice >= filtersUsed[0].valueMin && product.productNewPrice <= filtersUsed[0].valueMax));
+        console.log(filtersUsed);
+        sessionStorage.setItem('price', JSON.stringify(filtersUsed[0]));
+        sessionStorage.setItem('size', JSON.stringify(filtersUsed[1]));
+        sessionStorage.setItem('color', JSON.stringify(filtersUsed[2]));
 
         if(filtersUsed[0].valueMin === undefined) {
-            sessionStorage.setItem('filters', JSON.stringify(filtersUsed[0]));
+            document.querySelector('.checkbox-filters').checked = false;
         }   
         else {
-            sessionStorage.setItem('filters', JSON.stringify(filtersUsed[0]));
+            sessionStorage.setItem('price', JSON.stringify(filtersUsed[0]));
+            sessionStorage.setItem('size', JSON.stringify(filtersUsed[1]));
+            sessionStorage.setItem('color', JSON.stringify(filtersUsed[2]));
             document.querySelector('.checkbox-filters').checked = true;
         }
         
@@ -189,17 +186,17 @@ const Products = () => {
                                             <li onMouseOver={() => {setTypeFilter('price')}} >
                                                 <span>Prix</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter === 'price') ? <FilterProducts typeFilter={'price'} setTypeFilter={setTypeFilter} setFiltersUsed={setFiltersUsed}/> : null}
+                                                {(typeFilter === 'price') ? <FilterProducts typeFilter={'price'} setTypeFilter={setTypeFilter} filtersUsed={filtersUsed} setFiltersUsed={setFiltersUsed}/> : null}
                                             </li>
                                             <li onMouseOver={() => {setTypeFilter('size')}}>
                                                 <span>Taille</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter=== 'size') ? <FilterProducts typeFilter={'size'} setTypeFilter={setTypeFilter}/> : null}
+                                                {(typeFilter=== 'size') ? <FilterProducts typeFilter={'size'} setTypeFilter={setTypeFilter} filtersUsed={filtersUsed} setFiltersUsed={setFiltersUsed}/> : null}
                                             </li>
                                             <li onMouseOver={() => {setTypeFilter('color')}}>
                                                 <span>Couleur</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter=== 'color') ? <FilterProducts typeFilter={'color'} setTypeFilter={setTypeFilter}/> : null}
+                                                {(typeFilter=== 'color') ? <FilterProducts typeFilter={'color'} setTypeFilter={setTypeFilter} filtersUsed={filtersUsed} setFiltersUsed={setFiltersUsed} colorsArray={colorsArray} setColorsArray={setColorsArray}/> : null}
                                             </li>
                                         </ul>
                                     </div>

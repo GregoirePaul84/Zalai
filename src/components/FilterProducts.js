@@ -1,26 +1,31 @@
 import React, { useEffect, useState } from 'react';
 
-const colorsArray = [{'id': 'white', 'isChecked': false}, {'id': 'black', 'isChecked': false}, {'id': 'gray', 'isChecked': false}, {'id': 'green', 'isChecked': false}, {'id': 'red', 'isChecked': false}, {'id': 'orange', 'isChecked': false}, {'id': 'yellow', 'isChecked': false}, {'id': 'blue', 'isChecked': false}, {'id': 'purple', 'isChecked': false}, {'id': 'maroon', 'isChecked': false}];
-
 const FilterProducts = (props) => {
+
+    const colorsArray = props.colorsArray;
+    const setColorsArray = props.setColorsArray;
 
     const [widthValue, setWidthValue] = useState(0);
     const [lengthValue, setLengthValue] = useState(0);
     const [colorChecked, setColorChecked] = useState(colorsArray);
 
     const setTypeFilter = props.setTypeFilter;
+    const filtersUsed = props.filtersUsed;
     const setFiltersUsed = props.setFiltersUsed;
+    
+
+    console.log(filtersUsed);
 
     function removeFilter() {
         setTypeFilter(undefined);
     }
 
     function selectPrice({valueMin, valueMax, name}) {
-        setFiltersUsed([{type: "price", valueMin: valueMin, valueMax: valueMax, name: name}, {type: "size", value: undefined}, {type: "color", value: undefined}]);
+        setFiltersUsed([{type: "price", valueMin: valueMin, valueMax: valueMax, name: name}, {type: "size", value: undefined}, {...filtersUsed[2]}]);
     }
 
     useEffect(() => {
-        const storage = JSON.parse(sessionStorage.getItem('filters'));
+        const storage = JSON.parse(sessionStorage.getItem('price'));
         const selectedList = document.querySelector(`#ul-price .${storage.name}`);
         const otherLists = document.querySelectorAll(`#ul-price > li:not(.${storage.name})`);
         
@@ -33,6 +38,7 @@ const FilterProducts = (props) => {
         
     }, [selectPrice]);
 
+
     useEffect(() => {
         const detectFilterColor = document.querySelector('.filter-choices-container');
 
@@ -40,11 +46,14 @@ const FilterProducts = (props) => {
             for (let i in colorChecked) {
             
                 if(colorChecked[i].isChecked) {
+                    setColorsArray(colorChecked);
+                    setFiltersUsed([{...filtersUsed[0]}, {type: "size", value: undefined}, {type: "color", value: colorChecked}]);
                     document.getElementById(colorChecked[i].id).checked = true;
                     document.getElementById(colorChecked[i].id).style.opacity = '1';
                 }
                     
                 else {
+                    setFiltersUsed([{...filtersUsed[0]}, {type: "size", value: undefined}, {type: "color", value: colorChecked}]);
                     document.getElementById(colorChecked[i].id).checked = false;
                     document.getElementById(colorChecked[i].id).style.opacity = '0';
                 } 
@@ -125,6 +134,7 @@ const FilterProducts = (props) => {
     function setColor(e) {
         const findColorIndex = colorChecked.findIndex(index => index.id === e.target.id);
         console.log(e.target.id);
+        
         console.log(findColorIndex);
 
         switch (e.target.id) {
@@ -177,10 +187,10 @@ const FilterProducts = (props) => {
         return (
             <div className={`filter-choices-container ${props.typeFilter}`} onMouseOut={removeFilter}>
                 <div className="filter-choices">
-                    <ul id='color-window'>
+                    <ul id='ul-color'>
                         <li onClick={(e) => setColor(e)}>
                             <div className="color-container1">
-                                <input type="checkbox" id='white' title='blanc'/>
+                                <input type="checkbox" id='white' title='blanc' />
                             </div>  
                             <p>Blanc</p>
                         </li>

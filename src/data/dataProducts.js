@@ -186,6 +186,7 @@ export const products = [
         'productName': 'Tapis berbère 6',
         'productOldPrice': 249,
         'productNewPrice': 185,
+        'productColor': 'white',
         'productTribe': 'Tribu Mohammedia',
         'productSize': '185 x 150',
         'productMaterial': '100% laine de mouton',
