@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 // Importation des composants
 import Loader from './Loader';
@@ -44,8 +44,7 @@ const Products = () => {
 
     const [colorFilter, setColorFilter] = useState([{'id': 'white', 'isChecked': false}, {'id': 'black', 'isChecked': false}, {'id': 'gray', 'isChecked': false}, {'id': 'green', 'isChecked': false}, {'id': 'red', 'isChecked': false}, {'id': 'orange', 'isChecked': false}, {'id': 'yellow', 'isChecked': false}, {'id': 'blue', 'isChecked': false}, {'id': 'purple', 'isChecked': false}, {'id': 'maroon', 'isChecked': false}]);
 
-
-
+    const colorsChosen = useRef();
 
     // ==== GESTION DU LOADER ==== //
 
@@ -127,7 +126,7 @@ const Products = () => {
 
     // Cochage de l'input si au moins un filtre activé, décochage + actualisation du session storage si aucun filtre
     useEffect(() => {
-        console.log(filterActive);
+        
         if(filterActive.price || filterActive.size || filterActive.color) {
             document.querySelector('.checkbox-filters').checked = true;
         }
@@ -137,9 +136,11 @@ const Products = () => {
             sessionStorage.setItem('price', JSON.stringify(priceFilter));
 
             sessionStorage.setItem('color', JSON.stringify(colorFilter));  
+
         }  
 
     }, [removeFilters, filterActive, priceFilter, colorFilter]);
+
 
     // Annule tous les filtres en réinitialisant au state initial
     function removeFilters() {
@@ -152,9 +153,20 @@ const Products = () => {
         
     }
 
-    
 
+
+    // ==== GESTION DU CHOIX DE COULEURS ==== //
+
+    useEffect(() => {
+        let colorsArray = [];
+        const colorStorage = JSON.parse(sessionStorage.getItem('color'));
+        const checkedColors = colorStorage.filter(clrs => clrs.isChecked === true);
+        checkedColors.forEach(clrs => colorsArray.push(clrs.id));
+        colorsChosen.current = colorsArray;
+        
+    }, [colorFilter]);
     
+        
     useEffect(() => {
         if (typeFilter === 'size')
             document.querySelector('.filter-container').style.borderRadius = '10px 10px 0 0';
@@ -231,14 +243,14 @@ const Products = () => {
                                             <li onMouseOver={() => {setTypeFilter('color')}}>
                                                 <span>Couleur</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter=== 'color') ? <FilterProducts typeFilter={'color'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} colorFilter={colorFilter} setColorFilter={setColorFilter}/> : null}
+                                                {(typeFilter=== 'color') ? <FilterProducts typeFilter={'color'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} colorFilter={colorFilter} setColorFilter={setColorFilter} /> : null}
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <img src={mandala} alt="decoration florale" />
                             </div>
-                            {(category !== undefined && priceFilter.name === undefined) ? 
+                            {(category !== undefined && filterActive.price === false && filterActive.color === false) ? 
                                 products[category].map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
@@ -262,7 +274,7 @@ const Products = () => {
                                     )
                                 })
                             : 
-                            products[0].filter((product) => product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax).map((key) => {
+                            products[0].filter((product) => (product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) || (colorsChosen.current.includes(product.productColor))).map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
                                             <Carpets key={key.productId}

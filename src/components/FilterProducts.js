@@ -97,20 +97,20 @@ const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilte
         
         const colorStorage = JSON.parse(sessionStorage.getItem('color'));
         
-        const checkedColors = colorStorage.filter(clrs => clrs.isChecked === true);
+        const chosenColors = colorStorage.filter(clrs => clrs.isChecked === true);
 
         const allColors = document.querySelectorAll(`#ul-color input`);
         allColors.forEach(elt => elt.style.opacity = '0');
 
-        if(checkedColors.length === 0) {
+        if(chosenColors.length === 0) {
             setFilterActive({price: filterActive.price, size: filterActive.size, color: false});
             return;
         }
         else {
             setFilterActive({price: filterActive.price, size: filterActive.size, color: true});
 
-            for (let i in checkedColors) {
-                const selectedColor = document.querySelector(`#ul-color #${checkedColors[i].id}`);
+            for (let i in chosenColors) {
+                const selectedColor = document.querySelector(`#ul-color #${chosenColors[i].id}`);
                 
                 selectedColor.checked = true;
                 selectedColor.style.opacity = '1';      
