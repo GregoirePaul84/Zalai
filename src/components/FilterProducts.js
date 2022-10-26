@@ -1,94 +1,146 @@
 import React, { useEffect, useState } from 'react';
 
-const FilterProducts = (props) => {
-
-    const colorsArray = props.colorsArray;
-    const setColorsArray = props.setColorsArray;
+const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilter, priceFilter, setPriceFilter, colorFilter, setColorFilter}) => {
 
     const [widthValue, setWidthValue] = useState(0);
     const [lengthValue, setLengthValue] = useState(0);
-    const [colorChecked, setColorChecked] = useState(colorsArray);
-
-    const setTypeFilter = props.setTypeFilter;
-    const filtersUsed = props.filtersUsed;
-    const setFiltersUsed = props.setFiltersUsed;
-    
-
-    console.log(filtersUsed);
-
-    function removeFilter() {
+   
+    function hideFilter() {
         setTypeFilter(undefined);
     }
 
-    function selectPrice({valueMin, valueMax, name}) {
-        setFiltersUsed([{type: "price", valueMin: valueMin, valueMax: valueMax, name: name}, {type: "size", value: undefined}, {...filtersUsed[2]}]);
+    // ====== LOGIQUE FILTRE PRIX ====== //
+
+    // Stockage du prix dans le session storage et ajout du backgroundColor lors de la sélection
+
+    useEffect(() => {
+        if (typeFilter !== 'price') return; 
+
+        sessionStorage.setItem('price', JSON.stringify(priceFilter));
+        
+        const priceStorage = JSON.parse(sessionStorage.getItem('price'));
+
+        const selectedPrice = document.querySelector(`.${priceStorage.name}`);
+        const otherPrices = document.querySelectorAll(`#ul-price > li:not(.${priceStorage.name})`);
+
+        if(priceStorage.name !== undefined) {
+            selectedPrice.style.backgroundColor = "#D9A569";
+            otherPrices.forEach(li => li.style.backgroundColor = 'inherit');
+            setFilterActive({price: true, size: filterActive.size, color: filterActive.color});
+        }
+        else {
+            setFilterActive({price: false, size: filterActive.size, color: filterActive.color}); 
+        }
+    }, [priceFilter]);
+
+
+
+    // ====== LOGIQUE FILTRE COULEURS ====== //
+
+    // Mise à jour du state colorFilter selon la couleur
+
+    function setColor(e) {
+        const findColorIndex = colorFilter.findIndex(index => index.id === e.target.id);
+        
+        switch (e.target.id) {
+            case 'white':
+                setColorFilter([{'id': 'white', 'isChecked': !colorFilter[findColorIndex].isChecked}, ...colorFilter.filter(obj => obj.id !== 'white')]);
+                break;
+
+            case 'black':
+                setColorFilter([{'id': 'black', 'isChecked': !colorFilter[findColorIndex].isChecked}, ...colorFilter.filter(obj => obj.id !== 'black')]);
+                break;
+
+            case 'gray':
+                setColorFilter([{'id': 'gray', 'isChecked': !colorFilter[findColorIndex].isChecked}, ...colorFilter.filter(obj => obj.id !== 'gray')]);
+                break;
+    
+            case 'green':
+                setColorFilter([{'id': 'green', 'isChecked': !colorFilter[findColorIndex].isChecked}, ...colorFilter.filter(obj => obj.id !== 'green')]);
+                break
+
+            case 'red':
+                setColorFilter([{'id': 'red', 'isChecked': !colorFilter[findColorIndex].isChecked}, ...colorFilter.filter(obj => obj.id !== 'red')]);
+                break;
+        
+            case 'orange':
+                setColorFilter([{'id': 'orange', 'isChecked': !colorFilter[findColorIndex].isChecked}, ...colorFilter.filter(obj => obj.id !== 'orange')]);
+                break
+
+            case 'yellow':
+                setColorFilter([{'id': 'yellow', 'isChecked': !colorFilter[findColorIndex].isChecked}, ...colorFilter.filter(obj => obj.id !== 'yellow')]);
+                break
+            
+            case 'blue':
+                setColorFilter([{'id': 'blue', 'isChecked': !colorFilter[findColorIndex].isChecked}, ...colorFilter.filter(obj => obj.id !== 'blue')]);
+                break
+                
+            case 'purple':
+                setColorFilter([{'id': 'purple', 'isChecked': !colorFilter[findColorIndex].isChecked}, ...colorFilter.filter(obj => obj.id !== 'purple')]);
+                break;
+            
+            case 'maroon':
+                setColorFilter([{'id': 'maroon', 'isChecked': !colorFilter[findColorIndex].isChecked}, ...colorFilter.filter(obj => obj.id !== 'maroon')]);
+                break
+            
+            default:
+              console.log('couleur non disponible');
+        }
     }
 
-    useEffect(() => {
-        const storage = JSON.parse(sessionStorage.getItem('price'));
-        const selectedList = document.querySelector(`#ul-price .${storage.name}`);
-        const otherLists = document.querySelectorAll(`#ul-price > li:not(.${storage.name})`);
-        
-        if(selectedList === null || otherLists.length === 0) return;
-        
-        selectedList.style.backgroundColor = '#D9A569';
-        console.log(storage.name);
-        
-        otherLists.forEach(li => li.style.backgroundColor = 'inherit');
-        
-    }, [selectPrice]);
-
+    // Stockage du / des couleurs dans le session storage + gestion de la coche des inputs
 
     useEffect(() => {
-        const detectFilterColor = document.querySelector('.filter-choices-container');
+        if (typeFilter !== 'color') return; 
+        
+        sessionStorage.setItem('color', JSON.stringify(colorFilter));
+        
+        const colorStorage = JSON.parse(sessionStorage.getItem('color'));
+        
+        const checkedColors = colorStorage.filter(clrs => clrs.isChecked === true);
 
-        if (detectFilterColor.classList.contains('color')) {
-            for (let i in colorChecked) {
-            
-                if(colorChecked[i].isChecked) {
-                    setColorsArray(colorChecked);
-                    setFiltersUsed([{...filtersUsed[0]}, {type: "size", value: undefined}, {type: "color", value: colorChecked}]);
-                    document.getElementById(colorChecked[i].id).checked = true;
-                    document.getElementById(colorChecked[i].id).style.opacity = '1';
-                }
-                    
-                else {
-                    setFiltersUsed([{...filtersUsed[0]}, {type: "size", value: undefined}, {type: "color", value: colorChecked}]);
-                    document.getElementById(colorChecked[i].id).checked = false;
-                    document.getElementById(colorChecked[i].id).style.opacity = '0';
-                } 
-            }
-        }
+        const allColors = document.querySelectorAll(`#ul-color input`);
+        allColors.forEach(elt => elt.style.opacity = '0');
 
-        else {
+        if(checkedColors.length === 0) {
+            setFilterActive({price: filterActive.price, size: filterActive.size, color: false});
             return;
         }
+        else {
+            setFilterActive({price: filterActive.price, size: filterActive.size, color: true});
 
-    }, [colorChecked])
+            for (let i in checkedColors) {
+                const selectedColor = document.querySelector(`#ul-color #${checkedColors[i].id}`);
+                
+                selectedColor.checked = true;
+                selectedColor.style.opacity = '1';      
+            }
+        }  
+    }, [colorFilter]);
 
-    if (props.typeFilter === 'price') {
+    if (typeFilter === 'price') {
         return (
-            <div className={`filter-choices-container ${props.typeFilter}`} onMouseOut={removeFilter}>
+            <div className={`filter-choices-container price`} onMouseOut={hideFilter}>
                 <div className="filter-choices">
                     <ul id='ul-price'>
-                        <li onClick={() => selectPrice({valueMin: 0, valueMax: 200, name: 'price200'})} className='price200' >
+                        <li className='price200' onClick={() => setPriceFilter({valueMin: 0, valueMax: 200, name: "price200"})}>
                             <label htmlFor='price1'>0€ à 200€</label>
                             <input type="radio" name='price' id='price1'/>
                         </li>
-                        <li onClick={() => selectPrice({valueMin: 200, valueMax: 300, name: 'price300'})} className='price300'>
+                        <li className='price300' onClick={() => setPriceFilter({valueMin: 200, valueMax: 300, name: "price300"})}>
                             <label htmlFor='price2'>200€ à 300€</label>
                             <input type="radio" name='price' id='price2' />
                         </li>
-                        <li onClick={() => selectPrice({valueMin: 300, valueMax: 400, name: 'price400'})} className='price400'>
+                        <li className='price400' onClick={() => setPriceFilter({valueMin: 300, valueMax: 400, name: "price400"})}>
                             <label htmlFor='price3'>300€ à 400€</label>
                             <input type="radio" name='price' id='price3' />
                         </li>
-                        <li>
-                            <label htmlFor='price4'>500€ à 600€</label>
+                        <li className='price500' onClick={() => setPriceFilter({valueMin: 400, valueMax: 500, name: "price500"})}>
+                            <label htmlFor='price4'>400€ à 500€</label>
                             <input type="radio" name='price' id='price4'/>
                         </li>
-                        <li>
-                            <label htmlFor='price5'>Plus de 600€</label>
+                        <li className='price999' onClick={() => setPriceFilter({valueMin: 500, valueMax: 999, name: "price999"})}>
+                            <label htmlFor='price5'>Plus de 500€</label>
                             <input type="radio" name='price' id='price5'/>
                         </li>
                         </ul>   
@@ -106,9 +158,9 @@ const FilterProducts = (props) => {
     }
 
 
-    if (props.typeFilter === 'size') {
+    if (typeFilter === 'size') {
         return (
-            <div className={`filter-choices-container ${props.typeFilter}`} onMouseOut={removeFilter}>
+            <div className={`filter-choices-container size`} onMouseOut={hideFilter}>
                 <div className="filter-choices">
                     <ul id='ul-size'>
                         <li>
@@ -131,120 +183,69 @@ const FilterProducts = (props) => {
         )
     };
 
-    function setColor(e) {
-        const findColorIndex = colorChecked.findIndex(index => index.id === e.target.id);
-        console.log(e.target.id);
-        
-        console.log(findColorIndex);
 
-        switch (e.target.id) {
-            case 'white':
-                setColorChecked([{'id': 'white', 'isChecked': !colorChecked[findColorIndex].isChecked}, ...colorChecked.filter(obj => obj.id !== 'white')]);
-                break;
-
-            case 'black':
-                setColorChecked([{'id': 'black', 'isChecked': !colorChecked[findColorIndex].isChecked}, ...colorChecked.filter(obj => obj.id !== 'black')]);
-                break;
-
-            case 'gray':
-                setColorChecked([{'id': 'gray', 'isChecked': !colorChecked[findColorIndex].isChecked}, ...colorChecked.filter(obj => obj.id !== 'gray')]);
-                break;
-    
-            case 'green':
-                setColorChecked([{'id': 'green', 'isChecked': !colorChecked[findColorIndex].isChecked}, ...colorChecked.filter(obj => obj.id !== 'green')]);
-                break
-
-            case 'red':
-                setColorChecked([{'id': 'red', 'isChecked': !colorChecked[findColorIndex].isChecked}, ...colorChecked.filter(obj => obj.id !== 'red')]);
-                break;
-        
-            case 'orange':
-                setColorChecked([{'id': 'orange', 'isChecked': !colorChecked[findColorIndex].isChecked}, ...colorChecked.filter(obj => obj.id !== 'orange')]);
-                break
-
-            case 'yellow':
-                setColorChecked([{'id': 'yellow', 'isChecked': !colorChecked[findColorIndex].isChecked}, ...colorChecked.filter(obj => obj.id !== 'yellow')]);
-                break
-            
-            case 'blue':
-                setColorChecked([{'id': 'blue', 'isChecked': !colorChecked[findColorIndex].isChecked}, ...colorChecked.filter(obj => obj.id !== 'blue')]);
-                break
-                
-            case 'purple':
-                setColorChecked([{'id': 'purple', 'isChecked': !colorChecked[findColorIndex].isChecked}, ...colorChecked.filter(obj => obj.id !== 'purple')]);
-                break;
-            
-            case 'maroon':
-                setColorChecked([{'id': 'maroon', 'isChecked': !colorChecked[findColorIndex].isChecked}, ...colorChecked.filter(obj => obj.id !== 'maroon')]);
-                break
-            
-            default:
-              console.log('couleur non disponible');
-        }
-    }
-
-    if (props.typeFilter === 'color') {
+    if (typeFilter === 'color') {
         return (
-            <div className={`filter-choices-container ${props.typeFilter}`} onMouseOut={removeFilter}>
+            <div className={`filter-choices-container color`} onMouseOut={hideFilter}>
                 <div className="filter-choices">
                     <ul id='ul-color'>
-                        <li onClick={(e) => setColor(e)}>
+                        <li>
                             <div className="color-container1">
-                                <input type="checkbox" id='white' title='blanc' />
+                                <input type="checkbox" id='white' title='blanc' onClick={(e) => setColor(e)} />
                             </div>  
                             <p>Blanc</p>
                         </li>
-                        <li onClick={(e) => setColor(e)}>
+                        <li>
                             <div className="color-container2">
-                                <input type="checkbox" id='black' title='noir'/>
+                                <input type="checkbox" id='black' title='noir' onClick={(e) => setColor(e)}/>
                             </div>
                             <p>Noir</p>
                         </li>
-                        <li onClick={(e) => setColor(e)}>
+                        <li >
                             <div className="color-container3">  
-                                <input type="checkbox" id='gray' title='gris'/>
+                                <input type="checkbox" id='gray' title='gris' onClick={(e) => setColor(e)}/>
                             </div>
                             <p>Gris</p>
                         </li>
-                        <li onClick={(e) => setColor(e)}>
+                        <li >
                             <div className="color-container4">  
-                                <input type="checkbox" id='green' title='vert'/>
+                                <input type="checkbox" id='green' title='vert' onClick={(e) => setColor(e)}/>
                             </div>
                             <p>Vert</p>
                         </li>
-                        <li onClick={(e) => setColor(e)}>
+                        <li >
                             <div className="color-container5">  
-                                <input type="checkbox" id='red' title='rouge'/>
+                                <input type="checkbox" id='red' title='rouge' onClick={(e) => setColor(e)}/>
                             </div>
                             <p>Rouge</p>
                         </li>
-                        <li onClick={(e) => setColor(e)}>
+                        <li >
                             <div className="color-container6">  
-                                <input type="checkbox" id='orange' title='orange'/>
+                                <input type="checkbox" id='orange' title='orange' onClick={(e) => setColor(e)}/>
                             </div>
                             <p>Orange</p>
                         </li>
-                        <li onClick={(e) => setColor(e)}>
+                        <li >
                             <div className="color-container7">  
-                                <input type="checkbox" id='yellow' title='jaune'/>
+                                <input type="checkbox" id='yellow' title='jaune' onClick={(e) => setColor(e)}/>
                             </div>
                             <p>Jaune</p>
                         </li>
-                        <li onClick={(e) => setColor(e)}>
+                        <li >
                             <div className="color-container8">  
-                                <input type="checkbox" id='blue' title='bleu'/>
+                                <input type="checkbox" id='blue' title='bleu' onClick={(e) => setColor(e)}/>
                             </div>
                             <p>Bleu</p>
                         </li>
-                        <li onClick={(e) => setColor(e)}>
+                        <li >
                             <div className="color-container9">  
-                                <input type="checkbox" id='purple' title='violet'/>
+                                <input type="checkbox" id='purple' title='violet' onClick={(e) => setColor(e)}/>
                             </div>
                             <p>Violet</p>
                         </li>
-                        <li onClick={(e) => setColor(e)}>
+                        <li >
                             <div className="color-container10">  
-                                <input type="checkbox" id='maroon' title='marron'/>
+                                <input type="checkbox" id='maroon' title='marron' onClick={(e) => setColor(e)}/>
                             </div>
                             <p>Marron</p>
                         </li>

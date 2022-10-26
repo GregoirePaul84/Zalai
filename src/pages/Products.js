@@ -35,13 +35,43 @@ const Products = () => {
     const [categoryIndex, setCategoryIndex] = useState(undefined);
     const [displayDetail, setDisplayDetail] = useState(false);
     const [typeFilter, setTypeFilter] = useState(undefined);
-    const [filtersUsed, setFiltersUsed] = useState([{type: "price", valueMin: undefined, valueMax: undefined, name: undefined}, {type: "size", value: undefined}, {type: "color", value: undefined}]);
-    const [colorsArray, setColorsArray] = useState([{'id': 'white', 'isChecked': false}, {'id': 'black', 'isChecked': false}, {'id': 'gray', 'isChecked': false}, {'id': 'green', 'isChecked': false}, {'id': 'red', 'isChecked': false}, {'id': 'orange', 'isChecked': false}, {'id': 'yellow', 'isChecked': false}, {'id': 'blue', 'isChecked': false}, {'id': 'purple', 'isChecked': false}, {'id': 'maroon', 'isChecked': false}]);
 
+    const [filterActive, setFilterActive] = useState({price: false, size: false, color: false});
+
+    const [priceFilter, setPriceFilter] = useState({valueMin: undefined, valueMax: undefined, name: undefined});
+
+    const [sizeFilter, setSizeFilter] = useState({value: undefined});
+
+    const [colorFilter, setColorFilter] = useState([{'id': 'white', 'isChecked': false}, {'id': 'black', 'isChecked': false}, {'id': 'gray', 'isChecked': false}, {'id': 'green', 'isChecked': false}, {'id': 'red', 'isChecked': false}, {'id': 'orange', 'isChecked': false}, {'id': 'yellow', 'isChecked': false}, {'id': 'blue', 'isChecked': false}, {'id': 'purple', 'isChecked': false}, {'id': 'maroon', 'isChecked': false}]);
+
+
+
+
+    // ==== GESTION DU LOADER ==== //
+
+    // Désactivation du loader de page
     function checkLoading() {
         setIsLoading(false);  
     }
 
+    // Disparition du loader vers la droite
+    useEffect(() => {
+        if (isLoading === false) {
+            const selectLoader = document.getElementById('loader-container');
+            const selectContainer = document.querySelector('.home-loader');
+
+            setTimeout(() => {selectLoader.style.animation = '1s ease-in-out 1s 1 normal forwards running loaderDisappears'}, 2300);
+            setTimeout(() => {selectContainer.classList.add('loader-cancelled')}, 4300);  
+        }
+   
+    }, [isLoading]);
+
+
+
+
+    // ==== APPARITION DES CARDS + GESTION D'AFFICHAGE PRODUITS ==== //
+
+    // Apparition des cards catégories lors du scroll
     const handleScroll = () => {
 
         setScrollY(window.scrollY);
@@ -53,6 +83,7 @@ const Products = () => {
         }
     };
 
+    // Assignation de la catégorie lors du clic sur l'une des catégories de produits
     const checkCategory = (name) => {
         
         if (name === 'tapis') {
@@ -64,50 +95,18 @@ const Products = () => {
         if (name === 'décorations') {
             setCategory(2);
         }   
-    } 
+    };
 
-    function removeFilters() {
-        setFiltersUsed([{type: "price", valueMin: undefined, valueMax: undefined, selected: false}, {type: "size", value: undefined}, {type: "color", value: undefined}]);
-    }
-
+    // Assignation de l'index afin d'afficher la bonne catégorie de produits
     useEffect(() => {
-        console.log(filtersUsed);
-        sessionStorage.setItem('price', JSON.stringify(filtersUsed[0]));
-        sessionStorage.setItem('size', JSON.stringify(filtersUsed[1]));
-        sessionStorage.setItem('color', JSON.stringify(filtersUsed[2]));
 
-        if(filtersUsed[0].valueMin === undefined) {
-            document.querySelector('.checkbox-filters').checked = false;
-        }   
-        else {
-            sessionStorage.setItem('price', JSON.stringify(filtersUsed[0]));
-            sessionStorage.setItem('size', JSON.stringify(filtersUsed[1]));
-            sessionStorage.setItem('color', JSON.stringify(filtersUsed[2]));
-            document.querySelector('.checkbox-filters').checked = true;
-        }
-        
-    }, [filtersUsed]);
+        if(category === 0) setCategoryIndex(0);
+        if(category === 1) setCategoryIndex(1);
+        if(category === 2) setCategoryIndex(2);
+         
+    }, [category]);
 
-    
-    
-    useEffect(() => {
-        if (typeFilter === 'size')
-            document.querySelector('.filter-container').style.borderRadius = '10px 10px 0 0';
-        else 
-            document.querySelector('.filter-container').style.borderRadius = '10px';
-    }, [typeFilter]);
-
-    useEffect(() => {
-        if (isLoading === false) {
-            const selectLoader = document.getElementById('loader-container');
-            const selectContainer = document.querySelector('.home-loader');
-
-            setTimeout(() => {selectLoader.style.animation = '1s ease-in-out 1s 1 normal forwards running loaderDisappears'}, 2300);
-            setTimeout(() => {selectContainer.classList.add('loader-cancelled')}, 4300);  
-        }
-   
-    }, [isLoading])
-
+    // Apparition de l'effet de flou lors de la visualisation détaillée d'un produit
     useEffect(() => {
         const selectForeground = document.querySelector('.foreground');
         const selectBackground = document.querySelector('.background');
@@ -120,16 +119,52 @@ const Products = () => {
             selectForeground.classList.remove('foreground-blur');
             selectBackground.classList.remove('foreground-blur');
         }
-    }, [displayDetail])
+    }, [displayDetail]);
 
+
+
+    // ==== GESTION DE L'INPUT ANNULATION DES FILTRES ==== //
+
+    // Cochage de l'input si au moins un filtre activé, décochage + actualisation du session storage si aucun filtre
     useEffect(() => {
+        console.log(filterActive);
+        if(filterActive.price || filterActive.size || filterActive.color) {
+            document.querySelector('.checkbox-filters').checked = true;
+        }
+        else {
+            document.querySelector('.checkbox-filters').checked = false;
+            
+            sessionStorage.setItem('price', JSON.stringify(priceFilter));
 
-        if(category === 0) setCategoryIndex(0);
-        if(category === 1) setCategoryIndex(1);
-        if(category === 2) setCategoryIndex(2);
-         
-    }, [category])
+            sessionStorage.setItem('color', JSON.stringify(colorFilter));  
+        }  
 
+    }, [removeFilters, filterActive, priceFilter, colorFilter]);
+
+    // Annule tous les filtres en réinitialisant au state initial
+    function removeFilters() {
+
+        setPriceFilter({valueMin: undefined, valueMax: undefined, name: undefined});
+
+        setColorFilter(([{'id': 'white', 'isChecked': false}, {'id': 'black', 'isChecked': false}, {'id': 'gray', 'isChecked': false}, {'id': 'green', 'isChecked': false}, {'id': 'red', 'isChecked': false}, {'id': 'orange', 'isChecked': false}, {'id': 'yellow', 'isChecked': false}, {'id': 'blue', 'isChecked': false}, {'id': 'purple', 'isChecked': false}, {'id': 'maroon', 'isChecked': false}]));
+
+        setFilterActive({price: false, size: false, color: false});
+        
+    }
+
+    
+
+    
+    useEffect(() => {
+        if (typeFilter === 'size')
+            document.querySelector('.filter-container').style.borderRadius = '10px 10px 0 0';
+        else 
+            document.querySelector('.filter-container').style.borderRadius = '10px';
+    }, [typeFilter]);
+
+
+    
+    // Détection du scroll
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, {
         });
@@ -186,24 +221,24 @@ const Products = () => {
                                             <li onMouseOver={() => {setTypeFilter('price')}} >
                                                 <span>Prix</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter === 'price') ? <FilterProducts typeFilter={'price'} setTypeFilter={setTypeFilter} filtersUsed={filtersUsed} setFiltersUsed={setFiltersUsed}/> : null}
+                                                {(typeFilter === 'price') ? <FilterProducts typeFilter={'price'} filterActive={filterActive} setFilterActive={setFilterActive} setTypeFilter={setTypeFilter} priceFilter={priceFilter} setPriceFilter={setPriceFilter}/> : null}
                                             </li>
                                             <li onMouseOver={() => {setTypeFilter('size')}}>
                                                 <span>Taille</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter=== 'size') ? <FilterProducts typeFilter={'size'} setTypeFilter={setTypeFilter} filtersUsed={filtersUsed} setFiltersUsed={setFiltersUsed}/> : null}
+                                                {(typeFilter=== 'size') ? <FilterProducts typeFilter={'size'} setTypeFilter={setTypeFilter}/> : null}
                                             </li>
                                             <li onMouseOver={() => {setTypeFilter('color')}}>
                                                 <span>Couleur</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter=== 'color') ? <FilterProducts typeFilter={'color'} setTypeFilter={setTypeFilter} filtersUsed={filtersUsed} setFiltersUsed={setFiltersUsed} colorsArray={colorsArray} setColorsArray={setColorsArray}/> : null}
+                                                {(typeFilter=== 'color') ? <FilterProducts typeFilter={'color'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} colorFilter={colorFilter} setColorFilter={setColorFilter}/> : null}
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <img src={mandala} alt="decoration florale" />
                             </div>
-                            {(category !== undefined && filtersUsed[0].valueMin === undefined) ? 
+                            {(category !== undefined && priceFilter.name === undefined) ? 
                                 products[category].map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
@@ -227,7 +262,7 @@ const Products = () => {
                                     )
                                 })
                             : 
-                            products[0].filter((product) => product.productNewPrice >= filtersUsed[0].valueMin && product.productNewPrice <= filtersUsed[0].valueMax).map((key) => {
+                            products[0].filter((product) => product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax).map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
                                             <Carpets key={key.productId}
