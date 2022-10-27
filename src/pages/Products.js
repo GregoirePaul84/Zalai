@@ -181,7 +181,6 @@ const Products = () => {
 
     });
 
-    console.log(priceFilter);
     return (
         <>
         <div className="home-loader">
@@ -340,7 +339,36 @@ const Products = () => {
                                             productAlt={key.productAlt}/>
                                         </ProductContext.Provider>
                                     )
-                                }) : null
+                                }) 
+                            : 
+                            /* Affichage des produits = 3 filtres activés */
+                            ((filterActive.price === true && filterActive.size === true && filterActive.color === true)) ?
+
+                            products[0].filter((product) => 
+                            // Filtrage prix + taille + couleur
+                            ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                            && (colorsChosen.current.includes(product.productColor)) && (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig))).map((key) => {
+                                    return(
+                                        <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
+                                            <Carpets key={key.productId}
+                                            saveBasket={saveBasket}
+                                            getBasket={getBasket}
+                                            addBasket={addBasket}
+                                            productCategory={key.productCategory}
+                                            productId={key.productId}
+                                            productClass={key.productClass}
+                                            productName={key.productName}
+                                            productOldPrice={key.productOldPrice}
+                                            productNewPrice={key.productNewPrice}
+                                            productTribe={key.productTribe}
+                                            productSize={key.productSize}
+                                            productImg={key.productImg}
+                                            productHover={key.productHover}
+                                            productAllImg={key.productAllImg}
+                                            productAlt={key.productAlt}/>
+                                        </ProductContext.Provider>
+                                    )
+                            }) : null
                             }
                         </div>
                     </section>
