@@ -273,12 +273,14 @@ const Products = () => {
                             /* Affichage des produits = au moins 1 filtre activé */
                             ((filterActive.price === true && filterActive.size === false && filterActive.color === false) || (filterActive.price === false && filterActive.size === true && filterActive.color === false) || (filterActive.price === false && filterActive.size === false && filterActive.color === true)) ?
 
+                            // Filtrage des produits par opérations logiques
                             products[0].filter((product) => 
+                                // Filtrage par prix uniquement
                                (product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                                // Filtrage par couleur uniquement
                             || (colorsChosen.current.includes(product.productColor)) 
-                            || (product.productSize === sizeFilter.size)
-                            || (product.productCorridor === sizeFilter.corridor)
-                            || (product.isBig === sizeFilter.isBig)).map((key) => {
+                                // Filtrage par taille uniquement
+                            || (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || (product.isBig === sizeFilter.isBig))).map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
                                             <Carpets key={key.productId}
@@ -302,8 +304,22 @@ const Products = () => {
                                 })
                             : 
                             /* Affichage des produits = 2 filtres activés */
-                            ((filterActive.price === true && filterActive.color === true)) ?
-                            products[0].filter((product) => (product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) && (colorsChosen.current.includes(product.productColor))).map((key) => {
+                            ((filterActive.price === true && filterActive.size === false && filterActive.color === true)
+                            || (filterActive.price === true && filterActive.size === true && filterActive.color === false)
+                            || (filterActive.price === false && filterActive.size === true && filterActive.color === true)) ?
+
+                            products[0].filter((product) => 
+                            // Filtrage prix et couleur
+                            ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                            && (colorsChosen.current.includes(product.productColor)))
+
+                            // Filtrage prix et taille
+                            || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                            && (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor ||        product.isBig === sizeFilter.isBig))
+
+                            // Filtrage taille et couleur
+                            || ((product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig) 
+                            && (colorsChosen.current.includes(product.productColor)))).map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
                                             <Carpets key={key.productId}

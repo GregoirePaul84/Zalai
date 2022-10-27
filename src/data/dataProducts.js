@@ -282,7 +282,7 @@ export const products = [
         'productName': 'Tapis berbère 9',
         'productOldPrice': 540,
         'productNewPrice': 425,
-        'productColor': 'purple',
+        'productColor': 'red',
         'productTribe': 'Tribu Khouribga',
         'productSize': '167 x 403',
         'productCorridor': true,
