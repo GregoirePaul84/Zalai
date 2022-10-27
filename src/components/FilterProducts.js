@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilter, priceFilter, setPriceFilter, colorFilter, setColorFilter}) => {
-
-    const [widthValue, setWidthValue] = useState(0);
-    const [lengthValue, setLengthValue] = useState(0);
+const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilter, priceFilter, setPriceFilter, sizeFilter, setSizeFilter, colorFilter, setColorFilter}) => {
    
     function hideFilter() {
         setTypeFilter(undefined);
@@ -34,6 +31,28 @@ const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilte
     }, [priceFilter]);
 
 
+    // ====== LOGIQUE FILTRE TAILLES ====== //
+
+    useEffect(() => {
+        if (typeFilter !== 'size') return; 
+        console.log(filterActive);
+
+        sessionStorage.setItem('size', JSON.stringify(sizeFilter));
+        
+        const sizeStorage = JSON.parse(sessionStorage.getItem('size'));
+
+        const selectedSize = document.querySelector(`.${sizeStorage.name}`);
+        const otherSizes = document.querySelectorAll(`#ul-size > li:not(.${sizeStorage.name})`);
+
+        if(sizeStorage.name !== undefined) {
+            selectedSize.style.backgroundColor = "#D9A569";
+            otherSizes.forEach(li => li.style.backgroundColor = 'inherit');
+            setFilterActive({price: filterActive.price, size: true, color: filterActive.color});
+        }
+        else {
+            setFilterActive({price: filterActive.price, size: false, color: filterActive.color}); 
+        }
+    }, [sizeFilter]);
 
     // ====== LOGIQUE FILTRE COULEURS ====== //
 
@@ -118,6 +137,8 @@ const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilte
         }  
     }, [colorFilter]);
 
+    // Filtre de prix
+
     if (typeFilter === 'price') {
         return (
             <div className={`filter-choices-container price`} onMouseOut={hideFilter}>
@@ -143,39 +164,43 @@ const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilte
                             <label htmlFor='price5'>Plus de 500€</label>
                             <input type="radio" name='price' id='price5'/>
                         </li>
-                        </ul>   
+                    </ul>   
                 </div>  
             </div>
         )
     };
 
-    function displayWidthAmount(e) {
-        setWidthValue(e.target.value);
-    }
-
-    function displayLengthAmount(e) {
-        setLengthValue(e.target.value);
-    }
-
+    
+    // Filtre de tailles
 
     if (typeFilter === 'size') {
         return (
             <div className={`filter-choices-container size`} onMouseOut={hideFilter}>
                 <div className="filter-choices">
                     <ul id='ul-size'>
-                        <li>
-                            <input type="range" name="width" min="0" max="200" className='custom-slider' value={widthValue} onChange={(e) => {displayWidthAmount(e)}}/>
-                            <label htmlFor="largeur">Largeur ({widthValue} cm)</label>
+                        <li className='size90' onClick={() => setSizeFilter({size: '60 x 90', name: "size90"})}>
+                            <label htmlFor='size1'>60 x 90</label>
+                            <input type="radio" name='size' id='size1'/>
                         </li>
-                        <li>
-                            <input type="number" name="width" min="0" max="200" className='input-number' value={widthValue} onChange={(e) => {displayWidthAmount(e)}}/>
+                        <li className='size170' onClick={() => setSizeFilter({size: '120 x 170', name: "size170"})}>
+                            <label htmlFor='size2'>120 x 170</label>
+                            <input type="radio" name='size' id='size2' />
                         </li>
-                        <li>
-                            <input type="range" name="length" min="0" max="500" className='custom-slider' value={lengthValue} onChange={(e) => {displayLengthAmount(e)}}/>
-                            <label htmlFor="longueur">Longueur ({lengthValue} cm)</label>
+                        <li className='size270' onClick={() => setSizeFilter({size: '180 x 270', name: "size270"})}>
+                            <label htmlFor='size3'>180 x 270</label>
+                            <input type="radio" name='size' id='size3' />
                         </li>
-                        <li>
-                            <input type="number" name="length" min="0" max="500" className='input-number' value={lengthValue} onChange={(e) => {displayLengthAmount(e)}}/>
+                        <li className='size350' onClick={() => setSizeFilter({size: '250 x 350', name: "size350"})}>
+                            <label htmlFor='size4'>250 x 350</label>
+                            <input type="radio" name='size' id='size4'/>
+                        </li>
+                        <li className='size351' onClick={() => setSizeFilter({isBig: true, name: "size351"})}>
+                            <label htmlFor='size5'>Plus de 250 x 350</label>
+                            <input type="radio" name='size' id='size5'/>
+                        </li>
+                        <li className='size352' onClick={() => setSizeFilter({corridor: true, name: "size352"})}>
+                            <label htmlFor='size6'>Couloir</label>
+                            <input type="radio" name='size' id='size6'/>
                         </li>
                     </ul>   
                 </div>  
@@ -183,6 +208,7 @@ const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilte
         )
     };
 
+    // Filtre de couleurs
 
     if (typeFilter === 'color') {
         return (

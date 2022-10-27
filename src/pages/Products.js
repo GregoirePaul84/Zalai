@@ -40,7 +40,7 @@ const Products = () => {
 
     const [priceFilter, setPriceFilter] = useState({valueMin: undefined, valueMax: undefined, name: undefined});
 
-    const [sizeFilter, setSizeFilter] = useState({value: undefined});
+    const [sizeFilter, setSizeFilter] = useState({size: undefined, name: undefined});
 
     const [colorFilter, setColorFilter] = useState([{'id': 'white', 'isChecked': false}, {'id': 'black', 'isChecked': false}, {'id': 'gray', 'isChecked': false}, {'id': 'green', 'isChecked': false}, {'id': 'red', 'isChecked': false}, {'id': 'orange', 'isChecked': false}, {'id': 'yellow', 'isChecked': false}, {'id': 'blue', 'isChecked': false}, {'id': 'purple', 'isChecked': false}, {'id': 'maroon', 'isChecked': false}]);
 
@@ -135,18 +135,20 @@ const Products = () => {
             document.querySelector('.checkbox-filters').checked = false;
             
             sessionStorage.setItem('price', JSON.stringify(priceFilter));
-
+            sessionStorage.setItem('size', JSON.stringify(sizeFilter));
             sessionStorage.setItem('color', JSON.stringify(colorFilter));  
 
         }  
 
-    }, [removeFilters, filterActive, priceFilter, colorFilter]);
+    }, [removeFilters, filterActive, priceFilter, sizeFilter, colorFilter]);
 
 
     // Annule tous les filtres en réinitialisant au state initial
     function removeFilters() {
 
         setPriceFilter({valueMin: undefined, valueMax: undefined, name: undefined});
+
+        setSizeFilter({size: undefined, name: undefined});
 
         setColorFilter(([{'id': 'white', 'isChecked': false}, {'id': 'black', 'isChecked': false}, {'id': 'gray', 'isChecked': false}, {'id': 'green', 'isChecked': false}, {'id': 'red', 'isChecked': false}, {'id': 'orange', 'isChecked': false}, {'id': 'yellow', 'isChecked': false}, {'id': 'blue', 'isChecked': false}, {'id': 'purple', 'isChecked': false}, {'id': 'maroon', 'isChecked': false}]));
 
@@ -166,16 +168,6 @@ const Products = () => {
         colorsChosen.current = colorsArray;
         
     }, [colorFilter]);
-    
-
-        
-    useEffect(() => {
-        if (typeFilter === 'size')
-            document.querySelector('.filter-container').style.borderRadius = '10px 10px 0 0';
-        else 
-            document.querySelector('.filter-container').style.borderRadius = '10px';
-    }, [typeFilter]);
-
 
     
     // Détection du scroll
@@ -189,6 +181,7 @@ const Products = () => {
 
     });
 
+    console.log(priceFilter);
     return (
         <>
         <div className="home-loader">
@@ -235,24 +228,25 @@ const Products = () => {
                                             <li onMouseOver={() => {setTypeFilter('price')}} >
                                                 <span>Prix</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter === 'price') ? <FilterProducts typeFilter={'price'} filterActive={filterActive} setFilterActive={setFilterActive} setTypeFilter={setTypeFilter} priceFilter={priceFilter} setPriceFilter={setPriceFilter}/> : null}
+                                                {(typeFilter === 'price') ? <FilterProducts typeFilter={'price'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} priceFilter={priceFilter} setPriceFilter={setPriceFilter} /> : null}
                                             </li>
                                             <li onMouseOver={() => {setTypeFilter('size')}}>
                                                 <span>Taille</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter=== 'size') ? <FilterProducts typeFilter={'size'} setTypeFilter={setTypeFilter}/> : null}
+                                                {(typeFilter === 'size') ? <FilterProducts typeFilter={'size'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} sizeFilter={sizeFilter} setSizeFilter={setSizeFilter} /> : null}
                                             </li>
                                             <li onMouseOver={() => {setTypeFilter('color')}}>
                                                 <span>Couleur</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter=== 'color') ? <FilterProducts typeFilter={'color'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} colorFilter={colorFilter} setColorFilter={setColorFilter} /> : null}
+                                                {(typeFilter === 'color') ? <FilterProducts typeFilter={'color'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} colorFilter={colorFilter} setColorFilter={setColorFilter} /> : null}
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <img src={mandala} alt="decoration florale" />
                             </div>
-                            {(category !== undefined && filterActive.price === false && filterActive.color === false) ? 
+                            {/* Affichage des produits = aucun filtre */}
+                            {(category !== undefined && filterActive.price === false && filterActive.size === false && filterActive.color === false) ? 
                                 products[category].map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
@@ -275,8 +269,16 @@ const Products = () => {
                                         </ProductContext.Provider>
                                     )
                                 })
-                            : ((filterActive.price === true && filterActive.color === false) || ((filterActive.price === false && filterActive.color === true))) ?
-                            products[0].filter((product) => (product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) || (colorsChosen.current.includes(product.productColor))).map((key) => {
+                            : 
+                            /* Affichage des produits = au moins 1 filtre activé */
+                            ((filterActive.price === true && filterActive.size === false && filterActive.color === false) || (filterActive.price === false && filterActive.size === true && filterActive.color === false) || (filterActive.price === false && filterActive.size === false && filterActive.color === true)) ?
+
+                            products[0].filter((product) => 
+                               (product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                            || (colorsChosen.current.includes(product.productColor)) 
+                            || (product.productSize === sizeFilter.size)
+                            || (product.productCorridor === sizeFilter.corridor)
+                            || (product.isBig === sizeFilter.isBig)).map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
                                             <Carpets key={key.productId}
@@ -298,7 +300,9 @@ const Products = () => {
                                         </ProductContext.Provider>
                                     )
                                 })
-                            : ((filterActive.price === true && filterActive.color === true)) ?
+                            : 
+                            /* Affichage des produits = 2 filtres activés */
+                            ((filterActive.price === true && filterActive.color === true)) ?
                             products[0].filter((product) => (product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) && (colorsChosen.current.includes(product.productColor))).map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>

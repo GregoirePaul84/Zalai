@@ -55,6 +55,12 @@ import carpet8_4 from '../media/products/Tapis/Tapis8/tapis8_4.webp';
 import carpet8_5 from '../media/products/Tapis/Tapis8/tapis8_5.webp';
 import carpet8_6 from '../media/products/Tapis/Tapis8/tapis8_6.webp';
 
+import carpet9 from '../media/products/Tapis/Tapis9/tapis9.webp';
+import carpet9_2 from '../media/products/Tapis/Tapis9/tapis9_2.webp';
+import carpet9_3 from '../media/products/Tapis/Tapis9/tapis9_3.jpg';
+import carpet9_4 from '../media/products/Tapis/Tapis9/tapis9_4.jpg';
+import carpet9_5 from '../media/products/Tapis/Tapis9/tapis9_5.jpg';
+import carpet9_6 from '../media/products/Tapis/Tapis9/tapis9_6.jpg';
 
 import light1 from '../media/products/Luminaires/Luminaire1/light1.webp';
 import light1_2 from '../media/products/Luminaires/Luminaire1/light1_2.webp';
@@ -80,7 +86,9 @@ export const products = [
         'productNewPrice': 250,
         'productColor': 'blue',
         'productTribe': 'Tribu Chefchaouen',
-        'productSize': '250 x 175',
+        'productSize': '180 x 270',
+        'productCorridor': false,
+        'isBig': false,
         'productMaterial': '100% laine de mouton',
         'productImg': carpet1,
         'productHover': carpet1_2,
@@ -103,7 +111,9 @@ export const products = [
         'productNewPrice': 280,
         'productColor': 'red',
         'productTribe': 'Tribu Tanger',
-        'productSize': '175 x 90',
+        'productSize': '60 x 90',
+        'productCorridor': false,
+        'isBig': false,
         'productMaterial': '100% poil de chameau',
         'productImg': carpet2,
         'productHover': carpet2_2,
@@ -125,7 +135,9 @@ export const products = [
         'productNewPrice': 325,
         'productColor': 'white',
         'productTribe': 'Tribu Rabat',
-        'productSize': '300 x 150',
+        'productSize': '120 x 170',
+        'productCorridor': false,
+        'isBig': false,
         'productMaterial': '100% poil de chameau',
         'productImg': carpet3,
         'productHover': carpet3_2,
@@ -147,7 +159,9 @@ export const products = [
         'productNewPrice': 195,
         'productColor': 'maroon',
         'productTribe': 'Tribu Mohammedia',
-        'productSize': '185 x 150',
+        'productSize': '255 x 355',
+        'productCorridor': false,
+        'isBig': true,
         'productMaterial': '100% laine de mouton',
         'productImg': carpet4,
         'productHover': carpet4_2,
@@ -170,7 +184,9 @@ export const products = [
         'productNewPrice': 190,
         'productColor': 'white',
         'productTribe': 'Tribu Mohammedia',
-        'productSize': '185 x 150',
+        'productSize': '250 x 350',
+        'productCorridor': false,
+        'isBig': false,
         'productMaterial': '100% laine de mouton',
         'productImg': carpet5,
         'productHover': carpet5_2,
@@ -193,7 +209,9 @@ export const products = [
         'productNewPrice': 185,
         'productColor': 'red',
         'productTribe': 'Tribu Mohammedia',
-        'productSize': '185 x 150',
+        'productSize': '180 x 270',
+        'productCorridor': false,
+        'isBig': false,
         'productMaterial': '100% laine de mouton',
         'productImg': carpet6,
         'productHover': carpet6_2,
@@ -216,7 +234,9 @@ export const products = [
         'productNewPrice': 179,
         'productColor': 'maroon',
         'productTribe': 'Tribu Mohammedia',
-        'productSize': '185 x 150',
+        'productSize': '60 x 90',
+        'productCorridor': false,
+        'isBig': false,
         'productMaterial': '100% laine de mouton',
         'productImg': carpet7,
         'productHover': carpet7_2,
@@ -239,7 +259,9 @@ export const products = [
         'productNewPrice': 275,
         'productColor': 'purple',
         'productTribe': 'Tribu Mohammedia',
-        'productSize': '185 x 150',
+        'productSize': '120 x 170',
+        'productCorridor': false,
+        'isBig': false,
         'productMaterial': '100% laine de mouton',
         'productImg': carpet8,
         'productHover': carpet8_2,
@@ -249,6 +271,31 @@ export const products = [
                             {"id":"carpet4", "img":carpet8_4}, 
                             {"id":"carpet5", "img":carpet8_5},
                             {"id":"carpet6", "img":carpet8_6}
+                        ],
+        'productAlt': 'choix de produit: décorations'
+    },
+
+    {
+        'productId': '8',
+        'productCategory': 'tapis',
+        'productClass': 'tapis-berbère-9',
+        'productName': 'Tapis berbère 9',
+        'productOldPrice': 540,
+        'productNewPrice': 425,
+        'productColor': 'purple',
+        'productTribe': 'Tribu Khouribga',
+        'productSize': '167 x 403',
+        'productCorridor': true,
+        'isBig': false,
+        'productMaterial': '100% poil de chameau',
+        'productImg': carpet9,
+        'productHover': carpet9_2,
+        'productAllImg': [{"id":"carpet1", "img":carpet9}, 
+                            {"id":"carpet2", "img":carpet9_2}, 
+                            {"id":"carpet3", "img":carpet9_3}, 
+                            {"id":"carpet4", "img":carpet9_4}, 
+                            {"id":"carpet5", "img":carpet9_5},
+                            {"id":"carpet6", "img":carpet9_6}
                         ],
         'productAlt': 'choix de produit: décorations'
     }
