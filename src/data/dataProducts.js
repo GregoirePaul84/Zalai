@@ -68,8 +68,41 @@ import light1_3 from '../media/products/Luminaires/Luminaire1/light1_3.webp';
 import light1_4 from '../media/products/Luminaires/Luminaire1/light1_4.webp';
 import light1_5 from '../media/products/Luminaires/Luminaire1/light1_5.webp';
 import light1_6 from '../media/products/Luminaires/Luminaire1/light1_6.webp';
-import light2 from '../media/products/Luminaires/CU07BO-1.webp';
-import light3 from '../media/products/Luminaires/ilham-lustre-marocain-suspendu-952.webp';
+
+import light2 from '../media/products/Luminaires/Luminaire2/light2.webp';
+import light2_2 from '../media/products/Luminaires/Luminaire2/light2_2.webp';
+import light2_3 from '../media/products/Luminaires/Luminaire2/light2_3.webp';
+import light2_4 from '../media/products/Luminaires/Luminaire2/light2_4.webp';
+import light2_5 from '../media/products/Luminaires/Luminaire2/light2_5.webp';
+import light2_6 from '../media/products/Luminaires/Luminaire2/light2_6.webp';
+
+import light3 from '../media/products/Luminaires/Luminaire3/light3.webp';
+import light3_2 from '../media/products/Luminaires/Luminaire3/light3_2.webp';
+import light3_3 from '../media/products/Luminaires/Luminaire3/light3_3.webp';
+import light3_4 from '../media/products/Luminaires/Luminaire3/light3_4.webp';
+import light3_5 from '../media/products/Luminaires/Luminaire3/light3_5.webp';
+import light3_6 from '../media/products/Luminaires/Luminaire3/light3_6.webp';
+
+import light4 from '../media/products/Luminaires/Luminaire4/light4.webp';
+import light4_2 from '../media/products/Luminaires/Luminaire4/light4_2.webp';
+import light4_3 from '../media/products/Luminaires/Luminaire4/light4_3.webp';
+import light4_4 from '../media/products/Luminaires/Luminaire4/light4_4.webp';
+import light4_5 from '../media/products/Luminaires/Luminaire4/light4_5.webp';
+import light4_6 from '../media/products/Luminaires/Luminaire4/light4_6.webp';
+
+import light5 from '../media/products/Luminaires/Luminaire5/light5.webp';
+import light5_2 from '../media/products/Luminaires/Luminaire5/light5_2.webp';
+import light5_3 from '../media/products/Luminaires/Luminaire5/light5_3.webp';
+import light5_4 from '../media/products/Luminaires/Luminaire5/light5_4.webp';
+import light5_5 from '../media/products/Luminaires/Luminaire5/light5_5.webp';
+import light5_6 from '../media/products/Luminaires/Luminaire5/light5_6.webp';
+
+import light6 from '../media/products/Luminaires/Luminaire6/light6.webp';
+import light6_2 from '../media/products/Luminaires/Luminaire6/light6_2.webp';
+import light6_3 from '../media/products/Luminaires/Luminaire6/light6_3.webp';
+import light6_4 from '../media/products/Luminaires/Luminaire6/light6_4.webp';
+import light6_5 from '../media/products/Luminaires/Luminaire6/light6_5.webp';
+import light6_6 from '../media/products/Luminaires/Luminaire6/light6_6.webp';
 
 import deco1 from '../media/products/Décoration/coussin-kilim-coussin-marocain-666.webp';
 import deco2 from '../media/products/Décoration/coussin-orange-en-soie-de-cactus-coussin-marocain-798.webp';
@@ -86,10 +119,12 @@ export const products = [
         'productNewPrice': 250,
         'productColor': 'blue',
         'productTribe': 'Tribu Chefchaouen',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
         'productSize': '180 x 270',
         'productCorridor': false,
         'isBig': false,
-        'productMaterial': '100% laine de mouton',
+        'productComposition': '100% laine de mouton',
         'productImg': carpet1,
         'productHover': carpet1_2,
         'productAllImg': [{"id":"carpet1", "img":carpet1}, 
@@ -111,10 +146,12 @@ export const products = [
         'productNewPrice': 280,
         'productColor': 'red',
         'productTribe': 'Tribu Tanger',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
         'productSize': '60 x 90',
         'productCorridor': false,
         'isBig': false,
-        'productMaterial': '100% poil de chameau',
+        'productComposition': '100% poil de chameau',
         'productImg': carpet2,
         'productHover': carpet2_2,
         'productAllImg': [{"id":"carpet1", "img":carpet2}, 
@@ -135,10 +172,12 @@ export const products = [
         'productNewPrice': 325,
         'productColor': 'white',
         'productTribe': 'Tribu Rabat',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
         'productSize': '120 x 170',
         'productCorridor': false,
         'isBig': false,
-        'productMaterial': '100% poil de chameau',
+        'productComposition': '100% poil de chameau',
         'productImg': carpet3,
         'productHover': carpet3_2,
         'productAllImg': [{"id":"carpet1", "img":carpet3}, 
@@ -159,10 +198,12 @@ export const products = [
         'productNewPrice': 195,
         'productColor': 'maroon',
         'productTribe': 'Tribu Mohammedia',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
         'productSize': '255 x 355',
         'productCorridor': false,
         'isBig': true,
-        'productMaterial': '100% laine de mouton',
+        'productComposition': '100% laine de mouton',
         'productImg': carpet4,
         'productHover': carpet4_2,
         'productAllImg': [{"id":"carpet1", "img":carpet4}, 
@@ -184,10 +225,12 @@ export const products = [
         'productNewPrice': 190,
         'productColor': 'white',
         'productTribe': 'Tribu Mohammedia',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
         'productSize': '250 x 350',
         'productCorridor': false,
         'isBig': false,
-        'productMaterial': '100% laine de mouton',
+        'productComposition': '100% laine de mouton',
         'productImg': carpet5,
         'productHover': carpet5_2,
         'productAllImg': [{"id":"carpet1", "img":carpet5}, 
@@ -209,10 +252,12 @@ export const products = [
         'productNewPrice': 185,
         'productColor': 'red',
         'productTribe': 'Tribu Mohammedia',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
         'productSize': '180 x 270',
         'productCorridor': false,
         'isBig': false,
-        'productMaterial': '100% laine de mouton',
+        'productComposition': '100% laine de mouton',
         'productImg': carpet6,
         'productHover': carpet6_2,
         'productAllImg': [{"id":"carpet1", "img":carpet6}, 
@@ -234,10 +279,12 @@ export const products = [
         'productNewPrice': 179,
         'productColor': 'maroon',
         'productTribe': 'Tribu Mohammedia',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
         'productSize': '60 x 90',
         'productCorridor': false,
         'isBig': false,
-        'productMaterial': '100% laine de mouton',
+        'productComposition': '100% laine de mouton',
         'productImg': carpet7,
         'productHover': carpet7_2,
         'productAllImg': [{"id":"carpet1", "img":carpet7}, 
@@ -259,10 +306,12 @@ export const products = [
         'productNewPrice': 275,
         'productColor': 'purple',
         'productTribe': 'Tribu Mohammedia',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
         'productSize': '120 x 170',
         'productCorridor': false,
         'isBig': false,
-        'productMaterial': '100% laine de mouton',
+        'productComposition': '100% laine de mouton',
         'productImg': carpet8,
         'productHover': carpet8_2,
         'productAllImg': [{"id":"carpet1", "img":carpet8}, 
@@ -284,10 +333,12 @@ export const products = [
         'productNewPrice': 425,
         'productColor': 'red',
         'productTribe': 'Tribu Khouribga',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
         'productSize': '167 x 403',
         'productCorridor': true,
         'isBig': false,
-        'productMaterial': '100% poil de chameau',
+        'productComposition': '100% poil de chameau',
         'productImg': carpet9,
         'productHover': carpet9_2,
         'productAllImg': [{"id":"carpet1", "img":carpet9}, 
@@ -307,11 +358,16 @@ export const products = [
     'productCategory': 'luminaires',
     'productClass': 'light-1',
     'productName': 'lumière 1',
-    'productOldPrice': 120,
-    'productNewPrice': 70,
+    'productOldPrice': 150,
+    'productNewPrice': 85,
+    'productColor': 'undefined',
+    'productCorridor': 'undefined',
+    'isBig': 'undefined',
     'productTribe': 'Artisan de Casablanca',
+    'productKind': 'hanging',
+    'productMaterial': 'steel',
     'productSize': '60 x 50',
-    'productMaterial': '100% acier',
+    'productComposition': '100% acier',
     'productImg': light1,
     'productHover': light1_2,
     'productAllImg': [{"id":"light1", "img":light1}, 
@@ -330,10 +386,23 @@ export const products = [
     'productName': 'lumière 2',
     'productOldPrice': 90,
     'productNewPrice': 50,
+    'productColor': 'undefined',
+    'productCorridor': 'undefined',
+    'isBig': 'undefined',
     'productTribe': 'Artisan de Rabat',
+    'productKind': 'hanging',
+    'productMaterial': 'coper',
     'productSize': '65 x 55',
-    'productMaterial': '100% aluminium',
+    'productComposition': '100% cuivre',
     'productImg': light2,
+    'productHover': light2_2,
+    'productAllImg': [{"id":"light1", "img":light2}, 
+                            {"id":"light2", "img":light2_2}, 
+                            {"id":"light3", "img":light2_3}, 
+                            {"id":"light4", "img":light2_4}, 
+                            {"id":"light5", "img":light2_5}, 
+                            {"id":"light6", "img":light2_6}
+                        ],
     'productAlt': 'lumière 2'
     },
     {
@@ -343,11 +412,102 @@ export const products = [
     'productName': 'lumière 3',
     'productOldPrice': 115,
     'productNewPrice': 65,
+    'productColor': 'undefined',
+    'productCorridor': 'undefined',
+    'isBig': 'undefined',
     'productTribe': 'Artisan de Chefchaouen',
+    'productKind': 'ground',
+    'productMaterial': 'coper',
     'productSize': '50 x 45',
-    'productMaterial': '100% acier',
+    'productComposition': '100% cuivre',
     'productImg': light3,
+    'productHover': light3_2,
+    'productAllImg': [{"id":"light1", "img":light3}, 
+                            {"id":"light2", "img":light3_2}, 
+                            {"id":"light3", "img":light3_3}, 
+                            {"id":"light4", "img":light3_4}, 
+                            {"id":"light5", "img":light3_5}, 
+                            {"id":"light6", "img":light3_6}
+                        ],
     'productAlt': 'lumière 3'
+    },
+    {
+    'productId': '3',
+    'productCategory': 'luminaires',
+    'productClass': 'light-4',
+    'productName': 'lumière 4',
+    'productOldPrice': 185,
+    'productNewPrice': 99,
+    'productColor': 'undefined',
+    'productCorridor': 'undefined',
+    'isBig': 'undefined',
+    'productTribe': 'Artisan de Chefchaouen',
+    'productKind': 'ground',
+    'productMaterial': 'coper',
+    'productSize': '100 x 30',
+    'productComposition': '100% cuivre',
+    'productImg': light4,
+    'productHover': light4_2,
+    'productAllImg': [{"id":"light1", "img":light4}, 
+                            {"id":"light2", "img":light4_2}, 
+                            {"id":"light3", "img":light4_3}, 
+                            {"id":"light4", "img":light4_4}, 
+                            {"id":"light5", "img":light4_5}, 
+                            {"id":"light6", "img":light4_6}
+                        ],
+    'productAlt': 'lumière 4'
+    },
+    {
+    'productId': '4',
+    'productCategory': 'luminaires',
+    'productClass': 'light-5',
+    'productName': 'lumière 5',
+    'productOldPrice': 240,
+    'productNewPrice': 195,
+    'productColor': 'undefined',
+    'productCorridor': 'undefined',
+    'isBig': 'undefined',
+    'productTribe': 'Artisan de Chefchaouen',
+    'productKind': 'hanging',
+    'productMaterial': 'glass',
+    'productSize': '100 x 30',
+    'productComposition': 'Verre et cuivre',
+    'productImg': light5,
+    'productHover': light5_2,
+    'productAllImg': [{"id":"light1", "img":light5}, 
+                            {"id":"light2", "img":light5_2}, 
+                            {"id":"light3", "img":light5_3}, 
+                            {"id":"light4", "img":light5_4}, 
+                            {"id":"light5", "img":light5_5}, 
+                            {"id":"light6", "img":light5_6}
+                        ],
+    'productAlt': 'lumière 5'
+    },
+    {
+    'productId': '5',
+    'productCategory': 'luminaires',
+    'productClass': 'light-6',
+    'productName': 'lumière 6',
+    'productOldPrice': 170,
+    'productNewPrice': 135,
+    'productColor': 'undefined',
+    'productCorridor': 'undefined',
+    'isBig': 'undefined',
+    'productTribe': 'Artisan de Chefchaouen',
+    'productKind': 'hanging',
+    'productMaterial': 'glass',
+    'productSize': '100 x 30',
+    'productComposition': 'Verre et cuivre',
+    'productImg': light6,
+    'productHover': light6_2,
+    'productAllImg': [{"id":"light1", "img":light6}, 
+                            {"id":"light2", "img":light6_2}, 
+                            {"id":"light3", "img":light6_3}, 
+                            {"id":"light4", "img":light6_4}, 
+                            {"id":"light5", "img":light6_5}, 
+                            {"id":"light6", "img":light6_6}
+                        ],
+    'productAlt': 'lumière 6'
     }
 ],
 

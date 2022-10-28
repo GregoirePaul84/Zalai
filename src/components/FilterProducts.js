@@ -6,7 +6,6 @@ const FilterProducts = ({category, setTypeFilter, filterActive, setFilterActive,
         setTypeFilter(undefined);
     }
 
-    console.log(category);
 
     // ====== LOGIQUE FILTRE PRIX ====== //
 

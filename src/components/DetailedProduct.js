@@ -89,7 +89,7 @@ const DetailedProduct = ({products, categoryIndex}) => {
         const selectMainImgs = document.querySelectorAll('.detailed-img-container img');
         console.log(e.target.getAttribute('class'));
         selectMainImgs.forEach((e) => {e.setAttribute('src', imgSelected.getAttribute('src'))});
-
+        
         switch (e.target.getAttribute('class')) {
             case 'carpet1': setImgIndex(0);
                 break;
@@ -115,9 +115,7 @@ const DetailedProduct = ({products, categoryIndex}) => {
         }
     }, [imgIndex]);
 
-    // useEffect(() => {
-    //     const select
-    // })
+    console.log(imgIndex);
 
     return (
         <section className="detailed-product">
@@ -158,7 +156,7 @@ const DetailedProduct = ({products, categoryIndex}) => {
                                 </p>
                                 <p className='material'>
                                     <FontAwesomeIcon icon={faPercent} />
-                                    {productSelected[index].productMaterial}
+                                    {productSelected[index].productComposition}
                                 </p>
                                 <p className='artisan'>
                                     <FontAwesomeIcon icon={faTent} />

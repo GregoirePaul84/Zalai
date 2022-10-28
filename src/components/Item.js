@@ -20,7 +20,6 @@ const Item = ({productCategory, productClass, productName, productOldPrice, prod
     const [imgHover, setImgHover] = useState(false);
 
     function displayProduct() {
-        console.log(productCategory);
         setDisplayDetail(!displayDetail);
         navigate(`/products/${productId}`);
     }

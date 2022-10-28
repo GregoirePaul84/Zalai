@@ -36,7 +36,7 @@ const Products = () => {
     const [displayDetail, setDisplayDetail] = useState(false);
     const [typeFilter, setTypeFilter] = useState(undefined);
 
-    const [filterActive, setFilterActive] = useState({price: false, size: false, color: false, kind: undefined, material: undefined});
+    const [filterActive, setFilterActive] = useState({price: false, size: false, color: false, kind: false, material: false});
 
     // Filtre de prix
     const [priceFilter, setPriceFilter] = useState({valueMin: undefined, valueMax: undefined, name: undefined});
@@ -55,6 +55,9 @@ const Products = () => {
 
     const colorsChosen = useRef();
     
+    function hideFilter() {
+        setTypeFilter(undefined);
+    }
 
     // ==== GESTION DU LOADER ==== //
 
@@ -97,12 +100,17 @@ const Products = () => {
         
         if (name === 'tapis') {
             setCategory(0);
+            setPriceFilter({valueMin: undefined, valueMax: undefined, name: undefined});
+            setColorFilter([{'id': 'white', 'isChecked': false}, {'id': 'black', 'isChecked': false}, {'id': 'gray', 'isChecked': false}, {'id': 'green', 'isChecked': false}, {'id': 'red', 'isChecked': false}, {'id': 'orange', 'isChecked': false}, {'id': 'yellow', 'isChecked': false}, {'id': 'blue', 'isChecked': false}, {'id': 'purple', 'isChecked': false}, {'id': 'maroon', 'isChecked': false}]);
         }   
         if (name === 'luminaires') {
             setCategory(1);
+            setPriceFilter({valueMin: undefined, valueMax: undefined, name: undefined});
         }   
         if (name === 'décorations') {
             setCategory(2);
+            setPriceFilter({valueMin: undefined, valueMax: undefined, name: undefined});
+            setColorFilter([{'id': 'white', 'isChecked': false}, {'id': 'black', 'isChecked': false}, {'id': 'gray', 'isChecked': false}, {'id': 'green', 'isChecked': false}, {'id': 'red', 'isChecked': false}, {'id': 'orange', 'isChecked': false}, {'id': 'yellow', 'isChecked': false}, {'id': 'blue', 'isChecked': false}, {'id': 'purple', 'isChecked': false}, {'id': 'maroon', 'isChecked': false}]);
         }   
     };
 
@@ -166,7 +174,7 @@ const Products = () => {
 
         setMaterialFilter({material: undefined, name: undefined});
 
-        setFilterActive({price: false, size: false, color: false, kind: undefined, material: undefined});
+        setFilterActive({price: false, size: false, color: false, kind: false, material: false});
     }
 
 
@@ -193,7 +201,7 @@ const Products = () => {
         };
 
     });
-
+    
     return (
         <>
         <div className="home-loader">
@@ -234,7 +242,7 @@ const Products = () => {
                                 <div className="title-filter-container">
                                     {/* eslint-disable-next-line */}
                                     <h3 className='category-title'></h3>
-                                    <div className="filter-container">
+                                    <div className="filter-container" onMouseOut={hideFilter}>
                                         <p>Trier les produits</p>
                                         <input type="checkbox" className='checkbox-filters' onClick={removeFilters}/>
                                         <ul>
@@ -288,7 +296,7 @@ const Products = () => {
                                 <img src={mandala} alt="decoration florale" />
                             </div>
                             {/* Affichage des produits = aucun filtre */}
-                            {(category !== undefined && filterActive.price === false && filterActive.size === false && filterActive.color === false) ? 
+                            {(category !== undefined && filterActive.price === false && filterActive.size === false && filterActive.color === false && filterActive.kind === false && filterActive.material === false) ? 
                                 products[category].map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
@@ -313,7 +321,9 @@ const Products = () => {
                                 })
                             : 
                             /* Affichage des produits = au moins 1 filtre activé */
-                            ((filterActive.price === true && filterActive.size === false && filterActive.color === false) || (filterActive.price === false && filterActive.size === true && filterActive.color === false) || (filterActive.price === false && filterActive.size === false && filterActive.color === true)) ?
+                            ((filterActive.price === true && filterActive.size === false && filterActive.color === false) || (filterActive.price === false && filterActive.size === true && filterActive.color === false) || (filterActive.price === false && filterActive.size === false && filterActive.color === true) ||
+                            (filterActive.price === false && filterActive.kind === true && filterActive.material === false) ||
+                            (filterActive.price === false && filterActive.kind === false && filterActive.material === true)) ?
 
                             // Filtrage des produits par opérations logiques
                             products[category].filter((product) => 
@@ -322,7 +332,13 @@ const Products = () => {
                                 // Filtrage par couleur uniquement
                             || (colorsChosen.current.includes(product.productColor)) 
                                 // Filtrage par taille uniquement
-                            || (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || (product.isBig === sizeFilter.isBig))).map((key) => {
+                            || (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig)
+                                // Filtrage par genre uniquement
+                            || (product.productKind === kindFilter.kind)
+                                // Filtrage par matériau uniquement
+                            // || (product.productMaterial === materialFilter.material)
+                            ).map((key) => {
+                                
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
                                             <Item key={key.productId}
