@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
-const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilter, priceFilter, setPriceFilter, sizeFilter, setSizeFilter, colorFilter, setColorFilter}) => {
+const FilterProducts = ({category, setTypeFilter, filterActive, setFilterActive, typeFilter, priceFilter, setPriceFilter, sizeFilter, setSizeFilter, colorFilter, setColorFilter, kindFilter, setKindFilter, materialFilter, setMaterialFilter}) => {
    
     function hideFilter() {
         setTypeFilter(undefined);
     }
+
+    console.log(category);
 
     // ====== LOGIQUE FILTRE PRIX ====== //
 
@@ -23,11 +25,12 @@ const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilte
         if(priceStorage.name !== undefined) {
             selectedPrice.style.backgroundColor = "#D9A569";
             otherPrices.forEach(li => li.style.backgroundColor = 'inherit');
-            setFilterActive({price: true, size: filterActive.size, color: filterActive.color});
+            setFilterActive({price: true, size: filterActive.size, color: filterActive.color, kind: filterActive.kind, material: filterActive.material});
         }
         else {
-            setFilterActive({price: false, size: filterActive.size, color: filterActive.color}); 
+            setFilterActive({price: false, size: filterActive.size, color: filterActive.color, kind: filterActive.kind, material: filterActive.material}); 
         }
+        // eslint-disable-next-line 
     }, [priceFilter]);
 
 
@@ -47,11 +50,12 @@ const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilte
         if(sizeStorage.name !== undefined) {
             selectedSize.style.backgroundColor = "#D9A569";
             otherSizes.forEach(li => li.style.backgroundColor = 'inherit');
-            setFilterActive({price: filterActive.price, size: true, color: filterActive.color});
+            setFilterActive({price: filterActive.price, size: true, color: filterActive.color, kind: filterActive.kind, material: filterActive.material});
         }
         else {
-            setFilterActive({price: filterActive.price, size: false, color: filterActive.color}); 
+            setFilterActive({price: filterActive.price, size: false, color: filterActive.color, kind: filterActive.kind, material: filterActive.material}); 
         }
+        // eslint-disable-next-line 
     }, [sizeFilter]);
 
     // ====== LOGIQUE FILTRE COULEURS ====== //
@@ -122,11 +126,11 @@ const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilte
         allColors.forEach(elt => elt.style.opacity = '0');
 
         if(chosenColors.length === 0) {
-            setFilterActive({price: filterActive.price, size: filterActive.size, color: false});
+            setFilterActive({price: filterActive.price, size: filterActive.size, color: false, kind: filterActive.kind, material: filterActive.material});
             return;
         }
         else {
-            setFilterActive({price: filterActive.price, size: filterActive.size, color: true});
+            setFilterActive({price: filterActive.price, size: filterActive.size, color: true, kind: filterActive.kind, material: filterActive.material});
 
             for (let i in chosenColors) {
                 const selectedColor = document.querySelector(`#ul-color #${chosenColors[i].id}`);
@@ -135,11 +139,64 @@ const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilte
                 selectedColor.style.opacity = '1';      
             }
         }  
+        // eslint-disable-next-line 
     }, [colorFilter]);
 
-    // Filtre de prix
 
-    if (typeFilter === 'price') {
+
+    // ====== LOGIQUE FILTRE GENRE ====== //
+
+    useEffect(() => {
+        if (typeFilter !== 'kind') return; 
+
+        sessionStorage.setItem('kind', JSON.stringify(kindFilter));
+        
+        const kindStorage = JSON.parse(sessionStorage.getItem('kind'));
+
+        const selectedKind = document.querySelector(`.${kindStorage.name}`);
+        const otherKinds = document.querySelectorAll(`#ul-kind > li:not(.${kindStorage.name})`);
+
+        if(kindStorage.name !== undefined) {
+            selectedKind.style.backgroundColor = "#D9A569";
+            otherKinds.forEach(li => li.style.backgroundColor = 'inherit');
+            setFilterActive({price: filterActive.price, size: filterActive.size, color: filterActive.color, kind: true, material: filterActive.material});
+        }
+        else {
+            setFilterActive({price: filterActive.price, size: filterActive.size, color: filterActive.color, kind: false, material: filterActive.material}); 
+        }
+        // eslint-disable-next-line 
+    }, [kindFilter]);
+
+
+
+    // ====== LOGIQUE FILTRE MATERIAU ====== //
+
+    useEffect(() => {
+        if (typeFilter !== 'material') return; 
+
+        sessionStorage.setItem('material', JSON.stringify(materialFilter));
+        
+        const materialStorage = JSON.parse(sessionStorage.getItem('material'));
+
+        const selectedMaterial = document.querySelector(`.${materialStorage.name}`);
+        const otherMaterials = document.querySelectorAll(`#ul-material > li:not(.${materialStorage.name})`);
+
+        if(materialStorage.name !== undefined) {
+            selectedMaterial.style.backgroundColor = "#D9A569";
+            otherMaterials.forEach(li => li.style.backgroundColor = 'inherit');
+            setFilterActive({price: filterActive.price, size: filterActive.size, color: filterActive.color, kind: filterActive.kind, material: true});
+        }
+        else {
+            setFilterActive({price: filterActive.price, size: filterActive.size, color: filterActive.color, kind: filterActive.kind, material: false}); 
+        }
+        // eslint-disable-next-line 
+    }, [materialFilter]);
+
+
+
+    // Filtre de prix - Tapis
+
+    if (typeFilter === 'price' && category === 0) {
         return (
             <div className={`filter-choices-container price`} onMouseOut={hideFilter}>
                 <div className="filter-choices">
@@ -170,10 +227,9 @@ const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilte
         )
     };
 
-    
-    // Filtre de tailles
+    // Filtre de tailles - Tapis
 
-    if (typeFilter === 'size') {
+    if (typeFilter === 'size' && category === 0) {
         return (
             <div className={`filter-choices-container size`} onMouseOut={hideFilter}>
                 <div className="filter-choices">
@@ -208,9 +264,9 @@ const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilte
         )
     };
 
-    // Filtre de couleurs
+    // Filtre de couleurs - Tapis
 
-    if (typeFilter === 'color') {
+    if (typeFilter === 'color' && category === 0) {
         return (
             <div className={`filter-choices-container color`} onMouseOut={hideFilter}>
                 <div className="filter-choices">
@@ -280,6 +336,94 @@ const FilterProducts = ({setTypeFilter, filterActive, setFilterActive, typeFilte
             </div>
         )
     };
+
+    // Filtre de prix - Luminaires
+
+    if (typeFilter === 'price' && category === 1) {
+        return (
+            <div className={`filter-choices-container price`} onMouseOut={hideFilter}>
+                <div className="filter-choices">
+                    <ul id='ul-price'>
+                        <li className='price75' onClick={() => setPriceFilter({valueMin: 0, valueMax: 75, name: "price75"})}>
+                            <label htmlFor='price1'>0€ à 75€</label>
+                            <input type="radio" name='price' id='price1'/>
+                        </li>
+                        <li className='price100' onClick={() => setPriceFilter({valueMin: 75, valueMax: 100, name: "price100"})}>
+                            <label htmlFor='price2'>75€ à 100€</label>
+                            <input type="radio" name='price' id='price2' />
+                        </li>
+                        <li className='price125' onClick={() => setPriceFilter({valueMin: 100, valueMax: 125, name: "price125"})}>
+                            <label htmlFor='price3'>100€ à 125€</label>
+                            <input type="radio" name='price' id='price3' />
+                        </li>
+                        <li className='price150' onClick={() => setPriceFilter({valueMin: 125, valueMax: 150, name: "price150"})}>
+                            <label htmlFor='price4'>125€ à 150€</label>
+                            <input type="radio" name='price' id='price4'/>
+                        </li>
+                        <li className='price999' onClick={() => setPriceFilter({valueMin: 150, valueMax: 999, name: "price999"})}>
+                            <label htmlFor='price5'>Plus de 150€</label>
+                            <input type="radio" name='price' id='price5'/>
+                        </li>
+                    </ul>   
+                </div>  
+            </div>
+        )
+    };
+
+    
+    
+
+    // Filtre de type - Luminaires
+
+    if (typeFilter === 'kind' && category === 1) {
+        return (
+            <div className={`filter-choices-container kind`} onMouseOut={hideFilter}>
+                <div className="filter-choices">
+                    <ul id='ul-kind'>
+                        <li className='bedside' onClick={() => setKindFilter({kind: 'bedside', name: "bedside"})}>
+                            <label htmlFor='kind1'>Lampe de chevet</label>
+                            <input type="radio" name='bedside' id='kind1'/>
+                        </li>
+                        <li className='ground' onClick={() => setKindFilter({kind: 'ground', name: "ground"})}>
+                            <label htmlFor='kind2'>Lampe de sol</label>
+                            <input type="radio" name='ground' id='kind2' />
+                        </li>
+                        <li className='hanging' onClick={() => setKindFilter({kind: 'hanging', name: "hanging"})}>
+                            <label htmlFor='kind3'>Suspension</label>
+                            <input type="radio" name='hanging' id='kind3' />
+                        </li>
+                    </ul>   
+                </div>  
+            </div>
+        )
+    };
+
+    // Filtre de matériaux - Luminaires
+
+    if (typeFilter === 'material' && category === 1) {
+        return (
+            <div className={`filter-choices-container material`} onMouseOut={hideFilter}>
+                <div className="filter-choices">
+                    <ul id='ul-material'>
+                        <li className='steel' onClick={() => setMaterialFilter({size: 'steel', name: "steel"})}>
+                            <label htmlFor='material1'>Acier</label>
+                            <input type="radio" name='steel' id='material1'/>
+                        </li>
+                        <li className='coper' onClick={() => setMaterialFilter({size: 'coper', name: "coper"})}>
+                            <label htmlFor='material2'>Cuivre</label>
+                            <input type="radio" name='coper' id='material2' />
+                        </li>
+                        <li className='glass' onClick={() => setMaterialFilter({size: 'glass', name: "glass"})}>
+                            <label htmlFor='material3'>Verre</label>
+                            <input type="radio" name='glass' id='material3' />
+                        </li>
+                    </ul>   
+                </div>  
+            </div>
+        )
+    };
+
+    
 
     
 };

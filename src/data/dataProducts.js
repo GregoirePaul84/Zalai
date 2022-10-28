@@ -356,6 +356,8 @@ export const products = [
         'productCategory': 'decorations',
         'productClass': 'deco-1',
         'productName': 'décoration 1',
+        'productOldPrice': 90,
+        'productNewPrice': 50,
         'productImg': deco1,
         'productAlt': 'deco 1'
         },
@@ -363,6 +365,8 @@ export const products = [
         'productCategory': 'decorations',
         'productClass': 'deco-2',
         'productName': 'décoration 2',
+        'productOldPrice': 75,
+        'productNewPrice': 40,
         'productImg': deco2,
         'productAlt': 'deco 2'
         },
@@ -370,6 +374,8 @@ export const products = [
         'productCategory': 'decorations',
         'productClass': 'deco-3',
         'productName': 'décoration 3',
+        'productOldPrice': 95,
+        'productNewPrice': 55,
         'productImg': deco3,
         'productAlt': 'deco 3'
         }

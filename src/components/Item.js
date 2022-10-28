@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBasketShopping } from '@fortawesome/free-solid-svg-icons';
 
 
-const Carpets = ({productCategory, productClass, productName, productOldPrice, productNewPrice, productTribe, productSize, productImg, productHover, productAlt, addBasket, productId}) => {
+const Item = ({productCategory, productClass, productName, productOldPrice, productNewPrice, productTribe, productSize, productImg, productHover, productAlt, addBasket, productId}) => {
 
     const navigate = useNavigate();
 
@@ -74,4 +74,4 @@ const Carpets = ({productCategory, productClass, productName, productOldPrice, p
     );
 };
 
-export default Carpets;
+export default Item;

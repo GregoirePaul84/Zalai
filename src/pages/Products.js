@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Loader from './Loader';
 import Header from '../components/Header';
 import CategoryCard from '../components/CategoryCard';
-import Carpets from '../components/Carpets';
+import Item from '../components/Item';
 import Footer from '../components/Footer';
 import DetailedProduct from '../components/DetailedProduct';
 
@@ -36,13 +36,22 @@ const Products = () => {
     const [displayDetail, setDisplayDetail] = useState(false);
     const [typeFilter, setTypeFilter] = useState(undefined);
 
-    const [filterActive, setFilterActive] = useState({price: false, size: false, color: false});
+    const [filterActive, setFilterActive] = useState({price: false, size: false, color: false, kind: undefined, material: undefined});
 
+    // Filtre de prix
     const [priceFilter, setPriceFilter] = useState({valueMin: undefined, valueMax: undefined, name: undefined});
 
+    // Filtre de tailles
     const [sizeFilter, setSizeFilter] = useState({size: undefined, name: undefined});
 
+    // Filtre de couleurs
     const [colorFilter, setColorFilter] = useState([{'id': 'white', 'isChecked': false}, {'id': 'black', 'isChecked': false}, {'id': 'gray', 'isChecked': false}, {'id': 'green', 'isChecked': false}, {'id': 'red', 'isChecked': false}, {'id': 'orange', 'isChecked': false}, {'id': 'yellow', 'isChecked': false}, {'id': 'blue', 'isChecked': false}, {'id': 'purple', 'isChecked': false}, {'id': 'maroon', 'isChecked': false}]);
+
+    // Filtre de genre
+    const [kindFilter, setKindFilter] = useState({kind: undefined, name: undefined});
+
+    // Filtre de genre
+    const [materialFilter, setMaterialFilter] = useState({material: undefined, name: undefined});
 
     const colorsChosen = useRef();
     
@@ -128,7 +137,7 @@ const Products = () => {
     // Cochage de l'input si au moins un filtre activé, décochage + actualisation du session storage si aucun filtre
     useEffect(() => {
         
-        if(filterActive.price || filterActive.size || filterActive.color) {
+        if(filterActive.price || filterActive.size || filterActive.color || filterActive.kind || filterActive.material) {
             document.querySelector('.checkbox-filters').checked = true;
         }
         else {
@@ -136,11 +145,12 @@ const Products = () => {
             
             sessionStorage.setItem('price', JSON.stringify(priceFilter));
             sessionStorage.setItem('size', JSON.stringify(sizeFilter));
-            sessionStorage.setItem('color', JSON.stringify(colorFilter));  
-
+            sessionStorage.setItem('color', JSON.stringify(colorFilter)); 
+            sessionStorage.setItem('kind', JSON.stringify(kindFilter));
+            sessionStorage.setItem('material', JSON.stringify(materialFilter));  
         }  
 
-    }, [removeFilters, filterActive, priceFilter, sizeFilter, colorFilter]);
+    }, [filterActive, priceFilter, sizeFilter, colorFilter, kindFilter, materialFilter]);
 
 
     // Annule tous les filtres en réinitialisant au state initial
@@ -152,8 +162,11 @@ const Products = () => {
 
         setColorFilter(([{'id': 'white', 'isChecked': false}, {'id': 'black', 'isChecked': false}, {'id': 'gray', 'isChecked': false}, {'id': 'green', 'isChecked': false}, {'id': 'red', 'isChecked': false}, {'id': 'orange', 'isChecked': false}, {'id': 'yellow', 'isChecked': false}, {'id': 'blue', 'isChecked': false}, {'id': 'purple', 'isChecked': false}, {'id': 'maroon', 'isChecked': false}]));
 
-        setFilterActive({price: false, size: false, color: false});
-        
+        setKindFilter({kind: undefined, name: undefined});
+
+        setMaterialFilter({material: undefined, name: undefined});
+
+        setFilterActive({price: false, size: false, color: false, kind: undefined, material: undefined});
     }
 
 
@@ -219,6 +232,7 @@ const Products = () => {
                             <div className="category-title-container">
                                 <img src={mandala} alt="decoration florale" />
                                 <div className="title-filter-container">
+                                    {/* eslint-disable-next-line */}
                                     <h3 className='category-title'></h3>
                                     <div className="filter-container">
                                         <p>Trier les produits</p>
@@ -227,18 +241,47 @@ const Products = () => {
                                             <li onMouseOver={() => {setTypeFilter('price')}} >
                                                 <span>Prix</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter === 'price') ? <FilterProducts typeFilter={'price'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} priceFilter={priceFilter} setPriceFilter={setPriceFilter} /> : null}
+                                                {(typeFilter === 'price') ? <FilterProducts category={category} typeFilter={'price'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} priceFilter={priceFilter} setPriceFilter={setPriceFilter} /> : null}
                                             </li>
+                                            { (category === 0) ?
+                                            <>
                                             <li onMouseOver={() => {setTypeFilter('size')}}>
                                                 <span>Taille</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter === 'size') ? <FilterProducts typeFilter={'size'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} sizeFilter={sizeFilter} setSizeFilter={setSizeFilter} /> : null}
+                                                {(typeFilter === 'size') ? <FilterProducts category={category} typeFilter={'size'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} sizeFilter={sizeFilter} setSizeFilter={setSizeFilter} /> : null}
                                             </li>
                                             <li onMouseOver={() => {setTypeFilter('color')}}>
                                                 <span>Couleur</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter === 'color') ? <FilterProducts typeFilter={'color'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} colorFilter={colorFilter} setColorFilter={setColorFilter} /> : null}
+                                                {(typeFilter === 'color') ? <FilterProducts category={category} typeFilter={'color'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} colorFilter={colorFilter} setColorFilter={setColorFilter} /> : null}
                                             </li>
+                                            </>
+                                            : (category === 1) ?
+                                            <>
+                                            <li onMouseOver={() => {setTypeFilter('kind')}}>
+                                                <span>Type</span>
+                                                <FontAwesomeIcon icon={faChevronDown} />
+                                                {(typeFilter === 'kind') ? <FilterProducts category={category} typeFilter={'kind'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} kindFilter={kindFilter} setKindFilter={setKindFilter} /> : null}
+                                            </li>
+                                            <li onMouseOver={() => {setTypeFilter('material')}}>
+                                                <span>Matériau</span>
+                                                <FontAwesomeIcon icon={faChevronDown} />
+                                                {(typeFilter === 'material') ? <FilterProducts category={category} typeFilter={'material'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} materialFilter={materialFilter} setMaterialFilter={setMaterialFilter} /> : null}
+                                            </li> 
+                                            </>
+                                            : (category === 2) ?
+                                            <>
+                                            <li onMouseOver={() => {setTypeFilter('size')}}>
+                                                <span>Taille</span>
+                                                <FontAwesomeIcon icon={faChevronDown} />
+                                                {(typeFilter === 'size') ? <FilterProducts category={category} typeFilter={'size'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} sizeFilter={sizeFilter} setSizeFilter={setSizeFilter} /> : null}
+                                            </li>
+                                            <li onMouseOver={() => {setTypeFilter('color')}}>
+                                                <span>Couleur</span>
+                                                <FontAwesomeIcon icon={faChevronDown} />
+                                                {(typeFilter === 'color') ? <FilterProducts category={category} typeFilter={'color'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} colorFilter={colorFilter} setColorFilter={setColorFilter} /> : null}
+                                            </li> 
+                                            </> : null }
                                         </ul>
                                     </div>
                                 </div>
@@ -249,7 +292,7 @@ const Products = () => {
                                 products[category].map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
-                                            <Carpets key={key.productId}
+                                            <Item key={key.productId}
                                             saveBasket={saveBasket}
                                             getBasket={getBasket}
                                             addBasket={addBasket}
@@ -273,7 +316,7 @@ const Products = () => {
                             ((filterActive.price === true && filterActive.size === false && filterActive.color === false) || (filterActive.price === false && filterActive.size === true && filterActive.color === false) || (filterActive.price === false && filterActive.size === false && filterActive.color === true)) ?
 
                             // Filtrage des produits par opérations logiques
-                            products[0].filter((product) => 
+                            products[category].filter((product) => 
                                 // Filtrage par prix uniquement
                                (product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
                                 // Filtrage par couleur uniquement
@@ -282,7 +325,7 @@ const Products = () => {
                             || (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || (product.isBig === sizeFilter.isBig))).map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
-                                            <Carpets key={key.productId}
+                                            <Item key={key.productId}
                                             saveBasket={saveBasket}
                                             getBasket={getBasket}
                                             addBasket={addBasket}
@@ -307,7 +350,7 @@ const Products = () => {
                             || (filterActive.price === true && filterActive.size === true && filterActive.color === false)
                             || (filterActive.price === false && filterActive.size === true && filterActive.color === true)) ?
 
-                            products[0].filter((product) => 
+                            products[category].filter((product) => 
                             // Filtrage prix et couleur
                             ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
                             && (colorsChosen.current.includes(product.productColor)))
@@ -321,7 +364,7 @@ const Products = () => {
                             && (colorsChosen.current.includes(product.productColor)))).map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
-                                            <Carpets key={key.productId}
+                                            <Item key={key.productId}
                                             saveBasket={saveBasket}
                                             getBasket={getBasket}
                                             addBasket={addBasket}
@@ -344,13 +387,13 @@ const Products = () => {
                             /* Affichage des produits = 3 filtres activés */
                             ((filterActive.price === true && filterActive.size === true && filterActive.color === true)) ?
 
-                            products[0].filter((product) => 
+                            products[category].filter((product) => 
                             // Filtrage prix + taille + couleur
                             ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
                             && (colorsChosen.current.includes(product.productColor)) && (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig))).map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
-                                            <Carpets key={key.productId}
+                                            <Item key={key.productId}
                                             saveBasket={saveBasket}
                                             getBasket={getBasket}
                                             addBasket={addBasket}

@@ -37,11 +37,11 @@
     }
 }
 
-.price, .size {
+.price, .size, .kind, .material {
     top: 39px;
     right: -33px;
 
-    #ul-price, #ul-size {
+    #ul-price, #ul-size, #ul-kind, #ul-material {
         gap: 0;
 
         li, label {
