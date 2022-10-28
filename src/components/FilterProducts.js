@@ -404,15 +404,15 @@ const FilterProducts = ({category, setTypeFilter, filterActive, setFilterActive,
             <div className={`filter-choices-container material`} onMouseOut={hideFilter}>
                 <div className="filter-choices">
                     <ul id='ul-material'>
-                        <li className='steel' onClick={() => setMaterialFilter({size: 'steel', name: "steel"})}>
+                        <li className='steel' onClick={() => setMaterialFilter({material: 'steel', name: "steel"})}>
                             <label htmlFor='material1'>Acier</label>
                             <input type="radio" name='steel' id='material1'/>
                         </li>
-                        <li className='coper' onClick={() => setMaterialFilter({size: 'coper', name: "coper"})}>
+                        <li className='coper' onClick={() => setMaterialFilter({material: 'coper', name: "coper"})}>
                             <label htmlFor='material2'>Cuivre</label>
                             <input type="radio" name='coper' id='material2' />
                         </li>
-                        <li className='glass' onClick={() => setMaterialFilter({size: 'glass', name: "glass"})}>
+                        <li className='glass' onClick={() => setMaterialFilter({material: 'glass', name: "glass"})}>
                             <label htmlFor='material3'>Verre</label>
                             <input type="radio" name='glass' id='material3' />
                         </li>
