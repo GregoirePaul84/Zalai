@@ -438,12 +438,21 @@ const Products = () => {
                                 }) 
                             : 
                             /* Affichage des produits = 3 filtres activés */
-                            ((filterActive.price === true && filterActive.size === true && filterActive.color === true)) ?
+                            ((filterActive.price === true && filterActive.size === true && filterActive.color === true)
+                            || (filterActive.price === true && filterActive.kind === true && filterActive.material === true)) ?
 
                             products[category].filter((product) => 
                             // Filtrage prix + taille + couleur
                             ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
-                            && (colorsChosen.current.includes(product.productColor)) && (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig))).map((key) => {
+                            && (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig)
+                            && (colorsChosen.current.includes(product.productColor))
+                                            
+                            // Filtrage prix + genre + matériau
+                            || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                            && (product.productKind === kindFilter.kind) 
+                            && (product.productMaterial === materialFilter.material)))
+                            
+                            ).map((key) => {
                                     return(
                                         <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
                                             <Item key={key.productId}
