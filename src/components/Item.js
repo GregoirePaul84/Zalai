@@ -35,8 +35,6 @@ const Item = ({productCategory, productClass, productName, productOldPrice, prod
         }
     }
 
-    console.log(document.querySelector('.product-card:nth-child(2)'));
-
     return (
         <>
         <div className={`product-card ${productClass}`}>

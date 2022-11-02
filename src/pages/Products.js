@@ -23,6 +23,8 @@ import { saveBasket, getBasket, addBasket } from '../functions/basket';
 // Importation des icônes
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import FilterProducts from '../components/FilterProducts';
 
 export const ProductContext = React.createContext();
@@ -52,6 +54,10 @@ const Products = () => {
 
     // Filtre de genre
     const [materialFilter, setMaterialFilter] = useState({material: undefined, name: undefined});
+
+    // Index d'images de produits afin de gérer l'affichage précédent / suivant
+    const [indexStart, setIndexStart] = useState(0);
+    const [indexEnd, setIndexEnd] = useState(8);
 
     const colorsChosen = useRef();
     
@@ -191,7 +197,7 @@ const Products = () => {
     }, [colorFilter]);
 
     
-    // Détection du scroll
+    // ==== DETECTION DU SCROLL ==== //
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, {
         });
@@ -202,7 +208,17 @@ const Products = () => {
 
     });
 
-    console.log(filterActive);
+    // ==== AFFICHAGE DES PRODUITS SUIVANTS ==== //
+
+    // let indexStart = 0;
+    // let indexEnd = 7;
+
+    // function displayNextItems() {
+    //     console.log('suivant');
+    //     indexStart = 7;
+    //     console.log(indexStart);
+    // }
+
     
     return (
         <>
@@ -294,13 +310,23 @@ const Products = () => {
                                             </> : null }
                                         </ul>
                                     </div>
+                                    <div className="scroll-products">
+                                        <div className="previous-products" onClick={() => setIndexStart(0) + setIndexEnd(8)}>
+                                            <FontAwesomeIcon icon={faChevronLeft} />
+                                            <span>Produits précédents</span>
+                                        </div>
+                                        <div className="next-products" onClick={() => setIndexStart(8) + setIndexEnd(16)}>
+                                            <span>Produits suivants</span>
+                                            <FontAwesomeIcon icon={faChevronRight} />
+                                        </div>
+                                    </div>
                                 </div>
                                 <img src={mandala} alt="decoration florale" />
                             </div>
                             <div className="items-container">
                                 {/* Affichage des produits = aucun filtre */}
                                 {(category !== undefined && filterActive.price === false && filterActive.size === false && filterActive.color === false && filterActive.kind === false && filterActive.material === false) ? 
-                                    products[category].map((key) => {
+                                    products[category].filter((item, index) => index >= indexStart && index < indexEnd).map((key) => {
                                         return(
                                             <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
                                                 <Item key={key.productId}

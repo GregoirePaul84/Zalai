@@ -90,20 +90,12 @@
                     height: 100%;
                     width: 100%;
                     background-color: #f0f0ef;
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: space-around;
                     opacity: 0;
                     padding: 20px;
-                    position: relative;
-                    overflow-x: hidden;
 
                     .category-title-container {
                         width: 100%;
-                        height: 20%;
-                        min-height: 100px;
-                        border-bottom: 5px solid transparent;
-                        margin-bottom: 20px;
+                        height: 160px;
                         display: flex;
                         justify-content: center;
 
@@ -187,20 +179,28 @@
                                     }
                                 }
                             }
+
+                            .scroll-products {
+                                display: flex;
+                                justify-content: space-between;
+                                color: $color-secondary;
+
+                                .previous-products, .next-products {
+                                    background-color: $color-light-blue;
+                                    cursor: pointer;
+                                    padding: 10px;
+                                }
+                            }
                         }
                     }
 
                     .items-container {
                         display: none;
-                        flex-direction: column;
                         flex-wrap: wrap;
-                        justify-content: space-between;
-                        position: absolute;
-                        top: 150px;
-                        left: 0;
+                        justify-content: space-around;
                         height: calc(80% - 25px);
                         width: 100%;      
-                        padding-left: 20px;                  
+                        padding-left: 20px;            
                     }
                 }
             }

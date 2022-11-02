@@ -62,6 +62,55 @@ import carpet9_4 from '../media/products/Tapis/Tapis9/tapis9_4.jpg';
 import carpet9_5 from '../media/products/Tapis/Tapis9/tapis9_5.jpg';
 import carpet9_6 from '../media/products/Tapis/Tapis9/tapis9_6.jpg';
 
+import carpet10 from '../media/products/Tapis/Tapis10/tapis10.webp';
+import carpet10_2 from '../media/products/Tapis/Tapis10/tapis10_2.webp';
+import carpet10_3 from '../media/products/Tapis/Tapis10/tapis10_3.webp';
+import carpet10_4 from '../media/products/Tapis/Tapis10/tapis10_4.jpg';
+import carpet10_5 from '../media/products/Tapis/Tapis10/tapis10_5.webp';
+import carpet10_6 from '../media/products/Tapis/Tapis10/tapis10_6.jpg';
+
+import carpet11 from '../media/products/Tapis/Tapis11/tapis11.webp';
+import carpet11_2 from '../media/products/Tapis/Tapis11/tapis11_2.webp';
+import carpet11_3 from '../media/products/Tapis/Tapis11/tapis11_3.webp';
+import carpet11_4 from '../media/products/Tapis/Tapis11/tapis11_4.jpg';
+import carpet11_5 from '../media/products/Tapis/Tapis11/tapis11_5.webp';
+import carpet11_6 from '../media/products/Tapis/Tapis11/tapis11_6.jpg';
+
+import carpet12 from '../media/products/Tapis/Tapis12/tapis12.webp';
+import carpet12_2 from '../media/products/Tapis/Tapis12/tapis12_2.webp';
+import carpet12_3 from '../media/products/Tapis/Tapis12/tapis12_3.jpg';
+import carpet12_4 from '../media/products/Tapis/Tapis12/tapis12_4.jpg';
+import carpet12_5 from '../media/products/Tapis/Tapis12/tapis12_5.jpg';
+import carpet12_6 from '../media/products/Tapis/Tapis12/tapis12_6.jpg';
+
+import carpet13 from '../media/products/Tapis/Tapis13/tapis13.webp';
+import carpet13_2 from '../media/products/Tapis/Tapis13/tapis13_2.webp';
+import carpet13_3 from '../media/products/Tapis/Tapis13/tapis13_3.jpg';
+import carpet13_4 from '../media/products/Tapis/Tapis13/tapis13_4.jpg';
+import carpet13_5 from '../media/products/Tapis/Tapis13/tapis13_5.webp';
+import carpet13_6 from '../media/products/Tapis/Tapis13/tapis13_6.jpg';
+
+import carpet14 from '../media/products/Tapis/Tapis14/tapis14.webp';
+import carpet14_2 from '../media/products/Tapis/Tapis14/tapis14_2.webp';
+import carpet14_3 from '../media/products/Tapis/Tapis14/tapis14_3.webp';
+import carpet14_4 from '../media/products/Tapis/Tapis14/tapis14_4.jpg';
+import carpet14_5 from '../media/products/Tapis/Tapis14/tapis14_5.webp';
+import carpet14_6 from '../media/products/Tapis/Tapis14/tapis14_6.jpg';
+
+import carpet15 from '../media/products/Tapis/Tapis15/tapis15.webp';
+import carpet15_2 from '../media/products/Tapis/Tapis15/tapis15_2.webp';
+import carpet15_3 from '../media/products/Tapis/Tapis15/tapis15_3.webp';
+import carpet15_4 from '../media/products/Tapis/Tapis15/tapis15_4.webp';
+import carpet15_5 from '../media/products/Tapis/Tapis15/tapis15_5.webp';
+import carpet15_6 from '../media/products/Tapis/Tapis15/tapis15_6.webp';
+
+import carpet16 from '../media/products/Tapis/Tapis16/tapis16.webp';
+import carpet16_2 from '../media/products/Tapis/Tapis16/tapis16_2.webp';
+import carpet16_3 from '../media/products/Tapis/Tapis16/tapis16_3.jpg';
+import carpet16_4 from '../media/products/Tapis/Tapis16/tapis16_4.jpg';
+import carpet16_5 from '../media/products/Tapis/Tapis16/tapis16_5.webp';
+import carpet16_6 from '../media/products/Tapis/Tapis16/tapis16_6.jpg';
+
 import light1 from '../media/products/Luminaires/Luminaire1/light1.webp';
 import light1_2 from '../media/products/Luminaires/Luminaire1/light1_2.webp';
 import light1_3 from '../media/products/Luminaires/Luminaire1/light1_3.webp';
@@ -388,6 +437,195 @@ export const products = [
                             {"id":"carpet6", "img":carpet9_6}
                         ],
         'productAlt': 'choix de produit: décorations'
+    },
+
+    {
+        'productId': '9',
+        'productCategory': 'tapis',
+        'productClass': 'tapis-berbère-10',
+        'productName': 'Tapis berbère 10',
+        'productOldPrice': 420,
+        'productNewPrice': 375,
+        'productColor': 'yellow',
+        'productTribe': 'Tribu Khouribga',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
+        'productSize': '175 x 80',
+        'productCorridor': false,
+        'isBig': false,
+        'productComposition': '100% poil de chameau',
+        'productImg': carpet10,
+        'productHover': carpet10_2,
+        'productAllImg': [{"id":"carpet1", "img":carpet10}, 
+                            {"id":"carpet2", "img":carpet10_2}, 
+                            {"id":"carpet3", "img":carpet10_3}, 
+                            {"id":"carpet4", "img":carpet10_4}, 
+                            {"id":"carpet5", "img":carpet10_5},
+                            {"id":"carpet6", "img":carpet10_6}
+                        ],
+        'productAlt': 'Tapis jaune à carreaux'
+    },
+
+    {
+        'productId': '10',
+        'productCategory': 'tapis',
+        'productClass': 'tapis-berbère-11',
+        'productName': 'Tapis berbère 11',
+        'productOldPrice': 195,
+        'productNewPrice': 150,
+        'productColor': 'orange',
+        'productTribe': 'Tribu Khouribga',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
+        'productSize': '275 x 150',
+        'productCorridor': false,
+        'isBig': true,
+        'productComposition': '100% poil de chameau',
+        'productImg': carpet11,
+        'productHover': carpet11_2,
+        'productAllImg': [{"id":"carpet1", "img":carpet11}, 
+                            {"id":"carpet2", "img":carpet11_2}, 
+                            {"id":"carpet3", "img":carpet11_3}, 
+                            {"id":"carpet4", "img":carpet11_4}, 
+                            {"id":"carpet5", "img":carpet11_5},
+                            {"id":"carpet6", "img":carpet11_6}
+                        ],
+        'productAlt': 'Tapis orange et rouge'
+    },
+
+    {
+        'productId': '11',
+        'productCategory': 'tapis',
+        'productClass': 'tapis-berbère-12',
+        'productName': 'Tapis berbère 12',
+        'productOldPrice': 235,
+        'productNewPrice': 190,
+        'productColor': 'green',
+        'productTribe': 'Tribu Khouribga',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
+        'productSize': '120 x 170',
+        'productCorridor': false,
+        'isBig': false,
+        'productComposition': '100% poil de chameau',
+        'productImg': carpet12,
+        'productHover': carpet12_2,
+        'productAllImg': [{"id":"carpet1", "img":carpet12}, 
+                            {"id":"carpet2", "img":carpet12_2}, 
+                            {"id":"carpet3", "img":carpet12_3}, 
+                            {"id":"carpet4", "img":carpet12_4}, 
+                            {"id":"carpet5", "img":carpet12_5},
+                            {"id":"carpet6", "img":carpet12_6}
+                        ],
+        'productAlt': 'Tapis vert à rayures orange et bleu'
+    },
+
+    {
+        'productId': '12',
+        'productCategory': 'tapis',
+        'productClass': 'tapis-berbère-13',
+        'productName': 'Tapis berbère 13',
+        'productOldPrice': 189,
+        'productNewPrice': 145,
+        'productColor': 'blue',
+        'productTribe': 'Tribu Khouribga',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
+        'productSize': '180 x 270',
+        'productCorridor': false,
+        'isBig': false,
+        'productComposition': '100% poil de chameau',
+        'productImg': carpet13,
+        'productHover': carpet13_2,
+        'productAllImg': [{"id":"carpet1", "img":carpet13}, 
+                            {"id":"carpet2", "img":carpet13_2}, 
+                            {"id":"carpet3", "img":carpet13_3}, 
+                            {"id":"carpet4", "img":carpet13_4}, 
+                            {"id":"carpet5", "img":carpet13_5},
+                            {"id":"carpet6", "img":carpet13_6}
+                        ],
+        'productAlt': 'Tapis bleu à extrémités noires'
+    },
+
+    {
+        'productId': '13',
+        'productCategory': 'tapis',
+        'productClass': 'tapis-berbère-14',
+        'productName': 'Tapis berbère 14',
+        'productOldPrice': 240,
+        'productNewPrice': 199,
+        'productColor': 'blue',
+        'productTribe': 'Tribu Khouribga',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
+        'productSize': '175 x 402',
+        'productCorridor': true,
+        'isBig': false,
+        'productComposition': '100% poil de chameau',
+        'productImg': carpet14,
+        'productHover': carpet14_2,
+        'productAllImg': [{"id":"carpet1", "img":carpet14}, 
+                            {"id":"carpet2", "img":carpet14_2}, 
+                            {"id":"carpet3", "img":carpet14_3}, 
+                            {"id":"carpet4", "img":carpet14_4}, 
+                            {"id":"carpet5", "img":carpet14_5},
+                            {"id":"carpet6", "img":carpet14_6}
+                        ],
+        'productAlt': 'Tapis bleu-vert à motifs violets'
+    },
+
+    {
+        'productId': '14',
+        'productCategory': 'tapis',
+        'productClass': 'tapis-berbère-15',
+        'productName': 'Tapis berbère 15',
+        'productOldPrice': 235,
+        'productNewPrice': 195,
+        'productColor': 'purple',
+        'productTribe': 'Tribu Khouribga',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
+        'productSize': '175 x 420',
+        'productCorridor': true,
+        'isBig': false,
+        'productComposition': '100% poil de chameau',
+        'productImg': carpet15,
+        'productHover': carpet15_2,
+        'productAllImg': [{"id":"carpet1", "img":carpet15}, 
+                            {"id":"carpet2", "img":carpet15_2}, 
+                            {"id":"carpet3", "img":carpet15_3}, 
+                            {"id":"carpet4", "img":carpet15_4}, 
+                            {"id":"carpet5", "img":carpet15_5},
+                            {"id":"carpet6", "img":carpet15_6}
+                        ],
+        'productAlt': 'Tapis violet unis'
+    },
+
+    {
+        'productId': '15',
+        'productCategory': 'tapis',
+        'productClass': 'tapis-berbère-16',
+        'productName': 'Tapis berbère 16',
+        'productOldPrice': 275,
+        'productNewPrice': 220,
+        'productColor': 'green',
+        'productTribe': 'Tribu Khouribga',
+        'productKind': 'undefined',
+        'productMaterial': 'undefined',
+        'productSize': '179 x 413',
+        'productCorridor': true,
+        'isBig': false,
+        'productComposition': '100% poil de chameau',
+        'productImg': carpet16,
+        'productHover': carpet16_2,
+        'productAllImg': [{"id":"carpet1", "img":carpet16}, 
+                            {"id":"carpet2", "img":carpet16_2}, 
+                            {"id":"carpet3", "img":carpet16_3}, 
+                            {"id":"carpet4", "img":carpet16_4}, 
+                            {"id":"carpet5", "img":carpet16_5},
+                            {"id":"carpet6", "img":carpet16_6}
+                        ],
+        'productAlt': 'Tapis vert à motifs rouges'
     }
 ],
 
