@@ -104,9 +104,48 @@ import light6_4 from '../media/products/Luminaires/Luminaire6/light6_4.webp';
 import light6_5 from '../media/products/Luminaires/Luminaire6/light6_5.webp';
 import light6_6 from '../media/products/Luminaires/Luminaire6/light6_6.webp';
 
-import deco1 from '../media/products/Décoration/coussin-kilim-coussin-marocain-666.webp';
-import deco2 from '../media/products/Décoration/coussin-orange-en-soie-de-cactus-coussin-marocain-798.webp';
-import deco3 from '../media/products/Décoration/CSHD35SH-1.webp';
+import deco1 from '../media/products/Décoration/Decoration1/decoration1.webp';
+import deco1_2 from '../media/products/Décoration/Decoration1/decoration1_2.webp';
+import deco1_3 from '../media/products/Décoration/Decoration1/decoration1_3.webp';
+import deco1_4 from '../media/products/Décoration/Decoration1/decoration1_4.jpg';
+import deco1_5 from '../media/products/Décoration/Decoration1/decoration1_5.webp';
+import deco1_6 from '../media/products/Décoration/Decoration1/decoration1_6.webp';
+
+
+import deco2 from '../media/products/Décoration/Decoration2/decoration2.webp';
+import deco2_2 from '../media/products/Décoration/Decoration2/decoration2_2.webp';
+import deco2_3 from '../media/products/Décoration/Decoration2/decoration2_3.webp';
+import deco2_4 from '../media/products/Décoration/Decoration2/decoration2_4.jpg';
+import deco2_5 from '../media/products/Décoration/Decoration2/decoration2_5.jpg';
+import deco2_6 from '../media/products/Décoration/Decoration2/decoration2_6.jpg';
+
+import deco3 from '../media/products/Décoration/Decoration3/decoration3.webp';
+import deco3_2 from '../media/products/Décoration/Decoration3/decoration3_2.webp';
+import deco3_3 from '../media/products/Décoration/Decoration3/decoration3_3.jpg';
+import deco3_4 from '../media/products/Décoration/Decoration3/decoration3_4.jpg';
+import deco3_5 from '../media/products/Décoration/Decoration3/decoration3_5.jpg';
+import deco3_6 from '../media/products/Décoration/Decoration3/decoration3_6.webp';
+
+import deco4 from '../media/products/Décoration/Decoration4/decoration4.webp';
+import deco4_2 from '../media/products/Décoration/Decoration4/decoration4_2.jpg';
+import deco4_3 from '../media/products/Décoration/Decoration4/decoration4_3.jpg';
+import deco4_4 from '../media/products/Décoration/Decoration4/decoration4_4.jpg';
+import deco4_5 from '../media/products/Décoration/Decoration4/decoration4_5.webp';
+import deco4_6 from '../media/products/Décoration/Decoration4/decoration4_6.webp';
+
+import deco5 from '../media/products/Décoration/Decoration5/decoration5.webp';
+import deco5_2 from '../media/products/Décoration/Decoration5/decoration5_2.webp';
+import deco5_3 from '../media/products/Décoration/Decoration5/decoration5_3.webp';
+import deco5_4 from '../media/products/Décoration/Decoration5/decoration5_4.webp';
+import deco5_5 from '../media/products/Décoration/Decoration5/decoration5_5.webp';
+import deco5_6 from '../media/products/Décoration/Decoration5/decoration5_6.webp';
+
+import deco6 from '../media/products/Décoration/Decoration6/decoration6.webp';
+import deco6_2 from '../media/products/Décoration/Decoration6/decoration6_2.webp';
+import deco6_3 from '../media/products/Décoration/Decoration6/decoration6_3.webp';
+import deco6_4 from '../media/products/Décoration/Decoration6/decoration6_4.webp';
+import deco6_5 from '../media/products/Décoration/Decoration6/decoration6_5.webp';
+import deco6_6 from '../media/products/Décoration/Decoration6/decoration6_6.webp';
 
 export const products = [
     // Tapis en stock
@@ -513,31 +552,160 @@ export const products = [
 
     // Décorations en stock
     [   {
+        'productId': '0',
         'productCategory': 'decorations',
         'productClass': 'deco-1',
         'productName': 'décoration 1',
-        'productOldPrice': 90,
-        'productNewPrice': 50,
+        'productOldPrice': 95,
+        'productNewPrice': 65,
+        'productColor': 'black',
+        'productTribe': 'Artisan de Chefchaouen',
+        'productKind': 'cushion',
+        'productMaterial': 'undefined',
+        'productSize': '75 x 75',
+        'productCorridor': 'undefined',
+        'isBig': 'undefined',
+        'productComposition': '100% laine de mouton',
         'productImg': deco1,
-        'productAlt': 'deco 1'
+        'productHover': deco1_2,
+        'productAllImg': [{"id":"deco1", "img":deco1}, 
+                                {"id":"deco2", "img":deco1_2}, 
+                                {"id":"deco3", "img":deco1_3}, 
+                                {"id":"deco4", "img":deco1_4}, 
+                                {"id":"deco5", "img":deco1_5}, 
+                                {"id":"deco6", "img":deco1_6}
+                            ],
+        'productAlt': 'décoration 1'
         },
         {
+        'productId': '1',
         'productCategory': 'decorations',
         'productClass': 'deco-2',
         'productName': 'décoration 2',
-        'productOldPrice': 75,
-        'productNewPrice': 40,
+        'productOldPrice': 120,
+        'productNewPrice': 80,
+        'productColor': 'orange',
+        'productTribe': 'Artisan de Rabat',
+        'productKind': 'cushion',
+        'productMaterial': 'undefined',
+        'productSize': '75 x 50',
+        'productCorridor': 'undefined',
+        'isBig': 'undefined',
+        'productComposition': '100% laine de mouton',
         'productImg': deco2,
-        'productAlt': 'deco 2'
+        'productHover': deco2_2,
+        'productAllImg': [{"id":"deco1", "img":deco2}, 
+                                {"id":"deco2", "img":deco2_2}, 
+                                {"id":"deco3", "img":deco2_3}, 
+                                {"id":"deco4", "img":deco2_4}, 
+                                {"id":"deco5", "img":deco2_5},
+                                {"id":"deco6", "img":deco2_6}
+                            ],
+        'productAlt': 'décoration 2'
         },
         {
+        'productId': '2',
         'productCategory': 'decorations',
         'productClass': 'deco-3',
         'productName': 'décoration 3',
-        'productOldPrice': 95,
-        'productNewPrice': 55,
+        'productOldPrice': 89,
+        'productNewPrice': 69,
+        'productColor': 'red',
+        'productTribe': 'Artisan de Mohammedia',
+        'productKind': 'cushion',
+        'productMaterial': 'undefined',
+        'productSize': '60 x 60',
+        'productCorridor': 'undefined',
+        'isBig': 'undefined',
+        'productComposition': '100% laine de mouton',
         'productImg': deco3,
-        'productAlt': 'deco 3'
+        'productHover': deco3_2,
+        'productAllImg': [{"id":"deco1", "img":deco3}, 
+                                {"id":"deco2", "img":deco3_2}, 
+                                {"id":"deco3", "img":deco3_3}, 
+                                {"id":"deco4", "img":deco3_4}, 
+                                {"id":"deco5", "img":deco3_5},
+                                {"id":"deco6", "img":deco3_6}
+                            ],
+        'productAlt': 'décoration 3'
+        },
+        {
+        'productId': '3',
+        'productCategory': 'decorations',
+        'productClass': 'deco-4',
+        'productName': 'décoration 4',
+        'productOldPrice': 120,
+        'productNewPrice': 99,
+        'productColor': 'red',
+        'productTribe': 'Artisan de Mohammedia',
+        'productKind': 'beanbag',
+        'productMaterial': 'undefined',
+        'productSize': '100 x 50',
+        'productCorridor': 'undefined',
+        'isBig': 'undefined',
+        'productComposition': '100% laine de mouton',
+        'productImg': deco4,
+        'productHover': deco4_2,
+        'productAllImg': [{"id":"deco1", "img":deco4}, 
+                                {"id":"deco2", "img":deco4_2}, 
+                                {"id":"deco3", "img":deco4_3}, 
+                                {"id":"deco4", "img":deco4_4}, 
+                                {"id":"deco5", "img":deco4_5},
+                                {"id":"deco6", "img":deco4_6}
+                            ],
+        'productAlt': 'décoration 4'
+        },
+        {
+        'productId': '4',
+        'productCategory': 'decorations',
+        'productClass': 'deco-5',
+        'productName': 'décoration 5',
+        'productOldPrice': 130,
+        'productNewPrice': 119,
+        'productColor': 'red',
+        'productTribe': 'Artisan de Mohammedia',
+        'productKind': 'beanbag',
+        'productMaterial': 'undefined',
+        'productSize': '110 x 60',
+        'productCorridor': 'undefined',
+        'isBig': 'undefined',
+        'productComposition': '100% laine de mouton',
+        'productImg': deco5,
+        'productHover': deco5_2,
+        'productAllImg': [{"id":"deco1", "img":deco5}, 
+                                {"id":"deco2", "img":deco5_2}, 
+                                {"id":"deco3", "img":deco5_3}, 
+                                {"id":"deco4", "img":deco5_4}, 
+                                {"id":"deco5", "img":deco5_5},
+                                {"id":"deco6", "img":deco5_6}
+                            ],
+        'productAlt': 'décoration 5'
+        },
+        {
+        'productId': '5',
+        'productCategory': 'decorations',
+        'productClass': 'deco-6',
+        'productName': 'décoration 6',
+        'productOldPrice': 125,
+        'productNewPrice': 99,
+        'productColor': 'white',
+        'productTribe': 'Artisan de Casablanca',
+        'productKind': 'beanbag',
+        'productMaterial': 'undefined',
+        'productSize': '105 x 55',
+        'productCorridor': 'undefined',
+        'isBig': 'undefined',
+        'productComposition': '100% laine de mouton',
+        'productImg': deco6,
+        'productHover': deco6_2,
+        'productAllImg': [{"id":"deco1", "img":deco6}, 
+                                {"id":"deco2", "img":deco6_2}, 
+                                {"id":"deco3", "img":deco6_3}, 
+                                {"id":"deco4", "img":deco6_4}, 
+                                {"id":"deco5", "img":deco6_5},
+                                {"id":"deco6", "img":deco6_6}
+                            ],
+        'productAlt': 'décoration 6'
         }
     ]
 ];

@@ -422,8 +422,135 @@ const FilterProducts = ({category, setTypeFilter, filterActive, setFilterActive,
         )
     };
 
-    
 
+    // Filtre de prix - Décorations
+
+    if (typeFilter === 'price' && category === 2) {
+        return (
+            <div className={`filter-choices-container price`} onMouseOut={hideFilter}>
+                <div className="filter-choices">
+                    <ul id='ul-price'>
+                        <li className='price35' onClick={() => setPriceFilter({valueMin: 0, valueMax: 35, name: "price35"})}>
+                            <label htmlFor='price1'>0€ à 35€</label>
+                            <input type="radio" name='price' id='price1'/>
+                        </li>
+                        <li className='price50' onClick={() => setPriceFilter({valueMin: 35, valueMax: 50, name: "price50"})}>
+                            <label htmlFor='price2'>35€ à 50€</label>
+                            <input type="radio" name='price' id='price2' />
+                        </li>
+                        <li className='price75' onClick={() => setPriceFilter({valueMin: 50, valueMax: 75, name: "price75"})}>
+                            <label htmlFor='price3'>50€ à 75€</label>
+                            <input type="radio" name='price' id='price3' />
+                        </li>
+                        <li className='price100' onClick={() => setPriceFilter({valueMin: 75, valueMax: 100, name: "price100"})}>
+                            <label htmlFor='price4'>75€ à 100€</label>
+                            <input type="radio" name='price' id='price4'/>
+                        </li>
+                        <li className='price999' onClick={() => setPriceFilter({valueMin: 100, valueMax: 999, name: "price999"})}>
+                            <label htmlFor='price5'>Plus de 100€</label>
+                            <input type="radio" name='price' id='price5'/>
+                        </li>
+                    </ul>   
+                </div>  
+            </div>
+        )
+    };
+
+
+    // Filtre de type - Décorations
+
+    if (typeFilter === 'kind' && category === 2) {
+        return (
+            <div className={`filter-choices-container kind`} onMouseOut={hideFilter}>
+                <div className="filter-choices">
+                    <ul id='ul-kind'>
+                        <li className='cushion' onClick={() => setKindFilter({kind: 'cushion', name: "cushion"})}>
+                            <label htmlFor='kind1'>Coussins</label>
+                            <input type="radio" name='cushion' id='kind1'/>
+                        </li>
+                        <li className='beanbag' onClick={() => setKindFilter({kind: 'beanbag', name: "beanbag"})}>
+                            <label htmlFor='kind2'>Poufs</label>
+                            <input type="radio" name='beanbag' id='kind2' />
+                        </li>
+                    </ul>   
+                </div>  
+            </div>
+        )
+    };
+
+
+    // Filtre de couleurs - Décorations
+
+    if (typeFilter === 'color' && category === 2) {
+        return (
+            <div className={`filter-choices-container color`} onMouseOut={hideFilter}>
+                <div className="filter-choices">
+                    <ul id='ul-color'>
+                        <li>
+                            <div className="color-container1">
+                                <input type="checkbox" id='white' title='blanc' onClick={(e) => setColor(e)} />
+                            </div>  
+                            <p>Blanc</p>
+                        </li>
+                        <li>
+                            <div className="color-container2">
+                                <input type="checkbox" id='black' title='noir' onClick={(e) => setColor(e)}/>
+                            </div>
+                            <p>Noir</p>
+                        </li>
+                        <li >
+                            <div className="color-container3">  
+                                <input type="checkbox" id='gray' title='gris' onClick={(e) => setColor(e)}/>
+                            </div>
+                            <p>Gris</p>
+                        </li>
+                        <li >
+                            <div className="color-container4">  
+                                <input type="checkbox" id='green' title='vert' onClick={(e) => setColor(e)}/>
+                            </div>
+                            <p>Vert</p>
+                        </li>
+                        <li >
+                            <div className="color-container5">  
+                                <input type="checkbox" id='red' title='rouge' onClick={(e) => setColor(e)}/>
+                            </div>
+                            <p>Rouge</p>
+                        </li>
+                        <li >
+                            <div className="color-container6">  
+                                <input type="checkbox" id='orange' title='orange' onClick={(e) => setColor(e)}/>
+                            </div>
+                            <p>Orange</p>
+                        </li>
+                        <li >
+                            <div className="color-container7">  
+                                <input type="checkbox" id='yellow' title='jaune' onClick={(e) => setColor(e)}/>
+                            </div>
+                            <p>Jaune</p>
+                        </li>
+                        <li >
+                            <div className="color-container8">  
+                                <input type="checkbox" id='blue' title='bleu' onClick={(e) => setColor(e)}/>
+                            </div>
+                            <p>Bleu</p>
+                        </li>
+                        <li >
+                            <div className="color-container9">  
+                                <input type="checkbox" id='purple' title='violet' onClick={(e) => setColor(e)}/>
+                            </div>
+                            <p>Violet</p>
+                        </li>
+                        <li >
+                            <div className="color-container10">  
+                                <input type="checkbox" id='maroon' title='marron' onClick={(e) => setColor(e)}/>
+                            </div>
+                            <p>Marron</p>
+                        </li>
+                    </ul>   
+                </div>  
+            </div>
+        )
+    };
     
 };
 

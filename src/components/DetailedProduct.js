@@ -24,10 +24,9 @@ const DetailedProduct = ({products, categoryIndex}) => {
     const [imgIndex, setImgIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
 
-    function checkLoading(e){
-        const selectSmallLoader = document.querySelector('.small-loader-container');
+    function checkLoading(){
         setTimeout(() => {
-            selectSmallLoader.style.display = 'none';
+            setIsLoading(false);
         }, 1000);
     }
 

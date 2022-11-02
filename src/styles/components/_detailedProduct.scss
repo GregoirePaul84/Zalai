@@ -20,7 +20,7 @@
 
         .small-loader-container {
             position: absolute;
-            width: 100%;
+            width: calc(100% - 20px);
             height: calc(80% - 40px);
             background-color: white;
             z-index: 1;

@@ -281,10 +281,10 @@ const Products = () => {
                                             </>
                                             : (category === 2) ?
                                             <>
-                                            <li onMouseOver={() => {setTypeFilter('size')}}>
-                                                <span>Taille</span>
+                                            <li onMouseOver={() => {setTypeFilter('kind')}}>
+                                                <span>Type</span>
                                                 <FontAwesomeIcon icon={faChevronDown} />
-                                                {(typeFilter === 'size') ? <FilterProducts category={category} typeFilter={'size'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} sizeFilter={sizeFilter} setSizeFilter={setSizeFilter} /> : null}
+                                                {(typeFilter === 'kind') ? <FilterProducts category={category} typeFilter={'kind'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} kindFilter={kindFilter} setKindFilter={setKindFilter} /> : null}
                                             </li>
                                             <li onMouseOver={() => {setTypeFilter('color')}}>
                                                 <span>Couleur</span>
@@ -372,7 +372,7 @@ const Products = () => {
                             : 
                             /* Affichage des produits = 2 filtres activés */
                             // Filtres activés : prix et couleur
-                            ((filterActive.price === true && filterActive.size === false && filterActive.color === true)
+                            ((filterActive.price === true && filterActive.size === false && filterActive.color === true && filterActive.kind === false)
 
                             // Filtres activés : prix et taille
                             || (filterActive.price === true && filterActive.size === true && filterActive.color === false)
@@ -381,7 +381,7 @@ const Products = () => {
                             || (filterActive.price === false && filterActive.size === true && filterActive.color === true)
 
                             // Filtres activés : prix et genre
-                            || (filterActive.price === true && filterActive.kind === true && filterActive.material === false)
+                            || (filterActive.price === true && filterActive.kind === true && filterActive.material === false && filterActive.color === false)
 
                             // Filtres activés : genre et matériau
                             || (filterActive.price === false && filterActive.kind === true && filterActive.material === true)
@@ -439,18 +439,24 @@ const Products = () => {
                             : 
                             /* Affichage des produits = 3 filtres activés */
                             ((filterActive.price === true && filterActive.size === true && filterActive.color === true)
-                            || (filterActive.price === true && filterActive.kind === true && filterActive.material === true)) ?
+                            || (filterActive.price === true && filterActive.kind === true && filterActive.material === true)
+                            || (filterActive.price === true && filterActive.kind === true && filterActive.color === true)) ?
 
                             products[category].filter((product) => 
                             // Filtrage prix + taille + couleur
                             ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
                             && (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig)
-                            && (colorsChosen.current.includes(product.productColor))
+                            && (colorsChosen.current.includes(product.productColor)))
                                             
                             // Filtrage prix + genre + matériau
                             || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
                             && (product.productKind === kindFilter.kind) 
-                            && (product.productMaterial === materialFilter.material)))
+                            && (product.productMaterial === materialFilter.material))
+
+                            // Filtrage prix + genre + couleur
+                            || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                            && (product.productKind === kindFilter.kind) 
+                            && (colorsChosen.current.includes(product.productColor)))
                             
                             ).map((key) => {
                                     return(
