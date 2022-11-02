@@ -297,190 +297,192 @@ const Products = () => {
                                 </div>
                                 <img src={mandala} alt="decoration florale" />
                             </div>
-                            {/* Affichage des produits = aucun filtre */}
-                            {(category !== undefined && filterActive.price === false && filterActive.size === false && filterActive.color === false && filterActive.kind === false && filterActive.material === false) ? 
-                                products[category].map((key) => {
-                                    return(
-                                        <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
-                                            <Item key={key.productId}
-                                            saveBasket={saveBasket}
-                                            getBasket={getBasket}
-                                            addBasket={addBasket}
-                                            productCategory={key.productCategory}
-                                            productId={key.productId}
-                                            productClass={key.productClass}
-                                            productName={key.productName}
-                                            productOldPrice={key.productOldPrice}
-                                            productNewPrice={key.productNewPrice}
-                                            productTribe={key.productTribe}
-                                            productSize={key.productSize}
-                                            productImg={key.productImg}
-                                            productHover={key.productHover}
-                                            productAllImg={key.productAllImg}
-                                            productAlt={key.productAlt}/>
-                                        </ProductContext.Provider>
-                                    )
-                                })
-                            : 
-                            /* Affichage des produits = au moins 1 filtre activé */
-                            ((filterActive.price === true && filterActive.size === false && filterActive.color === false && filterActive.kind === false && filterActive.material === false) 
-                            || (filterActive.price === false && filterActive.size === true && filterActive.color === false) 
-                            || (filterActive.price === false && filterActive.size === false && filterActive.color === true) 
-                            || (filterActive.price === false && filterActive.kind === true && filterActive.material === false)
-                            || (filterActive.price === false && filterActive.kind === false && filterActive.material === true)) ?
+                            <div className="items-container">
+                                {/* Affichage des produits = aucun filtre */}
+                                {(category !== undefined && filterActive.price === false && filterActive.size === false && filterActive.color === false && filterActive.kind === false && filterActive.material === false) ? 
+                                    products[category].map((key) => {
+                                        return(
+                                            <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
+                                                <Item key={key.productId}
+                                                saveBasket={saveBasket}
+                                                getBasket={getBasket}
+                                                addBasket={addBasket}
+                                                productCategory={key.productCategory}
+                                                productId={key.productId}
+                                                productClass={key.productClass}
+                                                productName={key.productName}
+                                                productOldPrice={key.productOldPrice}
+                                                productNewPrice={key.productNewPrice}
+                                                productTribe={key.productTribe}
+                                                productSize={key.productSize}
+                                                productImg={key.productImg}
+                                                productHover={key.productHover}
+                                                productAllImg={key.productAllImg}
+                                                productAlt={key.productAlt}/>
+                                            </ProductContext.Provider>
+                                        )
+                                    })
+                                : 
+                                /* Affichage des produits = au moins 1 filtre activé */
+                                ((filterActive.price === true && filterActive.size === false && filterActive.color === false && filterActive.kind === false && filterActive.material === false) 
+                                || (filterActive.price === false && filterActive.size === true && filterActive.color === false) 
+                                || (filterActive.price === false && filterActive.size === false && filterActive.color === true) 
+                                || (filterActive.price === false && filterActive.kind === true && filterActive.material === false)
+                                || (filterActive.price === false && filterActive.kind === false && filterActive.material === true)) ?
 
-                            // Filtrage des produits par opérations logiques
-                            products[category].filter((product) => 
+                                // Filtrage des produits par opérations logiques
+                                products[category].filter((product) => 
 
-                                // Filtrage par prix uniquement
-                               (product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                                    // Filtrage par prix uniquement
+                                (product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
 
-                                // Filtrage par couleur uniquement
-                            || (colorsChosen.current.includes(product.productColor)) 
+                                    // Filtrage par couleur uniquement
+                                || (colorsChosen.current.includes(product.productColor)) 
 
-                                // Filtrage par taille uniquement
-                            || (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig)
+                                    // Filtrage par taille uniquement
+                                || (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig)
 
-                                // Filtrage par genre uniquement
-                            || (product.productKind === kindFilter.kind)
-                            
-                                // Filtrage par matériau uniquement
-                            || (product.productMaterial === materialFilter.material)
-                            ).map((key) => {
+                                    // Filtrage par genre uniquement
+                                || (product.productKind === kindFilter.kind)
                                 
-                                    return(
-                                        <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
-                                            <Item key={key.productId}
-                                            saveBasket={saveBasket}
-                                            getBasket={getBasket}
-                                            addBasket={addBasket}
-                                            productCategory={key.productCategory}
-                                            productId={key.productId}
-                                            productClass={key.productClass}
-                                            productName={key.productName}
-                                            productOldPrice={key.productOldPrice}
-                                            productNewPrice={key.productNewPrice}
-                                            productTribe={key.productTribe}
-                                            productSize={key.productSize}
-                                            productImg={key.productImg}
-                                            productHover={key.productHover}
-                                            productAllImg={key.productAllImg}
-                                            productAlt={key.productAlt}/>
-                                        </ProductContext.Provider>
-                                    )
-                                })
-                            : 
-                            /* Affichage des produits = 2 filtres activés */
-                            // Filtres activés : prix et couleur
-                            ((filterActive.price === true && filterActive.size === false && filterActive.color === true && filterActive.kind === false)
+                                    // Filtrage par matériau uniquement
+                                || (product.productMaterial === materialFilter.material)
+                                ).map((key) => {
+                                    
+                                        return(
+                                            <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
+                                                <Item key={key.productId}
+                                                saveBasket={saveBasket}
+                                                getBasket={getBasket}
+                                                addBasket={addBasket}
+                                                productCategory={key.productCategory}
+                                                productId={key.productId}
+                                                productClass={key.productClass}
+                                                productName={key.productName}
+                                                productOldPrice={key.productOldPrice}
+                                                productNewPrice={key.productNewPrice}
+                                                productTribe={key.productTribe}
+                                                productSize={key.productSize}
+                                                productImg={key.productImg}
+                                                productHover={key.productHover}
+                                                productAllImg={key.productAllImg}
+                                                productAlt={key.productAlt}/>
+                                            </ProductContext.Provider>
+                                        )
+                                    })
+                                : 
+                                /* Affichage des produits = 2 filtres activés */
+                                // Filtres activés : prix et couleur
+                                ((filterActive.price === true && filterActive.size === false && filterActive.color === true && filterActive.kind === false)
 
-                            // Filtres activés : prix et taille
-                            || (filterActive.price === true && filterActive.size === true && filterActive.color === false)
+                                // Filtres activés : prix et taille
+                                || (filterActive.price === true && filterActive.size === true && filterActive.color === false)
 
-                            // Filtres activés : taille et couleur
-                            || (filterActive.price === false && filterActive.size === true && filterActive.color === true)
+                                // Filtres activés : taille et couleur
+                                || (filterActive.price === false && filterActive.size === true && filterActive.color === true)
 
-                            // Filtres activés : prix et genre
-                            || (filterActive.price === true && filterActive.kind === true && filterActive.material === false && filterActive.color === false)
+                                // Filtres activés : prix et genre
+                                || (filterActive.price === true && filterActive.kind === true && filterActive.material === false && filterActive.color === false)
 
-                            // Filtres activés : genre et matériau
-                            || (filterActive.price === false && filterActive.kind === true && filterActive.material === true)
+                                // Filtres activés : genre et matériau
+                                || (filterActive.price === false && filterActive.kind === true && filterActive.material === true)
 
-                            // Filtres activés : prix et matériau
-                            || (filterActive.price === true && filterActive.kind === false && filterActive.material === true)) ?
+                                // Filtres activés : prix et matériau
+                                || (filterActive.price === true && filterActive.kind === false && filterActive.material === true)) ?
 
-                            products[category].filter((product) => 
+                                products[category].filter((product) => 
 
-                            // Filtrage prix et couleur
-                            ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
-                            && (colorsChosen.current.includes(product.productColor)))
+                                // Filtrage prix et couleur
+                                ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                                && (colorsChosen.current.includes(product.productColor)))
 
-                            // Filtrage prix et taille
-                            || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
-                            && (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor ||        product.isBig === sizeFilter.isBig))
+                                // Filtrage prix et taille
+                                || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                                && (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor ||        product.isBig === sizeFilter.isBig))
 
-                            // Filtrage taille et couleur
-                            || ((product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig) 
-                            && (colorsChosen.current.includes(product.productColor)))
-                            
-                            // Filtrage prix et genre
-                            || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
-                            && (product.productKind === kindFilter.kind))
+                                // Filtrage taille et couleur
+                                || ((product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig) 
+                                && (colorsChosen.current.includes(product.productColor)))
+                                
+                                // Filtrage prix et genre
+                                || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                                && (product.productKind === kindFilter.kind))
 
-                            // Filtrage genre et matériau
-                            || ((product.productKind === kindFilter.kind) 
-                            && (product.productMaterial === materialFilter.material))
+                                // Filtrage genre et matériau
+                                || ((product.productKind === kindFilter.kind) 
+                                && (product.productMaterial === materialFilter.material))
 
-                            // Filtrage prix et matériau
-                            || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
-                            && (product.productMaterial === materialFilter.material))
-                            ).map((key) => {
-                                    return(
-                                        <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
-                                            <Item key={key.productId}
-                                            saveBasket={saveBasket}
-                                            getBasket={getBasket}
-                                            addBasket={addBasket}
-                                            productCategory={key.productCategory}
-                                            productId={key.productId}
-                                            productClass={key.productClass}
-                                            productName={key.productName}
-                                            productOldPrice={key.productOldPrice}
-                                            productNewPrice={key.productNewPrice}
-                                            productTribe={key.productTribe}
-                                            productSize={key.productSize}
-                                            productImg={key.productImg}
-                                            productHover={key.productHover}
-                                            productAllImg={key.productAllImg}
-                                            productAlt={key.productAlt}/>
-                                        </ProductContext.Provider>
-                                    )
-                                }) 
-                            : 
-                            /* Affichage des produits = 3 filtres activés */
-                            ((filterActive.price === true && filterActive.size === true && filterActive.color === true)
-                            || (filterActive.price === true && filterActive.kind === true && filterActive.material === true)
-                            || (filterActive.price === true && filterActive.kind === true && filterActive.color === true)) ?
+                                // Filtrage prix et matériau
+                                || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                                && (product.productMaterial === materialFilter.material))
+                                ).map((key) => {
+                                        return(
+                                            <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
+                                                <Item key={key.productId}
+                                                saveBasket={saveBasket}
+                                                getBasket={getBasket}
+                                                addBasket={addBasket}
+                                                productCategory={key.productCategory}
+                                                productId={key.productId}
+                                                productClass={key.productClass}
+                                                productName={key.productName}
+                                                productOldPrice={key.productOldPrice}
+                                                productNewPrice={key.productNewPrice}
+                                                productTribe={key.productTribe}
+                                                productSize={key.productSize}
+                                                productImg={key.productImg}
+                                                productHover={key.productHover}
+                                                productAllImg={key.productAllImg}
+                                                productAlt={key.productAlt}/>
+                                            </ProductContext.Provider>
+                                        )
+                                    }) 
+                                : 
+                                /* Affichage des produits = 3 filtres activés */
+                                ((filterActive.price === true && filterActive.size === true && filterActive.color === true)
+                                || (filterActive.price === true && filterActive.kind === true && filterActive.material === true)
+                                || (filterActive.price === true && filterActive.kind === true && filterActive.color === true)) ?
 
-                            products[category].filter((product) => 
-                            // Filtrage prix + taille + couleur
-                            ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
-                            && (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig)
-                            && (colorsChosen.current.includes(product.productColor)))
-                                            
-                            // Filtrage prix + genre + matériau
-                            || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
-                            && (product.productKind === kindFilter.kind) 
-                            && (product.productMaterial === materialFilter.material))
+                                products[category].filter((product) => 
+                                // Filtrage prix + taille + couleur
+                                ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                                && (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig)
+                                && (colorsChosen.current.includes(product.productColor)))
+                                                
+                                // Filtrage prix + genre + matériau
+                                || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                                && (product.productKind === kindFilter.kind) 
+                                && (product.productMaterial === materialFilter.material))
 
-                            // Filtrage prix + genre + couleur
-                            || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
-                            && (product.productKind === kindFilter.kind) 
-                            && (colorsChosen.current.includes(product.productColor)))
-                            
-                            ).map((key) => {
-                                    return(
-                                        <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
-                                            <Item key={key.productId}
-                                            saveBasket={saveBasket}
-                                            getBasket={getBasket}
-                                            addBasket={addBasket}
-                                            productCategory={key.productCategory}
-                                            productId={key.productId}
-                                            productClass={key.productClass}
-                                            productName={key.productName}
-                                            productOldPrice={key.productOldPrice}
-                                            productNewPrice={key.productNewPrice}
-                                            productTribe={key.productTribe}
-                                            productSize={key.productSize}
-                                            productImg={key.productImg}
-                                            productHover={key.productHover}
-                                            productAllImg={key.productAllImg}
-                                            productAlt={key.productAlt}/>
-                                        </ProductContext.Provider>
-                                    )
-                            }) : null
-                            }
+                                // Filtrage prix + genre + couleur
+                                || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
+                                && (product.productKind === kindFilter.kind) 
+                                && (colorsChosen.current.includes(product.productColor)))
+                                
+                                ).map((key) => {
+                                        return(
+                                            <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
+                                                <Item key={key.productId}
+                                                saveBasket={saveBasket}
+                                                getBasket={getBasket}
+                                                addBasket={addBasket}
+                                                productCategory={key.productCategory}
+                                                productId={key.productId}
+                                                productClass={key.productClass}
+                                                productName={key.productName}
+                                                productOldPrice={key.productOldPrice}
+                                                productNewPrice={key.productNewPrice}
+                                                productTribe={key.productTribe}
+                                                productSize={key.productSize}
+                                                productImg={key.productImg}
+                                                productHover={key.productHover}
+                                                productAllImg={key.productAllImg}
+                                                productAlt={key.productAlt}/>
+                                            </ProductContext.Provider>
+                                        )
+                                }) : null
+                                }
+                            </div>
                         </div>
                     </section>
                     <Footer />

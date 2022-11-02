@@ -95,6 +95,8 @@
                     justify-content: space-around;
                     opacity: 0;
                     padding: 20px;
+                    position: relative;
+                    overflow-x: hidden;
 
                     .category-title-container {
                         width: 100%;
@@ -186,6 +188,19 @@
                                 }
                             }
                         }
+                    }
+
+                    .items-container {
+                        display: none;
+                        flex-direction: column;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                        position: absolute;
+                        top: 150px;
+                        left: 0;
+                        height: calc(80% - 25px);
+                        width: 100%;      
+                        padding-left: 20px;                  
                     }
                 }
             }

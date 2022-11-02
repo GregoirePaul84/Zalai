@@ -9,10 +9,12 @@ const CategoryCard = ({categoryChosen, categoryName, categoryImg, categoryAlt, c
         const selectProductsContainer = document.querySelector('.products-container');
         const selectMain = document.getElementsByTagName('main');
         const selectProductsList = document.querySelector('.products-list');
+        const selectItemsContainer = document.querySelector('.items-container');
         
         selectProductsContainer.style.height = 'auto';
         selectMain[0].style.height = 'auto';
-        selectProductsList.style.minHeight = '800px';
+        selectProductsList.style.minHeight = '900px';
+        selectItemsContainer.style.display = 'flex';
 
         if(categoryName === 'Tapis') {
             categoryChosen('tapis');
