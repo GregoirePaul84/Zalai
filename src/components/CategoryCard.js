@@ -10,6 +10,8 @@ const CategoryCard = ({categoryChosen, categoryName, categoryImg, categoryAlt, c
         const selectMain = document.getElementsByTagName('main');
         const selectProductsList = document.querySelector('.products-list');
         const selectItemsContainer = document.querySelector('.items-container');
+        const selectSectionProducts = document.querySelector('.products-list-container');
+        const selectBorder = document.querySelector('.products-border');
         
         selectProductsContainer.style.height = 'auto';
         selectMain[0].style.height = 'auto';
@@ -18,6 +20,8 @@ const CategoryCard = ({categoryChosen, categoryName, categoryImg, categoryAlt, c
 
         if(categoryName === 'Tapis') {
             categoryChosen('tapis');
+            selectSectionProducts.style.backgroundColor = 'white';
+            selectBorder.style.opacity = '1';
             const selectProductsContainer = document.querySelector('.products-list');
             selectProductsContainer.style.animation = '1s ease-in-out 0s 1 normal forwards running opacityProductCard';
             document.querySelector('.category-title').textContent = `Tapis berbères`;
@@ -25,6 +29,8 @@ const CategoryCard = ({categoryChosen, categoryName, categoryImg, categoryAlt, c
 
         if(categoryName === 'Luminaires') {
             categoryChosen('luminaires');
+            selectSectionProducts.style.backgroundColor = 'white';
+            selectBorder.style.opacity = '1';
             const selectProductsContainer = document.querySelector('.products-list');
             selectProductsContainer.style.animation = '1s ease-in-out 0s 1 normal forwards running opacityProductCard';
             document.querySelector('.category-title').textContent = `Luminaires`;
@@ -32,6 +38,8 @@ const CategoryCard = ({categoryChosen, categoryName, categoryImg, categoryAlt, c
 
         if(categoryName === 'Décorations') {
             categoryChosen('décorations');
+            selectSectionProducts.style.backgroundColor = 'white';
+            selectBorder.style.opacity = '1';
             const selectProductsContainer = document.querySelector('.products-list');
             selectProductsContainer.style.animation = '1s ease-in-out 0s 1 normal forwards running opacityProductCard';
             document.querySelector('.category-title').textContent = `Décorations`;

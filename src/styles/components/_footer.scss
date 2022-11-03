@@ -1,9 +1,21 @@
 footer {
-    height: 195px;
+    height: 280px;
     width: 100%;
-    background-color: #586E7C;
-    display: flex;
-    justify-content: space-evenly;
+    background-color: #655A4E;
+
+    .border-container {
+        background-image: url(../../media/border_footer3.png);
+        width: 100%;
+        height: 35px;
+        opacity: 0.3;
+    }
+
+    .footer-links {
+        width: 100%;
+        height: calc(100% - 35px);
+        display: flex;
+        justify-content: space-evenly;
+    }
 
     h3 {
         padding-top: 25px;
@@ -23,9 +35,10 @@ footer {
             height: 70%;
             display: flex;
             flex-direction: column;
+            padding-top: 10px;
 
             li {
-                color: black;
+                color: #d4d4d4;
                 margin-bottom: 5px;
                 list-style-type: none;
                 width: fit-content;
@@ -34,6 +47,8 @@ footer {
                 span {
                     font-family: 'Noto Sans Tifinagh', sans-serif;
                     margin-right: 10px;
+                    display: inline-block;
+                    width: 21px;
                 }
 
                 &:hover {

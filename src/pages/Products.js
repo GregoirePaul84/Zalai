@@ -11,7 +11,6 @@ import DetailedProduct from '../components/DetailedProduct';
 // Importation des images 
 import productsImg from '../media/blue-688874_1920.jpg';
 import arrow from '../media/arrow_down.png';
-import mandala from '../media/mandala.png'
 
 // Importation de la fake data
 import { productCategories } from '../data/dataCategories';
@@ -208,17 +207,22 @@ const Products = () => {
 
     });
 
-    // ==== AFFICHAGE DES PRODUITS SUIVANTS ==== //
+    // ==== AFFICHAGE DE L'INDEX DE LA PAGE PRODUITS ==== //
 
-    // let indexStart = 0;
-    // let indexEnd = 7;
-
-    // function displayNextItems() {
-    //     console.log('suivant');
-    //     indexStart = 7;
-    //     console.log(indexStart);
-    // }
-
+    useEffect(() => {
+        if (indexStart === 0) {
+            document.querySelector('.first-page').style.backgroundColor = '#D9A569';
+            document.querySelector('.first-page').style.cursor = 'default';
+            document.querySelector('.second-page').style.backgroundColor = 'rgb(59, 131, 155)';
+            document.querySelector('.second-page').style.cursor = 'pointer';
+        }
+        else if (indexStart === 8) {
+            document.querySelector('.first-page').style.backgroundColor = 'rgb(59, 131, 155)';
+            document.querySelector('.first-page').style.cursor = 'pointer';
+            document.querySelector('.second-page').style.backgroundColor = '#D9A569';
+            document.querySelector('.second-page').style.cursor = 'default';
+        }
+    }, [indexStart]);
     
     return (
         <>
@@ -254,9 +258,9 @@ const Products = () => {
                         }
                     </section>
                     <section className="products-list-container">
+                        <div className="products-border"></div>
                         <div className="products-list">
                             <div className="category-title-container">
-                                <img src={mandala} alt="decoration florale" />
                                 <div className="title-filter-container">
                                     {/* eslint-disable-next-line */}
                                     <h3 className='category-title'></h3>
@@ -315,13 +319,16 @@ const Products = () => {
                                             <FontAwesomeIcon icon={faChevronLeft} />
                                             <span>Produits précédents</span>
                                         </div>
+                                        <div className="products-page-index">
+                                            <div className="first-page" onClick={() => setIndexStart(0) + setIndexEnd(8)}></div>
+                                            <div className="second-page" onClick={() => setIndexStart(8) + setIndexEnd(16)}></div>
+                                        </div>
                                         <div className="next-products" onClick={() => setIndexStart(8) + setIndexEnd(16)}>
                                             <span>Produits suivants</span>
                                             <FontAwesomeIcon icon={faChevronRight} />
                                         </div>
                                     </div>
                                 </div>
-                                <img src={mandala} alt="decoration florale" />
                             </div>
                             <div className="items-container">
                                 {/* Affichage des produits = aucun filtre */}
@@ -516,7 +523,7 @@ const Products = () => {
             </div>
             { (displayDetail) ?
                 <ProductContext.Provider value={{ displayDetail, setDisplayDetail }}>
-                    <DetailedProduct products={products} categoryIndex={categoryIndex} mandalaImg={mandala}/>
+                    <DetailedProduct products={products} categoryIndex={categoryIndex}/>
                 </ProductContext.Provider> 
             : null }
         </div>
