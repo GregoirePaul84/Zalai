@@ -1,8 +1,6 @@
 import React from 'react';
 
-
 const CategoryCard = ({categoryChosen, categoryName, categoryImg, categoryAlt, categoryClass}) => {
-
 
     function productsAppear() {
 
@@ -10,7 +8,7 @@ const CategoryCard = ({categoryChosen, categoryName, categoryImg, categoryAlt, c
         const selectMain = document.getElementsByTagName('main');
         const selectProductsList = document.querySelector('.products-list');
         const selectItemsContainer = document.querySelector('.items-container');
-        const selectSectionProducts = document.querySelector('.products-list-container');
+        const selectSectionProducts = document.getElementById('products-list-container');
         const selectBorder = document.querySelector('.products-border');
         
         selectProductsContainer.style.height = 'auto';
@@ -46,12 +44,10 @@ const CategoryCard = ({categoryChosen, categoryName, categoryImg, categoryAlt, c
         }
     }
 
-
     return (
         <article className={categoryClass} onClick={productsAppear}>
             <img src={categoryImg} alt={categoryAlt} />
-            <h3>{categoryName}</h3>
-           
+            <h3>{categoryName}</h3>          
         </article>
     )  
 };

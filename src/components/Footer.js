@@ -1,7 +1,5 @@
 import React from 'react';
 
-import border from '../media/border.png';
-
 const Footer = () => {
     return (
         <footer>

@@ -1,6 +1,7 @@
 .products-container {
     height: 1440px;
     width: 100%;
+    
     .background {
         height: 1440px;
         width: 100%;
@@ -82,7 +83,7 @@
                 margin-bottom: 40px;
             }
 
-            .products-list-container {
+            #products-list-container {
                 width: 100%;
                 height: calc(100% - 760px);
                 background-color: transparent;

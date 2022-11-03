@@ -64,6 +64,8 @@ const Products = () => {
         setTypeFilter(undefined);
     }
 
+    
+
     // ==== GESTION DU LOADER ==== //
 
     // Désactivation du loader de page
@@ -99,9 +101,9 @@ const Products = () => {
           document.querySelector('.decorations-container').style.animation = '1s ease-in-out 1s 1 normal forwards running opacityProductCard';
         }
     };
-
+    
     // Assignation de la catégorie lors du clic sur l'une des catégories de produits
-    const checkCategory = (name) => {
+    function checkCategory(name) {
         
         if (name === 'tapis') {
             setCategory(0);
@@ -248,6 +250,7 @@ const Products = () => {
                         {productCategories.map((key) => {
                             return (
                                 <CategoryCard key={key.categoryName}
+                                category = {category}
                                             categoryChosen={checkCategory}
                                             categoryClass={key.categoryClass}
                                             categoryName={key.categoryName}
@@ -257,7 +260,7 @@ const Products = () => {
                         })
                         }
                     </section>
-                    <section className="products-list-container">
+                    <section id="products-list-container">
                         <div className="products-border"></div>
                         <div className="products-list">
                             <div className="category-title-container">

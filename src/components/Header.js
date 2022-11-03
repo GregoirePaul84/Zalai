@@ -6,7 +6,7 @@ const Header = ({checkPage}) => {
         <header className='header-except-home'>
             <h1>Zalaï</h1>
             <h2>Art berbère</h2>
-            <NavBar checkPage={checkPage}/>
+            <NavBar checkPage={checkPage} />
         </header>
     );
 };

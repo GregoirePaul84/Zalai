@@ -9,10 +9,34 @@ const NavBar = ({checkPage}) => {
 
     const [displayMenu, setDisplayMenu] = useState(false);
 
+    const carpetsContainer = document.querySelector('.carpets-container');
+    const lampsContainer = document.querySelector('.lamps-container');
+    const decorationsContainer = document.querySelector('.decorations-container');
+    const selectProductsContainer = document.getElementById('products-list-container');
+
     function displayList() {
         setDisplayMenu(!displayMenu);
         const selectQuickList = document.querySelector('.quick-list-container');
         selectQuickList.classList.add('menu-active');
+    }
+
+    function displayProducts(products) {
+        
+        if (products === 'carpets') {
+            carpetsContainer.click();
+            selectProductsContainer.scrollIntoView(({behavior: "smooth"}));
+        }
+            
+        if (products === 'lamps') {
+            lampsContainer.click();
+            selectProductsContainer.scrollIntoView(({behavior: "smooth"}));
+        }
+            
+        if (products === 'decorations') {
+            decorationsContainer.click();
+            selectProductsContainer.scrollIntoView(({behavior: "smooth"}));
+        }
+            
     }
 
     useEffect(() => {
@@ -60,19 +84,19 @@ const NavBar = ({checkPage}) => {
                         <FontAwesomeIcon icon={faChevronDown} className="chevron-down" onClick={displayList}/>
                         <ul className="quick-list-container">
                             <li>
-                                <div>
+                                <div onClick={() => displayProducts('carpets')}>
                                     <span>ⵜ</span>
                                     Tapis
                                 </div>
                             </li>
                             <li>
-                                <div>
+                                <div onClick={() => displayProducts('lamps')}>
                                     <span>ⵍ</span>
                                     Luminaires
                                 </div>
                             </li>
                             <li>
-                                <div>
+                                <div onClick={() => displayProducts('decorations')}>
                                     <span>ⴷ</span>
                                     Décorations
                                 </div>
