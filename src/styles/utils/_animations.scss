@@ -136,27 +136,27 @@
     100% {
       transform: scale(1);
     }
-  }
+}
 
-  @keyframes lds-ellipsis3 {
+@keyframes lds-ellipsis3 {
     0% {
-      transform: scale(1);
+        transform: scale(1);
     }
     100% {
-      transform: scale(0);
+        transform: scale(0);
     }
-  }
+}
 
-  @keyframes lds-ellipsis2 {
+@keyframes lds-ellipsis2 {
     0% {
-      transform: translate(0, 0);
+        transform: translate(0, 0);
     }
     100% {
-      transform: translate(24px, 0);
+        transform: translate(24px, 0);
     }
-  }
+}
 
-  @keyframes cardsAppear{
+@keyframes cardsAppear{
     0% {
         opacity: 0;
         transform: translateY(-60px);
@@ -165,5 +165,29 @@
     100% {
         opacity: 1;
         transform: translateY(0px);
+    }
+}
+
+@keyframes moveAboutCard1 {
+    0% {
+        opacity: 0;
+        transform: translateX(50vw);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0vw);
+    }
+}
+
+@keyframes moveAboutCard2 {
+    0% {
+        opacity: 0;
+        transform: translateX(-50vw);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0vw);
     }
 }
