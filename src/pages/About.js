@@ -3,15 +3,36 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 import aboutImg from '../media/houmt-souk-6599499_1920.jpg';
+import Loader from './Loader';
 
 const About = () => {
 
+    const [isLoading, setIsLoading] = useState(true);
     const [scrollY, setScrollY] = useState(0);
     const [brightness, setBrightness] = useState(0.4);
 
     const handleScroll = () => {
         setScrollY(window.scrollY);
     }
+
+    // ==== GESTION DU LOADER ==== //
+
+    // Désactivation du loader de page
+    function checkLoading() {
+        setIsLoading(false);  
+    }
+
+    // Disparition du loader vers la droite
+    useEffect(() => {
+        if (isLoading === false) {
+            const selectLoader = document.getElementById('loader-container');
+            const selectContainer = document.querySelector('.home-loader');
+
+            setTimeout(() => {selectLoader.style.animation = '1s ease-in-out 1s 1 normal forwards running loaderDisappears'}, 2300);
+            setTimeout(() => {selectContainer.classList.add('loader-cancelled')}, 4300);  
+        }
+   
+    }, [isLoading]);
 
     useEffect(() => {
         if (scrollY >= 300) {
@@ -46,16 +67,16 @@ const About = () => {
 
     return (
         <>
-            {/* <div className="home-loader">
-                    <Loader />
-            </div> */}
+            <div className="home-loader">
+                    <Loader isLoading={isLoading} />
+            </div>
             <div className='about-container'>
                 <div className="background">
-                    <img src={aboutImg} alt="Désert du Sahara" style={{filter: `brightness(${brightness})`}}/>
+                    <img src={aboutImg} alt="Désert du Sahara" style={{filter: `brightness(${brightness})`}} onLoad={checkLoading}/>
                     <div className="gray-layout" style={{backgroundColor: `rgba(58, 58, 58, 0.7})`}}></div>
                 </div>
                 <div className="foreground">
-                    <Header checkPage={'about'} />
+                    <Header checkPage={'about'} isLoading={isLoading} />
                     <main className='about-main'> 
                         <article className="about-card company">
                             <div className="card-title">

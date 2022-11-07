@@ -237,7 +237,7 @@ const Products = () => {
                 <div className="gray-layout"></div>
             </div>
             <div className="foreground">
-                <Header checkPage={'product'} />
+                <Header checkPage={'product'} isLoading={isLoading}/>
                 <main>
                     <section className="product-title">
                         <h3>Notre boutique en ligne</h3>   
