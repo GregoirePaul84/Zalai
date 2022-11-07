@@ -27,9 +27,13 @@ const About = () => {
         if (isLoading === false) {
             const selectLoader = document.getElementById('loader-container');
             const selectContainer = document.querySelector('.home-loader');
+            const selectOrangeLine1 = document.querySelector('.orange-line');
 
             setTimeout(() => {selectLoader.style.animation = '1s ease-in-out 1s 1 normal forwards running loaderDisappears'}, 2300);
-            setTimeout(() => {selectContainer.classList.add('loader-cancelled')}, 4300);  
+            setTimeout(() => {
+                selectContainer.classList.add('loader-cancelled');
+                selectOrangeLine1.style.animation = 'orange-line 2s ease forwards 2s';
+            }, 4300);  
         }
    
     }, [isLoading]);
@@ -37,17 +41,20 @@ const About = () => {
     useEffect(() => {
         if (scrollY >= 300) {
             document.querySelector('.values').style.animation = '1s ease-out 0s 1 normal forwards running moveAboutCard2';
+            document.querySelector('.values .orange-line').style.animation = 'orange-line 2s ease forwards 500ms';
         }
         
-        if (scrollY >= 500 && scrollY < 600) {
+        if (scrollY >= 500) {
             setBrightness(1);
-        }
 
-        if (scrollY >= 600) {
-            document.querySelector('.products').style.animation = '1s ease-out 0s 1 normal forwards running moveAboutCard1';
-            setBrightness(1);
+            if (scrollY >= 700) {
+                document.querySelector('.products').style.animation = '1s ease-out 0s 1 normal forwards running moveAboutCard1';
+                document.querySelector('.products .orange-line').style.animation = 'orange-line 2s ease forwards 500ms';
+            }
+
             return;
         }
+
         else {
             setBrightness(scrollY / 1000 + 0.4);
         }
@@ -81,6 +88,7 @@ const About = () => {
                         <article className="about-card company">
                             <div className="card-title">
                                 <h2>L'entreprise <span>Zalaï</span></h2>
+                                <div className="orange-line"></div>
                             </div>
                             <div className="card-content">
                                 <ul>
@@ -93,6 +101,7 @@ const About = () => {
                         <article className="about-card values">
                             <div className="card-title">
                                 <h2>Les valeurs <span>Zalaï</span></h2>
+                                <div className="orange-line"></div>
                             </div>
                             <div className="card-content">
                                 <ul>
@@ -114,6 +123,7 @@ const About = () => {
                         <article className="about-card products">
                             <div className="card-title">
                                 <h2>Les produits <span>Zalaï</span></h2>
+                                <div className="orange-line"></div>
                             </div>
                             <div className="card-content">
                                 <ul>

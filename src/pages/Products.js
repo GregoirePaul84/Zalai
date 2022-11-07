@@ -31,6 +31,7 @@ export const ProductContext = React.createContext();
 const Products = () => {
 
     const [isLoading, setIsLoading] = useState(true);
+    const [brightness, setBrightness] = useState(0.4);
     const [scrollY, setScrollY] = useState(0);
     const [category, setCategory] = useState(undefined);
     const [categoryIndex, setCategoryIndex] = useState(undefined);
@@ -86,6 +87,31 @@ const Products = () => {
     }, [isLoading]);
 
 
+    // ==== GESTION DE LA LUMINOSITE ==== //
+
+    useEffect(() => {
+        
+        if (scrollY >= 500) {
+            setBrightness(1);
+
+            return;
+        }
+
+        else {
+            setBrightness(scrollY / 1000 + 0.4);
+        }
+        
+    }, [scrollY, brightness])
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, {
+        });
+    
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+
+    });
 
 
     // ==== APPARITION DES CARDS + GESTION D'AFFICHAGE PRODUITS ==== //
@@ -233,8 +259,8 @@ const Products = () => {
         </div>
         <div className='products-container'>
             <div className="background">
-                <img src={productsImg} alt="Chefchaouen, Maroc" />
-                <div className="gray-layout"></div>
+                <img src={productsImg} alt="Chefchaouen, Maroc" style={{filter: `brightness(${brightness})`}}/>
+                {/* <div className="gray-layout"></div> */}
             </div>
             <div className="foreground">
                 <Header checkPage={'product'} isLoading={isLoading}/>
@@ -337,6 +363,7 @@ const Products = () => {
                                 {/* Affichage des produits = aucun filtre */}
                                 {(category !== undefined && filterActive.price === false && filterActive.size === false && filterActive.color === false && filterActive.kind === false && filterActive.material === false) ? 
                                     products[category].filter((item, index) => index >= indexStart && index < indexEnd).map((key) => {
+                                        
                                         return(
                                             <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
                                                 <Item key={key.productId}
@@ -384,7 +411,7 @@ const Products = () => {
                                     // Filtrage par matériau uniquement
                                 || (product.productMaterial === materialFilter.material)
                                 ).map((key) => {
-                                    
+
                                         return(
                                             <ProductContext.Provider value={{ displayDetail, setDisplayDetail }} key={key.productName}>
                                                 <Item key={key.productId}

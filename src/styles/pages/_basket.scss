@@ -1,0 +1,177 @@
+.basket-container {
+    height: 1200px;
+    width: 100%;
+    
+    .background {
+        height: 1200px;
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+        
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .foreground {
+        width: 100%;
+        height: 100%;
+
+        .basket-main {
+            height: calc(100% - 550px);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            section {
+                width: 75%;
+                max-width: 760px;
+                height: 85%;
+                min-height: 465px;
+                background-color: $color-secondary;
+
+                .basket-header {
+                    background-color: $color-primary;
+                    height: 125px;
+                    width: 100%;
+                    position: relative;
+
+                    .back-to-shopping {
+                        width: 100%;
+                        height: 20%;
+                        display: flex;
+                        align-items: center;
+                        position: absolute;
+                        top: 10px;
+                        left: 20px;
+                    }
+
+                    .basket-title {
+                        display: flex;
+                        height: calc(100% - 20px);
+                        justify-content: center;
+                        align-items: center;
+                        color: $color-secondary;
+
+                        h2 {
+                            font-size: 2em;
+                            font-weight: 500;
+                        }
+                    }
+
+                    .basket-border {
+                        width: 100%;
+                        height: 20px;
+                        background-image: url(../../media/border_basket.png);
+                    }
+                }
+
+                .basket-content {
+                    width: 100%;
+                    height: calc(100% - 125px);
+                    padding: 20px 20px 0 20px;
+
+                    .type-info {
+                        display: flex;
+                        width: 100%;
+                        height: 35px;
+                        border-bottom: 3px solid rgb(70, 70, 70, 25%);
+
+                        p {
+                            width: 33.33%;
+                            height: 100%;
+                            display: flex;
+                            justify-content: center;
+                        }
+                    }
+
+                    .products-stored {
+                        width: 100%;
+                        height: calc(100% - 110px);
+                        padding: 20px 0;
+                        overflow-y: scroll;
+                        overflow-x: hidden;
+
+                        .product {
+                            display: flex;
+                            height: 150px;
+                            width: 100%;
+                            margin-bottom: 20px;
+
+                            .product-infos {
+                                height: 100%;
+                                width: 33.33%;
+                                display: flex;
+
+                                img {
+                                    height: 100%;
+                                    width: 100%;
+                                }
+                            }
+
+                            .delete-product, .product-price {
+                                height: 100%;
+                                width: 33.33%;
+                                text-align: center;
+
+                                p, h4 {
+                                    position: relative;
+                                    left: 10px;
+                                }
+                            }
+                        }
+                    }
+
+                    .payement-price {
+                        width: 100%;
+                        height: 74px;
+                        display: flex;
+                        justify-content: space-between;
+                        border-top: 3px solid rgb(70, 70, 70, 25%);
+                        & div:nth-child(1) {
+                            width: 33.33%;
+                            height: 100%;
+                        }
+
+                        .payement-button {
+                            width: 33.33%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                           
+                            button {
+                                width: 100px;
+                                padding: 10px;
+                                border: none;
+                                background-color: $color-primary;
+                                color: $color-secondary;
+                                cursor: pointer;
+                                font-weight: 500;
+                                font-size: 1.2em;
+                                transition: 300ms;
+                                border-radius: 10px;
+
+                                &:hover {
+                                    transform: scale(1.1);
+                                }
+                            }
+                            
+                        }
+
+                        .total-price {
+                            width: 33.33%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+                            font-size: 1.2em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

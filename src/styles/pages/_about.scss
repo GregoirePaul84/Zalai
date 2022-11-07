@@ -1,9 +1,9 @@
 .about-container {
-    height: calc(100vh + 900px);
+    height: 2000px;
     width: 100%;
     
     .background {
-        height: calc(100vh + 900px);
+        height: 2000px;
         width: 100%;
         position: absolute;
         z-index: -1;
@@ -28,7 +28,7 @@
         height: 100%;
 
         .about-main {
-            height: calc(100% - 300px);
+            height: calc(100% - 550px);
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -55,13 +55,12 @@
                     margin-top: 10px;
                     margin-bottom: 20px;
 
-                    h2::after {
+                    .orange-line {
                         background-color: $color-primary;
-                        content: "";
-                        display: block;
                         height: 2px;
-                        width: 140px;
-                        transform: translateX(83px);
+                        width: 145px;
+                        opacity: 0;
+                        transform-origin: left;
                     }
                     
                     span {

@@ -48,6 +48,8 @@
                 width: 0px;
                 background: transparent;
                 transition: width .5s ease, background-color .5s ease;
+                position: absolute;
+                bottom: 0;
             }
 
             &:hover::after {
@@ -63,6 +65,7 @@
         align-items: center;
         position: absolute;
         width: auto;
+        height: 150px;
         right: -65px;
         top: 45px;
         background-color: #694840;

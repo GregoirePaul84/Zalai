@@ -18,6 +18,7 @@ const ZalaiLogo = ({isLoading}) => {
                 fifthLetter.style.animation = 'stroke-anim 3s ease forwards 1.2s';
             }, 4300);
         }
+        // eslint-disable-next-line
     }, [isLoading])
 
     return (
