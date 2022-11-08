@@ -94,6 +94,10 @@
                         overflow-y: scroll;
                         overflow-x: hidden;
 
+                        .empty-basket {
+                            text-align: center;
+                        }
+
                         .product {
                             display: flex;
                             height: 150px;
@@ -107,6 +111,8 @@
 
                                 .product-name-price {
                                     padding-top: 10px;
+                                    margin-left: auto;
+                                    margin-right: auto;
                                 }
 
                                 img {

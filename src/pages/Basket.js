@@ -93,12 +93,13 @@ const Basket = () => {
 
     // ==== ANNULATION D'UN PRODUIT DU PANIER ==== //
 
-    function cancelItem(id) {
+    function cancelItem(id, name) {
+        console.log(name);
 
         if(window.confirm('Etes vous sûr(e) de vouloir supprimer ce produit du panier ?') === true) {
             
             // Suppression du produit selon l'id
-            storageRef.current = storageRef.current.filter((item) => item.id !== id);
+            storageRef.current = storageRef.current.filter((item) => item.id !== id || item.name !== name);
 
             // Suppression du local storage
             localStorage.setItem('basket', JSON.stringify(storageRef.current));
@@ -140,9 +141,9 @@ const Basket = () => {
                                 </div>
                                 <div className="products-stored">
                                     {(storageRef.current.length !== 0) ?
-                                        storageRef.current.map((key) => {
+                                        storageRef.current.map((key, index) => {
                                             return (
-                                                <div className="product" key={key.id} data-id={key.id}>
+                                                <div className="product" key={index} data-id={key.id}>
                                                     <div className="product-infos">
                                                         <div className="product-img">
                                                             <img src={key.img} alt="" />
@@ -154,7 +155,7 @@ const Basket = () => {
                                                     </div>
                                                     <div className="delete-product">
                                                         <h4>Produit unique</h4>
-                                                        <FontAwesomeIcon icon={faTrash} onClick={() => {cancelItem(key.id)}} />
+                                                        <FontAwesomeIcon icon={faTrash} onClick={() => {cancelItem(key.id, key.name)}} />
                                                     </div>
                                                     <div className="product-price">
                                                         <p>{key.price},00 €</p>
@@ -162,7 +163,7 @@ const Basket = () => {
                                                 </div>
                                             )
                                         })
-                                        : <p>Votre panier est vide</p> }
+                                        : <p className='empty-basket'>Votre panier est vide</p> }
                                 </div>
                                 <div className="payement-price">
                                     <div></div>
