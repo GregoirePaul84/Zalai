@@ -28,7 +28,7 @@ const Item = ({productCategory, productClass, productName, productOldPrice, prod
         
         if(window.confirm('Etes vous sûr(e) d\'ajouter ce produit au panier ?') === true) {
             console.log('confirmé');
-            addBasket([{"name": productName, "id": productId, "img": productImg, "size": productSize, "price": productNewPrice}])
+            addBasket({"name": productName, "id": productId, "img": productImg, "size": productSize, "price": productNewPrice})
         }
         else {
             console.log('annulé');

@@ -105,7 +105,12 @@
                                 width: 33.33%;
                                 display: flex;
 
+                                .product-name-price {
+                                    padding-top: 10px;
+                                }
+
                                 img {
+                                    padding-top: 10px;
                                     height: 100%;
                                     width: 100%;
                                 }
@@ -116,9 +121,25 @@
                                 width: 33.33%;
                                 text-align: center;
 
+                                svg {
+                                    position: relative;
+                                    left: 10px;
+                                    height: 13px;
+                                    cursor: pointer;
+
+                                    path {
+                                        color: $transparent-gray;
+                                    }
+                                }
+
                                 p, h4 {
                                     position: relative;
                                     left: 10px;
+                                    padding-top: 10px;
+                                }
+
+                                h4 {
+                                    border-top: 1px solid rgb(70, 70, 70, 25%);
                                 }
                             }
                         }

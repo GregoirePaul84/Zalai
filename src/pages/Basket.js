@@ -16,7 +16,7 @@ const Basket = () => {
     const [brightness, setBrightness] = useState(0.4);
 
     const storageRef = useRef([]);
-    const totalPrice = useRef(0);
+    const [price, setPrice] = useState(0);
 
     const handleScroll = () => {
         setScrollY(window.scrollY);
@@ -67,15 +67,47 @@ const Basket = () => {
 
     });
 
-    // ==== RECUPERATION DES PRODUITS DU LOCAL STORAGE ==== //
-
     useEffect(() => {
+        calculateBasket();
+    }, []);
+    
+    // ==== CALCUL DU TOTAL DES PRODUITS ==== //
+
+    function calculateBasket() {
         storageRef.current = JSON.parse(localStorage.getItem('basket'));
         console.log(storageRef.current);
-        storageRef.current.forEach((item) => {
-            totalPrice.current = totalPrice.current + item[0].price;
-        });
-    }, []);
+
+        if (storageRef.current.length === 0) {
+            setPrice(0);
+        } 
+        else {
+            // Somme des prix de tous les produits en partant de 0
+            const totalPrice = storageRef.current.reduce(function(result,item) {
+                return result + item.price;
+               }, 0);
+               
+            setPrice(totalPrice);     
+        }
+    }
+
+
+    // ==== ANNULATION D'UN PRODUIT DU PANIER ==== //
+
+    function cancelItem(id) {
+
+        if(window.confirm('Etes vous sûr(e) de vouloir supprimer ce produit du panier ?') === true) {
+            
+            // Suppression du produit selon l'id
+            storageRef.current = storageRef.current.filter((item) => item.id !== id);
+
+            // Suppression du local storage
+            localStorage.setItem('basket', JSON.stringify(storageRef.current));
+            calculateBasket();
+        }
+        else {
+            console.log('annulé');
+        }
+    }
 
     return (
         <>
@@ -107,29 +139,30 @@ const Basket = () => {
                                     <p>Prix</p>
                                 </div>
                                 <div className="products-stored">
-                                    {storageRef.current.map((key) => {
-                                        return (
-                                            <div className="product" key={key[0].id}>
-                                                <div className="product-infos">
-                                                    <div className="product-img">
-                                                        <img src={key[0].img} alt="" />
+                                    {(storageRef.current.length !== 0) ?
+                                        storageRef.current.map((key) => {
+                                            return (
+                                                <div className="product" key={key.id} data-id={key.id}>
+                                                    <div className="product-infos">
+                                                        <div className="product-img">
+                                                            <img src={key.img} alt="" />
+                                                        </div>
+                                                        <div className="product-name-price">
+                                                            <h4>{key.name}</h4>
+                                                            <p>{key.size}</p>
+                                                        </div> 
                                                     </div>
-                                                    <div className="product-name-price">
-                                                        <h4>{key[0].name}</h4>
-                                                        <p>{key[0].size}</p>
-                                                    </div> 
+                                                    <div className="delete-product">
+                                                        <h4>Produit unique</h4>
+                                                        <FontAwesomeIcon icon={faTrash} onClick={() => {cancelItem(key.id)}} />
+                                                    </div>
+                                                    <div className="product-price">
+                                                        <p>{key.price},00 €</p>
+                                                    </div>
                                                 </div>
-                                                <div className="delete-product">
-                                                    <h4>Produit unique</h4>
-                                                    <FontAwesomeIcon icon={faTrash} />
-                                                </div>
-                                                <div className="product-price">
-                                                    <p>{key[0].price},00 €</p>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                    {/* <p>Votre panier est vide</p> */}
+                                            )
+                                        })
+                                        : <p>Votre panier est vide</p> }
                                 </div>
                                 <div className="payement-price">
                                     <div></div>
@@ -137,7 +170,7 @@ const Basket = () => {
                                         <button>Paiement</button>
                                     </div>
                                     <div className="total-price">
-                                        <p>Total : {totalPrice.current},00 €</p>
+                                        <p>Total : {price},00 €</p>
                                     </div>
                                 </div>
                             </div>
