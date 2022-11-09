@@ -3,6 +3,8 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Loader from './Loader';
 
+import { useNavigate } from 'react-router-dom';
+
 import basketImg from '../media/pexels-meruyert-gonullu-6243732.jpg'
 import { useRef } from 'react';
 
@@ -11,12 +13,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Basket = () => {
 
+    const navigate = useNavigate();
+
     const [isLoading, setIsLoading] = useState(true);
     const [scrollY, setScrollY] = useState(0);
     const [brightness, setBrightness] = useState(0.4);
+    const [price, setPrice] = useState(0);
 
     const storageRef = useRef([]);
-    const [price, setPrice] = useState(0);
 
     const handleScroll = () => {
         setScrollY(window.scrollY);
@@ -110,6 +114,10 @@ const Basket = () => {
         }
     }
 
+    function goShopping() {
+        navigate(`/products`);
+    }
+
     return (
         <>
             <div className="home-loader">
@@ -126,7 +134,7 @@ const Basket = () => {
                         <section>
                             <div className="basket-header">
                                 <div className="back-to-shopping">
-                                    <p>Continuer les achats</p>
+                                    <button onClick={goShopping}>Continuer les achats</button>
                                 </div>
                                 <div className="basket-title">
                                     <h2>Votre panier</h2>

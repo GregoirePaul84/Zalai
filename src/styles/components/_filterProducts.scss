@@ -1,7 +1,5 @@
 .filter-choices-container {
     min-width: 100px;
-    display: flex;
-    justify-content: center;
     position: absolute;
     z-index: 2;
 
@@ -38,7 +36,7 @@
 }
 
 .price, .size, .kind, .material {
-    top: 39px;
+    top: 40px;
     right: -33px;
 
     #ul-price, #ul-size, #ul-kind, #ul-material {
@@ -70,8 +68,8 @@
 }
 
 .color {
-    top: 39px;
-    right: -31px;
+    top: 40px;
+    right: -28px;
 
     .filter-choices {
         max-height: 206px;

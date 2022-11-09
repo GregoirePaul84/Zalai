@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
 
 import video from '../media/vidéo_de_Taryn_Elliott.mp4';
