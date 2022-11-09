@@ -9,7 +9,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import SmallLoader from './SmallLoader';
 
 
-const DetailedProduct = ({products, categoryIndex}) => {
+const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, addBasket}) => {
 
     const navigate = useNavigate();
     let { id } = useParams();
@@ -114,7 +114,17 @@ const DetailedProduct = ({products, categoryIndex}) => {
         }
     }, [imgIndex]);
 
-    console.log(imgIndex);
+    function addToBasket() {
+        
+        if(window.confirm('Etes vous sûr(e) d\'ajouter ce produit au panier ?') === true) {
+            console.log('confirmé');
+            addBasket({"name": productSelected[index].productName, "id": productSelected[index].productId, "img": productSelected[index].productImg, "size": productSelected[index].productSize, "price": productSelected[index].productNewPrice});
+            setCartLength(cartLength => cartLength + 1);
+        }
+        else {
+            console.log('annulé');
+        }
+    }
 
     return (
         <section className="detailed-product">
@@ -169,7 +179,7 @@ const DetailedProduct = ({products, categoryIndex}) => {
                                 <p className='delivery'>La livraison est <span>gratuite</span> pour tous nos tapis !</p>
                             </div>
                             <div className="button-container">
-                                <button className="add-basket">
+                                <button className="add-basket" onClick={(() => {addToBasket()})}>
                                     Ajouter au panier !
                                 </button>
                             </div>

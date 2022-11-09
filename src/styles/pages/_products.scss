@@ -28,6 +28,27 @@
         width: 100%;
         height: 100%;
 
+        .cart-info {
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            z-index: 3;
+
+            .number-items {
+                color: $color-primary;
+                margin-right: 5px;
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+
+            .fa-cart-arrow-down {
+                cursor: pointer;
+                path {
+                    color: $color-primary;
+                }
+            }
+        }
+
         main {
             width: 100%;
             height: calc(100% - 270px);

@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBasketShopping } from '@fortawesome/free-solid-svg-icons';
 
 
-const Item = ({productCategory, productClass, productName, productOldPrice, productNewPrice, productTribe, productSize, productImg, productHover, productAlt, addBasket, productId}) => {
+const Item = ({cartLength, setCartLength, productClass, productName, productOldPrice, productNewPrice, productTribe, productSize, productImg, productHover, productAlt, addBasket, productId}) => {
 
     const navigate = useNavigate();
 
@@ -24,14 +24,33 @@ const Item = ({productCategory, productClass, productName, productOldPrice, prod
         navigate(`/products/${productId}`);
     }
 
-    function addToBasket() {
+    function checkCardPresence(id) {
+        const cart = JSON.parse(localStorage.getItem('basket'));
+        console.log(id);
         
-        if(window.confirm('Etes vous sûr(e) d\'ajouter ce produit au panier ?') === true) {
-            console.log('confirmé');
-            addBasket({"name": productName, "id": productId, "img": productImg, "size": productSize, "price": productNewPrice})
+        if (cart.some(item => item.id === id)) {
+            return true;
         }
         else {
-            console.log('annulé');
+            return false;
+        }
+    }
+        
+ 
+    function addToBasket(id) {
+
+        if (checkCardPresence(id)) {
+            alert('produit déjà dans le panier');
+        }
+        else {
+            if(window.confirm('Etes vous sûr(e) d\'ajouter ce produit au panier ?') === true) {
+                console.log('confirmé');
+                addBasket({"name": productName, "id": productId, "img": productImg, "size": productSize, "price": productNewPrice});
+                setCartLength(cartLength => cartLength + 1);
+            }
+            else {
+                console.log('annulé');
+            }
         }
     }
 
@@ -60,7 +79,7 @@ const Item = ({productCategory, productClass, productName, productOldPrice, prod
                     </p>
                     <p className='economy'>{productOldPrice - productNewPrice}€ d'économies !</p>
                     <div className="add-basket-container">
-                        <button className='add-basket-button' onClick={(() => {addToBasket()})}>
+                        <button className='add-basket-button' onClick={(() => {addToBasket(productId)})}>
                             <FontAwesomeIcon icon={faBasketShopping}/>
                             <p>Ajouter au panier</p>
                         </button>

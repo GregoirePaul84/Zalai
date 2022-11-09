@@ -105,17 +105,13 @@ const Basket = () => {
             // Suppression du produit selon l'id
             storageRef.current = storageRef.current.filter((item) => item.id !== id || item.name !== name);
 
-            // Suppression du local storage
+            // Suppression du produit du local storage
             localStorage.setItem('basket', JSON.stringify(storageRef.current));
             calculateBasket();
         }
         else {
             console.log('annulé');
         }
-    }
-
-    function goShopping() {
-        navigate(`/products`);
     }
 
     return (
@@ -134,7 +130,7 @@ const Basket = () => {
                         <section>
                             <div className="basket-header">
                                 <div className="back-to-shopping">
-                                    <button onClick={goShopping}>Continuer les achats</button>
+                                    <button onClick={() => navigate(`/products`)}>Continuer les achats</button>
                                 </div>
                                 <div className="basket-title">
                                     <h2>Votre panier</h2>

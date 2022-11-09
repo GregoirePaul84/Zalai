@@ -21,14 +21,19 @@ import { saveBasket, getBasket, addBasket } from '../functions/basket';
 
 // Importation des icônes
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import FilterProducts from '../components/FilterProducts';
 
+import { useNavigate } from 'react-router-dom';
+
 export const ProductContext = React.createContext();
 
 const Products = () => {
+
+    const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState(true);
     const [brightness, setBrightness] = useState(0.4);
@@ -37,7 +42,7 @@ const Products = () => {
     const [categoryIndex, setCategoryIndex] = useState(undefined);
     const [displayDetail, setDisplayDetail] = useState(false);
     const [typeFilter, setTypeFilter] = useState(undefined);
-
+    const [cartLength, setcartLength] = useState(0);
     const [filterActive, setFilterActive] = useState({price: false, size: false, color: false, kind: false, material: false});
 
     // Filtre de prix
@@ -52,7 +57,7 @@ const Products = () => {
     // Filtre de genre
     const [kindFilter, setKindFilter] = useState({kind: undefined, name: undefined});
 
-    // Filtre de genre
+    // Filtre de matériau
     const [materialFilter, setMaterialFilter] = useState({material: undefined, name: undefined});
 
     // Index d'images de produits afin de gérer l'affichage précédent / suivant
@@ -65,7 +70,7 @@ const Products = () => {
         setTypeFilter(undefined);
     }
 
-    
+
 
     // ==== GESTION DU LOADER ==== //
 
@@ -263,6 +268,10 @@ const Products = () => {
                 {/* <div className="gray-layout"></div> */}
             </div>
             <div className="foreground">
+                <div className="cart-info">
+                    <span className='number-items'>{cartLength}</span>
+                    <FontAwesomeIcon icon={faCartArrowDown} onClick={() => navigate(`/basket`)}/>
+                </div>
                 <Header checkPage={'product'} isLoading={isLoading}/>
                 <main>
                     <section className="product-title">
@@ -370,6 +379,8 @@ const Products = () => {
                                                 saveBasket={saveBasket}
                                                 getBasket={getBasket}
                                                 addBasket={addBasket}
+                                                cartLength={cartLength}
+                                                setCartLength={setcartLength}
                                                 productCategory={key.productCategory}
                                                 productId={key.productId}
                                                 productClass={key.productClass}
@@ -418,6 +429,8 @@ const Products = () => {
                                                 saveBasket={saveBasket}
                                                 getBasket={getBasket}
                                                 addBasket={addBasket}
+                                                cartLength={cartLength}
+                                                setCartLength={setcartLength}
                                                 productCategory={key.productCategory}
                                                 productId={key.productId}
                                                 productClass={key.productClass}
@@ -485,6 +498,8 @@ const Products = () => {
                                                 saveBasket={saveBasket}
                                                 getBasket={getBasket}
                                                 addBasket={addBasket}
+                                                cartLength={cartLength}
+                                                setCartLength={setcartLength}
                                                 productCategory={key.productCategory}
                                                 productId={key.productId}
                                                 productClass={key.productClass}
@@ -553,7 +568,11 @@ const Products = () => {
             </div>
             { (displayDetail) ?
                 <ProductContext.Provider value={{ displayDetail, setDisplayDetail }}>
-                    <DetailedProduct products={products} categoryIndex={categoryIndex}/>
+                    <DetailedProduct products={products} 
+                    categoryIndex={categoryIndex} 
+                    cartLength={cartLength} 
+                    setCartLength={setcartLength}
+                    addBasket={addBasket} />
                 </ProductContext.Provider> 
             : null }
         </div>
