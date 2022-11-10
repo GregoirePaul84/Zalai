@@ -20,6 +20,7 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
     const setDisplayDetail = detail.setDisplayDetail;
 
     let productSelected = products[categoryIndex];
+    const findProduct = productSelected.filter((product) => product.productId === index.toString())[0];
 
     const [imgIndex, setImgIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -86,43 +87,62 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
     function changeImg(e) {
         const imgSelected = e.target;
         const selectMainImgs = document.querySelectorAll('.detailed-img-container img');
-        console.log(e.target.getAttribute('class'));
+       
         selectMainImgs.forEach((e) => {e.setAttribute('src', imgSelected.getAttribute('src'))});
         
         switch (e.target.getAttribute('class')) {
-            case 'carpet1': setImgIndex(0);
+            case 'img1': setImgIndex(0);
                 break;
-            case 'carpet2': setImgIndex(1);
+            case 'img2': setImgIndex(1);
                 break;
-            case 'carpet3': setImgIndex(2);
+            case 'img3': setImgIndex(2);
                 break;
-            case 'carpet4': setImgIndex(3);
+            case 'img4': setImgIndex(3);
                 break;
-            case 'carpet5': setImgIndex(4);
+            case 'img5': setImgIndex(4);
                 break;
-            case 'carpet6': setImgIndex(5);
+            case 'img6': setImgIndex(5);
                 break;
+            default : console.log('image non disponible');
         }
     }
 
     useEffect(() => {
-        if (document.querySelector('.normal-img').classList.contains(`${productSelected[index].productAllImg[imgIndex].id}`)) {
-            const selectCarouselImg = document.querySelector(`.detailed-carousel .${productSelected[index].productAllImg[imgIndex].id}`);
+        if (document.querySelector('.normal-img').classList.contains(`${findProduct.productAllImg[imgIndex].id}`)) {
+            const selectCarouselImg = document.querySelector(`.detailed-carousel .${findProduct.productAllImg[imgIndex].id}`);
             const selectOtherImgs = document.querySelectorAll(`.detailed-carousel img`);
             selectOtherImgs.forEach((e) => {e.classList.remove('selected-img')});
+            console.log(selectCarouselImg);
             selectCarouselImg.classList.add('selected-img');
         }
     }, [imgIndex]);
 
-    function addToBasket() {
+    function checkCardPresence(id) {
+        const cart = JSON.parse(localStorage.getItem('basket'));
+        console.log(id);
         
-        if(window.confirm('Etes vous sûr(e) d\'ajouter ce produit au panier ?') === true) {
-            console.log('confirmé');
-            addBasket({"name": productSelected[index].productName, "id": productSelected[index].productId, "img": productSelected[index].productImg, "size": productSelected[index].productSize, "price": productSelected[index].productNewPrice});
-            setCartLength(cartLength => cartLength + 1);
+        if (cart.some(item => item.id === id)) {
+            return true;
         }
         else {
-            console.log('annulé');
+            return false;
+        }
+    }
+
+    function addToBasket() {
+        
+        if (checkCardPresence(id)) {
+            alert('produit déjà dans le panier');
+        }
+        else {
+            if(window.confirm('Etes vous sûr(e) d\'ajouter ce produit au panier ?') === true) {
+                console.log('confirmé');
+                addBasket({"name": productSelected[index].productName, "id": productSelected[index].productId, "img": productSelected[index].productImg, "size": productSelected[index].productSize, "price": productSelected[index].productNewPrice});
+                setCartLength(cartLength => cartLength + 1);
+            }
+            else {
+                console.log('annulé');
+            }
         }
     }
 
@@ -147,8 +167,8 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
                             <FontAwesomeIcon icon={faChevronLeft} className="chevron-left" onClick={showPreviousImg}/>
                         </div>
                         <div className="detailed-img-container" onMouseOver={zoomOnImg} onMouseLeave={zoomOffImg} onMouseMove={function(e){moveImg(e)}}>
-                            <img src={productSelected[index].productAllImg[imgIndex].img} alt="" className='zoomed-img'/>
-                            <img src={productSelected[index].productAllImg[imgIndex].img} alt="" className={`normal-img ${productSelected[0].productAllImg[imgIndex].id}`} onLoad={checkLoading}/>
+                            <img src={findProduct.productAllImg[imgIndex].img} alt="" className='zoomed-img'/>
+                            <img src={findProduct.productAllImg[imgIndex].img} alt="" className={`normal-img ${productSelected[0].productAllImg[imgIndex].id}`} onLoad={checkLoading}/>
                         </div>
                         <div className="chevron-container">
                                 <FontAwesomeIcon icon={faChevronRight} className="chevron-right" onClick={showNextImg}/>
@@ -158,24 +178,24 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
                         </div>
                         <div className="detailed-text-container">
                             <div className="detailed-text">
-                                <h2>{productSelected[index].productName}</h2>
+                                <h2>{findProduct.productName}</h2>
                                 <p className='product-size'>
                                     <FontAwesomeIcon icon={faRuler} />
-                                    {productSelected[index].productSize}
+                                    {findProduct.productSize}
                                 </p>
                                 <p className='material'>
                                     <FontAwesomeIcon icon={faPercent} />
-                                    {productSelected[index].productComposition}
+                                    {findProduct.productComposition}
                                 </p>
                                 <p className='artisan'>
                                     <FontAwesomeIcon icon={faTent} />
-                                    {productSelected[index].productTribe}
+                                    {findProduct.productTribe}
                                 </p>
                                 <p className='prices'>
-                                    <span className='old-price'>{productSelected[index].productOldPrice}€</span>
-                                    <span className='new-price'>{productSelected[index].productNewPrice}€</span>
+                                    <span className='old-price'>{findProduct.productOldPrice}€</span>
+                                    <span className='new-price'>{findProduct.productNewPrice}€</span>
                                 </p>
-                                <p className='economy'>économisez {productSelected[index].productOldPrice - productSelected[index].productNewPrice}€ !</p>
+                                <p className='economy'>économisez {findProduct.productOldPrice - findProduct.productNewPrice}€ !</p>
                                 <p className='delivery'>La livraison est <span>gratuite</span> pour tous nos tapis !</p>
                             </div>
                             <div className="button-container">
@@ -190,7 +210,7 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
                                 <FontAwesomeIcon icon={faChevronLeft} className="chevron-left" onClick={showPreviousImg}/>
                         </div>
                         {(products !== undefined) ? 
-                            productSelected[index].productAllImg.map((key) => {
+                            findProduct.productAllImg.map((key) => {
                             return (
                                 <img src={key.img} alt="" key={key.id} className={key.id} onClick={function(e){changeImg(e)}} onLoad={function(e){checkLoading(e)}}/>
                             )

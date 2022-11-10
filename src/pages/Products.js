@@ -42,7 +42,7 @@ const Products = () => {
     const [categoryIndex, setCategoryIndex] = useState(undefined);
     const [displayDetail, setDisplayDetail] = useState(false);
     const [typeFilter, setTypeFilter] = useState(undefined);
-    const [cartLength, setcartLength] = useState(0);
+    const [cartLength, setcartLength] = useState(JSON.parse(localStorage.getItem('basket')).length);
     const [filterActive, setFilterActive] = useState({price: false, size: false, color: false, kind: false, material: false});
 
     // Filtre de prix
@@ -392,7 +392,8 @@ const Products = () => {
                                                 productImg={key.productImg}
                                                 productHover={key.productHover}
                                                 productAllImg={key.productAllImg}
-                                                productAlt={key.productAlt}/>
+                                                productAlt={key.productAlt}
+                                                isAdded={key.isAdded} />
                                             </ProductContext.Provider>
                                         )
                                     })
@@ -442,7 +443,8 @@ const Products = () => {
                                                 productImg={key.productImg}
                                                 productHover={key.productHover}
                                                 productAllImg={key.productAllImg}
-                                                productAlt={key.productAlt}/>
+                                                productAlt={key.productAlt}
+                                                isAdded={key.isAdded} />
                                             </ProductContext.Provider>
                                         )
                                     })
@@ -511,7 +513,8 @@ const Products = () => {
                                                 productImg={key.productImg}
                                                 productHover={key.productHover}
                                                 productAllImg={key.productAllImg}
-                                                productAlt={key.productAlt}/>
+                                                productAlt={key.productAlt}
+                                                isAdded={key.isAdded} />
                                             </ProductContext.Provider>
                                         )
                                     }) 
@@ -555,7 +558,8 @@ const Products = () => {
                                                 productImg={key.productImg}
                                                 productHover={key.productHover}
                                                 productAllImg={key.productAllImg}
-                                                productAlt={key.productAlt}/>
+                                                productAlt={key.productAlt}
+                                                isAdded={key.isAdded} />
                                             </ProductContext.Provider>
                                         )
                                 }) : null

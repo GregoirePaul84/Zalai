@@ -305,6 +305,8 @@ export const products = [
     // Tapis en stock
 [   {
         'productId': '0',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-1',
         'productName': 'Tapis berbère 1',
@@ -320,18 +322,20 @@ export const products = [
         'productComposition': '100% laine de mouton',
         'productImg': carpet1,
         'productHover': carpet1_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet1}, 
-                            {"id":"carpet2", "img":carpet1_2}, 
-                            {"id":"carpet3", "img":carpet1_3}, 
-                            {"id":"carpet4", "img":carpet1_4}, 
-                            {"id":"carpet5", "img":carpet1_5}, 
-                            {"id":"carpet6", "img":carpet1_6}
+        'productAllImg': [{"id":"img1", "img":carpet1}, 
+                            {"id":"img2", "img":carpet1_2}, 
+                            {"id":"img3", "img":carpet1_3}, 
+                            {"id":"img4", "img":carpet1_4}, 
+                            {"id":"img5", "img":carpet1_5}, 
+                            {"id":"img6", "img":carpet1_6}
                         ],
 
         'productAlt': 'Tapis berbère bleu à rayures'
     },
     {
         'productId': '1',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-2',
         'productName': 'Tapis berbère 2',
@@ -347,17 +351,19 @@ export const products = [
         'productComposition': '100% poil de chameau',
         'productImg': carpet2,
         'productHover': carpet2_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet2}, 
-                            {"id":"carpet2", "img":carpet2_2}, 
-                            {"id":"carpet3", "img":carpet2_3}, 
-                            {"id":"carpet4", "img":carpet2_4}, 
-                            {"id":"carpet5", "img":carpet2_5},
-                            {"id":"carpet6", "img":carpet2_6}
+        'productAllImg': [{"id":"img1", "img":carpet2}, 
+                            {"id":"img2", "img":carpet2_2}, 
+                            {"id":"img3", "img":carpet2_3}, 
+                            {"id":"img4", "img":carpet2_4}, 
+                            {"id":"img5", "img":carpet2_5},
+                            {"id":"img6", "img":carpet2_6}
                         ],
         'productAlt': 'choix de produit: tapis'
     },
     {
         'productId': '2',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-3',
         'productName': 'Tapis berbère 3',
@@ -373,17 +379,19 @@ export const products = [
         'productComposition': '100% poil de chameau',
         'productImg': carpet3,
         'productHover': carpet3_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet3}, 
-                            {"id":"carpet2", "img":carpet3_2}, 
-                            {"id":"carpet3", "img":carpet3_3}, 
-                            {"id":"carpet4", "img":carpet3_4}, 
-                            {"id":"carpet5", "img":carpet3_5},
-                            {"id":"carpet6", "img":carpet3_6}
+        'productAllImg': [{"id":"img1", "img":carpet3}, 
+                            {"id":"img2", "img":carpet3_2}, 
+                            {"id":"img3", "img":carpet3_3}, 
+                            {"id":"img4", "img":carpet3_4}, 
+                            {"id":"img5", "img":carpet3_5},
+                            {"id":"img6", "img":carpet3_6}
                         ],
         'productAlt': 'choix de produit: tapis'
     },
     {
         'productId': '3',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-4',
         'productName': 'Tapis berbère 4',
@@ -399,18 +407,20 @@ export const products = [
         'productComposition': '100% laine de mouton',
         'productImg': carpet4,
         'productHover': carpet4_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet4}, 
-                            {"id":"carpet2", "img":carpet4_2}, 
-                            {"id":"carpet3", "img":carpet4_3}, 
-                            {"id":"carpet4", "img":carpet4_4}, 
-                            {"id":"carpet5", "img":carpet4_5},
-                            {"id":"carpet6", "img":carpet4_6}
+        'productAllImg': [{"id":"img1", "img":carpet4}, 
+                            {"id":"img2", "img":carpet4_2}, 
+                            {"id":"img3", "img":carpet4_3}, 
+                            {"id":"img4", "img":carpet4_4}, 
+                            {"id":"img5", "img":carpet4_5},
+                            {"id":"img6", "img":carpet4_6}
                         ],
         'productAlt': 'choix de produit: tapis'
     },
 
     {
         'productId': '4',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-5',
         'productName': 'Tapis berbère 5',
@@ -426,18 +436,20 @@ export const products = [
         'productComposition': '100% laine de mouton',
         'productImg': carpet5,
         'productHover': carpet5_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet5}, 
-                            {"id":"carpet2", "img":carpet5_2}, 
-                            {"id":"carpet3", "img":carpet5_3}, 
-                            {"id":"carpet4", "img":carpet5_4}, 
-                            {"id":"carpet5", "img":carpet5_5},
-                            {"id":"carpet6", "img":carpet5_6}
+        'productAllImg': [{"id":"img1", "img":carpet5}, 
+                            {"id":"img2", "img":carpet5_2}, 
+                            {"id":"img3", "img":carpet5_3}, 
+                            {"id":"img4", "img":carpet5_4}, 
+                            {"id":"img5", "img":carpet5_5},
+                            {"id":"img6", "img":carpet5_6}
                         ],
         'productAlt': 'choix de produit: tapis'
     },
 
     {
         'productId': '5',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-6',
         'productName': 'Tapis berbère 6',
@@ -453,18 +465,20 @@ export const products = [
         'productComposition': '100% laine de mouton',
         'productImg': carpet6,
         'productHover': carpet6_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet6}, 
-                            {"id":"carpet2", "img":carpet6_2}, 
-                            {"id":"carpet3", "img":carpet6_3}, 
-                            {"id":"carpet4", "img":carpet6_4}, 
-                            {"id":"carpet5", "img":carpet6_5},
-                            {"id":"carpet6", "img":carpet6_6}
+        'productAllImg': [{"id":"img1", "img":carpet6}, 
+                            {"id":"img2", "img":carpet6_2}, 
+                            {"id":"img3", "img":carpet6_3}, 
+                            {"id":"img4", "img":carpet6_4}, 
+                            {"id":"img5", "img":carpet6_5},
+                            {"id":"img6", "img":carpet6_6}
                         ],
         'productAlt': 'choix de produit: décorations'
     },
 
     {
         'productId': '6',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-7',
         'productName': 'Tapis berbère 7',
@@ -480,18 +494,20 @@ export const products = [
         'productComposition': '100% laine de mouton',
         'productImg': carpet7,
         'productHover': carpet7_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet7}, 
-                            {"id":"carpet2", "img":carpet7_2}, 
-                            {"id":"carpet3", "img":carpet7_3}, 
-                            {"id":"carpet4", "img":carpet7_4}, 
-                            {"id":"carpet5", "img":carpet7_5},
-                            {"id":"carpet6", "img":carpet7_6}
+        'productAllImg': [{"id":"img1", "img":carpet7}, 
+                            {"id":"img2", "img":carpet7_2}, 
+                            {"id":"img3", "img":carpet7_3}, 
+                            {"id":"img4", "img":carpet7_4}, 
+                            {"id":"img5", "img":carpet7_5},
+                            {"id":"img6", "img":carpet7_6}
                         ],
         'productAlt': 'choix de produit: décorations'
     },
 
     {
         'productId': '7',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-8',
         'productName': 'Tapis berbère 8',
@@ -507,18 +523,20 @@ export const products = [
         'productComposition': '100% laine de mouton',
         'productImg': carpet8,
         'productHover': carpet8_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet8}, 
-                            {"id":"carpet2", "img":carpet8_2}, 
-                            {"id":"carpet3", "img":carpet8_3}, 
-                            {"id":"carpet4", "img":carpet8_4}, 
-                            {"id":"carpet5", "img":carpet8_5},
-                            {"id":"carpet6", "img":carpet8_6}
+        'productAllImg': [{"id":"img1", "img":carpet8}, 
+                            {"id":"img2", "img":carpet8_2}, 
+                            {"id":"img3", "img":carpet8_3}, 
+                            {"id":"img4", "img":carpet8_4}, 
+                            {"id":"img5", "img":carpet8_5},
+                            {"id":"img6", "img":carpet8_6}
                         ],
         'productAlt': 'choix de produit: décorations'
     },
 
     {
         'productId': '8',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-9',
         'productName': 'Tapis berbère 9',
@@ -534,18 +552,20 @@ export const products = [
         'productComposition': '100% poil de chameau',
         'productImg': carpet9,
         'productHover': carpet9_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet9}, 
-                            {"id":"carpet2", "img":carpet9_2}, 
-                            {"id":"carpet3", "img":carpet9_3}, 
-                            {"id":"carpet4", "img":carpet9_4}, 
-                            {"id":"carpet5", "img":carpet9_5},
-                            {"id":"carpet6", "img":carpet9_6}
+        'productAllImg': [{"id":"img1", "img":carpet9}, 
+                            {"id":"img2", "img":carpet9_2}, 
+                            {"id":"img3", "img":carpet9_3}, 
+                            {"id":"img4", "img":carpet9_4}, 
+                            {"id":"img5", "img":carpet9_5},
+                            {"id":"img6", "img":carpet9_6}
                         ],
         'productAlt': 'choix de produit: décorations'
     },
 
     {
         'productId': '9',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-10',
         'productName': 'Tapis berbère 10',
@@ -561,18 +581,20 @@ export const products = [
         'productComposition': '100% poil de chameau',
         'productImg': carpet10,
         'productHover': carpet10_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet10}, 
-                            {"id":"carpet2", "img":carpet10_2}, 
-                            {"id":"carpet3", "img":carpet10_3}, 
-                            {"id":"carpet4", "img":carpet10_4}, 
-                            {"id":"carpet5", "img":carpet10_5},
-                            {"id":"carpet6", "img":carpet10_6}
+        'productAllImg': [{"id":"img1", "img":carpet10}, 
+                            {"id":"img2", "img":carpet10_2}, 
+                            {"id":"img3", "img":carpet10_3}, 
+                            {"id":"img4", "img":carpet10_4}, 
+                            {"id":"img5", "img":carpet10_5},
+                            {"id":"img6", "img":carpet10_6}
                         ],
         'productAlt': 'Tapis jaune à carreaux'
     },
 
     {
         'productId': '10',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-11',
         'productName': 'Tapis berbère 11',
@@ -588,18 +610,20 @@ export const products = [
         'productComposition': '100% poil de chameau',
         'productImg': carpet11,
         'productHover': carpet11_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet11}, 
-                            {"id":"carpet2", "img":carpet11_2}, 
-                            {"id":"carpet3", "img":carpet11_3}, 
-                            {"id":"carpet4", "img":carpet11_4}, 
-                            {"id":"carpet5", "img":carpet11_5},
-                            {"id":"carpet6", "img":carpet11_6}
+        'productAllImg': [{"id":"img1", "img":carpet11}, 
+                            {"id":"img2", "img":carpet11_2}, 
+                            {"id":"img3", "img":carpet11_3}, 
+                            {"id":"img4", "img":carpet11_4}, 
+                            {"id":"img5", "img":carpet11_5},
+                            {"id":"img6", "img":carpet11_6}
                         ],
         'productAlt': 'Tapis orange et rouge'
     },
 
     {
         'productId': '11',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-12',
         'productName': 'Tapis berbère 12',
@@ -615,18 +639,20 @@ export const products = [
         'productComposition': '100% poil de chameau',
         'productImg': carpet12,
         'productHover': carpet12_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet12}, 
-                            {"id":"carpet2", "img":carpet12_2}, 
-                            {"id":"carpet3", "img":carpet12_3}, 
-                            {"id":"carpet4", "img":carpet12_4}, 
-                            {"id":"carpet5", "img":carpet12_5},
-                            {"id":"carpet6", "img":carpet12_6}
+        'productAllImg': [{"id":"img1", "img":carpet12}, 
+                            {"id":"img2", "img":carpet12_2}, 
+                            {"id":"img3", "img":carpet12_3}, 
+                            {"id":"img4", "img":carpet12_4}, 
+                            {"id":"img5", "img":carpet12_5},
+                            {"id":"img6", "img":carpet12_6}
                         ],
         'productAlt': 'Tapis vert à rayures orange et bleu'
     },
 
     {
         'productId': '12',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-13',
         'productName': 'Tapis berbère 13',
@@ -642,18 +668,20 @@ export const products = [
         'productComposition': '100% poil de chameau',
         'productImg': carpet13,
         'productHover': carpet13_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet13}, 
-                            {"id":"carpet2", "img":carpet13_2}, 
-                            {"id":"carpet3", "img":carpet13_3}, 
-                            {"id":"carpet4", "img":carpet13_4}, 
-                            {"id":"carpet5", "img":carpet13_5},
-                            {"id":"carpet6", "img":carpet13_6}
+        'productAllImg': [{"id":"img1", "img":carpet13}, 
+                            {"id":"img2", "img":carpet13_2}, 
+                            {"id":"img3", "img":carpet13_3}, 
+                            {"id":"img4", "img":carpet13_4}, 
+                            {"id":"img5", "img":carpet13_5},
+                            {"id":"img6", "img":carpet13_6}
                         ],
         'productAlt': 'Tapis bleu à extrémités noires'
     },
 
     {
         'productId': '13',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-14',
         'productName': 'Tapis berbère 14',
@@ -669,18 +697,20 @@ export const products = [
         'productComposition': '100% poil de chameau',
         'productImg': carpet14,
         'productHover': carpet14_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet14}, 
-                            {"id":"carpet2", "img":carpet14_2}, 
-                            {"id":"carpet3", "img":carpet14_3}, 
-                            {"id":"carpet4", "img":carpet14_4}, 
-                            {"id":"carpet5", "img":carpet14_5},
-                            {"id":"carpet6", "img":carpet14_6}
+        'productAllImg': [{"id":"img1", "img":carpet14}, 
+                            {"id":"img2", "img":carpet14_2}, 
+                            {"id":"img3", "img":carpet14_3}, 
+                            {"id":"img4", "img":carpet14_4}, 
+                            {"id":"img5", "img":carpet14_5},
+                            {"id":"img6", "img":carpet14_6}
                         ],
         'productAlt': 'Tapis bleu-vert à motifs violets'
     },
 
     {
         'productId': '14',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-15',
         'productName': 'Tapis berbère 15',
@@ -696,18 +726,20 @@ export const products = [
         'productComposition': '100% poil de chameau',
         'productImg': carpet15,
         'productHover': carpet15_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet15}, 
-                            {"id":"carpet2", "img":carpet15_2}, 
-                            {"id":"carpet3", "img":carpet15_3}, 
-                            {"id":"carpet4", "img":carpet15_4}, 
-                            {"id":"carpet5", "img":carpet15_5},
-                            {"id":"carpet6", "img":carpet15_6}
+        'productAllImg': [{"id":"img1", "img":carpet15}, 
+                            {"id":"img2", "img":carpet15_2}, 
+                            {"id":"img3", "img":carpet15_3}, 
+                            {"id":"img4", "img":carpet15_4}, 
+                            {"id":"img5", "img":carpet15_5},
+                            {"id":"img6", "img":carpet15_6}
                         ],
         'productAlt': 'Tapis violet unis'
     },
 
     {
         'productId': '15',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-16',
         'productName': 'Tapis berbère 16',
@@ -723,12 +755,12 @@ export const products = [
         'productComposition': '100% poil de chameau',
         'productImg': carpet16,
         'productHover': carpet16_2,
-        'productAllImg': [{"id":"carpet1", "img":carpet16}, 
-                            {"id":"carpet2", "img":carpet16_2}, 
-                            {"id":"carpet3", "img":carpet16_3}, 
-                            {"id":"carpet4", "img":carpet16_4}, 
-                            {"id":"carpet5", "img":carpet16_5},
-                            {"id":"carpet6", "img":carpet16_6}
+        'productAllImg': [{"id":"img1", "img":carpet16}, 
+                            {"id":"img2", "img":carpet16_2}, 
+                            {"id":"img3", "img":carpet16_3}, 
+                            {"id":"img4", "img":carpet16_4}, 
+                            {"id":"img5", "img":carpet16_5},
+                            {"id":"img6", "img":carpet16_6}
                         ],
         'productAlt': 'Tapis vert à motifs rouges'
     }
@@ -736,7 +768,9 @@ export const products = [
 
     // Luminaires en stock
 [   {
-    'productId': '0',
+    'productId': '16',
+    'isSell': false,
+    'isAdded': false,
     'productCategory': 'luminaires',
     'productClass': 'light-1',
     'productName': 'lumière 1',
@@ -752,17 +786,19 @@ export const products = [
     'productComposition': 'Verre et cuivre',
     'productImg': light1,
     'productHover': light1_2,
-    'productAllImg': [{"id":"light1", "img":light1}, 
-                            {"id":"light2", "img":light1_2}, 
-                            {"id":"light3", "img":light1_3}, 
-                            {"id":"light4", "img":light1_4}, 
-                            {"id":"light5", "img":light1_5}, 
-                            {"id":"light6", "img":light1_6}
+    'productAllImg': [{"id":"img1", "img":light1}, 
+                            {"id":"img2", "img":light1_2}, 
+                            {"id":"img3", "img":light1_3}, 
+                            {"id":"img4", "img":light1_4}, 
+                            {"id":"img5", "img":light1_5}, 
+                            {"id":"img6", "img":light1_6}
                         ],
     'productAlt': 'lumière 1'
     },
     {
-    'productId': '1',
+    'productId': '17',
+    'isSell': false,
+    'isAdded': false,
     'productCategory': 'luminaires',
     'productClass': 'light-2',
     'productName': 'lumière 2',
@@ -778,17 +814,19 @@ export const products = [
     'productComposition': '100% cuivre',
     'productImg': light2,
     'productHover': light2_2,
-    'productAllImg': [{"id":"light1", "img":light2}, 
-                            {"id":"light2", "img":light2_2}, 
-                            {"id":"light3", "img":light2_3}, 
-                            {"id":"light4", "img":light2_4}, 
-                            {"id":"light5", "img":light2_5}, 
-                            {"id":"light6", "img":light2_6}
+    'productAllImg': [{"id":"img1", "img":light2}, 
+                            {"id":"img2", "img":light2_2}, 
+                            {"id":"img3", "img":light2_3}, 
+                            {"id":"img4", "img":light2_4}, 
+                            {"id":"img5", "img":light2_5}, 
+                            {"id":"img6", "img":light2_6}
                         ],
     'productAlt': 'lumière 2'
     },
     {
-    'productId': '2',
+    'productId': '18',
+    'isSell': false,
+    'isAdded': false,
     'productCategory': 'luminaires',
     'productClass': 'light-3',
     'productName': 'lumière 3',
@@ -804,17 +842,19 @@ export const products = [
     'productComposition': '100% cuivre',
     'productImg': light3,
     'productHover': light3_2,
-    'productAllImg': [{"id":"light1", "img":light3}, 
-                            {"id":"light2", "img":light3_2}, 
-                            {"id":"light3", "img":light3_3}, 
-                            {"id":"light4", "img":light3_4}, 
-                            {"id":"light5", "img":light3_5}, 
-                            {"id":"light6", "img":light3_6}
+    'productAllImg': [{"id":"img1", "img":light3}, 
+                            {"id":"img2", "img":light3_2}, 
+                            {"id":"img3", "img":light3_3}, 
+                            {"id":"img4", "img":light3_4}, 
+                            {"id":"img5", "img":light3_5}, 
+                            {"id":"img6", "img":light3_6}
                         ],
     'productAlt': 'lumière 3'
     },
     {
-    'productId': '3',
+    'productId': '19',
+    'isSell': false,
+    'isAdded': false,
     'productCategory': 'luminaires',
     'productClass': 'light-4',
     'productName': 'lumière 4',
@@ -830,17 +870,19 @@ export const products = [
     'productComposition': '100% cuivre',
     'productImg': light4,
     'productHover': light4_2,
-    'productAllImg': [{"id":"light1", "img":light4}, 
-                            {"id":"light2", "img":light4_2}, 
-                            {"id":"light3", "img":light4_3}, 
-                            {"id":"light4", "img":light4_4}, 
-                            {"id":"light5", "img":light4_5}, 
-                            {"id":"light6", "img":light4_6}
+    'productAllImg': [{"id":"img1", "img":light4}, 
+                            {"id":"img2", "img":light4_2}, 
+                            {"id":"img3", "img":light4_3}, 
+                            {"id":"img4", "img":light4_4}, 
+                            {"id":"img5", "img":light4_5}, 
+                            {"id":"img6", "img":light4_6}
                         ],
     'productAlt': 'lumière 4'
     },
     {
-    'productId': '4',
+    'productId': '20',
+    'isSell': false,
+    'isAdded': false,
     'productCategory': 'luminaires',
     'productClass': 'light-5',
     'productName': 'lumière 5',
@@ -856,17 +898,19 @@ export const products = [
     'productComposition': 'Verre et cuivre',
     'productImg': light5,
     'productHover': light5_2,
-    'productAllImg': [{"id":"light1", "img":light5}, 
-                            {"id":"light2", "img":light5_2}, 
-                            {"id":"light3", "img":light5_3}, 
-                            {"id":"light4", "img":light5_4}, 
-                            {"id":"light5", "img":light5_5}, 
-                            {"id":"light6", "img":light5_6}
+    'productAllImg': [{"id":"img1", "img":light5}, 
+                            {"id":"img2", "img":light5_2}, 
+                            {"id":"img3", "img":light5_3}, 
+                            {"id":"img4", "img":light5_4}, 
+                            {"id":"img5", "img":light5_5}, 
+                            {"id":"img6", "img":light5_6}
                         ],
     'productAlt': 'lumière 5'
     },
     {
-    'productId': '5',
+    'productId': '21',
+    'isSell': false,
+    'isAdded': false,
     'productCategory': 'luminaires',
     'productClass': 'light-6',
     'productName': 'lumière 6',
@@ -882,17 +926,19 @@ export const products = [
     'productComposition': '100% Acier',
     'productImg': light6,
     'productHover': light6_2,
-    'productAllImg': [{"id":"light1", "img":light6}, 
-                            {"id":"light2", "img":light6_2}, 
-                            {"id":"light3", "img":light6_3}, 
-                            {"id":"light4", "img":light6_4}, 
-                            {"id":"light5", "img":light6_5}, 
-                            {"id":"light6", "img":light6_6}
+    'productAllImg': [{"id":"img1", "img":light6}, 
+                            {"id":"img2", "img":light6_2}, 
+                            {"id":"img3", "img":light6_3}, 
+                            {"id":"img4", "img":light6_4}, 
+                            {"id":"img5", "img":light6_5}, 
+                            {"id":"img6", "img":light6_6}
                         ],
     'productAlt': 'lumière 6'
     },
     {
-        'productId': '6',
+        'productId': '22',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'luminaires',
         'productClass': 'light-7',
         'productName': 'lumière 7',
@@ -908,17 +954,19 @@ export const products = [
         'productComposition': '100% Acier',
         'productImg': light7,
         'productHover': light7_2,
-        'productAllImg': [{"id":"light1", "img":light7}, 
-                                {"id":"light2", "img":light7_2}, 
-                                {"id":"light3", "img":light7_3}, 
-                                {"id":"light4", "img":light7_4}, 
-                                {"id":"light5", "img":light7_5}, 
-                                {"id":"light6", "img":light7_6}
+        'productAllImg': [{"id":"img1", "img":light7}, 
+                                {"id":"img2", "img":light7_2}, 
+                                {"id":"img3", "img":light7_3}, 
+                                {"id":"img4", "img":light7_4}, 
+                                {"id":"img5", "img":light7_5}, 
+                                {"id":"img6", "img":light7_6}
                             ],
         'productAlt': 'lumière 7'
     },
     {
-        'productId': '7',
+        'productId': '23',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'luminaires',
         'productClass': 'light-8',
         'productName': 'lumière 8',
@@ -934,17 +982,19 @@ export const products = [
         'productComposition': '100% cuivre',
         'productImg': light8,
         'productHover': light8_2,
-        'productAllImg': [{"id":"light1", "img":light8}, 
-                                {"id":"light2", "img":light8_2}, 
-                                {"id":"light3", "img":light8_3}, 
-                                {"id":"light4", "img":light8_4}, 
-                                {"id":"light5", "img":light8_5}, 
-                                {"id":"light6", "img":light8_6}
+        'productAllImg': [{"id":"img1", "img":light8}, 
+                                {"id":"img2", "img":light8_2}, 
+                                {"id":"img3", "img":light8_3}, 
+                                {"id":"img4", "img":light8_4}, 
+                                {"id":"img5", "img":light8_5}, 
+                                {"id":"img6", "img":light8_6}
                             ],
         'productAlt': 'lumière 8'
     },
     {
-        'productId': '8',
+        'productId': '24',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'luminaires',
         'productClass': 'light-9',
         'productName': 'lumière 9',
@@ -960,17 +1010,19 @@ export const products = [
         'productComposition': '100% cuivre',
         'productImg': light9,
         'productHover': light9_2,
-        'productAllImg': [{"id":"light1", "img":light9}, 
-                                {"id":"light2", "img":light9_2}, 
-                                {"id":"light3", "img":light9_3}, 
-                                {"id":"light4", "img":light9_4}, 
-                                {"id":"light5", "img":light9_5}, 
-                                {"id":"light6", "img":light9_6}
+        'productAllImg': [{"id":"img1", "img":light9}, 
+                                {"id":"img2", "img":light9_2}, 
+                                {"id":"img3", "img":light9_3}, 
+                                {"id":"img4", "img":light9_4}, 
+                                {"id":"img5", "img":light9_5}, 
+                                {"id":"img6", "img":light9_6}
                             ],
         'productAlt': 'lumière 9'
     },
     {
-        'productId': '9',
+        'productId': '25',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'luminaires',
         'productClass': 'light-10',
         'productName': 'lumière 10',
@@ -986,17 +1038,19 @@ export const products = [
         'productComposition': '100% acier',
         'productImg': light10,
         'productHover': light10_2,
-        'productAllImg': [{"id":"light1", "img":light10}, 
-                                {"id":"light2", "img":light10_2}, 
-                                {"id":"light3", "img":light10_3}, 
-                                {"id":"light4", "img":light10_4}, 
-                                {"id":"light5", "img":light10_5}, 
-                                {"id":"light6", "img":light10_6}
+        'productAllImg': [{"id":"img1", "img":light10}, 
+                                {"id":"img2", "img":light10_2}, 
+                                {"id":"img3", "img":light10_3}, 
+                                {"id":"img4", "img":light10_4}, 
+                                {"id":"img5", "img":light10_5}, 
+                                {"id":"img6", "img":light10_6}
                             ],
         'productAlt': 'lumière 10'
     },
     {
-        'productId': '10',
+        'productId': '26',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'luminaires',
         'productClass': 'light-11',
         'productName': 'lumière 11',
@@ -1012,12 +1066,12 @@ export const products = [
         'productComposition': 'Verre et cuivre',
         'productImg': light11,
         'productHover': light11_2,
-        'productAllImg': [{"id":"light1", "img":light11}, 
-                                {"id":"light2", "img":light11_2}, 
-                                {"id":"light3", "img":light11_3}, 
-                                {"id":"light4", "img":light11_4}, 
-                                {"id":"light5", "img":light11_5}, 
-                                {"id":"light6", "img":light11_6}
+        'productAllImg': [{"id":"img1", "img":light11}, 
+                                {"id":"img2", "img":light11_2}, 
+                                {"id":"img3", "img":light11_3}, 
+                                {"id":"img4", "img":light11_4}, 
+                                {"id":"img5", "img":light11_5}, 
+                                {"id":"img6", "img":light11_6}
                             ],
         'productAlt': 'lumière 11'
     }
@@ -1025,7 +1079,9 @@ export const products = [
 
     // Décorations en stock
     [   {
-        'productId': '0',
+        'productId': '27',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'decorations',
         'productClass': 'deco-1',
         'productName': 'décoration 1',
@@ -1041,17 +1097,19 @@ export const products = [
         'productComposition': '100% laine de mouton',
         'productImg': deco1,
         'productHover': deco1_2,
-        'productAllImg': [{"id":"deco1", "img":deco1}, 
-                                {"id":"deco2", "img":deco1_2}, 
-                                {"id":"deco3", "img":deco1_3}, 
-                                {"id":"deco4", "img":deco1_4}, 
-                                {"id":"deco5", "img":deco1_5}, 
-                                {"id":"deco6", "img":deco1_6}
+        'productAllImg': [{"id":"img1", "img":deco1}, 
+                                {"id":"img2", "img":deco1_2}, 
+                                {"id":"img3", "img":deco1_3}, 
+                                {"id":"img4", "img":deco1_4}, 
+                                {"id":"img5", "img":deco1_5}, 
+                                {"id":"img6", "img":deco1_6}
                             ],
         'productAlt': 'décoration 1'
         },
         {
-        'productId': '1',
+        'productId': '28',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'decorations',
         'productClass': 'deco-2',
         'productName': 'décoration 2',
@@ -1067,17 +1125,19 @@ export const products = [
         'productComposition': '100% laine de mouton',
         'productImg': deco2,
         'productHover': deco2_2,
-        'productAllImg': [{"id":"deco1", "img":deco2}, 
-                                {"id":"deco2", "img":deco2_2}, 
-                                {"id":"deco3", "img":deco2_3}, 
-                                {"id":"deco4", "img":deco2_4}, 
-                                {"id":"deco5", "img":deco2_5},
-                                {"id":"deco6", "img":deco2_6}
+        'productAllImg': [{"id":"img1", "img":deco2}, 
+                                {"id":"img2", "img":deco2_2}, 
+                                {"id":"img3", "img":deco2_3}, 
+                                {"id":"img4", "img":deco2_4}, 
+                                {"id":"img5", "img":deco2_5},
+                                {"id":"img6", "img":deco2_6}
                             ],
         'productAlt': 'décoration 2'
         },
         {
-        'productId': '2',
+        'productId': '29',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'decorations',
         'productClass': 'deco-3',
         'productName': 'décoration 3',
@@ -1093,17 +1153,19 @@ export const products = [
         'productComposition': '100% laine de mouton',
         'productImg': deco3,
         'productHover': deco3_2,
-        'productAllImg': [{"id":"deco1", "img":deco3}, 
-                                {"id":"deco2", "img":deco3_2}, 
-                                {"id":"deco3", "img":deco3_3}, 
-                                {"id":"deco4", "img":deco3_4}, 
-                                {"id":"deco5", "img":deco3_5},
-                                {"id":"deco6", "img":deco3_6}
+        'productAllImg': [{"id":"img1", "img":deco3}, 
+                                {"id":"img2", "img":deco3_2}, 
+                                {"id":"img3", "img":deco3_3}, 
+                                {"id":"img4", "img":deco3_4}, 
+                                {"id":"img5", "img":deco3_5},
+                                {"id":"img6", "img":deco3_6}
                             ],
         'productAlt': 'décoration 3'
         },
         {
-        'productId': '3',
+        'productId': '30',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'decorations',
         'productClass': 'deco-4',
         'productName': 'décoration 4',
@@ -1119,17 +1181,19 @@ export const products = [
         'productComposition': '100% laine de mouton',
         'productImg': deco4,
         'productHover': deco4_2,
-        'productAllImg': [{"id":"deco1", "img":deco4}, 
-                                {"id":"deco2", "img":deco4_2}, 
-                                {"id":"deco3", "img":deco4_3}, 
-                                {"id":"deco4", "img":deco4_4}, 
-                                {"id":"deco5", "img":deco4_5},
-                                {"id":"deco6", "img":deco4_6}
+        'productAllImg': [{"id":"img1", "img":deco4}, 
+                                {"id":"img2", "img":deco4_2}, 
+                                {"id":"img3", "img":deco4_3}, 
+                                {"id":"img4", "img":deco4_4}, 
+                                {"id":"img5", "img":deco4_5},
+                                {"id":"img6", "img":deco4_6}
                             ],
         'productAlt': 'décoration 4'
         },
         {
-        'productId': '4',
+        'productId': '31',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'decorations',
         'productClass': 'deco-5',
         'productName': 'décoration 5',
@@ -1145,17 +1209,19 @@ export const products = [
         'productComposition': '100% laine de mouton',
         'productImg': deco5,
         'productHover': deco5_2,
-        'productAllImg': [{"id":"deco1", "img":deco5}, 
-                                {"id":"deco2", "img":deco5_2}, 
-                                {"id":"deco3", "img":deco5_3}, 
-                                {"id":"deco4", "img":deco5_4}, 
-                                {"id":"deco5", "img":deco5_5},
-                                {"id":"deco6", "img":deco5_6}
+        'productAllImg': [{"id":"img1", "img":deco5}, 
+                                {"id":"img2", "img":deco5_2}, 
+                                {"id":"img3", "img":deco5_3}, 
+                                {"id":"img4", "img":deco5_4}, 
+                                {"id":"img5", "img":deco5_5},
+                                {"id":"img6", "img":deco5_6}
                             ],
         'productAlt': 'décoration 5'
         },
         {
-        'productId': '5',
+        'productId': '32',
+        'isSell': false,
+        'isAdded': false,
         'productCategory': 'decorations',
         'productClass': 'deco-6',
         'productName': 'décoration 6',
@@ -1171,17 +1237,19 @@ export const products = [
         'productComposition': '100% laine de mouton',
         'productImg': deco6,
         'productHover': deco6_2,
-        'productAllImg': [{"id":"deco1", "img":deco6}, 
-                                {"id":"deco2", "img":deco6_2}, 
-                                {"id":"deco3", "img":deco6_3}, 
-                                {"id":"deco4", "img":deco6_4}, 
-                                {"id":"deco5", "img":deco6_5},
-                                {"id":"deco6", "img":deco6_6}
+        'productAllImg': [{"id":"img1", "img":deco6}, 
+                                {"id":"img2", "img":deco6_2}, 
+                                {"id":"img3", "img":deco6_3}, 
+                                {"id":"img4", "img":deco6_4}, 
+                                {"id":"img5", "img":deco6_5},
+                                {"id":"img6", "img":deco6_6}
                             ],
         'productAlt': 'décoration 6'
         },
         {
-            'productId': '6',
+            'productId': '33',
+            'isSell': false,
+            'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-7',
             'productName': 'décoration 7',
@@ -1197,17 +1265,19 @@ export const products = [
             'productComposition': '100% laine de mouton',
             'productImg': deco7,
             'productHover': deco7_2,
-            'productAllImg': [{"id":"deco1", "img":deco7}, 
-                                    {"id":"deco2", "img":deco7_2}, 
-                                    {"id":"deco3", "img":deco7_3}, 
-                                    {"id":"deco4", "img":deco7_4}, 
-                                    {"id":"deco5", "img":deco7_5},
-                                    {"id":"deco6", "img":deco7_6}
+            'productAllImg': [{"id":"img1", "img":deco7}, 
+                                    {"id":"img2", "img":deco7_2}, 
+                                    {"id":"img3", "img":deco7_3}, 
+                                    {"id":"img4", "img":deco7_4}, 
+                                    {"id":"img5", "img":deco7_5},
+                                    {"id":"img6", "img":deco7_6}
                                 ],
             'productAlt': 'décoration 7'
         },
         {
-            'productId': '7',
+            'productId': '34',
+            'isSell': false,
+            'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-8',
             'productName': 'décoration 8',
@@ -1223,17 +1293,19 @@ export const products = [
             'productComposition': '100% laine de mouton',
             'productImg': deco8,
             'productHover': deco8_2,
-            'productAllImg': [{"id":"deco1", "img":deco8}, 
-                                    {"id":"deco2", "img":deco8_2}, 
-                                    {"id":"deco3", "img":deco8_3}, 
-                                    {"id":"deco4", "img":deco8_4}, 
-                                    {"id":"deco5", "img":deco8_5},
-                                    {"id":"deco6", "img":deco8_6}
+            'productAllImg': [{"id":"img1", "img":deco8}, 
+                                    {"id":"img2", "img":deco8_2}, 
+                                    {"id":"img3", "img":deco8_3}, 
+                                    {"id":"img4", "img":deco8_4}, 
+                                    {"id":"img5", "img":deco8_5},
+                                    {"id":"img6", "img":deco8_6}
                                 ],
             'productAlt': 'décoration 8'
         },
         {
-            'productId': '8',
+            'productId': '35',
+            'isSell': false,
+            'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-9',
             'productName': 'décoration 9',
@@ -1249,17 +1321,19 @@ export const products = [
             'productComposition': '100% laine de mouton',
             'productImg': deco9,
             'productHover': deco9_2,
-            'productAllImg': [{"id":"deco1", "img":deco9}, 
-                                    {"id":"deco2", "img":deco9_2}, 
-                                    {"id":"deco3", "img":deco9_3}, 
-                                    {"id":"deco4", "img":deco9_4}, 
-                                    {"id":"deco5", "img":deco9_5},
-                                    {"id":"deco6", "img":deco9_6}
+            'productAllImg': [{"id":"img1", "img":deco9}, 
+                                    {"id":"img2", "img":deco9_2}, 
+                                    {"id":"img3", "img":deco9_3}, 
+                                    {"id":"img4", "img":deco9_4}, 
+                                    {"id":"img5", "img":deco9_5},
+                                    {"id":"img6", "img":deco9_6}
                                 ],
             'productAlt': 'décoration 9'
         },
         {
-            'productId': '9',
+            'productId': '36',
+            'isSell': false,
+            'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-10',
             'productName': 'décoration 10',
@@ -1275,17 +1349,19 @@ export const products = [
             'productComposition': '100% laine de mouton',
             'productImg': deco10,
             'productHover': deco10_2,
-            'productAllImg': [{"id":"deco1", "img":deco10}, 
-                                    {"id":"deco2", "img":deco10_2}, 
-                                    {"id":"deco3", "img":deco10_3}, 
-                                    {"id":"deco4", "img":deco10_4}, 
-                                    {"id":"deco5", "img":deco10_5},
-                                    {"id":"deco6", "img":deco10_6}
+            'productAllImg': [{"id":"img1", "img":deco10}, 
+                                    {"id":"img2", "img":deco10_2}, 
+                                    {"id":"img3", "img":deco10_3}, 
+                                    {"id":"img4", "img":deco10_4}, 
+                                    {"id":"img5", "img":deco10_5},
+                                    {"id":"img6", "img":deco10_6}
                                 ],
             'productAlt': 'décoration 10'
         },
         {
-            'productId': '10',
+            'productId': '37',
+            'isSell': false,
+            'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-11',
             'productName': 'décoration 11',
@@ -1301,17 +1377,19 @@ export const products = [
             'productComposition': '100% laine de mouton',
             'productImg': deco11,
             'productHover': deco11_2,
-            'productAllImg': [{"id":"deco1", "img":deco11}, 
-                                    {"id":"deco2", "img":deco11_2}, 
-                                    {"id":"deco3", "img":deco11_3}, 
-                                    {"id":"deco4", "img":deco11_4}, 
-                                    {"id":"deco5", "img":deco11_5},
-                                    {"id":"deco6", "img":deco11_6}
+            'productAllImg': [{"id":"img1", "img":deco11}, 
+                                    {"id":"img2", "img":deco11_2}, 
+                                    {"id":"img3", "img":deco11_3}, 
+                                    {"id":"img4", "img":deco11_4}, 
+                                    {"id":"img5", "img":deco11_5},
+                                    {"id":"img6", "img":deco11_6}
                                 ],
             'productAlt': 'décoration 11'
         },
         {
-            'productId': '11',
+            'productId': '38',
+            'isSell': false,
+            'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-12',
             'productName': 'décoration 12',
@@ -1327,17 +1405,19 @@ export const products = [
             'productComposition': '100% laine de mouton',
             'productImg': deco12,
             'productHover': deco12_2,
-            'productAllImg': [{"id":"deco1", "img":deco12}, 
-                                    {"id":"deco2", "img":deco12_2}, 
-                                    {"id":"deco3", "img":deco12_3}, 
-                                    {"id":"deco4", "img":deco12_4}, 
-                                    {"id":"deco5", "img":deco12_5},
-                                    {"id":"deco6", "img":deco12_6}
+            'productAllImg': [{"id":"img1", "img":deco12}, 
+                                    {"id":"img2", "img":deco12_2}, 
+                                    {"id":"img3", "img":deco12_3}, 
+                                    {"id":"img4", "img":deco12_4}, 
+                                    {"id":"img5", "img":deco12_5},
+                                    {"id":"img6", "img":deco12_6}
                                 ],
             'productAlt': 'décoration 12'
         },
         {
-            'productId': '12',
+            'productId': '39',
+            'isSell': false,
+            'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-13',
             'productName': 'décoration 13',
@@ -1353,17 +1433,19 @@ export const products = [
             'productComposition': '100% laine de mouton',
             'productImg': deco13,
             'productHover': deco13_2,
-            'productAllImg': [{"id":"deco1", "img":deco13}, 
-                                    {"id":"deco2", "img":deco13_2}, 
-                                    {"id":"deco3", "img":deco13_3}, 
-                                    {"id":"deco4", "img":deco13_4}, 
-                                    {"id":"deco5", "img":deco13_5},
-                                    {"id":"deco6", "img":deco13_6}
+            'productAllImg': [{"id":"img1", "img":deco13}, 
+                                    {"id":"img2", "img":deco13_2}, 
+                                    {"id":"img3", "img":deco13_3}, 
+                                    {"id":"img4", "img":deco13_4}, 
+                                    {"id":"img5", "img":deco13_5},
+                                    {"id":"img6", "img":deco13_6}
                                 ],
             'productAlt': 'décoration 13'
         },
         {
-            'productId': '13',
+            'productId': '40',
+            'isSell': false,
+            'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-14',
             'productName': 'décoration 14',
@@ -1379,17 +1461,19 @@ export const products = [
             'productComposition': '100% laine de mouton',
             'productImg': deco14,
             'productHover': deco14_2,
-            'productAllImg': [{"id":"deco1", "img":deco14}, 
-                                    {"id":"deco2", "img":deco14_2}, 
-                                    {"id":"deco3", "img":deco14_3}, 
-                                    {"id":"deco4", "img":deco14_4}, 
-                                    {"id":"deco5", "img":deco14_5},
-                                    {"id":"deco6", "img":deco14_6}
+            'productAllImg': [{"id":"img1", "img":deco14}, 
+                                    {"id":"img2", "img":deco14_2}, 
+                                    {"id":"img3", "img":deco14_3}, 
+                                    {"id":"img4", "img":deco14_4}, 
+                                    {"id":"img5", "img":deco14_5},
+                                    {"id":"img6", "img":deco14_6}
                                 ],
             'productAlt': 'décoration 14'
         },
         {
-            'productId': '14',
+            'productId': '41',
+            'isSell': false,
+            'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-15',
             'productName': 'décoration 15',
@@ -1405,17 +1489,19 @@ export const products = [
             'productComposition': '100% laine de mouton',
             'productImg': deco15,
             'productHover': deco15_2,
-            'productAllImg': [{"id":"deco1", "img":deco15}, 
-                                    {"id":"deco2", "img":deco15_2}, 
-                                    {"id":"deco3", "img":deco15_3}, 
-                                    {"id":"deco4", "img":deco15_4}, 
-                                    {"id":"deco5", "img":deco15_5},
-                                    {"id":"deco6", "img":deco15_6}
+            'productAllImg': [{"id":"img1", "img":deco15}, 
+                                    {"id":"img2", "img":deco15_2}, 
+                                    {"id":"img3", "img":deco15_3}, 
+                                    {"id":"img4", "img":deco15_4}, 
+                                    {"id":"img5", "img":deco15_5},
+                                    {"id":"img6", "img":deco15_6}
                                 ],
             'productAlt': 'décoration 15'
         },
         {
-            'productId': '15',
+            'productId': '42',
+            'isSell': false,
+            'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-16',
             'productName': 'décoration 16',
@@ -1431,12 +1517,12 @@ export const products = [
             'productComposition': '100% laine de mouton',
             'productImg': deco16,
             'productHover': deco16_2,
-            'productAllImg': [{"id":"deco1", "img":deco16}, 
-                                    {"id":"deco2", "img":deco16_2}, 
-                                    {"id":"deco3", "img":deco16_3}, 
-                                    {"id":"deco4", "img":deco16_4}, 
-                                    {"id":"deco5", "img":deco16_5},
-                                    {"id":"deco6", "img":deco16_6}
+            'productAllImg': [{"id":"img1", "img":deco16}, 
+                                    {"id":"img2", "img":deco16_2}, 
+                                    {"id":"img3", "img":deco16_3}, 
+                                    {"id":"img4", "img":deco16_4}, 
+                                    {"id":"img5", "img":deco16_5},
+                                    {"id":"img6", "img":deco16_6}
                                 ],
             'productAlt': 'décoration 16'
         }

@@ -138,6 +138,8 @@
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
+                width: 84.5px;
+                height: 43px;
 
                 &:hover {
                     filter: brightness(0.85);
@@ -152,6 +154,15 @@
                 p {
                     color: $color-secondary;
                     padding: 0 5px 5px 5px;
+                }
+            }
+
+            .selected {
+                background-color: $color-primary;
+                font-weight: 500;
+
+                p {
+                    padding: 0;
                 }
             }
         }
