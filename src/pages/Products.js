@@ -35,6 +35,15 @@ const Products = () => {
 
     const navigate = useNavigate();
 
+    let numberOfItems;
+
+    if (JSON.parse(localStorage.getItem('basket')) === null) {
+        numberOfItems = 0;
+    }
+    else {
+        numberOfItems = JSON.parse(localStorage.getItem('basket')).length;
+    }
+
     const [isLoading, setIsLoading] = useState(true);
     const [brightness, setBrightness] = useState(0.4);
     const [scrollY, setScrollY] = useState(0);
@@ -42,7 +51,7 @@ const Products = () => {
     const [categoryIndex, setCategoryIndex] = useState(undefined);
     const [displayDetail, setDisplayDetail] = useState(false);
     const [typeFilter, setTypeFilter] = useState(undefined);
-    const [cartLength, setcartLength] = useState(JSON.parse(localStorage.getItem('basket')).length);
+    const [cartLength, setcartLength] = useState(numberOfItems);
     const [filterActive, setFilterActive] = useState({price: false, size: false, color: false, kind: false, material: false});
 
     // Filtre de prix

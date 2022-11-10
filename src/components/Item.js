@@ -64,9 +64,9 @@ const Item = ({setCartLength, productClass, productName, productOldPrice, produc
         const allDataId = document.querySelector(`.${productClass}`).getAttribute('data-id');
         const storage = JSON.parse(localStorage.getItem('basket'));
         
-        if (storage.some((elt) => elt.id === allDataId)) {
+        if (storage.some((elt) => elt.id === allDataId) && !document.querySelector(`.${productClass} button`).classList.contains('selected')) {
             document.querySelector(`.${productClass} button`).classList.add('selected');
-            document.querySelector(`.${productClass} button`).innerHTML = '<p>Ajouté !</p>';
+            document.querySelector(`.${productClass} button`).innerHTML = '<p class="added"><i class="fa-solid fa-cart-arrow-down"></i>Ajouté !</p><p class="cancelled"><i class="fa-regular fa-circle-xmark"></i>Annuler</p>';
         }
         // eslint-disable-next-line 
     }, [addToBasket]);

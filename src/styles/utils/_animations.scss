@@ -208,3 +208,33 @@
         transform: translateX(80px) scaleX(1);
     }
 }
+
+@keyframes added {
+    0% {
+        transform: translateY(-30px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes removeAdded {
+    0% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(43px);
+    }
+}
+
+@keyframes cancelled {
+    0% {
+        transform: translateY(-90px);
+    }
+
+    100% {
+        transform: translateY(-43px);
+    }
+}
