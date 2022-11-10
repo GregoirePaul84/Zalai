@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext, useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ProductContext } from '../pages/Products';
@@ -7,10 +7,10 @@ import border from '../media/border.png';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBasketShopping } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from 'react';
+import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
-
-const Item = ({setCartLength, productClass, productName, productOldPrice, productNewPrice, productTribe, productSize, productImg, productHover, productAlt, addBasket, productId, isAdded}) => {
+const Item = ({cartLength, setCartLength, productClass, productName, productOldPrice, productNewPrice, productTribe, productSize, productImg, productHover, productAlt, addBasket, productId, isAdded}) => {
 
     const navigate = useNavigate();
 
@@ -19,6 +19,9 @@ const Item = ({setCartLength, productClass, productName, productOldPrice, produc
     const setDisplayDetail = detail.setDisplayDetail;
 
     const [imgHover, setImgHover] = useState(false);
+    const [cancelBtn, setCancelBtn] = useState('none');
+
+    const storageRef = useRef(JSON.parse(localStorage.getItem('basket')));
 
     function displayProduct() {
         setDisplayDetail(!displayDetail);
@@ -44,7 +47,25 @@ const Item = ({setCartLength, productClass, productName, productOldPrice, produc
 
     const addToBasket = useCallback((id) => {
         if (checkCardPresence(id)) {
-            alert('produit déjà dans le panier');
+            if(window.confirm('Etes vous sûr(e) de vouloir supprimer ce produit du panier ?') === true) {
+                
+                // Suppression du produit selon l'id
+                storageRef.current = storageRef.current.filter((item) => item.id !== id);
+                console.log(storageRef.current);
+
+                // Suppression du produit du local storage
+                localStorage.setItem('basket', JSON.stringify(storageRef.current));
+
+                // Suppression de la classe 'selected'
+                document.querySelector(`.${productClass} button`).classList.remove('selected');
+
+                // Mise à jour du state du bouton d'annulation sur 'none'
+                setCancelBtn('none');
+                setCartLength(cartLength => cartLength - 1)
+            }
+            else {
+                console.log('annulé');
+            }
         }
         else {
             if(window.confirm('Etes vous sûr(e) d\'ajouter ce produit au panier ?') === true) {
@@ -66,11 +87,13 @@ const Item = ({setCartLength, productClass, productName, productOldPrice, produc
         
         if (storage.some((elt) => elt.id === allDataId) && !document.querySelector(`.${productClass} button`).classList.contains('selected')) {
             document.querySelector(`.${productClass} button`).classList.add('selected');
-            document.querySelector(`.${productClass} button`).innerHTML = '<p class="added"><i class="fa-solid fa-cart-arrow-down"></i>Ajouté !</p><p class="cancelled"><i class="fa-regular fa-circle-xmark"></i>Annuler</p>';
+            setCancelBtn('pending');
         }
+
         // eslint-disable-next-line 
     }, [addToBasket]);
 
+    
     return (
         <>
         <div className={`product-card ${productClass}`} data-id={`${productId}`}>
@@ -96,10 +119,31 @@ const Item = ({setCartLength, productClass, productName, productOldPrice, produc
                     </p>
                     <p className='economy'>{productOldPrice - productNewPrice}€ d'économies !</p>
                     <div className="add-basket-container">
-                        <button className='add-basket-button' onClick={(() => {addToBasket(productId)})} >
-                            <FontAwesomeIcon icon={faBasketShopping}/>
-                            <p>Ajouter au panier</p>
-                        </button>
+                        {(cancelBtn === 'none') ?
+                        <>
+                            <button className='add-basket-button' onClick={(() => {addToBasket(productId)})} >
+                                <FontAwesomeIcon icon={faBasketShopping}/>
+                                <p>Ajouter au panier</p>
+                            </button>
+                        </>
+                        : (cancelBtn === 'pending') ?
+                            <button className='add-basket-button' onMouseEnter={() => setCancelBtn('present')}>
+                                <p className='added'>
+                                    <FontAwesomeIcon icon={faCartArrowDown} />
+                                    Ajouté !
+                                </p>
+                            </button>
+                        : (cancelBtn === 'present') ?
+                            <button className='add-basket-button' onClick={(() => {addToBasket(productId)})} onMouseLeave={() => setCancelBtn('pending')}>
+                                <p className='cancelled'>
+                                    <FontAwesomeIcon icon={faCircleXmark} />
+                                    Annuler
+                                </p>
+                            </button>
+                        : null
+                        }
+                            
+                        
                     </div>
                 </div>
             </div>

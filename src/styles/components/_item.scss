@@ -164,15 +164,6 @@
                 &:hover {
                     background-color: #BA0505;
                     filter: brightness(1);
-
-                    .added {
-                        animation: 1s ease 0s 1 normal forwards running removeAdded;
-                    }
-
-                    .cancelled {
-                        display: flex;
-                        animation: 1s ease 0s 1 normal forwards running cancelled;
-                    }
                 }
 
                 .added {
@@ -184,21 +175,23 @@
                     justify-content: center;
                     animation: 1s ease-out 0s 1 normal forwards running added;
 
-                    i {
+                    svg {
+                        padding-bottom: 3px;
                         margin-right: 5px;
                     }
                 }
 
                 .cancelled {
                     padding: 0;
-                    transform: translateY(-90px);
                     width: 100%;
                     height: 100%;
+                    display: flex;
                     align-items: center;
                     justify-content: center;
-                    display: none;
+                    animation: 1s ease 0s 1 normal forwards running cancelled;
 
-                    i {
+                    svg {
+                        padding-bottom: 3px;
                         margin-right: 5px;
                     }
                 }

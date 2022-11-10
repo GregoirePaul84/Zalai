@@ -10,7 +10,6 @@ function App() {
   useEffect(() => {
         
     if (JSON.parse(localStorage.getItem('basket')) === null) {
-      console.log('yes');
         localStorage.setItem('basket', JSON.stringify([]));
     }
     else {

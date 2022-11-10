@@ -97,13 +97,12 @@ const Basket = () => {
 
     // ==== ANNULATION D'UN PRODUIT DU PANIER ==== //
 
-    function cancelItem(id, name) {
-        console.log(name);
+    function cancelItem(id) {
 
         if(window.confirm('Etes vous sûr(e) de vouloir supprimer ce produit du panier ?') === true) {
             
             // Suppression du produit selon l'id
-            storageRef.current = storageRef.current.filter((item) => item.id !== id || item.name !== name);
+            storageRef.current = storageRef.current.filter((item) => item.id !== id);
 
             // Suppression du produit du local storage
             localStorage.setItem('basket', JSON.stringify(storageRef.current));
@@ -159,7 +158,7 @@ const Basket = () => {
                                                     </div>
                                                     <div className="delete-product">
                                                         <h4>Produit unique</h4>
-                                                        <FontAwesomeIcon icon={faTrash} onClick={() => {cancelItem(key.id, key.name)}} />
+                                                        <FontAwesomeIcon icon={faTrash} onClick={() => {cancelItem(key.id)}} />
                                                     </div>
                                                     <div className="product-price">
                                                         <p>{key.price},00 €</p>
