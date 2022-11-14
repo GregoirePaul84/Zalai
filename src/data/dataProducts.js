@@ -305,7 +305,7 @@ export const products = [
     // Tapis en stock
 [   {
         'productId': '0',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-1',
@@ -334,7 +334,7 @@ export const products = [
     },
     {
         'productId': '1',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-2',
@@ -362,7 +362,7 @@ export const products = [
     },
     {
         'productId': '2',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-3',
@@ -390,7 +390,7 @@ export const products = [
     },
     {
         'productId': '3',
-        'isSell': false,
+        'isSold': true,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-4',
@@ -419,7 +419,7 @@ export const products = [
 
     {
         'productId': '4',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-5',
@@ -448,7 +448,7 @@ export const products = [
 
     {
         'productId': '5',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-6',
@@ -477,7 +477,7 @@ export const products = [
 
     {
         'productId': '6',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-7',
@@ -506,7 +506,7 @@ export const products = [
 
     {
         'productId': '7',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-8',
@@ -535,7 +535,7 @@ export const products = [
 
     {
         'productId': '8',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-9',
@@ -564,7 +564,7 @@ export const products = [
 
     {
         'productId': '9',
-        'isSell': false,
+        'isSold': true,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-10',
@@ -593,7 +593,7 @@ export const products = [
 
     {
         'productId': '10',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-11',
@@ -622,7 +622,7 @@ export const products = [
 
     {
         'productId': '11',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-12',
@@ -651,7 +651,7 @@ export const products = [
 
     {
         'productId': '12',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-13',
@@ -680,7 +680,7 @@ export const products = [
 
     {
         'productId': '13',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-14',
@@ -709,7 +709,7 @@ export const products = [
 
     {
         'productId': '14',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-15',
@@ -738,7 +738,7 @@ export const products = [
 
     {
         'productId': '15',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'tapis',
         'productClass': 'tapis-berbère-16',
@@ -769,7 +769,7 @@ export const products = [
     // Luminaires en stock
 [   {
     'productId': '16',
-    'isSell': false,
+    'isSold': false,
     'isAdded': false,
     'productCategory': 'luminaires',
     'productClass': 'light-1',
@@ -797,7 +797,7 @@ export const products = [
     },
     {
     'productId': '17',
-    'isSell': false,
+    'isSold': false,
     'isAdded': false,
     'productCategory': 'luminaires',
     'productClass': 'light-2',
@@ -825,7 +825,7 @@ export const products = [
     },
     {
     'productId': '18',
-    'isSell': false,
+    'isSold': true,
     'isAdded': false,
     'productCategory': 'luminaires',
     'productClass': 'light-3',
@@ -853,7 +853,7 @@ export const products = [
     },
     {
     'productId': '19',
-    'isSell': false,
+    'isSold': false,
     'isAdded': false,
     'productCategory': 'luminaires',
     'productClass': 'light-4',
@@ -881,7 +881,7 @@ export const products = [
     },
     {
     'productId': '20',
-    'isSell': false,
+    'isSold': false,
     'isAdded': false,
     'productCategory': 'luminaires',
     'productClass': 'light-5',
@@ -909,7 +909,7 @@ export const products = [
     },
     {
     'productId': '21',
-    'isSell': false,
+    'isSold': false,
     'isAdded': false,
     'productCategory': 'luminaires',
     'productClass': 'light-6',
@@ -937,7 +937,7 @@ export const products = [
     },
     {
         'productId': '22',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'luminaires',
         'productClass': 'light-7',
@@ -965,7 +965,7 @@ export const products = [
     },
     {
         'productId': '23',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'luminaires',
         'productClass': 'light-8',
@@ -993,7 +993,7 @@ export const products = [
     },
     {
         'productId': '24',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'luminaires',
         'productClass': 'light-9',
@@ -1021,7 +1021,7 @@ export const products = [
     },
     {
         'productId': '25',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'luminaires',
         'productClass': 'light-10',
@@ -1049,7 +1049,7 @@ export const products = [
     },
     {
         'productId': '26',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'luminaires',
         'productClass': 'light-11',
@@ -1080,7 +1080,7 @@ export const products = [
     // Décorations en stock
     [   {
         'productId': '27',
-        'isSell': false,
+        'isSold': true,
         'isAdded': false,
         'productCategory': 'decorations',
         'productClass': 'deco-1',
@@ -1108,7 +1108,7 @@ export const products = [
         },
         {
         'productId': '28',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'decorations',
         'productClass': 'deco-2',
@@ -1136,7 +1136,7 @@ export const products = [
         },
         {
         'productId': '29',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'decorations',
         'productClass': 'deco-3',
@@ -1164,7 +1164,7 @@ export const products = [
         },
         {
         'productId': '30',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'decorations',
         'productClass': 'deco-4',
@@ -1192,7 +1192,7 @@ export const products = [
         },
         {
         'productId': '31',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'decorations',
         'productClass': 'deco-5',
@@ -1220,7 +1220,7 @@ export const products = [
         },
         {
         'productId': '32',
-        'isSell': false,
+        'isSold': false,
         'isAdded': false,
         'productCategory': 'decorations',
         'productClass': 'deco-6',
@@ -1248,7 +1248,7 @@ export const products = [
         },
         {
             'productId': '33',
-            'isSell': false,
+            'isSold': false,
             'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-7',
@@ -1276,7 +1276,7 @@ export const products = [
         },
         {
             'productId': '34',
-            'isSell': false,
+            'isSold': false,
             'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-8',
@@ -1304,7 +1304,7 @@ export const products = [
         },
         {
             'productId': '35',
-            'isSell': false,
+            'isSold': false,
             'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-9',
@@ -1332,7 +1332,7 @@ export const products = [
         },
         {
             'productId': '36',
-            'isSell': false,
+            'isSold': false,
             'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-10',
@@ -1360,7 +1360,7 @@ export const products = [
         },
         {
             'productId': '37',
-            'isSell': false,
+            'isSold': false,
             'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-11',
@@ -1388,7 +1388,7 @@ export const products = [
         },
         {
             'productId': '38',
-            'isSell': false,
+            'isSold': false,
             'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-12',
@@ -1416,7 +1416,7 @@ export const products = [
         },
         {
             'productId': '39',
-            'isSell': false,
+            'isSold': false,
             'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-13',
@@ -1444,7 +1444,7 @@ export const products = [
         },
         {
             'productId': '40',
-            'isSell': false,
+            'isSold': false,
             'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-14',
@@ -1472,7 +1472,7 @@ export const products = [
         },
         {
             'productId': '41',
-            'isSell': false,
+            'isSold': false,
             'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-15',
@@ -1500,7 +1500,7 @@ export const products = [
         },
         {
             'productId': '42',
-            'isSell': false,
+            'isSold': false,
             'isAdded': false,
             'productCategory': 'decorations',
             'productClass': 'deco-16',

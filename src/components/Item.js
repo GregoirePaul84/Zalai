@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef, useState, useEffect } from 'react';
+import React, { useCallback, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ProductContext } from '../pages/Products';
@@ -10,7 +10,7 @@ import { faBasketShopping } from '@fortawesome/free-solid-svg-icons';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
-const Item = ({cartLength, setCartLength, productClass, productName, productOldPrice, productNewPrice, productTribe, productSize, productImg, productHover, productAlt, addBasket, productId, isAdded}) => {
+const Item = ({cartLength, setCartLength, productClass, productName, productOldPrice, productNewPrice, productTribe, productSize, productImg, productHover, productAlt, addBasket, productId, isAdded, isSold}) => {
 
     const navigate = useNavigate();
 
@@ -20,8 +20,6 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
 
     const [imgHover, setImgHover] = useState(false);
     const [cancelBtn, setCancelBtn] = useState('none');
-
-    let storage = JSON.parse(localStorage.getItem('basket'));
 
     function displayProduct() {
         setDisplayDetail(!displayDetail);
@@ -45,6 +43,8 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
     // Ajoute le produit au panier ou non après vérification
 
     const addToBasket = useCallback((id) => {
+        let storage = JSON.parse(localStorage.getItem('basket'));
+
         if (checkCardPresence(id)) {
             if(window.confirm('Etes vous sûr(e) de vouloir supprimer ce produit du panier ?') === true) {
                 
@@ -98,7 +98,6 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
         // eslint-disable-next-line 
     }, [addToBasket]);
 
-    
     return (
         <>
         <div className={`product-card ${productClass}`} data-id={`${productId}`}>
@@ -106,9 +105,21 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
                 <img src={border} alt="bordure décorative bleu foncé" />
             </div>
             <div className="product-img" onMouseOver={() => setImgHover(true)} onMouseLeave={() => setImgHover(false)} onClick={displayProduct}>
-                {(imgHover === false) ? 
+                {(imgHover === false && isSold === false) ? 
                 <img src={productImg} alt={productAlt} />     
-                : <img src={productHover} alt={productAlt} /> }
+                : (imgHover === false && isSold === true) ?
+                    <div>
+                        <img src={productImg} alt={productAlt} className="sold"/>
+                        <span className="sold-sign">Vendu</span>
+                    </div>
+                : (imgHover === true && isSold === false) ?   
+                <img src={productHover} alt={productAlt} />
+                : (imgHover === true && isSold === true) ?
+                    <div>
+                        <img src={productHover} alt={productAlt} className="sold"/>
+                        <span className="sold-sign">Vendu</span>
+                    </div>
+                : null }
             </div>
             <div className="product-line-container">
                 <div className="product-line"></div>
@@ -124,25 +135,32 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
                     </p>
                     <p className='economy'>{productOldPrice - productNewPrice}€ d'économies !</p>
                     <div className="add-basket-container">
-                        {(cancelBtn === 'none') ?
+                        {(cancelBtn === 'none' && isSold === false) ?
                         <>
                             <button className='add-basket-button' onClick={(() => {addToBasket(productId)})} >
                                 <FontAwesomeIcon icon={faBasketShopping}/>
                                 <p>Ajouter au panier</p>
                             </button>
                         </>
-                        : (cancelBtn === 'pending') ?
+                        : (cancelBtn === 'pending' && isSold === false) ?
                             <button className='add-basket-button' onMouseEnter={() => setCancelBtn('present')}>
                                 <p className='added'>
                                     <FontAwesomeIcon icon={faCartArrowDown} />
                                     Ajouté !
                                 </p>
                             </button>
-                        : (cancelBtn === 'present') ?
+                        : (cancelBtn === 'present' && isSold === false) ?
                             <button className='add-basket-button' onClick={(() => {addToBasket(productId)})} onMouseLeave={() => setCancelBtn('pending')}>
                                 <p className='cancelled'>
                                     <FontAwesomeIcon icon={faCircleXmark} />
                                     Annuler
+                                </p>
+                            </button>
+                        : (isSold) ?
+                            <button className='add-basket-button' >
+                                <p className='sold'>
+                                    <FontAwesomeIcon icon={faCircleXmark} />
+                                    Plus en stock
                                 </p>
                             </button>
                         : null

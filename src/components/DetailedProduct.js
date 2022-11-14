@@ -1,9 +1,9 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 
 import { ProductContext } from '../pages/Products';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeftLong, faChevronLeft, faChevronRight, faPercent, faRuler, faTent } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeftLong, faChevronLeft, faChevronRight, faPercent, faRuler, faTent, faCartArrowDown, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 import { useNavigate, useParams } from 'react-router-dom';
 import SmallLoader from './SmallLoader';
@@ -26,7 +26,6 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
     const [isLoading, setIsLoading] = useState(true);
     const [cancelBtn, setCancelBtn] = useState('none');
 
-    const storageRef = useRef(JSON.parse(localStorage.getItem('basket')));
 
     function checkLoading(){
         setTimeout(() => {
@@ -117,6 +116,7 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
             selectOtherImgs.forEach((e) => {e.classList.remove('selected-img')});
             selectCarouselImg.classList.add('selected-img');
         }
+        // eslint-disable-next-line
     }, [imgIndex]);
 
     function checkCardPresence(id) {
@@ -132,16 +132,18 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
     };
 
     const addToBasket = useCallback((id) => {
+
+        let storage = JSON.parse(localStorage.getItem('basket'));
         
         if (checkCardPresence(id)) {
             if(window.confirm('Etes vous sûr(e) de vouloir supprimer ce produit du panier ?') === true) {
                 
                 // Suppression du produit selon l'id
-                storageRef.current = storageRef.current.filter((item) => item.id !== id);
-                console.log(storageRef.current);
+                storage = storage.filter((item) => item.id !== id);
+                console.log(storage);
 
                 // Suppression du produit du local storage
-                localStorage.setItem('basket', JSON.stringify(storageRef.current));
+                localStorage.setItem('basket', JSON.stringify(storage));
 
                 // Suppression de la classe 'selected'
                 document.querySelector(`.detailed-product .add-basket-button`).classList.remove('selected');
@@ -160,26 +162,26 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
         }
         else {
             if(window.confirm('Etes vous sûr(e) d\'ajouter ce produit au panier ?') === true) {
-                console.log('confirmé');
-                addBasket({"name": productSelected[index].productName, "id": productSelected[index].productId, "img": productSelected[index].productImg, "size": productSelected[index].productSize, "price": productSelected[index].productNewPrice});
+                console.log(productSelected);
+                addBasket({"name": findProduct.productName, "id": findProduct.productId, "img": findProduct.productImg, "size": findProduct.productSize, "price": findProduct.productNewPrice});
                 setCartLength(cartLength => cartLength + 1);
             }
             else {
                 console.log('annulé');
             }
         }
+        // eslint-disable-next-line
     }, [checkCardPresence]);
 
     useEffect(() => {
         const storage = JSON.parse(localStorage.getItem('basket'));
         
-        if (storage.some((item) => item.id === id)) {
-            // console.log(document.querySelector(`.detailed-product`));
-
+        if (storage.some((item) => item.id === id) && !document.querySelector(".detailed-product .add-basket-button").classList.contains('selected')) {
             document.querySelector(`.detailed-product .add-basket-button`).classList.add('selected');
             setCancelBtn('pending');
         }
-    }, []);
+        // eslint-disable-next-line
+    }, [addToBasket]);
 
     return (
         <section className="detailed-product">
@@ -234,24 +236,31 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
                                 <p className='delivery'>La livraison est <span>gratuite</span> pour tous nos tapis !</p>
                             </div>
                             <div className="button-container">
-                                {(cancelBtn === 'none') ?
+                                {(cancelBtn === 'none' && findProduct.isSold === false) ?
                                 <>
                                     <button className="add-basket-button" onClick={(() => {addToBasket()})}>
                                         Ajouter au panier !
                                     </button>
                                 </>
-                                : (cancelBtn === 'pending') ?
+                                : (cancelBtn === 'pending' && findProduct.isSold === false) ?
                                     <button className='add-basket-button' onMouseEnter={() => setCancelBtn('present')}>
                                         <p className='added'>
-                                            {/* <FontAwesomeIcon icon={faCartArrowDown} /> */}
+                                            <FontAwesomeIcon icon={faCartArrowDown} />
                                             Ajouté !
                                         </p>
                                     </button>
-                                : (cancelBtn === 'present') ?
+                                : (cancelBtn === 'present' && findProduct.isSold === false) ?
                                     <button className='add-basket-button' onClick={(() => {addToBasket(id)})} onMouseLeave={() => setCancelBtn('pending')}>
                                         <p className='cancelled'>
-                                            {/* <FontAwesomeIcon icon={faCircleXmark} /> */}
+                                            <FontAwesomeIcon icon={faCircleXmark} />
                                             Annuler
+                                        </p>
+                                    </button>
+                                : (findProduct.isSold) ?
+                                    <button className='sold'>
+                                        <p>
+                                            <FontAwesomeIcon icon={faCircleXmark} />
+                                            Plus en stock
                                         </p>
                                     </button>
                                 : null
@@ -270,8 +279,8 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
                             )
                             })
                         : null }
-                        <div className="chevron-container">
-                            <FontAwesomeIcon icon={faChevronRight} className="chevron-right" onClick={showNextImg}/>
+                        <div className="chevron-container" onClick={showNextImg}>
+                            <FontAwesomeIcon icon={faChevronRight} className="chevron-right" />
                         </div>
                     </div>   
                 </div>

@@ -69,6 +69,27 @@
                 transform: scale(1.02);
             }
         }
+
+        .sold {
+            filter: grayscale(1);
+        }
+        div {
+            position: relative;
+            .sold-sign {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: $color-primary;
+                color: $color-secondary;
+                display: inline-block;
+                width: 65px;
+                font-size: 1.4em;
+                text-align: center;
+                font-weight: 500;
+            }
+        }
+        
     }
 
     .product-line-container{
@@ -154,6 +175,17 @@
                 p {
                     color: $color-secondary;
                     padding: 0 5px 5px 5px;
+                }
+
+                .sold {
+                    background-color: #BA0505;
+                    height: 100%;
+
+                    svg {
+                        display: block;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
                 }
             }
 

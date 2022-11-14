@@ -11,7 +11,7 @@
     .detailed-card {
         width: 70%;
         height: 640px;
-        padding: 10px;
+        padding: 10px 10px 0 10px;
         background-color: $color-secondary;
         max-width: none;
         flex-direction: column;
@@ -204,6 +204,27 @@
                             padding: 10px;
                             border: none;
                             cursor: pointer;
+                            width: 152px;
+                            height: 49px;
+                            border-radius: 5px;
+                        }
+
+                        .sold {
+                            font-size: 1.5em;
+                            color: $color-secondary;
+                            background-color: #BA0505;
+                            height: 100%;
+                            padding: 0;
+                            width: 152px;
+                            height: 49px;
+                            border-radius: 5px;
+                            border: none;
+
+                            svg {
+                                margin-right: 10px;
+                                position: relative;
+                                top: 2px;
+                            }
                         }
 
                         .selected {
@@ -226,7 +247,7 @@
             
                                 svg {
                                     padding-bottom: 3px;
-                                    margin-right: 5px;
+                                    margin-right: 10px;
                                 }
                             }
             
@@ -241,7 +262,7 @@
             
                                 svg {
                                     padding-bottom: 3px;
-                                    margin-right: 5px;
+                                    margin-right: 10px;
                                 }
                             }
                         }
@@ -257,12 +278,25 @@
                 justify-content: space-between;
                 overflow: hidden;
                 border-top: 2px solid $transparent-blue;
-                padding: 0 15px;
 
-                .chevron-left, .chevron-right {
+                .chevron-container {
                     cursor: pointer;
+                    height: 100%;
+                    width: 30px;
+                    background-color: burlywood;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .chevron-left, .chevron-right {
+                        path {
+                            color: $color-secondary;
+                        }
+                    }
+    
                 }
 
+                
                 img {
                     height: 90%;
                     width: 8%;
