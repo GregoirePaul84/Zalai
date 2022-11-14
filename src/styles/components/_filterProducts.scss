@@ -51,7 +51,7 @@
         li {
             line-height: 50px;
             text-align: center;
-
+           
             input {
                 display: none;
             }
@@ -60,10 +60,6 @@
                 background-color: $color-primary !important;
             }
         }
-    }
-
-    label {
-        margin-right: 10px;
     }
 }
 

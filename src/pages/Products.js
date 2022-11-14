@@ -456,7 +456,8 @@ const Products = () => {
                                             productHover={key.productHover}
                                             productAllImg={key.productAllImg}
                                             productAlt={key.productAlt}
-                                            isAdded={key.isAdded} />
+                                            isAdded={key.isAdded} 
+                                            isSold={key.isSold} />
                                         </ProductContext.Provider>
                                     )
                                 })
@@ -526,7 +527,8 @@ const Products = () => {
                                             productHover={key.productHover}
                                             productAllImg={key.productAllImg}
                                             productAlt={key.productAlt}
-                                            isAdded={key.isAdded} />
+                                            isAdded={key.isAdded}
+                                            isSold={key.isSold} />
                                         </ProductContext.Provider>
                                     )
                                 }) 
@@ -571,7 +573,8 @@ const Products = () => {
                                             productHover={key.productHover}
                                             productAllImg={key.productAllImg}
                                             productAlt={key.productAlt}
-                                            isAdded={key.isAdded} />
+                                            isAdded={key.isAdded}
+                                            isSold={key.isSold} />
                                         </ProductContext.Provider>
                                     )
                             }) : null
