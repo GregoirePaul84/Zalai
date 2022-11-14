@@ -42,7 +42,7 @@ const About = () => {
 
             setTimeout(() => {
                 selectOrangeLine1.style.animation = 'orange-line 2s ease forwards 2s';
-            }, 500);  
+            }, 2300);  
 
     }, []);
 
@@ -82,7 +82,7 @@ const About = () => {
     return (
         <>
         <div className="main-loader">
-                <Loader />
+                <Loader isLoading={isLoading} />
         </div>
         <div className='about-container'>
             <div className="background">
@@ -90,7 +90,7 @@ const About = () => {
                 <div className="gray-layout" style={{backgroundColor: `rgba(58, 58, 58, 0.7})`}}></div>
             </div>
             <div className="foreground">
-                <Header checkPage={'about'} />
+                <Header checkPage={'about'} isLoading={isLoading}/>
                 <main className='about-main'> 
                     <article className="about-card company">
                         <div className="card-title">

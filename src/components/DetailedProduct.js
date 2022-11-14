@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 import { ProductContext } from '../pages/Products';
 
@@ -24,17 +24,20 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
 
     const [imgIndex, setImgIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
+    const [cancelBtn, setCancelBtn] = useState('none');
+
+    const storageRef = useRef(JSON.parse(localStorage.getItem('basket')));
 
     function checkLoading(){
         setTimeout(() => {
             setIsLoading(false);
         }, 1000);
-    }
+    };
 
     function removeDetail() {
         setDisplayDetail(!displayDetail);
         navigate(`/products`);
-    }
+    };
 
     function zoomOnImg() {
         const selectZoomedImg = document.querySelector('.zoomed-img');
@@ -42,7 +45,7 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
 
         selectZoomedImg.style.opacity = "1";
         selectNormalImg.style.opacity = "0";
-    }
+    };
 
     function zoomOffImg() {
         const selectZoomedImg = document.querySelector('.zoomed-img');
@@ -50,7 +53,7 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
         
         selectZoomedImg.style.opacity = "0";
         selectNormalImg.style.opacity = "1";
-    }
+    };
 
     function moveImg(e) {
         const selectZoomedImg = document.querySelector('.zoomed-img');
@@ -68,21 +71,21 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
         if (y - 200 <= -120.40) selectZoomedImg.style.bottom = "-120.40px";
         if (y - 200 >= 149.59) selectZoomedImg.style.bottom = "149.59px";
 
-    }
+    };
 
     function showNextImg() {
         console.log(productSelected[0].productAllImg[0].img);
         setImgIndex(imgIndex + 1);
 
         if(imgIndex === 5) setImgIndex(0);
-    }
+    };
 
     function showPreviousImg() {
         console.log(productSelected[0].productAllImg[0].img);
         setImgIndex(imgIndex - 1);
 
         if(imgIndex === 0) setImgIndex(5);
-    }
+    };
 
     function changeImg(e) {
         const imgSelected = e.target;
@@ -105,14 +108,13 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
                 break;
             default : console.log('image non disponible');
         }
-    }
+    };
 
     useEffect(() => {
         if (document.querySelector('.normal-img').classList.contains(`${findProduct.productAllImg[imgIndex].id}`)) {
             const selectCarouselImg = document.querySelector(`.detailed-carousel .${findProduct.productAllImg[imgIndex].id}`);
             const selectOtherImgs = document.querySelectorAll(`.detailed-carousel img`);
             selectOtherImgs.forEach((e) => {e.classList.remove('selected-img')});
-            console.log(selectCarouselImg);
             selectCarouselImg.classList.add('selected-img');
         }
     }, [imgIndex]);
@@ -127,12 +129,34 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
         else {
             return false;
         }
-    }
+    };
 
-    function addToBasket() {
+    const addToBasket = useCallback((id) => {
         
         if (checkCardPresence(id)) {
-            alert('produit déjà dans le panier');
+            if(window.confirm('Etes vous sûr(e) de vouloir supprimer ce produit du panier ?') === true) {
+                
+                // Suppression du produit selon l'id
+                storageRef.current = storageRef.current.filter((item) => item.id !== id);
+                console.log(storageRef.current);
+
+                // Suppression du produit du local storage
+                localStorage.setItem('basket', JSON.stringify(storageRef.current));
+
+                // Suppression de la classe 'selected'
+                document.querySelector(`.detailed-product .add-basket-button`).classList.remove('selected');
+                // console.log(document.querySelector(`[data-id='${id}'] button`));
+                document.querySelector(`[data-id='${id}'] button`).classList.remove('selected');
+
+                // Mise à jour du state du bouton d'annulation sur 'none'
+                setCancelBtn('none');
+
+                // Décrémentation du nombre d'articles du panier
+                setCartLength(cartLength => cartLength - 1)
+            }
+            else {
+                console.log('annulé');
+            }
         }
         else {
             if(window.confirm('Etes vous sûr(e) d\'ajouter ce produit au panier ?') === true) {
@@ -144,7 +168,18 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
                 console.log('annulé');
             }
         }
-    }
+    }, [checkCardPresence]);
+
+    useEffect(() => {
+        const storage = JSON.parse(localStorage.getItem('basket'));
+        
+        if (storage.some((item) => item.id === id)) {
+            // console.log(document.querySelector(`.detailed-product`));
+
+            document.querySelector(`.detailed-product .add-basket-button`).classList.add('selected');
+            setCancelBtn('pending');
+        }
+    }, []);
 
     return (
         <section className="detailed-product">
@@ -199,9 +234,28 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
                                 <p className='delivery'>La livraison est <span>gratuite</span> pour tous nos tapis !</p>
                             </div>
                             <div className="button-container">
-                                <button className="add-basket" onClick={(() => {addToBasket()})}>
-                                    Ajouter au panier !
-                                </button>
+                                {(cancelBtn === 'none') ?
+                                <>
+                                    <button className="add-basket-button" onClick={(() => {addToBasket()})}>
+                                        Ajouter au panier !
+                                    </button>
+                                </>
+                                : (cancelBtn === 'pending') ?
+                                    <button className='add-basket-button' onMouseEnter={() => setCancelBtn('present')}>
+                                        <p className='added'>
+                                            {/* <FontAwesomeIcon icon={faCartArrowDown} /> */}
+                                            Ajouté !
+                                        </p>
+                                    </button>
+                                : (cancelBtn === 'present') ?
+                                    <button className='add-basket-button' onClick={(() => {addToBasket(id)})} onMouseLeave={() => setCancelBtn('pending')}>
+                                        <p className='cancelled'>
+                                            {/* <FontAwesomeIcon icon={faCircleXmark} /> */}
+                                            Annuler
+                                        </p>
+                                    </button>
+                                : null
+                                }   
                             </div>
                         </div>
                     </div>

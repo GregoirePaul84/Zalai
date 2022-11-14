@@ -121,10 +121,9 @@ const Basket = () => {
         <div className='basket-container'>
             <div className="background">
                 <img src={basketImg} alt="Coussins et tapis" style={{filter: `brightness(${brightness})`}} onLoad={checkLoading}/>
-                {/* <div className="gray-layout" style={{backgroundColor: `rgba(58, 58, 58, 0.7})`}}></div> */}
             </div>
             <div className="foreground">
-                <Header checkPage={'about'} />
+                <Header checkPage={'basket'} isLoading={isLoading}/>
                 <main className='basket-main'> 
                     <section>
                         <div className="basket-header">

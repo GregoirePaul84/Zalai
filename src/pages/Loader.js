@@ -22,7 +22,6 @@ const Loader = () => {
         function playAnimation() {
 
             if (selectContainer.classList.contains('move-right')) {
-                console.log('yes');
                 clearInterval(interval);
                 return;
             }

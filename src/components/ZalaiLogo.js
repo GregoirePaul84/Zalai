@@ -5,15 +5,20 @@ const ZalaiLogo = ({isLoading}) => {
     
 
     useEffect(() => {
+        console.log(isLoading);
 
-        document.querySelector('#logo path:nth-child(1)').style.animation = 'stroke-anim 3s ease forwards';
-        document.querySelector('#logo path:nth-child(2)').style.animation = 'stroke-anim 3s ease forwards 0.3s';
-        document.querySelector('#logo path:nth-child(3)').style.animation = 'stroke-anim 3s ease forwards 0.6s';
-        document.querySelector('#logo path:nth-child(4)').style.animation = 'stroke-anim 3s ease forwards 0.9s';
-        document.querySelector('#logo path:nth-child(5)').style.animation = 'stroke-anim 3s ease forwards 1.2s';
-        
+        if (isLoading === false) {
+            setTimeout(() => {
+                document.querySelector('#logo path:nth-child(1)').style.animation = 'stroke-anim 3s ease forwards';
+                document.querySelector('#logo path:nth-child(2)').style.animation = 'stroke-anim 3s ease forwards 0.3s';
+                document.querySelector('#logo path:nth-child(3)').style.animation = 'stroke-anim 3s ease forwards 0.6s';
+                document.querySelector('#logo path:nth-child(4)').style.animation = 'stroke-anim 3s ease forwards 0.9s';
+                document.querySelector('#logo path:nth-child(5)').style.animation = 'stroke-anim 3s ease forwards 1.2s';
+            }, 2500);  
+        }
+         
         // eslint-disable-next-line
-    }, [])
+    }, [isLoading])
 
     return (
         <svg width="200" height="124" viewBox="0 0 303 124" fill="none" xmlns="http://www.w3.org/2000/svg" id='logo'>

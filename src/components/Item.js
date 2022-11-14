@@ -21,7 +21,7 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
     const [imgHover, setImgHover] = useState(false);
     const [cancelBtn, setCancelBtn] = useState('none');
 
-    const storageRef = useRef(JSON.parse(localStorage.getItem('basket')));
+    let storage = JSON.parse(localStorage.getItem('basket'));
 
     function displayProduct() {
         setDisplayDetail(!displayDetail);
@@ -41,7 +41,6 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
             return false;
         }
     }
-        
  
     // Ajoute le produit au panier ou non après vérification
 
@@ -50,11 +49,10 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
             if(window.confirm('Etes vous sûr(e) de vouloir supprimer ce produit du panier ?') === true) {
                 
                 // Suppression du produit selon l'id
-                storageRef.current = storageRef.current.filter((item) => item.id !== id);
-                console.log(storageRef.current);
+                storage = storage.filter((item) => item.id !== id);
 
                 // Suppression du produit du local storage
-                localStorage.setItem('basket', JSON.stringify(storageRef.current));
+                localStorage.setItem('basket', JSON.stringify(storage));
 
                 // Suppression de la classe 'selected'
                 document.querySelector(`.${productClass} button`).classList.remove('selected');
@@ -73,6 +71,7 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
             if(window.confirm('Etes vous sûr(e) d\'ajouter ce produit au panier ?') === true) {
                 addBasket({"name": productName, "id": productId, "img": productImg, "size": productSize, "price": productNewPrice});
                 setCartLength(cartLength => cartLength + 1);
+                storage = JSON.parse(localStorage.getItem('basket'));
             }
             else {
                 console.log('annulé');
@@ -90,6 +89,10 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
         if (storage.some((elt) => elt.id === allDataId) && !document.querySelector(`.${productClass} button`).classList.contains('selected')) {
             document.querySelector(`.${productClass} button`).classList.add('selected');
             setCancelBtn('pending');
+        }
+
+        else if (!document.querySelector(`.${productClass} button`).classList.contains('selected')) {
+            setCancelBtn('none');
         }
 
         // eslint-disable-next-line 

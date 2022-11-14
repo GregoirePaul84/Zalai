@@ -30,7 +30,7 @@ const Home = () => {
     return (
         <>
             <div className="main-loader">
-                <Loader />
+                <Loader isLoading={isLoading}/>
             </div>
             <div className="home-container">
                 <div className="background">

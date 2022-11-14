@@ -271,7 +271,7 @@ const Products = () => {
     return (
     <>
     <div className="main-loader">
-        <Loader />
+        <Loader isLoading={isLoading}/>
     </div>
     <div className='products-container'>
         <div className="background">
@@ -283,7 +283,7 @@ const Products = () => {
                 <span className='number-items'>{cartLength}</span>
                 <FontAwesomeIcon icon={faCartArrowDown} onClick={() => navigate(`/basket`)}/>
             </div>
-            <Header checkPage={'product'} />
+            <Header checkPage={'product'} isLoading={isLoading}/>
             <main>
                 <section className="product-title">
                     <h3>Notre boutique en ligne</h3>   
