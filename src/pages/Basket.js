@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Loader from './Loader';
 
 import { useNavigate } from 'react-router-dom';
 
-import basketImg from '../media/pexels-meruyert-gonullu-6243732.jpg'
+import basketImg from '../media/pexels-meruyert-gonullu-6243732.jpg';
 import { useRef } from 'react';
 
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Loader from './Loader';
 
 const Basket = () => {
 
@@ -37,15 +37,15 @@ const Basket = () => {
     useEffect(() => {
         if (isLoading === false) {
             const selectLoader = document.getElementById('loader-container');
-            const selectContainer = document.querySelector('.home-loader');
+            const selectContainer = document.querySelector('.main-loader');
 
-            setTimeout(() => {selectLoader.style.animation = '1s ease-in-out 1s 1 normal forwards running loaderDisappears'}, 2300);
-            setTimeout(() => {
-                selectContainer.classList.add('loader-cancelled');
-            }, 4300);  
+            selectContainer.classList.add('move-right');
+            selectLoader.style.animation = '1s ease-in-out 2s 1 normal forwards running loaderDisappears';
+            setTimeout(() => {selectContainer.classList.add('loader-cancelled')}, 3500);  
         }
-   
-    }, [isLoading]);
+        console.log(isLoading);
+        
+    }, [isLoading])
 
     useEffect(() => {
         
@@ -115,74 +115,74 @@ const Basket = () => {
 
     return (
         <>
-            <div className="home-loader">
-                    <Loader isLoading={isLoading} />
+        <div className="main-loader">
+                <Loader />
+        </div>
+        <div className='basket-container'>
+            <div className="background">
+                <img src={basketImg} alt="Coussins et tapis" style={{filter: `brightness(${brightness})`}} onLoad={checkLoading}/>
+                {/* <div className="gray-layout" style={{backgroundColor: `rgba(58, 58, 58, 0.7})`}}></div> */}
             </div>
-            <div className='basket-container'>
-                <div className="background">
-                    <img src={basketImg} alt="Coussins et tapis" style={{filter: `brightness(${brightness})`}} onLoad={checkLoading}/>
-                    {/* <div className="gray-layout" style={{backgroundColor: `rgba(58, 58, 58, 0.7})`}}></div> */}
-                </div>
-                <div className="foreground">
-                    <Header checkPage={'about'} isLoading={isLoading} />
-                    <main className='basket-main'> 
-                        <section>
-                            <div className="basket-header">
-                                <div className="back-to-shopping">
-                                    <button onClick={() => navigate(`/products`)}>Continuer les achats</button>
-                                </div>
-                                <div className="basket-title">
-                                    <h2>Votre panier</h2>
-                                </div>
-                                <div className="basket-border"></div>
+            <div className="foreground">
+                <Header checkPage={'about'} />
+                <main className='basket-main'> 
+                    <section>
+                        <div className="basket-header">
+                            <div className="back-to-shopping">
+                                <button onClick={() => navigate(`/products`)}>Continuer les achats</button>
                             </div>
-                            <div className="basket-content">
-                                <div className="type-info">
-                                    <p>Produit</p>
-                                    <p>Quantité</p>
-                                    <p>Prix</p>
-                                </div>
-                                <div className="products-stored">
-                                    {(storageRef.current.length !== 0) ?
-                                        storageRef.current.map((key, index) => {
-                                            return (
-                                                <div className="product" key={index} data-id={key.id}>
-                                                    <div className="product-infos">
-                                                        <div className="product-img">
-                                                            <img src={key.img} alt="" />
-                                                        </div>
-                                                        <div className="product-name-price">
-                                                            <h4>{key.name}</h4>
-                                                            <p>{key.size}</p>
-                                                        </div> 
+                            <div className="basket-title">
+                                <h2>Votre panier</h2>
+                            </div>
+                            <div className="basket-border"></div>
+                        </div>
+                        <div className="basket-content">
+                            <div className="type-info">
+                                <p>Produit</p>
+                                <p>Quantité</p>
+                                <p>Prix</p>
+                            </div>
+                            <div className="products-stored">
+                                {(storageRef.current.length !== 0) ?
+                                    storageRef.current.map((key, index) => {
+                                        return (
+                                            <div className="product" key={index} data-id={key.id}>
+                                                <div className="product-infos">
+                                                    <div className="product-img">
+                                                        <img src={key.img} alt="" />
                                                     </div>
-                                                    <div className="delete-product">
-                                                        <h4>Produit unique</h4>
-                                                        <FontAwesomeIcon icon={faTrash} onClick={() => {cancelItem(key.id)}} />
-                                                    </div>
-                                                    <div className="product-price">
-                                                        <p>{key.price},00 €</p>
-                                                    </div>
+                                                    <div className="product-name-price">
+                                                        <h4>{key.name}</h4>
+                                                        <p>{key.size}</p>
+                                                    </div> 
                                                 </div>
-                                            )
-                                        })
-                                        : <p className='empty-basket'>Votre panier est vide</p> }
+                                                <div className="delete-product">
+                                                    <h4>Produit unique</h4>
+                                                    <FontAwesomeIcon icon={faTrash} onClick={() => {cancelItem(key.id)}} />
+                                                </div>
+                                                <div className="product-price">
+                                                    <p>{key.price},00 €</p>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                    : <p className='empty-basket'>Votre panier est vide</p> }
+                            </div>
+                            <div className="payement-price">
+                                <div></div>
+                                <div className="payement-button">
+                                    <button>Paiement</button>
                                 </div>
-                                <div className="payement-price">
-                                    <div></div>
-                                    <div className="payement-button">
-                                        <button>Paiement</button>
-                                    </div>
-                                    <div className="total-price">
-                                        <p>Total : {price},00 €</p>
-                                    </div>
+                                <div className="total-price">
+                                    <p>Total : {price},00 €</p>
                                 </div>
                             </div>
-                        </section>
-                    </main>
-                    <Footer />
-                </div>
+                        </div>
+                    </section>
+                </main>
+                <Footer />
             </div>
+        </div>
         </>
     );
 };

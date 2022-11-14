@@ -2,24 +2,18 @@ import React from 'react';
 import { useEffect } from 'react';
 
 const ZalaiLogo = ({isLoading}) => {
-    const firstLetter = document.querySelector('#logo path:nth-child(1)');
-    const secondLetter = document.querySelector('#logo path:nth-child(2)');
-    const thirdLetter = document.querySelector('#logo path:nth-child(3)');
-    const fourthLetter = document.querySelector('#logo path:nth-child(4)');
-    const fifthLetter = document.querySelector('#logo path:nth-child(5)');
+    
 
     useEffect(() => {
-        if(isLoading === false) {
-            setTimeout(() => {
-                firstLetter.style.animation = 'stroke-anim 3s ease forwards';
-                secondLetter.style.animation = 'stroke-anim 3s ease forwards 0.3s';
-                thirdLetter.style.animation = 'stroke-anim 3s ease forwards 0.6s';
-                fourthLetter.style.animation = 'stroke-anim 3s ease forwards 0.9s';
-                fifthLetter.style.animation = 'stroke-anim 3s ease forwards 1.2s';
-            }, 4300);
-        }
+
+        document.querySelector('#logo path:nth-child(1)').style.animation = 'stroke-anim 3s ease forwards';
+        document.querySelector('#logo path:nth-child(2)').style.animation = 'stroke-anim 3s ease forwards 0.3s';
+        document.querySelector('#logo path:nth-child(3)').style.animation = 'stroke-anim 3s ease forwards 0.6s';
+        document.querySelector('#logo path:nth-child(4)').style.animation = 'stroke-anim 3s ease forwards 0.9s';
+        document.querySelector('#logo path:nth-child(5)').style.animation = 'stroke-anim 3s ease forwards 1.2s';
+        
         // eslint-disable-next-line
-    }, [isLoading])
+    }, [])
 
     return (
         <svg width="200" height="124" viewBox="0 0 303 124" fill="none" xmlns="http://www.w3.org/2000/svg" id='logo'>

@@ -246,10 +246,16 @@
                                     .first-page {
                                         height: 100%;
                                         width: 50%;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
                                     }
                                     .second-page {
                                         height: 100%;
                                         width: 50%;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
                                     }
                                 }
                             }

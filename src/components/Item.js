@@ -61,6 +61,8 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
 
                 // Mise à jour du state du bouton d'annulation sur 'none'
                 setCancelBtn('none');
+
+                // Décrémentation du nombre d'articles du panier
                 setCartLength(cartLength => cartLength - 1)
             }
             else {
@@ -98,7 +100,7 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
         <>
         <div className={`product-card ${productClass}`} data-id={`${productId}`}>
             <div className="border-decoration">
-                <img src={border} alt="" />
+                <img src={border} alt="bordure décorative bleu foncé" />
             </div>
             <div className="product-img" onMouseOver={() => setImgHover(true)} onMouseLeave={() => setImgHover(false)} onClick={displayProduct}>
                 {(imgHover === false) ? 
@@ -141,9 +143,7 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
                                 </p>
                             </button>
                         : null
-                        }
-                            
-                        
+                        }   
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 const Loader = () => {
 
     useEffect(() => {
-        const selectContainer = document.querySelector('.home-loader');
+        const selectContainer = document.querySelector('.main-loader');
 
         const selectFirstDraw = document.querySelector('.first-draw');
         const selectFirstOpacity = document.querySelector('.opacity-bar3');
@@ -21,24 +21,25 @@ const Loader = () => {
 
         function playAnimation() {
 
-            if (selectContainer.classList.contains('loader-cancelled')) {
+            if (selectContainer.classList.contains('move-right')) {
+                console.log('yes');
                 clearInterval(interval);
                 return;
             }
 
-            selectFirstDraw.style.animation = '0.5s linear 1s 1 normal forwards running moveLoaderBar45';
-            selectFirstOpacity.style.animation = '0.7s linear 1s 1 normal forwards running barAppears';
+            selectFirstDraw.style.animation = '0.3s linear 0.4s 1 normal forwards running moveLoaderBar45';
+            selectFirstOpacity.style.animation = '0.5s linear 0.4s 1 normal forwards running barAppears';
 
-            selectFirstDraw2.style.animation = '0.5s linear 1.5s 1 normal forwards running moveLoaderBar45-2';
-            selectFirstOpacity2.style.animation = '0.7s linear 1.5s 1 normal forwards running barAppears';
+            selectFirstDraw2.style.animation = '0.3s linear 0.6s 1 normal forwards running moveLoaderBar45-2';
+            selectFirstOpacity2.style.animation = '0.5s linear 0.6s 1 normal forwards running barAppears';
 
-            selectSecondDraw.style.animation = '0.5s linear 0s 1 normal forwards running moveLoaderBar45-3';
-            selectSecondOpacity.style.animation = '0.7s linear 0s 1 normal forwards running barAppears';
+            selectSecondDraw.style.animation = '0.3s linear 0s 1 normal forwards running moveLoaderBar45-3';
+            selectSecondOpacity.style.animation = '0.5s linear 0s 1 normal forwards running barAppears';
 
-            selectSecondDraw2.style.animation = '0.5s linear 0.5s 1 normal forwards running moveLoaderBar45-4';
-            selectSecondOpacity2.style.animation = '0.7s linear 0.5s 1 normal forwards running barAppears';
+            selectSecondDraw2.style.animation = '0.3s linear 0.2s 1 normal forwards running moveLoaderBar45-4';
+            selectSecondOpacity2.style.animation = '0.5s linear 0.2s 1 normal forwards running barAppears';
 
-            selectThirdOpacity.forEach((e) => {e.style.animation = '1s linear 2s 1 normal forwards running thirdOpacity'});
+            selectThirdOpacity.forEach((e) => {e.style.animation = '1s linear 0.8s 1 normal forwards running thirdOpacity'});
         }
 
         function replayAnimation() {
@@ -61,7 +62,7 @@ const Loader = () => {
 
         playAnimation();
 
-        let interval = setInterval(replayAnimation, 4000)
+        let interval = setInterval(replayAnimation, 3000)
 
     }, [])
 

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../components/NavBar';
 
-import video from '../media/vidéo_de_Taryn_Elliott.mp4';
 import Loader from './Loader';
+
+import video from '../media/vidéo_de_Taryn_Elliott.mp4';
 
 const Home = () => {
 
@@ -16,10 +17,11 @@ const Home = () => {
     useEffect(() => {
         if (isLoading === false) {
             const selectLoader = document.getElementById('loader-container');
-            const selectContainer = document.querySelector('.home-loader');
+            const selectContainer = document.querySelector('.main-loader');
 
-            setTimeout(() => {selectLoader.style.animation = '1s ease-in-out 1s 1 normal forwards running loaderDisappears'}, 2300);
-            setTimeout(() => {selectContainer.classList.add('loader-cancelled')}, 4300);  
+            selectContainer.classList.add('move-right');
+            selectLoader.style.animation = '1s ease-in-out 2s 1 normal forwards running loaderDisappears';
+            setTimeout(() => {selectContainer.classList.add('loader-cancelled')}, 3500);  
         }
         console.log(isLoading);
         
@@ -27,7 +29,7 @@ const Home = () => {
 
     return (
         <>
-            <div className="home-loader">
+            <div className="main-loader">
                 <Loader />
             </div>
             <div className="home-container">
