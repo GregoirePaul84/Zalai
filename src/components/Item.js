@@ -11,7 +11,6 @@ import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 const Item = ({cartLength, setCartLength, productClass, productName, productOldPrice, productNewPrice, productTribe, productSize, productImg, productHover, productAlt, addBasket, productId, isAdded, isSold}) => {
-
     const navigate = useNavigate();
 
     const detail = useContext(ProductContext);
@@ -99,7 +98,7 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
     }, [addToBasket]);
 
     return (
-        <>
+        
         <div className={`product-card ${productClass}`} data-id={`${productId}`}>
             <div className="border-decoration">
                 <img src={border} alt="bordure décorative bleu foncé" />
@@ -170,7 +169,7 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
             </div>
             <div className="border-bottom-container"></div>
         </div> 
-        </>
+        
     );
 };
 
