@@ -20,13 +20,14 @@ function App() {
   return (
     <Router>
         <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/home" element={<Home/>} />
-            <Route path="/about" element={<About/>} />
-            <Route path="/products" element={<Products/>}>
-              <Route path="/products/:id" element={<Products/>}/>
+          <Route path="/Zalai/" element={<Home/>} />
+            <Route path="/Zalai/" element={<Home/>} />
+            <Route path="/Zalai/home" element={<Home/>} />
+            <Route path="/Zalai/about" element={<About/>} />
+            <Route path="/Zalai/products" element={<Products/>}>
+              <Route path="/Zalai/products/:id" element={<Products/>}/>
             </Route>
-            <Route path="/basket" element={<Basket/>} />
+            <Route path="/Zalai/basket" element={<Basket/>} />
         </Routes>
       </Router>
   );

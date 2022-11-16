@@ -524,7 +524,7 @@ const Products = () => {
         <div className="foreground">
             <div className="cart-info">
                 <span className='number-items'>{cartLength}</span>
-                <FontAwesomeIcon icon={faCartArrowDown} onClick={() => navigate(`/basket`)}/>
+                <FontAwesomeIcon icon={faCartArrowDown} onClick={() => navigate(`/Zalai/basket`)}/>
             </div>
             <Header checkPage={'product'} isLoading={isLoading}/>
             <main>

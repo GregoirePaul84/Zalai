@@ -66,17 +66,17 @@ const NavBar = ({checkPage}) => {
     return (
         <nav className='navigation-container'>
             <ul>
-                <NavLink to={'/home'}>
+                <NavLink to={'/Zalai/home'}>
                     <li>
                         Accueil
                     </li>
                 </NavLink>
-                <NavLink to={'/about'}>
+                <NavLink to={'/Zalai/about'}>
                     <li>
                         Qui sommes nous ?
                     </li>
                 </NavLink>
-                <NavLink to={'/products'}>
+                <NavLink to={'/Zalai/products'}>
                     <li>
                         Nos produits
                         { (checkPage === 'product') ?
@@ -106,7 +106,7 @@ const NavBar = ({checkPage}) => {
                         : null }
                     </li>
                 </NavLink>
-                <NavLink to={'/basket'}>
+                <NavLink to={'/Zalai/basket'}>
                 <li>
                     Panier
                 </li>

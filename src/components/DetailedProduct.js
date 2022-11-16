@@ -35,7 +35,7 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
 
     function removeDetail() {
         setDisplayDetail(!displayDetail);
-        navigate(`/products`);
+        navigate(`/Zalai/products`);
     };
 
     function zoomOnImg() {

@@ -22,7 +22,7 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
 
     function displayProduct() {
         setDisplayDetail(!displayDetail);
-        navigate(`/products/${productId}`);
+        navigate(`/Zalai/products/${productId}`);
     }
 
     // Vérifie si le produit choisi est déjà présent dans le panier

@@ -128,7 +128,7 @@ const Basket = () => {
                     <section>
                         <div className="basket-header">
                             <div className="back-to-shopping">
-                                <button onClick={() => navigate(`/products`)}>Continuer les achats</button>
+                                <button onClick={() => navigate(`/Zalai/products`)}>Continuer les achats</button>
                             </div>
                             <div className="basket-title">
                                 <h2>Votre panier</h2>
