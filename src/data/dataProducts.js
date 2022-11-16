@@ -1492,7 +1492,7 @@ export const products = [
             'productName': 'décoration 14',
             'productOldPrice': 45,
             'productNewPrice': 29,
-            'productColor': 'white',
+            'productColor': 'blue',
             'productTribe': 'Artisan de Meknès',
             'productKind': 'cushion',
             'productMaterial': 'undefined',

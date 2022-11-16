@@ -335,6 +335,7 @@ const Products = () => {
         || (product.productMaterial === materialFilter.material));
 
         if(filter1.length !== 0 ) {
+            console.log('filter1');
             return(
                 filter1.map((key) => {
                                         
@@ -367,6 +368,7 @@ const Products = () => {
             )
         }
         else {
+            console.log('pas de produit');
             return(
                 <NoProducts />
             )
@@ -387,7 +389,7 @@ const Products = () => {
         && (colorsChosen.current.includes(product.productColor)))
         // Filtrage prix et taille
         || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
-        && (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor ||        product.isBig === sizeFilter.isBig))
+        && (product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig))
         // Filtrage taille et couleur
         || ((product.productSize === sizeFilter.size || product.productCorridor === sizeFilter.corridor || product.isBig === sizeFilter.isBig) 
         && (colorsChosen.current.includes(product.productColor)))       
@@ -397,11 +399,15 @@ const Products = () => {
         // Filtrage genre et matériau
         || ((product.productKind === kindFilter.kind) 
         && (product.productMaterial === materialFilter.material))
+        // Filtrage genre et couleur
+        || ((product.productKind === kindFilter.kind) 
+        && (colorsChosen.current.includes(product.productColor)))
         // Filtrage prix et matériau
         || ((product.productNewPrice >= priceFilter.valueMin && product.productNewPrice <= priceFilter.valueMax) 
         && (product.productMaterial === materialFilter.material)));
 
         if(filter2.length !== 0 ) {
+            console.log('filter2');
             return(
                 filter2.map((key) => {
                                         
@@ -434,6 +440,7 @@ const Products = () => {
             )
         }
         else {
+            console.log('pas de produits filtre 2');
             return(
                 <NoProducts />
             )
@@ -464,6 +471,7 @@ const Products = () => {
         && (colorsChosen.current.includes(product.productColor))));
 
         if(filter3.length !== 0 ) {
+            console.log('filter3');
             return(
                 filter3.map((key) => {
                                         
@@ -622,13 +630,22 @@ const Products = () => {
                             {(category !== undefined && filterActive.price === false && filterActive.size === false && filterActive.color === false && filterActive.kind === false && filterActive.material === false) ? 
                                 <DisplayFilter0 />
                             : 
-                            /* Affichage des produits = au moins 1 filtre activé */
+                            /* Affichage des produits = 1 filtre activé */
+                            // Filtre activé : prix 
                             ((filterActive.price === true && filterActive.size === false && filterActive.color === false && filterActive.kind === false && filterActive.material === false) 
-                            || (filterActive.price === false && filterActive.size === true && filterActive.color === false) 
-                            || (filterActive.price === false && filterActive.size === false && filterActive.color === true) 
-                            || (filterActive.price === false && filterActive.kind === true && filterActive.material === false)
-                            || (filterActive.price === false && filterActive.kind === false && filterActive.material === true)) ?
 
+                            // Filtre activé : taille
+                            || (filterActive.price === false && filterActive.size === true && filterActive.color === false) 
+
+                            // Filtre activé : couleur
+                            || (filterActive.price === false && filterActive.size === false && filterActive.color === true && filterActive.kind === false) 
+
+                            // Filtre activé : genre
+                            || (filterActive.price === false && filterActive.kind === true && filterActive.material === false && filterActive.color === false)
+
+                            // Filtre activé : matériau
+                            || (filterActive.price === false && filterActive.kind === false && filterActive.material === true && filterActive.color === false)) ?
+                                
                                 <DisplayFilter1 />
                             : 
                             /* Affichage des produits = 2 filtres activés */
@@ -640,6 +657,9 @@ const Products = () => {
 
                             // Filtres activés : taille et couleur
                             || (filterActive.price === false && filterActive.size === true && filterActive.color === true)
+
+                            // Filtres activés : genre et couleur
+                            || (filterActive.price === false && filterActive.kind === true && filterActive.color === true)
 
                             // Filtres activés : prix et genre
                             || (filterActive.price === true && filterActive.kind === true && filterActive.material === false && filterActive.color === false)
