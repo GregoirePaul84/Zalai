@@ -1,8 +1,13 @@
 import React from 'react';
 
-const CategoryCard = ({categoryChosen, categoryName, categoryImg, categoryAlt, categoryClass}) => {
+const CategoryCard = ({categoryChosen, categoryName, categoryImg, categoryAlt, categoryClass, removeFilters, setIndexStart, setIndexEnd}) => {
 
     function productsAppear() {
+
+        // Lors du changement de catégories de produits : suppression de tous les filtres + affichage de la 1ere page de produits
+        removeFilters();
+        setIndexStart(0);
+        setIndexEnd(8);
 
         const selectProductsContainer = document.querySelector('.products-container');
         const selectMain = document.getElementsByTagName('main');

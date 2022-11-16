@@ -527,12 +527,15 @@ const Products = () => {
                     {productCategories.map((key) => {
                         return (
                             <CategoryCard key={key.categoryName}
-                            category = {category}
+                                        category = {category}
                                         categoryChosen={checkCategory}
                                         categoryClass={key.categoryClass}
                                         categoryName={key.categoryName}
                                         categoryImg={key.categoryImg}
-                                        categoryAlt={key.categoryAlt} />
+                                        categoryAlt={key.categoryAlt}
+                                        removeFilters={removeFilters} 
+                                        setIndexStart={setIndexStart}
+                                        setIndexEnd={setIndexEnd} />
                         )
                     })
                     }
