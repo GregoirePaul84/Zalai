@@ -28,6 +28,7 @@ import FilterProducts from '../components/FilterProducts';
 
 import { useNavigate } from 'react-router-dom';
 import Loader from './Loader';
+import NoProducts from '../components/NoProducts';
 
 export const ProductContext = React.createContext();
 
@@ -308,7 +309,7 @@ const Products = () => {
         }                       
         else {
             return(
-                <div>Pas de produits</div>
+                <NoProducts />
             )
         }
         // eslint-disable-next-line
@@ -365,7 +366,7 @@ const Products = () => {
         }
         else {
             return(
-                <div>Pas de produits</div>
+                <NoProducts />
             )
         }
         // eslint-disable-next-line
@@ -431,7 +432,7 @@ const Products = () => {
         }
         else {
             return(
-                <div>Pas de produits</div>
+                <NoProducts />
             )
         }
         // eslint-disable-next-line
@@ -492,7 +493,7 @@ const Products = () => {
         }
         else {
             return(
-                <div>Pas de produits</div>
+                <NoProducts />
             )
         }
         // eslint-disable-next-line

@@ -37,7 +37,6 @@ const FilterProducts = ({category, setTypeFilter, filterActive, setFilterActive,
 
     useEffect(() => {
         if (typeFilter !== 'size') return; 
-        console.log(filterActive);
 
         sessionStorage.setItem('size', JSON.stringify(sizeFilter));
         

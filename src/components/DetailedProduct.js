@@ -269,8 +269,8 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
                         </div>
                     </div>
                     <div className="detailed-carousel">
-                        <div className="chevron-container">
-                                <FontAwesomeIcon icon={faChevronLeft} className="chevron-left" onClick={showPreviousImg}/>
+                        <div className="chevron-container" onClick={showPreviousImg}>
+                                <FontAwesomeIcon icon={faChevronLeft} className="chevron-left" />
                         </div>
                         {(products !== undefined) ? 
                             findProduct.productAllImg.map((key) => {
