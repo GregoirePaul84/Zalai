@@ -215,7 +215,12 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
                         </div>
                         <div className="detailed-text-container">
                             <div className="detailed-text">
-                                <h2>{findProduct.productName}</h2>
+                                <h2>{findProduct.productName}
+                                {(findProduct.isNew)?
+                                    <p>Nouveau !</p>
+                                    : <div className='invisible'></div> }
+                                </h2>
+                                
                                 <p className='product-size'>
                                     <FontAwesomeIcon icon={faRuler} />
                                     {findProduct.productSize}

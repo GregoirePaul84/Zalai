@@ -119,6 +119,16 @@
             font-weight: 600;
             color: black;
             margin-bottom: 10px;
+
+            p {
+                color: #2CB916;
+                font-weight: 500;
+                font-size: 0.9em;
+            }
+
+            .invisible {
+                height: 20px;
+            }
         }
 
         p {

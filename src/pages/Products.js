@@ -301,7 +301,8 @@ const Products = () => {
                             productAllImg={key.productAllImg}
                             productAlt={key.productAlt}
                             isAdded={key.isAdded}
-                            isSold={key.isSold} />
+                            isSold={key.isSold}
+                            isNew={key.isNew} />
                         </ProductContext.Provider>        
                     )      
                 })    
@@ -358,7 +359,8 @@ const Products = () => {
                             productAllImg={key.productAllImg}
                             productAlt={key.productAlt}
                             isAdded={key.isAdded}
-                            isSold={key.isSold} />
+                            isSold={key.isSold}
+                            isNew={key.isNew} />
                         </ProductContext.Provider>
                     )
                 })
@@ -424,7 +426,8 @@ const Products = () => {
                             productAllImg={key.productAllImg}
                             productAlt={key.productAlt}
                             isAdded={key.isAdded}
-                            isSold={key.isSold} />
+                            isSold={key.isSold}
+                            isNew={key.isNew} />
                         </ProductContext.Provider>
                     )
                 })
@@ -485,7 +488,8 @@ const Products = () => {
                             productAllImg={key.productAllImg}
                             productAlt={key.productAlt}
                             isAdded={key.isAdded}
-                            isSold={key.isSold} />
+                            isSold={key.isSold}
+                            isNew={key.isNew} />
                         </ProductContext.Provider>
                     )
                 })

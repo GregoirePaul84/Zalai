@@ -10,7 +10,7 @@ import { faBasketShopping } from '@fortawesome/free-solid-svg-icons';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
-const Item = ({cartLength, setCartLength, productClass, productName, productOldPrice, productNewPrice, productTribe, productSize, productImg, productHover, productAlt, addBasket, productId, isAdded, isSold}) => {
+const Item = ({cartLength, setCartLength, productClass, productName, productOldPrice, productNewPrice, productTribe, productSize, productImg, productHover, productAlt, addBasket, productId, isAdded, isSold, isNew}) => {
     const navigate = useNavigate();
 
     const detail = useContext(ProductContext);
@@ -125,7 +125,11 @@ const Item = ({cartLength, setCartLength, productClass, productName, productOldP
             </div>
             <div className="product-content">
                 <div className="product-text">
-                    <h4>{productName}</h4>
+                    <h4>{productName}
+                    {(isNew)?
+                        <p>Nouveau !</p>
+                        : <div className='invisible'></div> }
+                    </h4>
                     <p className='product-size'>{productSize}</p>
                     <p className='artisan'>{productTribe}</p>
                     <p className='prices'>
