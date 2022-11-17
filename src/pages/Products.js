@@ -526,7 +526,7 @@ const Products = () => {
                 <span className='number-items'>{cartLength}</span>
                 <FontAwesomeIcon icon={faCartArrowDown} onClick={() => navigate(`/Zalai/basket`)}/>
             </div>
-            <Header checkPage={'product'} isLoading={isLoading}/>
+            <Header checkPage={'products'} isLoading={isLoading}/>
             <main>
                 <section className="product-title">
                     <h3>Notre boutique en ligne</h3>   

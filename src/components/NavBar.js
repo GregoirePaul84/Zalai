@@ -61,25 +61,35 @@ const NavBar = ({checkPage}) => {
             selectQuickList.classList.add('menu-inactive');
         }
 
-    }, [displayMenu])
+    }, [displayMenu]);
+
+    useEffect(()=> {
+        console.log(checkPage);
+        const currentPage = document.querySelector(`.${checkPage}`);
+        const otherPages = document.querySelectorAll(`nav ul li:not(.${checkPage})`);
+        
+        currentPage.style.color = 'white';
+        currentPage.classList.add('no-hover');
+        otherPages.forEach((li) => li.style = 'inherit');
+    }, []);
 
     return (
         <nav className='navigation-container'>
             <ul>
                 <NavLink to={'/Zalai/home'}>
-                    <li>
+                    <li className='home'>
                         Accueil
                     </li>
                 </NavLink>
                 <NavLink to={'/Zalai/about'}>
-                    <li>
+                    <li className='about'>
                         Qui sommes nous ?
                     </li>
                 </NavLink>
                 <NavLink to={'/Zalai/products'}>
-                    <li>
+                    <li className='products'>
                         Nos produits
-                        { (checkPage === 'product') ?
+                        { (checkPage === 'products') ?
                         <>
                         <FontAwesomeIcon icon={faChevronDown} className="chevron-down" onClick={displayList}/>
                         <ul className="quick-list-container">
@@ -107,7 +117,7 @@ const NavBar = ({checkPage}) => {
                     </li>
                 </NavLink>
                 <NavLink to={'/Zalai/basket'}>
-                <li>
+                <li className='basket'>
                     Panier
                 </li>
                 </NavLink>

@@ -57,6 +57,12 @@
                 background: $color-primary;
             }
         }
+
+        .no-hover {
+            &::after {
+                visibility: hidden;
+            }
+        }
     }
 
     .quick-list-container {

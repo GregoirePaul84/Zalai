@@ -48,7 +48,7 @@ const Home = () => {
                 </div>
                 <div className="foreground">
                     <header>
-                        <NavBar />
+                        <NavBar checkPage={'home'}/>
                     </header>
                     <main className='brand-title-container'>
                         <section>
