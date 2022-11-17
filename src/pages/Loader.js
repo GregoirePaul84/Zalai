@@ -56,7 +56,7 @@ const Loader = () => {
             selectSecondOpacity2.style.animation = 'none';
             selectThirdOpacity.forEach((e) => {e.style.animation = 'none'}); 
             
-            setTimeout(playAnimation, 100);
+            setTimeout(() => {playAnimation()}, 50);
         }
 
         playAnimation();

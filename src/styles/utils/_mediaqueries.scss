@@ -1,0 +1,294 @@
+/* Mobile */
+@media only screen and (max-device-width : 480px) {
+    // Page Home
+
+    .home-container {
+        .background {
+            video {
+                display: none;
+            }
+            img {
+                height: 100%;
+                width: 100%;
+                display: block;
+            }
+        }
+        .foreground {
+            display: flex;
+            header {
+                width: 70px;
+                height: 100%;
+                background-color: #00000075;
+                .navigation-container {
+                    
+                    ul {
+                        flex-direction: column;
+                        gap: 0.9em;
+
+                        li {
+                            width: auto;
+                            svg {
+                                display: block;
+                                width: 24px;
+                                height: 24px;
+
+                                path {
+                                    color: $color-primary;
+                                }
+                            }
+                            p {
+                                display: block;
+                                font-size: 0.5em;
+                                margin-top: 7px;
+                            }
+
+                            .letter {
+                                width: 27px;
+                                height: 27px;
+                            }
+
+                            span {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+            .brand-title-container {
+                width: calc(100% - 70px);
+
+                section {
+                    h2 {
+                        position: initial;
+                    }
+                }
+            }
+        }
+    }
+
+    // Page About
+
+    .about-container {
+        height: 2300px;
+        .background img {
+            display: block;
+        }
+        .foreground {
+            display: flex;
+            flex-direction: column;
+
+            .header-except-home {
+                flex-wrap: wrap-reverse;
+                padding: 0;
+                height: 250px;
+
+                h1, h2 {
+                    width: calc(100% - 70px);
+                    align-self: self-end;
+                    display: flex;
+                    justify-content: center;
+                    position: initial;
+                }
+
+                .navigation-container {
+                    width: 70px;
+                    height: 100%;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    z-index: 2;
+                    background-color: #00000075;
+
+                    ul {
+                        flex-direction: column;
+                        gap: 0.9em;
+
+                        li {
+                            width: auto;
+                            svg {
+                                display: block;
+                                width: 24px;
+                                height: 24px;
+
+                                path {
+                                    color: $color-primary;
+                                }
+                            }
+                            p {
+                                display: block;
+                                font-size: 0.5em;
+                                margin-top: 7px;
+                            }
+
+                            .letter {
+                                width: 27px;
+                                height: 27px;
+                            }
+
+                            span {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+          
+            .about-main {
+                height: calc(100% - 750px);
+                width: calc(100% - 70px);
+                padding: 0 15px;
+                align-self: flex-end;
+
+                .about-card {
+                    width: 100%;
+                }
+
+                .company {
+                    transform: translateX(50vw);
+                    animation: 1s ease-out 0s 1 normal forwards running moveAboutCard1;
+                }
+            }
+
+            footer {
+                z-index: 1;
+                height: auto;
+                display: flex;
+                flex-wrap: wrap;
+                height: 560px;
+
+                .border-container {
+                    margin-bottom: 20px;
+                }
+
+                .footer-links {
+                    flex-direction: column;
+                    height: calc(100% - 55px);
+                    width: calc(100% - 70px);
+                    margin-left: auto;
+
+                    .footer-about, .footer-delivery, .footer-contact {
+                        width: 100%;
+                        padding: 0 50px;
+                        margin-bottom: 20px;
+
+                        .title {
+                            height: auto;
+                            h3 {
+                                padding: 15px 0;
+                            }
+                        }
+                        
+                        .links {
+                            height: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Tablets + Mobile landscape */
+@media only screen and (min-device-width : 481px) and (max-device-width : 1024px) {
+    // Page Home
+    .home-container {
+        .foreground {
+            header {
+                .navigation-container {
+                    ul {
+                        li {
+                            width: auto;
+                            p {
+                                display: block;
+                                font-size: 1em;
+                                margin-top: 7px;
+                            }
+
+                            span {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+/* iPhone 5 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* iPhone 6 ----------- */
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* iPhone 6+ ----------- */
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* Samsung Galaxy S3 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* Samsung Galaxy S4 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+/* Samsung Galaxy S5 ----------- */
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}

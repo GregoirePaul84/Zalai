@@ -55,9 +55,10 @@ const Footer = () => {
                         <li>
                             <span>ⵛ</span>
                             Une question ? Besoin d'aide ?
-                            <br />
-                            <span></span>
-                            Contactez-nous !
+                            {/* <br /> */}
+                            {/* <span></span> */}
+                            <p>Contactez-nous !</p>
+                            
                         </li>
                     </ul>
                 </div>

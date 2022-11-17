@@ -52,6 +52,11 @@ footer {
                     width: 21px;
                 }
 
+                p {
+                    text-align: start;
+                    padding-left: 31.6px
+                }
+
                 &:hover {
                     color: $color-secondary;
                 }

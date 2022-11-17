@@ -28,6 +28,7 @@ const CategoryCard = ({categoryChosen, categoryName, categoryImg, categoryAlt, c
             const selectProductsContainer = document.querySelector('.products-list');
             selectProductsContainer.style.animation = '1s ease-in-out 0s 1 normal forwards running opacityProductCard';
             document.querySelector('.category-title').textContent = `Tapis berbères`;
+            selectSectionProducts.scrollIntoView(({behavior: "smooth"}));
         }
 
         if(categoryName === 'Luminaires') {
@@ -37,6 +38,7 @@ const CategoryCard = ({categoryChosen, categoryName, categoryImg, categoryAlt, c
             const selectProductsContainer = document.querySelector('.products-list');
             selectProductsContainer.style.animation = '1s ease-in-out 0s 1 normal forwards running opacityProductCard';
             document.querySelector('.category-title').textContent = `Luminaires`;
+            selectSectionProducts.scrollIntoView(({behavior: "smooth"}));
         }
 
         if(categoryName === 'Décorations') {
@@ -46,6 +48,7 @@ const CategoryCard = ({categoryChosen, categoryName, categoryImg, categoryAlt, c
             const selectProductsContainer = document.querySelector('.products-list');
             selectProductsContainer.style.animation = '1s ease-in-out 0s 1 normal forwards running opacityProductCard';
             document.querySelector('.category-title').textContent = `Décorations`;
+            selectSectionProducts.scrollIntoView(({behavior: "smooth"}));
         }
     }
 

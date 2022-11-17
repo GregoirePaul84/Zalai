@@ -1,19 +1,20 @@
 import React from 'react';
 import { useEffect } from 'react';
 
-const ZalaiLogo = ({isLoading}) => {
+const ZalaiLogo = ({isLoading, time}) => {
     
 
     useEffect(() => {
         console.log(isLoading);
 
         if (isLoading === false) {
+            console.log(time.toString());
             setTimeout(() => {
-                document.querySelector('#logo path:nth-child(1)').style.animation = 'stroke-anim 3s ease forwards';
-                document.querySelector('#logo path:nth-child(2)').style.animation = 'stroke-anim 3s ease forwards 0.3s';
-                document.querySelector('#logo path:nth-child(3)').style.animation = 'stroke-anim 3s ease forwards 0.6s';
-                document.querySelector('#logo path:nth-child(4)').style.animation = 'stroke-anim 3s ease forwards 0.9s';
-                document.querySelector('#logo path:nth-child(5)').style.animation = 'stroke-anim 3s ease forwards 1.2s';
+                document.querySelector('#logo path:nth-child(1)').style.animation = `stroke-anim ${time.toString()}s ease forwards`;
+                document.querySelector('#logo path:nth-child(2)').style.animation = `stroke-anim ${time.toString()}s ease forwards`;
+                document.querySelector('#logo path:nth-child(3)').style.animation = `stroke-anim ${time.toString()}s ease forwards`;
+                document.querySelector('#logo path:nth-child(4)').style.animation = `stroke-anim ${time.toString()}s ease forwards`;
+                document.querySelector('#logo path:nth-child(5)').style.animation = `stroke-anim ${time.toString()}s ease forwards`;
             }, 2500);  
         }
          

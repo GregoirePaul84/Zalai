@@ -211,6 +211,17 @@
     }
 }
 
+@keyframes orange-line-mobile {
+    from {
+        opacity: 0;
+        transform: translateX(45px) scaleX(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(45px) scaleX(1);
+    }
+}
+
 @keyframes added {
     0% {
         transform: translateY(-30px);

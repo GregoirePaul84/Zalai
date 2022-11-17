@@ -94,18 +94,18 @@
 
             .company {
                 align-self: flex-end;
-                transform: translateX(50vw);
+                transform: translateX(105vw);
                 animation: 1s ease-out 0s 1 normal forwards running moveAboutCard1;
             }
 
             .values {
                 align-self: flex-start;
-                transform: translateX(-50vw);
+                transform: translateX(-105vw);
             }
 
             .products {
                 align-self: flex-end;
-                transform: translateX(50vw);
+                transform: translateX(105vw);
             }
         }
     }

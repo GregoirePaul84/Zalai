@@ -4,14 +4,16 @@ import NavBar from '../components/NavBar';
 import Loader from './Loader';
 
 import video from '../media/vidéo_de_Taryn_Elliott.mp4';
+import mobileImg from '../media/Mobile/pexels-taryn-elliott-4502969.jpg';
+import ZalaiLogo from '../components/ZalaiLogo';
 
 const Home = () => {
 
     const [isLoading, setIsLoading] = useState(true);
+    const [innerWidth, setInnerWidth] = useState(window.innerWidth);
 
-    function checkLoading() {
-        setIsLoading(false);
-        console.log(isLoading);
+    function checkLoading() {     
+        setIsLoading(false);    
     }
 
     useEffect(() => {
@@ -25,8 +27,22 @@ const Home = () => {
         }
         console.log(isLoading);
         
-    }, [isLoading])
+    }, [isLoading]);
 
+    const handleWidth = () => {
+        setInnerWidth(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWidth, {
+        });
+    
+        return () => {
+            window.removeEventListener('resize', handleWidth);
+        };
+
+    });
+    
     return (
         <>
             <div className="main-loader">
@@ -34,16 +50,19 @@ const Home = () => {
             </div>
             <div className="home-container">
                 <div className="background">
+                    {(innerWidth <= 480) ?
+                        <img src={mobileImg} alt="" onLoad={() => checkLoading()}/>  
+                    : 
                     <video 
-                    className='home-video'
-                    width="100%" 
-                    height="100%" 
-                    autoPlay muted loop 
-                    onLoadedData={() => {
-                        checkLoading();
-                    }}>
+                        className='home-video'
+                        width="100%" 
+                        height="100%" 
+                        autoPlay muted loop 
+                        onLoadedData={() => {
+                            checkLoading();
+                        }}>
                         <source src={video} type="video/mp4"/>
-                    </video>
+                    </video> }
                     <div className="gray-layout"></div>
                 </div>
                 <div className="foreground">
@@ -52,7 +71,10 @@ const Home = () => {
                     </header>
                     <main className='brand-title-container'>
                         <section>
-                            <h1>Zalaï</h1>
+                            {(innerWidth <= 480) ?
+                                <ZalaiLogo isLoading={isLoading} time={20}/>  
+                            : 
+                            <h1>Zalaï</h1>} 
                             <h2>Art berbère</h2>
                         </section>
                     </main>

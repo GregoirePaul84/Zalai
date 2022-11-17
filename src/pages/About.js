@@ -32,7 +32,6 @@ const About = () => {
             selectLoader.style.animation = '1s ease-in-out 2s 1 normal forwards running loaderDisappears';
             setTimeout(() => {selectContainer.classList.add('loader-cancelled')}, 3500);  
         }
-        console.log(isLoading);
         
     }, [isLoading])
 
@@ -40,16 +39,29 @@ const About = () => {
     useEffect(() => {
             const selectOrangeLine1 = document.querySelector('.orange-line');
 
-            setTimeout(() => {
-                selectOrangeLine1.style.animation = 'orange-line 2s ease forwards 2s';
-            }, 2300);  
-
+            if(window.innerWidth <= 480) {
+                selectOrangeLine1.style.transform = 'translateX(45px) scaleX(0)';
+                setTimeout(() => {
+                    selectOrangeLine1.style.animation = 'orange-line-mobile 2s ease forwards 2s';
+                }, 2300);  
+            }
+            else {
+                setTimeout(() => {
+                    selectOrangeLine1.style.animation = 'orange-line 2s ease forwards 2s';
+                }, 2300);  
+            }
     }, []);
 
+    // Apparitions des cards lors du scroll + apparition des lignes oranges
     useEffect(() => {
         if (scrollY >= 300) {
             document.querySelector('.values').style.animation = '1s ease-out 0s 1 normal forwards running moveAboutCard2';
-            document.querySelector('.values .orange-line').style.animation = 'orange-line 2s ease forwards 500ms';
+
+            if (window.innerWidth <= 480) {
+                document.querySelector('.values .orange-line').style.animation = 'orange-line-mobile 2s ease forwards 500ms';
+            }else {
+                document.querySelector('.values .orange-line').style.animation = 'orange-line 2s ease forwards 500ms';
+            } 
         }
         
         if (scrollY >= 500) {
@@ -57,7 +69,12 @@ const About = () => {
 
             if (scrollY >= 700) {
                 document.querySelector('.products').style.animation = '1s ease-out 0s 1 normal forwards running moveAboutCard1';
-                document.querySelector('.products .orange-line').style.animation = 'orange-line 2s ease forwards 500ms';
+                
+                if (window.innerWidth <= 480) {
+                    document.querySelector('.products .orange-line').style.animation = 'orange-line-mobile 2s ease forwards 500ms';
+                }else {
+                    document.querySelector('.products .orange-line').style.animation = 'orange-line 2s ease forwards 500ms';
+                } 
             }
 
             return;
@@ -66,9 +83,10 @@ const About = () => {
         else {
             setBrightness(scrollY / 1000 + 0.4);
         }
-        
     }, [scrollY, brightness])
 
+
+    // Détection du scroll
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, {
         });
@@ -76,7 +94,6 @@ const About = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-
     });
 
     return (
