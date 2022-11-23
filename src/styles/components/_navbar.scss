@@ -23,7 +23,7 @@
             justify-content: center;
             position: relative;
 
-            svg, p {
+            svg:not(.chevron-down), p {
                 display: none;
             }
 

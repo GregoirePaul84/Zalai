@@ -20,7 +20,7 @@ import { saveBasket, getBasket, addBasket } from '../functions/basket';
 
 // Importation des icônes
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faCartArrowDown, faCouch, faCubes, faEuroSign, faLightbulb, faPalette, faRuler } from '@fortawesome/free-solid-svg-icons';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -527,7 +527,7 @@ const Products = () => {
                 <FontAwesomeIcon icon={faCartArrowDown} onClick={() => navigate(`/Zalai/basket`)}/>
             </div>
             <Header checkPage={'products'} isLoading={isLoading}/>
-            <main>
+            <main className='products-main'>
                 <section className="product-title">
                     <h3>Notre boutique en ligne</h3>   
                     <p>Des produits sélectionnés avec nos plus grands soins</p>          
@@ -561,10 +561,12 @@ const Products = () => {
                                 <h3 className='category-title'></h3>
                                 <div className="filter-container" onMouseOut={hideFilter}>
                                     <p>Trier les produits</p>
+                                    <p className='p-mobile'>Filtrer</p>
                                     <input type="checkbox" className='checkbox-filters' onClick={removeFilters}/>
                                     <ul>
                                         <li onMouseOver={() => {setTypeFilter('price')}} >
                                             <span>Prix</span>
+                                            <FontAwesomeIcon icon={faEuroSign} className='mobile-svg'/>
                                             <FontAwesomeIcon icon={faChevronDown} />
                                             {(typeFilter === 'price') ? <FilterProducts category={category} typeFilter={'price'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} priceFilter={priceFilter} setPriceFilter={setPriceFilter} /> : null}
                                         </li>
@@ -572,11 +574,13 @@ const Products = () => {
                                         <>
                                         <li onMouseOver={() => {setTypeFilter('size')}}>
                                             <span>Taille</span>
+                                            <FontAwesomeIcon icon={faRuler} className='mobile-svg'/>
                                             <FontAwesomeIcon icon={faChevronDown} />
                                             {(typeFilter === 'size') ? <FilterProducts category={category} typeFilter={'size'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} sizeFilter={sizeFilter} setSizeFilter={setSizeFilter} /> : null}
                                         </li>
                                         <li onMouseOver={() => {setTypeFilter('color')}}>
                                             <span>Couleur</span>
+                                            <FontAwesomeIcon icon={faPalette} className='mobile-svg'/>
                                             <FontAwesomeIcon icon={faChevronDown} />
                                             {(typeFilter === 'color') ? <FilterProducts category={category} typeFilter={'color'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} colorFilter={colorFilter} setColorFilter={setColorFilter} /> : null}
                                         </li>
@@ -585,11 +589,13 @@ const Products = () => {
                                         <>
                                         <li onMouseOver={() => {setTypeFilter('kind')}}>
                                             <span>Type</span>
+                                            <FontAwesomeIcon icon={faLightbulb} className='mobile-svg'/>
                                             <FontAwesomeIcon icon={faChevronDown} />
                                             {(typeFilter === 'kind') ? <FilterProducts category={category} typeFilter={'kind'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} kindFilter={kindFilter} setKindFilter={setKindFilter} /> : null}
                                         </li>
                                         <li onMouseOver={() => {setTypeFilter('material')}}>
                                             <span>Matériau</span>
+                                            <FontAwesomeIcon icon={faCubes} className='mobile-svg'/>
                                             <FontAwesomeIcon icon={faChevronDown} />
                                             {(typeFilter === 'material') ? <FilterProducts category={category} typeFilter={'material'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} materialFilter={materialFilter} setMaterialFilter={setMaterialFilter} /> : null}
                                         </li> 
@@ -598,11 +604,13 @@ const Products = () => {
                                         <>
                                         <li onMouseOver={() => {setTypeFilter('kind')}}>
                                             <span>Type</span>
+                                            <FontAwesomeIcon icon={faCouch} className='mobile-svg'/>
                                             <FontAwesomeIcon icon={faChevronDown} />
                                             {(typeFilter === 'kind') ? <FilterProducts category={category} typeFilter={'kind'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} kindFilter={kindFilter} setKindFilter={setKindFilter} /> : null}
                                         </li>
                                         <li onMouseOver={() => {setTypeFilter('color')}}>
                                             <span>Couleur</span>
+                                            <FontAwesomeIcon icon={faPalette} className='mobile-svg'/>
                                             <FontAwesomeIcon icon={faChevronDown} />
                                             {(typeFilter === 'color') ? <FilterProducts category={category} typeFilter={'color'} setTypeFilter={setTypeFilter} filterActive={filterActive} setFilterActive={setFilterActive} colorFilter={colorFilter} setColorFilter={setColorFilter} /> : null}
                                         </li> 
@@ -680,11 +688,15 @@ const Products = () => {
                             <DisplayFilter3 />
                             : null
                             }
+                            {(window.innerWidth >= 1120 && window.innerWidth < 1480) ?
+                            <div className="fill-space"></div>
+                            : null
+                            }
                         </div>
                     </div>
                 </section>
-                <Footer />
             </main>
+            <Footer />
         </div>
         { (displayDetail) ?
             <ProductContext.Provider value={{ displayDetail, setDisplayDetail }}>

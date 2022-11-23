@@ -11,20 +11,21 @@ const Footer = () => {
                     </div>
                     <ul className="links">
                         <li>
-                            <span>ⵖ</span>
-                            Nos valeurs
+                            <span>ⵖ</span>                  
+                            <p>Nos valeurs</p>
                         </li>
                         <li>
                             <span>ⴰ</span>
-                            Nos artisans
+                            <p>Nos artisans</p>    
                         </li>
                         <li>
                             <span>ⴼ</span>
-                            F.A.Q
+                            <p>F.A.Q</p>    
                         </li>
                         <li>
                             <span>ⵛ</span>
-                            Conditions Générales de Vente
+                            <p>Conditions Générales de Vente</p>
+                            
                         </li>
                     </ul>
                 </div>
@@ -35,15 +36,15 @@ const Footer = () => {
                     <ul className="links">
                         <li>
                             <span>ⵙ</span>
-                            Suivre votre commande
+                            <p>Suivre votre commande</p>     
                         </li>
                         <li>
                             <span>ⵔ</span>
-                            Retours
+                            <p>Retours</p>        
                         </li>
                         <li>
                             <span>ⵜ</span>
-                            Temps de livraison
+                            <p>Temps de livraison</p>      
                         </li>
                     </ul>
                 </div>
@@ -54,11 +55,7 @@ const Footer = () => {
                     <ul className="links">
                         <li>
                             <span>ⵛ</span>
-                            Une question ? Besoin d'aide ?
-                            {/* <br /> */}
-                            {/* <span></span> */}
-                            <p>Contactez-nous !</p>
-                            
+                            <p>Une question ? Besoin d'aide ?<br />Contactez-nous !</p>
                         </li>
                     </ul>
                 </div>

@@ -273,61 +273,61 @@ const FilterProducts = ({category, setTypeFilter, filterActive, setFilterActive,
                             <div className="color-container1">
                                 <input type="checkbox" id='white' title='blanc' onClick={(e) => setColor(e)} />
                             </div>  
-                            <p>Blanc</p>
+                            <p className='color'>Blanc</p>
                         </li>
                         <li>
                             <div className="color-container2">
                                 <input type="checkbox" id='black' title='noir' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Noir</p>
+                            <p className='color'>Noir</p>
                         </li>
                         <li >
                             <div className="color-container3">  
                                 <input type="checkbox" id='gray' title='gris' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Gris</p>
+                            <p className='color'>Gris</p>
                         </li>
                         <li >
                             <div className="color-container4">  
                                 <input type="checkbox" id='green' title='vert' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Vert</p>
+                            <p className='color'>Vert</p>
                         </li>
                         <li >
                             <div className="color-container5">  
                                 <input type="checkbox" id='red' title='rouge' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Rouge</p>
+                            <p className='color'>Rouge</p>
                         </li>
                         <li >
                             <div className="color-container6">  
                                 <input type="checkbox" id='orange' title='orange' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Orange</p>
+                            <p className='color'>Orange</p>
                         </li>
                         <li >
                             <div className="color-container7">  
                                 <input type="checkbox" id='yellow' title='jaune' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Jaune</p>
+                            <p className='color'>Jaune</p>
                         </li>
                         <li >
                             <div className="color-container8">  
                                 <input type="checkbox" id='blue' title='bleu' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Bleu</p>
+                            <p className='color'>Bleu</p>
                         </li>
                         <li >
                             <div className="color-container9">  
                                 <input type="checkbox" id='purple' title='violet' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Violet</p>
+                            <p className='color'>Violet</p>
                         </li>
                         <li >
                             <div className="color-container10">  
                                 <input type="checkbox" id='maroon' title='marron' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Marron</p>
+                            <p className='color'>Marron</p>
                         </li>
                     </ul>   
                 </div>  
@@ -489,61 +489,61 @@ const FilterProducts = ({category, setTypeFilter, filterActive, setFilterActive,
                             <div className="color-container1">
                                 <input type="checkbox" id='white' title='blanc' onClick={(e) => setColor(e)} />
                             </div>  
-                            <p>Blanc</p>
+                            <p className='color'>Blanc</p>
                         </li>
                         <li>
                             <div className="color-container2">
                                 <input type="checkbox" id='black' title='noir' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Noir</p>
+                            <p className='color'>Noir</p>
                         </li>
                         <li >
                             <div className="color-container3">  
                                 <input type="checkbox" id='gray' title='gris' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Gris</p>
+                            <p className='color'>Gris</p>
                         </li>
                         <li >
                             <div className="color-container4">  
                                 <input type="checkbox" id='green' title='vert' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Vert</p>
+                            <p className='color'>Vert</p>
                         </li>
                         <li >
                             <div className="color-container5">  
                                 <input type="checkbox" id='red' title='rouge' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Rouge</p>
+                            <p className='color'>Rouge</p>
                         </li>
                         <li >
                             <div className="color-container6">  
                                 <input type="checkbox" id='orange' title='orange' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Orange</p>
+                            <p className='color'>Orange</p>
                         </li>
                         <li >
                             <div className="color-container7">  
                                 <input type="checkbox" id='yellow' title='jaune' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Jaune</p>
+                            <p className='color'>Jaune</p>
                         </li>
                         <li >
                             <div className="color-container8">  
                                 <input type="checkbox" id='blue' title='bleu' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Bleu</p>
+                            <p className='color'>Bleu</p>
                         </li>
                         <li >
                             <div className="color-container9">  
                                 <input type="checkbox" id='purple' title='violet' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Violet</p>
+                            <p className='color'>Violet</p>
                         </li>
                         <li >
                             <div className="color-container10">  
                                 <input type="checkbox" id='maroon' title='marron' onClick={(e) => setColor(e)}/>
                             </div>
-                            <p>Marron</p>
+                            <p className='color'>Marron</p>
                         </li>
                     </ul>   
                 </div>  

@@ -103,6 +103,7 @@ const About = () => {
         </div>
         <div className='about-container'>
             <div className="background">
+                {(window.innerWidth <= 480 )}
                 <img src={aboutImg} alt="Souk de nuit" style={{filter: `brightness(${brightness})`}} onLoad={checkLoading}/>
                 <div className="gray-layout" style={{backgroundColor: `rgba(58, 58, 58, 0.7})`}}></div>
             </div>

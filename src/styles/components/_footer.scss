@@ -20,6 +20,7 @@ footer {
 
     h3 {
         padding-top: 25px;
+        text-align: center;
     }
 
     .footer-about, .footer-delivery, .footer-contact {
@@ -44,6 +45,7 @@ footer {
                 list-style-type: none;
                 width: fit-content;
                 cursor: pointer;
+                display: flex;
 
                 span {
                     font-family: 'Noto Sans Tifinagh', sans-serif;
@@ -54,7 +56,6 @@ footer {
 
                 p {
                     text-align: start;
-                    padding-left: 31.6px
                 }
 
                 &:hover {
