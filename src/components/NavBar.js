@@ -71,6 +71,9 @@ const NavBar = ({checkPage}) => {
 
         if((checkPage === 'about' || checkPage === 'products') && window.innerWidth <= 480) {
             svgColor.style.fill = 'white';
+            
+        }
+        else if((checkPage === 'home' || checkPage === 'basket') && window.innerWidth <= 480) {
             svgColor.style.color = 'white';
         }
         

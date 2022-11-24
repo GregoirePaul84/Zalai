@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import basketImg from '../media/pexels-meruyert-gonullu-6243732.jpg';
 import { useRef } from 'react';
 
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeftLong, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Loader from './Loader';
 
@@ -128,7 +128,10 @@ const Basket = () => {
                     <section>
                         <div className="basket-header">
                             <div className="back-to-shopping">
-                                <button onClick={() => navigate(`/Zalai/products`)}>Continuer les achats</button>
+                                <button onClick={() => navigate(`/Zalai/products`)}>
+                                    <FontAwesomeIcon icon={faArrowLeftLong} />
+                                    <p>Continuer les achats</p>                   
+                                </button>
                             </div>
                             <div className="basket-title">
                                 <h2>Votre panier</h2>

@@ -23,6 +23,7 @@ const FilterProducts = ({category, setTypeFilter, filterActive, setFilterActive,
 
         if(priceStorage.name !== undefined) {
             selectedPrice.style.backgroundColor = "#D9A569";
+            selectedPrice.classList.add('filter-active');
             otherPrices.forEach(li => li.style.backgroundColor = 'inherit');
             setFilterActive({price: true, size: filterActive.size, color: filterActive.color, kind: filterActive.kind, material: filterActive.material});
         }

@@ -335,7 +335,6 @@ const Products = () => {
         || (product.productMaterial === materialFilter.material));
 
         if(filter1.length !== 0 ) {
-            console.log('filter1');
             return(
                 filter1.map((key) => {
                                         

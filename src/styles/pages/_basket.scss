@@ -52,6 +52,13 @@
                             border: none;
                             cursor: pointer;
                             font-size: 1em;
+                            display: flex;
+                            align-items: center;
+                            color: #432e29;
+
+                            svg {
+                                margin-right: 10px;
+                            }
                         }
                     }
 

@@ -277,13 +277,15 @@ const DetailedProduct = ({products, categoryIndex, cartLength, setCartLength, ad
                         <div className="chevron-container" onClick={showPreviousImg}>
                                 <FontAwesomeIcon icon={faChevronLeft} className="chevron-left" />
                         </div>
-                        {(products !== undefined) ? 
-                            findProduct.productAllImg.map((key) => {
-                            return (
-                                <img src={key.img} alt="" key={key.id} className={key.id} onClick={function(e){changeImg(e)}} onLoad={function(e){checkLoading(e)}}/>
-                            )
-                            })
-                        : null }
+                        <div className="carousel-content">
+                            {(products !== undefined) ? 
+                                findProduct.productAllImg.map((key) => {
+                                return (
+                                    <img src={key.img} alt="" key={key.id} className={key.id} onClick={function(e){changeImg(e)}} onLoad={function(e){checkLoading(e)}}/>
+                                )
+                                })
+                            : null }
+                        </div>
                         <div className="chevron-container" onClick={showNextImg}>
                             <FontAwesomeIcon icon={faChevronRight} className="chevron-right" />
                         </div>
