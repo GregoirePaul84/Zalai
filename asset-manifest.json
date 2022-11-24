@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/Zalai/static/css/main.1bc1f232.css",
-    "main.js": "/Zalai/static/js/main.dd769cb6.js",
+    "main.css": "/Zalai/static/css/main.1b5a316d.css",
+    "main.js": "/Zalai/static/js/main.106f298d.js",
     "static/media/vidéo_de_Taryn_Elliott.mp4": "/Zalai/static/media/vidéo_de_Taryn_Elliott.a83b1c4c7a8d660dd082.mp4",
+    "static/media/pexels-taryn-elliott-4502969.jpg": "/Zalai/static/media/pexels-taryn-elliott-4502969.3b84f6cab6783b17f591.jpg",
     "static/media/lampe.png": "/Zalai/static/media/lampe.f54a5784e944e9308c96.png",
     "static/media/pexels-meruyert-gonullu-6243732.jpg": "/Zalai/static/media/pexels-meruyert-gonullu-6243732.8eb53f13a78b41f83f92.jpg",
     "static/media/houmt-souk-6599499_1920.jpg": "/Zalai/static/media/houmt-souk-6599499_1920.9fa3806c2163b77a40fd.jpg",
@@ -271,11 +272,11 @@
     "static/media/border.png": "/Zalai/static/media/border.0bc587649c68d008cfb7.png",
     "static/media/border_footer2.png": "/Zalai/static/media/border_footer2.3f39174d1e78a0b2cc69.png",
     "index.html": "/Zalai/index.html",
-    "main.1bc1f232.css.map": "/Zalai/static/css/main.1bc1f232.css.map",
-    "main.dd769cb6.js.map": "/Zalai/static/js/main.dd769cb6.js.map"
+    "main.1b5a316d.css.map": "/Zalai/static/css/main.1b5a316d.css.map",
+    "main.106f298d.js.map": "/Zalai/static/js/main.106f298d.js.map"
   },
   "entrypoints": [
-    "static/css/main.1bc1f232.css",
-    "static/js/main.dd769cb6.js"
+    "static/css/main.1b5a316d.css",
+    "static/js/main.106f298d.js"
   ]
 }
