@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Zalai/static/css/main.1b5a316d.css",
+    "main.css": "/Zalai/static/css/main.59b350a5.css",
     "main.js": "/Zalai/static/js/main.106f298d.js",
     "static/media/vidéo_de_Taryn_Elliott.mp4": "/Zalai/static/media/vidéo_de_Taryn_Elliott.a83b1c4c7a8d660dd082.mp4",
     "static/media/pexels-taryn-elliott-4502969.jpg": "/Zalai/static/media/pexels-taryn-elliott-4502969.3b84f6cab6783b17f591.jpg",
@@ -272,11 +272,11 @@
     "static/media/border.png": "/Zalai/static/media/border.0bc587649c68d008cfb7.png",
     "static/media/border_footer2.png": "/Zalai/static/media/border_footer2.3f39174d1e78a0b2cc69.png",
     "index.html": "/Zalai/index.html",
-    "main.1b5a316d.css.map": "/Zalai/static/css/main.1b5a316d.css.map",
+    "main.59b350a5.css.map": "/Zalai/static/css/main.59b350a5.css.map",
     "main.106f298d.js.map": "/Zalai/static/js/main.106f298d.js.map"
   },
   "entrypoints": [
-    "static/css/main.1b5a316d.css",
+    "static/css/main.59b350a5.css",
     "static/js/main.106f298d.js"
   ]
 }
