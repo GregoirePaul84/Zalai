@@ -14,22 +14,22 @@ const FilterProducts = ({category, setTypeFilter, filterActive, setFilterActive,
     useEffect(() => {
         if (typeFilter !== 'price') return; 
 
-        sessionStorage.setItem('price', JSON.stringify(priceFilter));
-        
         const priceStorage = JSON.parse(sessionStorage.getItem('price'));
+        sessionStorage.setItem('price', JSON.stringify(priceFilter));         
 
         const selectedPrice = document.querySelector(`.${priceStorage.name}`);
         const otherPrices = document.querySelectorAll(`#ul-price > li:not(.${priceStorage.name})`);
 
         if(priceStorage.name !== undefined) {
             selectedPrice.style.backgroundColor = "#D9A569";
-            selectedPrice.classList.add('filter-active');
+            sessionStorage.setItem('priceActive', JSON.stringify(priceStorage.name)); 
             otherPrices.forEach(li => li.style.backgroundColor = 'inherit');
             setFilterActive({price: true, size: filterActive.size, color: filterActive.color, kind: filterActive.kind, material: filterActive.material});
         }
         else {
             setFilterActive({price: false, size: filterActive.size, color: filterActive.color, kind: filterActive.kind, material: filterActive.material}); 
         }
+
         // eslint-disable-next-line 
     }, [priceFilter]);
 

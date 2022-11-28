@@ -56,7 +56,7 @@ const Products = () => {
     const [filterActive, setFilterActive] = useState({price: false, size: false, color: false, kind: false, material: false});
 
     // Filtre de prix
-    const [priceFilter, setPriceFilter] = useState({valueMin: undefined, valueMax: undefined, name: undefined});
+    const [priceFilter, setPriceFilter] = useState({valueMin: undefined, valueMax: undefined, name: undefined, checked: false});
 
     // Filtre de tailles
     const [sizeFilter, setSizeFilter] = useState({size: undefined, name: undefined});
